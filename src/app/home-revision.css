@@ -483,3 +483,146 @@ main,section,article,aside,nav,header,footer,div {min-width: 0}
   .menu-toggle__line,.site-nav,.site-nav-backdrop,.whatsapp-widget__prompt,.whatsapp-widget__fab {transition-duration: .01ms!important}
   .whatsapp-widget__fab::before {animation: none}
 }
+
+/* Figma source-of-truth pass: header, tour overview and itinerary. */
+@media (min-width: 1001px) {
+  .site-header {
+    grid-template-columns: max-content minmax(0,1fr) max-content;
+    column-gap: clamp(16px,2vw,36px);
+  }
+  .site-nav {justify-self: center; gap: 4px}
+  .site-nav__item {gap: 0}
+  .site-nav__item i {display: none}
+  .site-nav__item a {display: block; padding: 8px 8px; border-radius: 999px}
+  .site-nav__item a:hover {background: var(--cream)}
+}
+
+@media (min-width: 1001px) and (max-width: 1120px) {
+  .site-header {padding-inline: 28px; column-gap: 14px}
+  body:has(.trip-detail-hero) .site-header {padding-inline: 28px}
+  .brand {gap: 8px; font-size: 18px}
+  .brand img {width: 32px; height: 32px}
+  .site-nav {gap: 1px}
+  .site-nav__item {font-size: 14px}
+  .site-nav__item a {padding-inline: 6px}
+  .site-header .header-quote {padding-left: 15px; font-size: 14px}
+}
+
+.whatsapp-text-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 700;
+  line-height: 1.2;
+}
+.whatsapp-text-link svg {flex: 0 0 20px; width: 20px; height: 20px; fill: #25d366}
+.whatsapp-text-link--light {color: white}
+
+body .trip-overview {
+  width: min(calc(100% - 128px),1312px);
+  grid-template-columns: minmax(0,648px) minmax(0,600px);
+  gap: 64px;
+  padding-top: 120px;
+  padding-bottom: 0;
+}
+body .trip-overview>div:first-child {display: flex; overflow: hidden; flex-direction: column; align-items: flex-start; gap: 24px}
+body .trip-overview h2 {margin: 0; font-size: 48px; line-height: 1.05; letter-spacing: -.96px}
+body .trip-overview>div:first-child>p {margin: 0; color: #4a453e; font-size: 18px; line-height: 1.55}
+body .trip-overview h3 {margin: 0; font-size: 22px; line-height: 1.2; letter-spacing: -.2px}
+body .trip-overview ul {gap: 14px; margin: 0}
+body .trip-overview li {gap: 12px; align-items: center; font-size: 17px; font-weight: 550; line-height: 1.4}
+body .trip-overview li img {flex: 0 0 20px}
+
+body .overview-gallery {width: 600px; max-width: 100%}
+body .overview-gallery__main {position: relative; height: 487px; overflow: hidden; border-radius: 24px; background: var(--cream)}
+body .overview-gallery__main>img {border-radius: 0; object-fit: cover; animation: gallery-image-in .28s ease both}
+.overview-gallery__arrow {position: absolute; z-index: 3; top: 50%; display: grid; width: 52px; height: 52px; padding: 0; place-items: center; border: 0; border-radius: 50%; background: white; box-shadow: 0 7px 20px rgba(20,18,16,.15); cursor: pointer; transform: translateY(-50%); transition: transform .2s ease,background-color .2s ease}
+.overview-gallery__arrow:hover {background: var(--orange); transform: translateY(-50%) scale(1.04)}
+.overview-gallery__arrow--previous {left: 20px}
+.overview-gallery__arrow--next {right: 20px}
+body .overview-gallery__counter {position: absolute; z-index: 3; top: 20px; right: 20px; padding: 6px 14px; border-radius: 999px; background: rgba(20,18,16,.7); color: white; font-size: 14px; font-weight: 650}
+.overview-gallery__dots {position: absolute; z-index: 3; bottom: 12px; left: 50%; display: flex; gap: 6px; align-items: center; transform: translateX(-50%)}
+.overview-gallery__dots span {width: 8px; height: 8px; border-radius: 999px; background: rgba(255,255,255,.6); transition: width .2s ease,background-color .2s ease}
+.overview-gallery__dots span.is-active {width: 22px; background: white}
+body .overview-gallery__thumbs {display: grid; grid-template-columns: repeat(5,minmax(0,1fr)); gap: 10px; margin-top: 12px}
+body .overview-gallery__thumbs>button {position: relative; height: 96px; overflow: hidden; padding: 0; border: 3px solid transparent; border-radius: 14px; background: var(--cream); opacity: .75; cursor: pointer; transition: opacity .2s ease,border-color .2s ease,transform .2s ease}
+body .overview-gallery__thumbs>button:hover {opacity: 1; transform: translateY(-2px)}
+body .overview-gallery__thumbs>button.is-active {border-color: var(--orange); opacity: 1}
+body .overview-gallery__thumbs img {border: 0; border-radius: 10px; object-fit: cover}
+.overview-gallery__thumbs>button>span {position: absolute; z-index: 2; inset: 0; display: grid; place-items: center; background: rgba(20,18,16,.55); color: white; font-size: 22px; font-weight: 750}
+
+body .itinerary-section {width: min(calc(100% - 128px),1312px); padding-top: 43px}
+body .itinerary-layout {grid-template-columns: 420px minmax(0,844px); gap: 48px}
+body .day-card {gap: 20px; padding-bottom: 40px}
+body .day-card>header {display: flex; align-items: center; gap: 14px}
+body .day-card>header h3 {min-width: 0; margin: 0; font-size: 28px; line-height: 1.2; letter-spacing: -.42px}
+body .day-summary {font-size: 19px; font-weight: 550; line-height: 1.5}
+body .day-experience {grid-template-columns: 420px minmax(0,1fr); border: 1px solid #e6e2da; border-radius: 24px}
+body .day-experience img {width: 100%; height: 260px; object-fit: cover}
+body .day-experience p {padding: 24px 28px; color: #4a453e; font-size: 17px; line-height: 1.6}
+.day-divider {width: 100%; height: 1px; margin: 0; border: 0; background: #e6e2da}
+body .accommodation-heading {grid-template-columns: 44px minmax(0,1fr) auto; gap: 14px}
+body .accommodation-heading h4 {font-size: 22px; line-height: 1.3; letter-spacing: -.2px}
+body .accommodation-options {grid-template-columns: minmax(0,1fr) 360px; gap: 24px}
+body .accommodation-option-list>small {margin-bottom: 10px; font-size: 17px; line-height: 1.4}
+body .accommodation-option-list>button {gap: 12px; padding: 14px 16px}
+body .property-card {height: 337px}
+body .property-card>.property-card__media {height: 250px}
+
+@keyframes gallery-image-in {
+  from {opacity: .7; transform: scale(1.015)}
+  to {opacity: 1; transform: scale(1)}
+}
+
+@media (max-width: 1180px) {
+  body .trip-overview {width: min(calc(100% - 64px),960px); grid-template-columns: 1fr; gap: 42px; padding-top: 88px}
+  body .overview-gallery {justify-self: start}
+  body .itinerary-section {width: min(calc(100% - 64px),960px)}
+  body .itinerary-layout {grid-template-columns: 1fr; gap: 46px}
+  body .route-sidebar {position: static; grid-template-columns: minmax(0,1.2fr) minmax(280px,.8fr); gap: 24px}
+  body .route-card {display: grid; grid-template-columns: 1fr 1fr}
+  body .interactive-route-map {height: 100%; min-height: 390px}
+  body .day-experience {grid-template-columns: 420px minmax(0,1fr)}
+  body .accommodation-options {grid-template-columns: minmax(0,1fr) 360px}
+  body .property-card {height: 337px}
+  body .property-card>.property-card__media {height: 250px}
+}
+
+@media (max-width: 800px) {
+  body .trip-overview,body .itinerary-section {width: min(calc(100% - 40px),720px)}
+  body .trip-overview {padding-top: 72px}
+  body .overview-gallery {width: 100%}
+  body .route-sidebar {grid-template-columns: 1fr}
+  body .route-card {grid-template-columns: 1fr 1fr}
+  body .interactive-route-map {min-height: 360px}
+  body .day-experience {grid-template-columns: 1fr 1fr}
+  body .accommodation-options {grid-template-columns: 1fr}
+  body .property-card {max-width: 480px}
+}
+
+@media (max-width: 600px) {
+  body .trip-overview,body .itinerary-section {width: calc(100% - 32px)}
+  body .trip-overview {gap: 30px; padding-top: 64px}
+  body .trip-overview>div:first-child {gap: 18px}
+  body .trip-overview h2 {font-size: 42px}
+  body .trip-overview>div:first-child>p {font-size: 16px}
+  body .trip-overview li {align-items: flex-start; font-size: 15px}
+  body .overview-gallery__main {height: 320px}
+  .overview-gallery__arrow {width: 44px; height: 44px}
+  .overview-gallery__arrow--previous {left: 14px}
+  .overview-gallery__arrow--next {right: 14px}
+  body .overview-gallery__thumbs {gap: 6px}
+  body .overview-gallery__thumbs>button {height: 62px; border-width: 2px; border-radius: 10px}
+  .overview-gallery__thumbs>button>span {font-size: 17px}
+  body .route-card {display: block}
+  body .interactive-route-map {height: 300px; min-height: 0}
+  body .day-card>header {align-items: flex-start; flex-direction: row}
+  body .day-card>header h3 {width: auto; font-size: 23px}
+  body .day-experience {grid-template-columns: 1fr}
+  body .day-experience img {height: 230px}
+  body .day-experience p {padding: 22px}
+  body .accommodation-heading {grid-template-columns: 44px minmax(0,1fr)}
+  body .accommodation-heading .meal-plan-button {grid-column: 1/-1; justify-self: stretch; width: 100%; white-space: normal}
+  body .accommodation-option-list>small {font-size: 16px}
+  body .property-card {max-width: none}
+}

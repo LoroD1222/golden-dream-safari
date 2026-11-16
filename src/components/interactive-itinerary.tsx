@@ -6,6 +6,7 @@ import {ButtonLink, SectionPill} from "@/components/button-link";
 import {FigmaIcon} from "@/components/figma-icon";
 import {ItineraryAccommodation} from "@/components/itinerary-accommodation";
 import {SafariRouteMap} from "@/components/safari-route-map";
+import {WhatsAppIcon} from "@/components/whatsapp-icon";
 import type {ItineraryDay} from "@/features/itinerary/model";
 import {northernCircuitRouteStops} from "@/features/itinerary/route-data";
 
@@ -72,7 +73,7 @@ export function InteractiveItinerary({
             </div>
           </div>
         </div>
-        <div className="route-help"><span><FigmaIcon name="book" width={20}/>Plan your trip</span><h3>Want to change this trip?</h3><p>Send us your dates and we&apos;ll reply with a quote. Parks and days can be changed. It&apos;s free and commits you to nothing.</p><div><ButtonLink href={quoteHref}>Get a free quote</ButtonLink><a href={whatsappHref}><FigmaIcon name="detail-whatsapp" width={20}/>WhatsApp</a></div></div>
+        <div className="route-help"><span><FigmaIcon name="book" width={20}/>Plan your trip</span><h3>Want to change this trip?</h3><p>Send us your dates and we&apos;ll reply with a quote. Parks and days can be changed. It&apos;s free and commits you to nothing.</p><div><ButtonLink href={quoteHref}>Get a free quote</ButtonLink><a className="whatsapp-text-link" href={whatsappHref}><WhatsAppIcon/>WhatsApp</a></div></div>
       </aside>
       <div className="day-list">
         {days.map((day, index) => <article
@@ -88,6 +89,7 @@ export function InteractiveItinerary({
           <p className="day-summary">{day.summary}</p>
           {day.habitat && day.dayNumber !== 1 && <span className="habitat"><small>Habitat</small>{day.habitat}</span>}
           <div className="day-experience"><Image src={dayImages[index] || dayImages[0]} alt={`${day.title} safari experience`} width={420} height={260}/><p>{isNorthernCircuit ? exactStories[index] : day.activities[0]?.description}</p></div>
+          <hr className="day-divider"/>
           <ItineraryAccommodation day={day} isFinalDay={day.dayNumber === days.length}/>
           {day.dayNumber === days.length && <p className="dropoff-note">No overnight today. This afternoon we drive back to Arusha and drop you at your accommodation.</p>}
         </article>)}

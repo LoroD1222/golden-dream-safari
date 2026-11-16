@@ -7,7 +7,6 @@ import {useEffect, useState} from "react";
 import {FigmaIcon} from "@/components/figma-icon";
 
 const links = [
-  {href: "/", label: "Home"},
   {href: "/trips", label: "Safaris"},
   {href: "/trips#treks-zanzibar", label: "Kilimanjaro"},
   {href: "/trips#treks-zanzibar", label: "Zanzibar"},

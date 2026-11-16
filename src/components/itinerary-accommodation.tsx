@@ -6,6 +6,7 @@ import {FigmaIcon} from "@/components/figma-icon";
 import type {ItineraryDay} from "@/features/itinerary/model";
 
 const packageIcons = ["package-camping", "package-lodge", "package-luxury"] as const;
+const packageLabels = ["Camping", "Mid-range lodge", "Luxury lodge"] as const;
 
 type StayOption = {
   tier: "Group camping" | "Mid-range lodge" | "Private luxury";
@@ -65,14 +66,14 @@ export function ItineraryAccommodation({day, isFinalDay}: {day: ItineraryDay; is
     {mealInfoOpen && <p className="meal-plan-note" id={`meal-plan-note-${day.dayNumber}`}>Meals are prepared during the safari. Please tell us about allergies or dietary requirements when you request your quote.</p>}
     {!isFinalDay && selected && selectedImage && <div className="accommodation-options">
       <div className="accommodation-option-list" role="group" aria-label={`Day ${day.dayNumber} accommodation options`}>
-        <small>Options based on your package:</small>
+        <small>Where you stay depends on the accommodation level you choose:</small>
         {options.map((option, index) => <button
           type="button"
           className={selectedOption === index ? "is-selected" : ""}
           aria-pressed={selectedOption === index}
           onClick={() => chooseOption(index)}
           key={option.tier}
-        ><span><FigmaIcon name={packageIcons[index]} width={20}/></span><span><strong>{option.tier}</strong><small>{option.property} · {option.location}</small></span></button>)}
+        ><span><FigmaIcon name={packageIcons[index]} width={20}/></span><span><strong>{packageLabels[index]}</strong><small>{option.property} · {option.location}</small></span></button>)}
         <p className="availability-note">Availability and the final room type are confirmed in your quote.</p>
       </div>
       <figure className="property-card" aria-live="polite">
