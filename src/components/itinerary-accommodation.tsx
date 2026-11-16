@@ -1,12 +1,10 @@
 "use client";
 
 import Image from "next/image";
-import {useState} from "react";
-import {FigmaIcon} from "@/components/figma-icon";
+import {useEffect, useState} from "react";
 import type {ItineraryDay} from "@/features/itinerary/model";
 
-const packageIcons = ["package-camping", "package-lodge", "package-luxury"] as const;
-const packageLabels = ["Camping", "Mid-range lodge", "Luxury lodge"] as const;
+const assetBasePath = "/itinerary-assets";
 
 type StayOption = {
   tier: "Group camping" | "Mid-range lodge" | "Private luxury";
@@ -36,10 +34,17 @@ const stayOptionsByDay: Record<number, StayOption[]> = {
 export function ItineraryAccommodation({day, isFinalDay}: {day: ItineraryDay; isFinalDay: boolean}) {
   const [selectedOption, setSelectedOption] = useState(0);
   const [slide, setSlide] = useState(0);
+  const [paused, setPaused] = useState(false);
   const [mealInfoOpen, setMealInfoOpen] = useState(false);
   const options = stayOptionsByDay[day.dayNumber] || [];
   const selected = options[selectedOption];
   const selectedImage = selected?.images[slide] || selected?.images[0];
+
+  useEffect(() => {
+    if (paused || !selected || selected.images.length < 2 || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    const timer = window.setInterval(() => setSlide(current => (current + 1) % selected.images.length), 4500);
+    return () => window.clearInterval(timer);
+  }, [paused, selected]);
 
   function chooseOption(index: number) {
     setSelectedOption(index);
@@ -51,38 +56,52 @@ export function ItineraryAccommodation({day, isFinalDay}: {day: ItineraryDay; is
     setSlide(current => (current + direction + selected.images.length) % selected.images.length);
   }
 
+  function tierIcon(tier: StayOption["tier"]) {
+    const source = tier === "Private luxury" ? "premium-crown.svg" : "signature-star.svg";
+    return <Image src={`${assetBasePath}/${source}`} alt="" width={28} height={28}/>;
+  }
+
   return <>
-    <div className="accommodation-heading">
-      <span><FigmaIcon name="bed" width={22}/></span>
-      <h4>{isFinalDay ? `Day ${day.dayNumber} | Drop-off` : `Day ${day.dayNumber} | Accommodation`}</h4>
+    <div className="trip-ref-day-meta">
+      <span className="trip-ref-accommodation-label"><Image src={`${assetBasePath}/accommodation.svg`} alt="" width={45} height={45}/>Day {day.dayNumber} | {isFinalDay ? "Drop-off" : "Accommodation"}</span>
       <button
         type="button"
-        className="meal-plan-button"
+        className="trip-ref-meal"
         aria-expanded={mealInfoOpen}
         aria-controls={`meal-plan-note-${day.dayNumber}`}
         onClick={() => setMealInfoOpen(open => !open)}
-      ><FigmaIcon name="meal" width={20}/>Meal plan: {day.meals.join(" · ")}<FigmaIcon name="info" width={18}/></button>
+      ><Image src={`${assetBasePath}/meal.png`} alt="" width={20} height={20}/>Meal Plan: {day.meals.join(" · ")}<Image src={`${assetBasePath}/meal-info.svg`} alt="Meal-plan information" width={20} height={20}/></button>
     </div>
-    {mealInfoOpen && <p className="meal-plan-note" id={`meal-plan-note-${day.dayNumber}`}>Meals are prepared during the safari. Please tell us about allergies or dietary requirements when you request your quote.</p>}
-    {!isFinalDay && selected && selectedImage && <div className="accommodation-options">
-      <div className="accommodation-option-list" role="group" aria-label={`Day ${day.dayNumber} accommodation options`}>
-        <small>Where you stay depends on the accommodation level you choose:</small>
+    {mealInfoOpen && <p className="trip-ref-meal-note" id={`meal-plan-note-${day.dayNumber}`}>Meals are prepared during the safari. Please tell us about allergies or dietary requirements when you request your quote.</p>}
+    {!isFinalDay && selected && selectedImage && <div className="trip-ref-lodge">
+      <div className="trip-ref-lodge-options" role="group" aria-label={`Day ${day.dayNumber} accommodation options`}>
+        <p>Options based on your packages:</p>
         {options.map((option, index) => <button
           type="button"
-          className={selectedOption === index ? "is-selected" : ""}
+          className={`trip-ref-lodge-option${selectedOption === index ? " is-active" : ""}`}
           aria-pressed={selectedOption === index}
           onClick={() => chooseOption(index)}
           key={option.tier}
-        ><span><FigmaIcon name={packageIcons[index]} width={20}/></span><span><strong>{packageLabels[index]}</strong><small>{option.property} · {option.location}</small></span></button>)}
-        <p className="availability-note">Availability and the final room type are confirmed in your quote.</p>
+        >
+          <span className="trip-ref-lodge-tier"><span className="trip-ref-lodge-tier-icon">{tierIcon(option.tier)}</span>{option.tier}</span>
+          <span className="trip-ref-lodge-name">{option.property}</span>
+        </button>)}
+        <small>Property availability and the final room category are confirmed in your trip proposal.</small>
       </div>
-      <figure className="property-card" aria-live="polite">
-        <span className="property-card__tier">{selected.tier}</span>
-        <div className="property-card__media">
-          <Image src={selectedImage.src} alt={selectedImage.alt} fill sizes="(max-width: 1100px) 100vw, 360px"/>
-          <button type="button" aria-label={`Previous ${selected.tier.toLowerCase()} accommodation photo`} onClick={() => moveSlide(-1)}><FigmaIcon name="chevron-prev" width={20}/></button>
-          <button type="button" aria-label={`Next ${selected.tier.toLowerCase()} accommodation photo`} onClick={() => moveSlide(1)}><FigmaIcon name="chevron-next" width={20}/></button>
-          {selected.images.length > 1 && <small>{slide + 1} / {selected.images.length}</small>}
+
+      <figure
+        aria-live="polite"
+        onMouseEnter={() => setPaused(true)}
+        onMouseLeave={() => setPaused(false)}
+        onFocusCapture={() => setPaused(true)}
+        onBlurCapture={event => {if (!event.currentTarget.contains(event.relatedTarget)) setPaused(false);}}
+      >
+        <Image src={selectedImage.src} alt={selectedImage.alt} width={426} height={288} sizes="(max-width: 1100px) 100vw, 426px"/>
+        <span className={`trip-ref-lodge-badge trip-ref-lodge-badge--${selected.tier.toLowerCase().replaceAll(" ", "-")}`}>{selected.tier}</span>
+        <div className="trip-ref-lodge-arrows">
+          <button type="button" aria-label={`Previous ${selected.tier.toLowerCase()} accommodation`} onClick={() => moveSlide(-1)}>‹</button>
+          <span>{slide + 1} / {selected.images.length}</span>
+          <button type="button" aria-label={`Next ${selected.tier.toLowerCase()} accommodation`} onClick={() => moveSlide(1)}>›</button>
         </div>
         <figcaption>{selected.property}</figcaption>
       </figure>

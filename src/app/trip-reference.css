@@ -1,0 +1,244 @@
+/* Reusable CMS trip-page itinerary pattern, adapted to Golden Dream content. */
+.trip-ref-itinerary {
+  --rit-accent: #ea4729;
+  --rit-ink: #243138;
+  --rit-muted: #667178;
+  display: grid;
+  width: min(calc(100% - 68px), 1312px);
+  grid-template-columns: minmax(0, 420px) minmax(0, 1fr);
+  gap: 24px;
+  align-items: start;
+  padding-block: 43px 110px;
+  scroll-margin-top: 98px;
+  color: #111;
+  font-family: Inter, Poppins, Arial, sans-serif;
+}
+
+.trip-ref-itinerary * {box-sizing: border-box}
+
+.trip-ref-itinerary aside,
+.trip-ref-itinerary-content {min-width: 0}
+.trip-ref-itinerary aside {align-self: stretch}
+.trip-ref-itinerary-sticky {position: sticky; top: 112px; padding: 0 8px 10px 0}
+
+.trip-route-map-card {
+  overflow: hidden;
+  border: 1px solid #e3e6e6;
+  border-radius: 20px;
+  background: #f6f7f7;
+  box-shadow: 0 10px 28px rgba(36,49,56,.08);
+}
+.trip-route-map-canvas {position: relative; z-index: 1; width: 100%; height: 315px; background: #e9eded}
+.trip-route-map-canvas>.route-map-canvas {width: 100%; height: 100%}
+.trip-route-map-card .leaflet-control-attribution {font-size: 8px}
+.trip-route-map-card .leaflet-popup-content-wrapper {border-radius: 8px}
+.trip-route-map-card .leaflet-popup-content {min-width: 150px; margin: 14px 17px; color: #243138; font-family: inherit; line-height: 1.45}
+.trip-route-map-card .leaflet-popup-content strong {display: block; font-size: 13px}
+.trip-route-map-card .leaflet-popup-content p {margin: 7px 0 0; color: #667178; font-size: 11px}
+.trip-route-map-card .leaflet-popup-content button {display: inline-block; margin-top: 8px; padding: 0; border: 0; background: transparent; color: #ea4729; font: inherit; font-size: 11px; font-weight: 700}
+
+.trip-route-map-stops {padding: 17px 19px 19px}
+.trip-route-map-kicker {margin: 0; color: #ea4729; font-size: 10px; font-weight: 800; letter-spacing: .11em; text-transform: uppercase}
+.trip-route-map-stops ol {list-style: none; margin: 11px 0 14px; padding: 0}
+.trip-route-map-stops li {border-bottom: 1px solid rgba(36,49,56,.11)}
+.trip-route-map-stops li>button {
+  display: grid;
+  width: 100%;
+  grid-template-columns: 26px minmax(0,1fr) auto;
+  gap: 7px;
+  align-items: center;
+  padding: 9px 0;
+  border: 0;
+  background: transparent;
+  color: #243138;
+  text-align: left;
+}
+.trip-route-map-stops li>button>span {color: #ea4729; font-size: 10px; font-weight: 800; font-variant-numeric: tabular-nums}
+.trip-route-map-stops li>button>strong {font-size: 12px; font-weight: 700; line-height: 1.35; transition: color .2s}
+.trip-route-map-stops li>button>small {color: #758087; font-size: 9px; white-space: nowrap}
+.trip-route-map-stops li>button.is-active>strong,
+.trip-route-map-stops li>button:hover>strong {color: #ea4729}
+.trip-route-map-stops li>button:focus-visible {outline: 2px solid #ea4729; outline-offset: 3px}
+.trip-route-map-detail {min-height: 62px; color: #243138}
+.trip-route-map-detail>strong {font-size: 13px}
+.trip-route-map-detail>p {margin: 5px 0 0; color: #667178; font-size: 11px; line-height: 1.55}
+.trip-route-map-detail>button {display: inline-block; margin-top: 7px; padding: 0; border: 0; background: transparent; color: #ea4729; font: inherit; font-size: 11px; font-weight: 800}
+.trip-route-map-detail>button:hover {text-decoration: underline}
+
+.trip-ref-quote {
+  margin-top: 36px;
+  padding: 27px 21px 28px;
+  border: 1px solid rgba(0,0,0,.11);
+  border-radius: 20px;
+  background: rgba(147,157,163,.07);
+  box-shadow: 0 2px 13px rgba(0,0,0,.05);
+}
+.trip-ref-quote-heading {display: flex; gap: 10px; align-items: center; color: #ea4729; font-size: 16px; font-weight: 700; line-height: 20px}
+.trip-ref-quote-heading img {flex: none}
+.trip-ref-quote h3 {margin: 18px 0 0; color: #243138; font-size: 23px; font-weight: 700; line-height: 1.33; letter-spacing: -.02em}
+.trip-ref-quote p {margin: 18px 0 0; color: #243138; font-size: 15px; line-height: 1.4}
+.trip-ref-quote-actions {display: flex; gap: 12px; align-items: center; flex-wrap: wrap; margin-top: 18px}
+.trip-ref-quote-button {
+  display: inline-flex;
+  width: 192px;
+  min-height: 47px;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 6px 5px 6px 15px;
+  border-radius: 40px;
+  background: #2e3e52;
+  color: #f0f4f8;
+  font-size: 16px;
+  font-weight: 750;
+  white-space: nowrap;
+  transition: background .2s, transform .2s;
+}
+.trip-ref-quote-button>span {display: grid; width: 35px; height: 35px; place-items: center; border-radius: 50%; background: #fff}
+.trip-ref-quote-button>span img {filter: brightness(0) saturate(100%) invert(39%) sepia(88%) saturate(1562%) hue-rotate(345deg) brightness(101%) contrast(84%)}
+.trip-ref-quote-button:hover,.trip-ref-quote-button:focus-visible {background: #405570; transform: translateY(-2px)}
+.trip-ref-quote-question {color: #243138; font-size: 15px; font-weight: 750; text-decoration: underline; text-underline-offset: 2px}
+.trip-ref-quote-question:hover,.trip-ref-quote-question:focus-visible {color: #ea4729}
+
+.trip-ref-itinerary-title {display: flex; align-items: center; justify-content: space-between; gap: 20px; margin-bottom: 25px}
+.trip-ref-itinerary-title h2 {margin: 0; color: var(--rit-ink); font-size: 35px; line-height: 1.2}
+.trip-ref-itinerary-title button {
+  min-width: 153px;
+  min-height: 42px;
+  padding: 6px 17px;
+  border: 1px solid rgba(90,122,150,.34);
+  border-radius: 26px;
+  background: #fff;
+  box-shadow: 0 2px 5px rgba(0,0,0,.06);
+  color: #000;
+  font-family: inherit;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 28px;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: background .2s,border-color .2s,transform .2s;
+}
+.trip-ref-itinerary-title button:hover,.trip-ref-itinerary-title button:focus-visible {border-color: #2e3e52; background: #f0f4f8; transform: translateY(-1px)}
+.trip-ref-itinerary-title button:focus-visible,
+.trip-ref-itinerary summary:focus-visible,
+.trip-ref-meal:focus-visible,
+.trip-ref-lodge-option:focus-visible,
+.trip-ref-lodge-arrows button:focus-visible {outline: 2px solid var(--rit-accent); outline-offset: 2px}
+
+.trip-ref-itinerary details {scroll-margin-top: 112px; border-top: 1px solid #dce0e1}
+.trip-ref-itinerary details:last-of-type {border-bottom: 1px solid #dce0e1}
+.trip-ref-itinerary summary {
+  display: flex;
+  min-height: 109px;
+  align-items: center;
+  gap: 11px;
+  padding: 20px 21px;
+  color: #000;
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 28px;
+  list-style: none;
+  cursor: pointer;
+}
+.trip-ref-itinerary summary::-webkit-details-marker {display: none}
+.trip-ref-day-number {flex: none; color: rgba(0,0,0,.6)}
+.trip-ref-day-dot {flex: none; width: 8px; height: 8px; border-radius: 50%; background: var(--rit-accent)}
+.trip-ref-day-name {min-width: 0; color: #000}
+.trip-ref-day-chevron {display: block; flex: none; width: 50px; height: 50px; margin-left: auto; transform: rotate(180deg); transition: transform .2s}
+.trip-ref-itinerary details[open] .trip-ref-day-chevron {transform: rotate(0deg)}
+.trip-ref-day-content {padding-bottom: 35px}
+.trip-ref-day-summary {margin: 20px 0 28px; color: #111; font-size: 18px; font-weight: 500; line-height: 1.6}
+.trip-ref-day-facts {display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 12px; margin: 0 0 24px}
+.trip-ref-day-facts>div {padding: 14px 16px; border-radius: 12px; background: #f1f4f5}
+.trip-ref-day-facts dt {color: var(--rit-muted); font-size: 10px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase}
+.trip-ref-day-facts dd {margin: 5px 0 0; color: var(--rit-ink); font-size: 13px; font-weight: 600; line-height: 1.45}
+
+.trip-ref-day-experience {margin: 0 0 30px; overflow: hidden; border: 1px solid rgba(36,49,56,.12); border-radius: 16px; background: #fff; box-shadow: 0 12px 30px rgba(36,49,56,.08)}
+.trip-ref-day-experience.has-both {display: grid; grid-template-columns: minmax(0,1.08fr) minmax(260px,.92fr)}
+.trip-ref-day-experience figure {position: relative; min-width: 0; min-height: 280px; margin: 0; overflow: hidden; background: #edf0f1}
+.trip-ref-day-experience figure img {object-fit: cover; object-position: center}
+.trip-ref-day-narrative {align-self: center; margin: 0; padding: 28px; color: #454c51; font: 400 15px/1.75 Poppins,Inter,Arial,sans-serif}
+
+.trip-ref-day-meta {display: flex; align-items: center; justify-content: space-between; gap: 20px; padding: 20px 0 28px; border-top: 1px solid #e2e6e6}
+.trip-ref-accommodation-label {display: inline-flex; align-items: center; gap: 15px; color: #111; font-size: 20px; font-weight: 500; line-height: 28px}
+.trip-ref-accommodation-label img {flex: none; width: 45px; height: 45px}
+.trip-ref-meal {display: inline-flex; min-height: 45px; max-width: 100%; align-items: center; gap: 7px; padding: 8px 15px; border: 0; border-radius: 30px; background: #fff; box-shadow: 0 2px 5px rgba(0,0,0,.1); color: #111; font-family: inherit; font-size: 20px; font-weight: 500; line-height: 28px; text-align: left; cursor: pointer; transition: box-shadow .2s,transform .2s}
+.trip-ref-meal:hover,.trip-ref-meal:focus-visible {box-shadow: 0 3px 10px rgba(0,0,0,.18); transform: translateY(-1px)}
+.trip-ref-meal img {flex: none; width: 20px; height: 20px}
+.trip-ref-meal-note {max-width: 500px; margin: -13px 0 22px; color: var(--rit-muted); font: 400 13px/1.65 Poppins,Inter,Arial,sans-serif}
+
+.trip-ref-lodge {display: grid; grid-template-columns: minmax(0,351px) minmax(0,1fr); gap: 11px; align-items: start; margin-bottom: 35px}
+.trip-ref-lodge-options {min-width: 0}
+.trip-ref-lodge-options>p {margin: 0 0 28px; color: #111; font-size: 18px; font-weight: 500; line-height: 28px}
+.trip-ref-lodge-option {display: block; width: 100%; margin: 0 0 14px; padding: 8px 10px; border: 1px solid transparent; border-radius: 12px; background: transparent; color: #111; text-align: left; cursor: pointer; transition: border-color .2s,background-color .2s,transform .2s}
+.trip-ref-lodge-option:hover,.trip-ref-lodge-option:focus-visible,.trip-ref-lodge-option.is-active {border-color: rgba(234,71,41,.38); background: #fff7f4}
+.trip-ref-lodge-option:hover {transform: translateX(2px)}
+.trip-ref-lodge-tier {display: flex; align-items: center; gap: 6px; font-size: 18px; font-weight: 500; line-height: 28px}
+.trip-ref-lodge-tier-icon {display: inline-flex; flex: none; width: 30px; height: 30px; align-items: center; justify-content: flex-start}
+.trip-ref-lodge-tier-icon img {width: auto; height: auto; max-width: 28px; max-height: 28px; object-fit: contain}
+.trip-ref-lodge-name {display: block; margin: 2px 0 0 36px; color: #75818e; overflow-wrap: anywhere; text-decoration: underline; text-underline-offset: 2px}
+.trip-ref-lodge-options>small {display: block; margin: -10px 0 20px; color: var(--rit-muted); font: 400 12px/1.6 Poppins,Inter,Arial,sans-serif}
+.trip-ref-lodge figure {position: relative; min-width: 0; margin: 0; overflow: hidden; border: 1px solid rgba(36,49,56,.12); border-radius: 15px; background: #fff; box-shadow: 0 9px 24px rgba(36,49,56,.09)}
+.trip-ref-lodge figure>img {display: block; width: 100%; height: 288px; border-radius: 14px 14px 0 0; object-fit: cover; transition: transform .35s ease}
+.trip-ref-lodge figure:hover>img {transform: scale(1.025)}
+.trip-ref-lodge-badge {position: absolute; top: 14px; left: 14px; padding: 7px 11px; border-radius: 999px; background: #2f7c61; box-shadow: 0 6px 18px rgba(20,33,40,.2); color: #fff; font-size: 10px; font-weight: 800; letter-spacing: .06em; text-transform: uppercase}
+.trip-ref-lodge-badge--private-luxury {background: #77532f}
+.trip-ref-lodge-badge--group-camping {background: #4d6676}
+.trip-ref-lodge-arrows {position: absolute; right: 12px; bottom: 57px; display: flex; align-items: center; gap: 7px}
+.trip-ref-lodge-arrows button {display: grid; width: 38px; height: 38px; padding: 0; border: 0; border-radius: 50%; place-items: center; background: rgba(255,255,255,.95); box-shadow: 0 3px 12px rgba(0,0,0,.15); color: var(--rit-accent); font-size: 27px; line-height: 1; cursor: pointer}
+.trip-ref-lodge-arrows>span {position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap}
+.trip-ref-lodge figcaption {position: relative; z-index: 2; display: flex; min-height: 49px; align-items: center; padding: 12px 16px; border-top: 1px solid rgba(36,49,56,.08); background: #fff; color: var(--rit-ink); font-size: 14px; font-weight: 700; line-height: 1.35}
+.trip-ref-dropoff-note {color: var(--rit-muted); font-size: 15px; line-height: 1.6}
+
+@media(max-width:1200px) {
+  .trip-ref-itinerary {grid-template-columns: minmax(0,340px) minmax(0,1fr)}
+}
+
+@media(max-width:1100px) {
+  .trip-ref-lodge {grid-template-columns: 1fr; gap: 12px}
+  .trip-ref-lodge figure {max-width: 520px}
+  .trip-ref-day-meta {flex-wrap: wrap; gap: 12px}
+}
+
+@media(max-width:900px) {
+  .trip-ref-itinerary {grid-template-columns: 1fr; gap: 40px}
+  .trip-ref-itinerary-sticky {position: static; padding-right: 0}
+  .trip-route-map-card {max-width: 680px}
+  .trip-route-map-canvas {height: 390px}
+  .trip-route-map-stops ol {display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 0 18px}
+  .trip-ref-quote {max-width: 446px}
+  .trip-ref-day-experience.has-both {grid-template-columns: 1fr}
+  .trip-ref-day-experience figure {min-height: 300px}
+}
+
+@media(max-width:700px) {
+  .trip-ref-itinerary {width: calc(100% - 32px); grid-template-columns: 1fr; gap: 32px; padding-block: 32px 72px}
+  .trip-route-map-card {border-radius: 16px}
+  .trip-route-map-canvas {height: 330px}
+  .trip-route-map-stops ol {grid-template-columns: 1fr}
+  .trip-ref-itinerary-title {align-items: flex-start; gap: 16px}
+  .trip-ref-itinerary-title h2 {font-size: 30px}
+  .trip-ref-itinerary-title button {min-width: 0; padding-inline: 14px; font-size: 13px}
+  .trip-ref-itinerary summary {min-height: 72px; gap: 8px; padding: 14px 8px; font-size: 16px; line-height: 1.35}
+  .trip-ref-day-chevron {width: 42px; height: 42px}
+  .trip-ref-day-summary {font-size: 16px}
+  .trip-ref-day-facts {grid-template-columns: 1fr; gap: 8px}
+  .trip-ref-day-meta {flex-wrap: wrap; gap: 8px 18px}
+  .trip-ref-day-experience {border-radius: 13px}
+  .trip-ref-day-experience figure {min-height: 225px}
+  .trip-ref-day-narrative {padding: 20px; font-size: 14px; line-height: 1.7}
+  .trip-ref-accommodation-label,.trip-ref-meal {font-size: 16px; line-height: 1.4}
+  .trip-ref-lodge-tier {font-size: 16px}
+  .trip-ref-lodge figure>img {height: 260px}
+}
+
+@media(max-width:480px) {
+  .trip-ref-itinerary-title {display: block}
+  .trip-ref-itinerary-toggle {width: 100%; margin-top: 15px}
+}
+
+@media(prefers-reduced-motion:reduce) {
+  .trip-ref-itinerary * {scroll-behavior: auto!important; transition: none!important; animation: none!important}
+  .trip-route-map-card .leaflet-zoom-animated {transition-duration: .01ms!important}
+}

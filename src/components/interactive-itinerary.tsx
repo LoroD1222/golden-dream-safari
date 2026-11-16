@@ -2,11 +2,9 @@
 
 import Image from "next/image";
 import {useState} from "react";
-import {ButtonLink, SectionPill} from "@/components/button-link";
 import {FigmaIcon} from "@/components/figma-icon";
 import {ItineraryAccommodation} from "@/components/itinerary-accommodation";
 import {SafariRouteMap} from "@/components/safari-route-map";
-import {WhatsAppIcon} from "@/components/whatsapp-icon";
 import type {ItineraryDay} from "@/features/itinerary/model";
 import {northernCircuitRouteStops} from "@/features/itinerary/route-data";
 
@@ -42,58 +40,104 @@ export function InteractiveItinerary({
   const isNorthernCircuit = slug === "tarangire-serengeti-ngorongoro";
   const routeStops = northernCircuitRouteStops;
   const [selectedStop, setSelectedStop] = useState(1);
+  const [openDays, setOpenDays] = useState<Set<number>>(() => new Set([0]));
   const activeStop = routeStops[selectedStop];
+  const allDaysOpen = days.length > 0 && openDays.size === days.length;
 
   function selectStop(index: number, scroll = false) {
     setSelectedStop(index);
-    if (scroll) document.getElementById(`day-${routeStops[index].dayNumber}`)?.scrollIntoView({behavior: "smooth", block: "start"});
+    if (scroll) {
+      const dayIndex = days.findIndex(day => day.dayNumber === routeStops[index].dayNumber);
+      if (dayIndex >= 0) setOpenDays(current => new Set(current).add(dayIndex));
+      document.getElementById(`day-${routeStops[index].dayNumber}`)?.scrollIntoView({behavior: "smooth", block: "start"});
+    }
   }
 
-  return <section className="itinerary-section section-shell" id="itinerary">
-    <div className="itinerary-heading"><SectionPill>Itinerary</SectionPill><h2>Day by day</h2><p>Times are approximate and depend on where the animals are.</p></div>
-    <div className="itinerary-layout">
-      <aside className="route-sidebar" aria-label="Interactive safari route">
-        <div className="route-card">
-          <div className="interactive-route-map">
+  function toggleDay(index: number) {
+    setOpenDays(current => {
+      const next = new Set(current);
+      if (next.has(index)) next.delete(index);
+      else next.add(index);
+      return next;
+    });
+    setSelectedStop(stopForDay(days[index].dayNumber));
+  }
+
+  return <section className="trip-ref-itinerary section-shell" id="itinerary">
+    <aside aria-label="Interactive safari route">
+      <div className="trip-ref-itinerary-sticky">
+        <div className="trip-route-map-card">
+          <div className="trip-route-map-canvas">
             <SafariRouteMap stops={routeStops} selectedIndex={selectedStop} onSelect={setSelectedStop} onExplore={index => selectStop(index, true)}/>
           </div>
-          <div className="route-list">
-            <small>Your route</small>
-            {routeStops.map((stop, index) => <button
-              type="button"
-              className={selectedStop === index ? "is-active" : ""}
-              aria-pressed={selectedStop === index}
-              onClick={() => selectStop(index, true)}
-              key={`${stop.name}-${stop.label}-${index}`}
-            ><b>{String(index + 1).padStart(2, "0")}</b><span>{stop.name}</span><small>{stop.label}</small></button>)}
-            <div className="route-selected-copy">
+          <div className="trip-route-map-stops">
+            <p className="trip-route-map-kicker">Your route</p>
+            <ol>{routeStops.map((stop, index) => <li key={`${stop.name}-${stop.label}-${index}`}>
+              <button
+                type="button"
+                className={selectedStop === index ? "is-active" : ""}
+                aria-pressed={selectedStop === index}
+                onClick={() => selectStop(index, true)}
+              >
+                <span>{String(index + 1).padStart(2, "0")}</span>
+                <strong>{stop.name}</strong>
+                <small>{stop.label}</small>
+              </button>
+            </li>)}</ol>
+            <div className="trip-route-map-detail" aria-live="polite">
               <strong>{activeStop.name}</strong>
               <p>{activeStop.description}</p>
-              <button type="button" onClick={() => selectStop(selectedStop, true)}>Explore this park ↗</button>
+              <button type="button" onClick={() => selectStop(selectedStop, true)}>Explore this destination ↗</button>
             </div>
           </div>
         </div>
-        <div className="route-help"><span><FigmaIcon name="book" width={20}/>Plan your trip</span><h3>Want to change this trip?</h3><p>Send us your dates and we&apos;ll reply with a quote. Parks and days can be changed. It&apos;s free and commits you to nothing.</p><div><ButtonLink href={quoteHref}>Get a free quote</ButtonLink><a className="whatsapp-text-link" href={whatsappHref}><WhatsAppIcon/>WhatsApp</a></div></div>
-      </aside>
-      <div className="day-list">
-        {days.map((day, index) => <article
-          className="day-card"
-          id={`day-${day.dayNumber}`}
-          data-itinerary-day={day.dayNumber}
-          tabIndex={0}
-          onFocus={() => setSelectedStop(stopForDay(day.dayNumber))}
-          onMouseEnter={() => setSelectedStop(stopForDay(day.dayNumber))}
-          key={day.id}
-        >
-          <header><span>Day {day.dayNumber}</span><h3>{day.title}</h3></header>
-          <p className="day-summary">{day.summary}</p>
-          {day.habitat && day.dayNumber !== 1 && <span className="habitat"><small>Habitat</small>{day.habitat}</span>}
-          <div className="day-experience"><Image src={dayImages[index] || dayImages[0]} alt={`${day.title} safari experience`} width={420} height={260}/><p>{isNorthernCircuit ? exactStories[index] : day.activities[0]?.description}</p></div>
-          <hr className="day-divider"/>
-          <ItineraryAccommodation day={day} isFinalDay={day.dayNumber === days.length}/>
-          {day.dayNumber === days.length && <p className="dropoff-note">No overnight today. This afternoon we drive back to Arusha and drop you at your accommodation.</p>}
-        </article>)}
+
+        <div className="trip-ref-quote">
+          <div className="trip-ref-quote-heading"><FigmaIcon name="book" width={20}/> <span>Plan Trip</span></div>
+          <h3>Experience this northern Tanzania safari for yourself.</h3>
+          <p>Speak with a local planner for a thoughtful first proposal built around your dates and priorities.</p>
+          <div className="trip-ref-quote-actions">
+            <a className="trip-ref-quote-button" href={quoteHref}>Request a quote <span><FigmaIcon name="detail-arrow" width={20}/></span></a>
+            <a className="trip-ref-quote-question" href={whatsappHref}>Ask a question</a>
+          </div>
+        </div>
       </div>
+    </aside>
+
+    <div className="trip-ref-itinerary-content">
+      <div className="trip-ref-itinerary-title">
+        <h2>Itinerary</h2>
+        <button
+          className="trip-ref-itinerary-toggle"
+          type="button"
+          aria-expanded={allDaysOpen}
+          onClick={() => setOpenDays(allDaysOpen ? new Set() : new Set(days.map((_, index) => index)))}
+        >{allDaysOpen ? "Collapse All Days" : "Show All Days"}</button>
+      </div>
+
+      {days.map((day, index) => <details
+        id={`day-${day.dayNumber}`}
+        data-itinerary-day={day.dayNumber}
+        open={openDays.has(index)}
+        key={day.id}
+      >
+        <summary onClick={event => {event.preventDefault(); toggleDay(index);}}>
+          <span className="trip-ref-day-number">Day {day.dayNumber}</span>
+          <span className="trip-ref-day-dot" aria-hidden="true"/>
+          <span className="trip-ref-day-name">{day.title}</span>
+          <Image className="trip-ref-day-chevron" src="/itinerary-assets/itinerary-chevron.svg" alt="" width={50} height={50}/>
+        </summary>
+        <div className="trip-ref-day-content">
+          <p className="trip-ref-day-summary">{day.summary}</p>
+          {day.habitat && <dl className="trip-ref-day-facts"><div><dt>Habitat</dt><dd>{day.habitat}</dd></div></dl>}
+          <div className="trip-ref-day-experience has-both">
+            <figure><Image src={dayImages[index] || dayImages[0]} alt={`${day.title} safari experience`} fill sizes="(max-width: 900px) 100vw, 50vw"/></figure>
+            <p className="trip-ref-day-narrative">{isNorthernCircuit ? exactStories[index] : day.activities[0]?.description}</p>
+          </div>
+          <ItineraryAccommodation day={day} isFinalDay={day.dayNumber === days.length}/>
+          {day.dayNumber === days.length && <p className="trip-ref-dropoff-note">No overnight today. This afternoon we drive back to Arusha and drop you at your accommodation.</p>}
+        </div>
+      </details>)}
     </div>
   </section>;
 }
