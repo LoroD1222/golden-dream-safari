@@ -16,9 +16,9 @@ export function SiteFooter() {
         <Link className="brand brand--light" href="/"><Image src="/images/figma/brand-mark.png" alt="" width={44} height={44}/><span>Golden Dream Safaris</span></Link>
         <p>Local safari company in Arusha, Tanzania. Wildlife safaris, Kilimanjaro and Mount Meru treks, and Zanzibar.</p>
         <address>
-          <a href={contactDetails.phoneHref}><FigmaIcon name="footer-whatsapp-contact" width={20}/>{contactDetails.phoneDisplay}</a>
-          <a href={`mailto:${contactDetails.email}`}><FigmaIcon name="footer-mail" width={20}/>{contactDetails.email}</a>
-          <span><FigmaIcon name="footer-pin" width={20}/>{contactDetails.location}</span>
+          <a href={contactDetails.phoneHref}><FigmaIcon name="footer-whatsapp-contact" width={22} className="footer-contact-icon footer-contact-icon--phone"/>{contactDetails.phoneDisplay}</a>
+          <a href={`mailto:${contactDetails.email}`}><FigmaIcon name="footer-mail" width={20} className="footer-contact-icon"/>{contactDetails.email}</a>
+          <span><FigmaIcon name="footer-pin" width={20} className="footer-contact-icon"/>{contactDetails.location}</span>
         </address>
         <div className="social-links" aria-label="Contact and social links"><a href={tripadvisorUrl} aria-label="Find Golden Dream Safaris on Tripadvisor"><FigmaIcon name="footer-tripadvisor" width={22}/></a><span aria-label="Instagram"><FigmaIcon name="footer-instagram" width={22}/></span><span aria-label="Facebook"><FigmaIcon name="footer-facebook" width={22}/></span><a href={contactDetails.whatsapp} aria-label="WhatsApp Golden Dream Safaris"><FigmaIcon name="footer-whatsapp" width={22}/></a></div>
       </div>
