@@ -9,7 +9,9 @@ import {FigmaIcon} from "@/components/figma-icon";
 const links = [
   {href: "/", label: "Home"},
   {href: "/trips", label: "Safaris"},
-  {href: "/trips#treks-zanzibar", label: "Treks & Zanzibar"},
+  {href: "/trips#treks-zanzibar", label: "Kilimanjaro"},
+  {href: "/trips#treks-zanzibar", label: "Zanzibar"},
+  {href: "/trips#day-trips", label: "Day trips"},
   {href: "/about", label: "About"},
   {href: "/reviews", label: "Reviews"},
 ];
@@ -27,7 +29,7 @@ export function SiteHeader() {
       <span className="sr-only">Toggle navigation</span><span/><span/><span/>
     </button>
     <nav id="site-navigation" className={`site-nav ${open ? "site-nav--open" : ""}`} aria-label="Main navigation">
-      {links.map((link, index) => <span className="site-nav__item" key={link.href}>
+      {links.map((link, index) => <span className="site-nav__item" key={`${link.href}-${link.label}`}>
         <Link aria-current={pathname === link.href ? "page" : undefined} href={link.href} onClick={() => setOpen(false)}>{link.label}</Link>
         {index < links.length - 1 && <i aria-hidden/>}
       </span>)}

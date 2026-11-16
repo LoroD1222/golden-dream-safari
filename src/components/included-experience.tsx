@@ -30,8 +30,8 @@ const offers = [
     secondaryPosition: "center",
   },
   {
-    title: "Camping to private lodges",
-    description: "From $180 per person per day for group camping to $550 for a private lodge safari.",
+    title: "Camping or lodges",
+    description: "From $200 per person per day (camping, joining a group) to $550 (private safari, lodge accommodation).",
     icon: "/icons/figma/included-asset-4.svg",
     primaryImage: "/images/figma/701c4e7b-d313-41a8-b79a-890f42cea6c5.png",
     primaryAlt: "A safari chef preparing a fresh meal outdoors",
@@ -52,7 +52,7 @@ export function IncludedExperience() {
       <div className="included-copy">
         <SectionPill>What we offer</SectionPill>
         <h2>What&apos;s included in every safari</h2>
-        <p>Accommodation, meals, transport and drinking water on the road. Airport transfers and a hotel in Arusha can be added on request.</p>
+        <p>Park entry fees, accommodation, all meals, transport in a safari vehicle and drinking water. Airport transfers and a hotel in Arusha can be added on request.</p>
         <ol className="included-list" aria-label="Safari inclusions">
           {offers.map((offer, index) => (
             <li key={offer.title}>

@@ -1,5 +1,6 @@
 import "@fontsource-variable/urbanist";
 import "./globals.css";
+import "./home-revision.css";
 import type {Metadata, Viewport} from "next";
 import {siteOrigin} from "@/data/site";
 
