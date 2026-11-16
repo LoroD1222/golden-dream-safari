@@ -143,6 +143,86 @@ h1, h2, h3, h4 {line-height: 1.05; letter-spacing: -.035em}
   .section-shell {width: min(calc(100% - 32px),var(--shell))}.section-pad {padding-block: 72px}.site-header {min-height: 70px}.brand {font-size: 17px}.brand img {width: 32px; height: 32px}.footer-grid {grid-template-columns: 1fr 1fr}.footer-brand {grid-column: 1/-1}.footer-column:last-child {grid-column: 1/-1}.footer-cta {align-items: stretch; flex-direction: column}.footer-wordmark {font-size: 17vw}.footer-bottom {flex-direction: column}.faq-section {width: calc(100% - 32px); padding: 76px 0}.faq-intro h2 {font-size: 42px}.faq-list summary {min-height: 68px; font-size: 17px}.quote-wizard {padding: 22px 16px; border-radius: 24px}.quote-progress small {font-size: 10px}.quote-step>h3 {font-size: 28px}.trip-choice-grid {grid-template-columns: 1fr 1fr}.field-row,.traveller-row {grid-template-columns: 1fr}.quote-navigation {align-items: stretch; flex-direction: column-reverse}.quote-navigation .button {align-self: flex-end}.tier-list>button {grid-template-columns: 22px 1fr}.tier-list>button>b {grid-column: 2}.admin-page {padding: 18px}.admin-heading h1 {font-size: 40px}.admin-list {grid-template-columns: 1fr}.admin-editor {padding: 18px}.admin-actions,.admin-days-heading {align-items: stretch; flex-direction: column}.admin-actions>div:last-child {flex-wrap: wrap}.admin-form-grid {grid-template-columns: 1fr}.span-2 {grid-column: auto}.admin-activity {grid-template-columns: 1fr}
 }
 
+/* Interaction, motion and spacing refinement */
+.trips-intro,.reviews-intro,.about-hero,.contact-hero,.trip-detail-hero {width: auto; max-width: none; margin-left: 34px; margin-right: 40px}
+.trips-directory,.popular-safaris,.booking-grid,.about-story,.about-values,.about-team {width: min(calc(100% - 128px),1312px)}
+.home-about>.section-shell {width: min(calc(100% - 128px),1312px)}
+
+.included {grid-template-columns: minmax(0,648px) minmax(420px,525px); gap: 64px; justify-content: space-between; width: min(calc(100% - 128px),1312px)}
+.included h2 {max-width: 560px; margin: 20px 0 16px; font-size: 60px; line-height: 1.02; letter-spacing: -1.5px}
+.included-copy>p {max-width: 520px; margin-bottom: 0; color: #5c574f; font-size: 18px; line-height: 1.55}
+.included .included-list {display: grid; gap: 8px; margin: 20px 0 0; padding: 0; list-style: none}
+.included .included-list li,.included .included-list li:first-child {display: block; padding: 0; border: 0; border-radius: 0; background: transparent}
+.included-list button {position: relative; display: grid; grid-template-columns: 44px 1fr; gap: 20px; align-items: start; width: 100%; min-height: 112px; overflow: hidden; padding: 22px; border: 0; border-left: 4px solid transparent; border-radius: 24px; background: transparent; text-align: left; transition: background-color .28s ease,border-color .28s ease,transform .28s ease}
+.included-list button.is-active {min-height: 172px; padding: 26px 28px 26px 20px; border-left-color: var(--orange); background: var(--cream)}
+.included-list__icon {display: grid; width: 44px; height: 44px; place-items: center; border-radius: 14px; background: var(--cream); transition: background-color .28s ease,transform .28s ease}
+.included-list button.is-active .included-list__icon {background: var(--orange)}
+.included-list__icon img {width: 26px; height: 26px}
+.included-list__text {display: grid; gap: 8px; min-width: 0}
+.included-list__text strong {font-size: 28px; line-height: 1.2; letter-spacing: -.42px}
+.included-list__text small {color: #4a453e; font-size: 17px; line-height: 1.55}
+.included-collage {position: relative; width: 525px; min-height: 620px}
+.included-collage .included-collage__large,.included-collage .included-collage__small {position: absolute; overflow: hidden; border-radius: 28px; animation: included-image-in .52s cubic-bezier(.22,.75,.25,1) both}
+.included-collage .included-collage__large {top: 0; right: -40px; width: 497px; height: 446px}
+.included-collage .included-collage__small {top: 310px; bottom: auto; left: 0; width: 366px; height: 310px; border: 8px solid white; box-shadow: 0 24px 48px rgba(20,18,16,.12)}
+.included-collage .included-collage__large img,.included-collage .included-collage__small img {position: absolute; width: 100%; height: 100%; border-radius: 0; object-fit: cover}
+.included-collage .included-collage__badge {position: absolute; z-index: 3; right: -40px; bottom: 58px; display: flex; align-items: center; gap: 10px; padding: 8px 16px 8px 8px; border-radius: 999px; background: white; box-shadow: 0 12px 14px rgba(20,18,16,.14); font-size: 14px; font-weight: 650; white-space: nowrap}
+.included-collage__badge i {display: grid; width: 34px; height: 34px; place-items: center; border-radius: 50%; background: var(--orange)}
+
+.button__arrow,.trip-tile__arrow,.highlight--orange>span {transition: transform .25s cubic-bezier(.22,.75,.25,1)}
+.trip-directory-card,.popular-card,.stat-card,.home-review-grid article,.review-card,.highlight,.about-values article,.contact-methods>a {transition: transform .3s cubic-bezier(.22,.75,.25,1),box-shadow .3s ease,border-color .3s ease}
+.trip-directory-card {animation: card-in .45s cubic-bezier(.22,.75,.25,1) both}
+
+@media (hover:hover) {
+  .button:hover .button__arrow {transform: translateX(3px)}
+  .trip-tile:hover .trip-tile__arrow,.highlight--orange:hover>span {transform: translate(2px,-2px)}
+  .included-list button:hover:not(.is-active) {background: #faf9f7; transform: translateX(4px)}
+  .included-list button:hover .included-list__icon {transform: scale(1.06)}
+  .trip-directory-card:hover,.popular-card:hover,.stat-card:hover,.home-review-grid article:hover,.review-card:hover,.highlight:hover,.about-values article:hover,.contact-methods>a:hover {transform: translateY(-5px); border-color: #d2cbc1; box-shadow: 0 18px 45px rgba(20,18,16,.09)}
+}
+
+@keyframes included-image-in {from {opacity: 0; transform: scale(.975) translateY(10px)} to {opacity: 1; transform: scale(1) translateY(0)}}
+@keyframes card-in {from {opacity: 0; transform: translateY(14px)} to {opacity: 1; transform: translateY(0)}}
+@keyframes hero-copy-in {from {opacity: 0; transform: translateY(22px)} to {opacity: 1; transform: translateY(0)}}
+@keyframes hero-panel-in {from {opacity: 0; transform: translateX(24px) scale(.985)} to {opacity: 1; transform: translateX(0) scale(1)}}
+@keyframes hero-drift {0%,100% {transform: scale(1)} 50% {transform: scale(1.025)}}
+@keyframes section-reveal {from {opacity: 0; transform: translateY(34px)} to {opacity: 1; transform: translateY(0)}}
+
+.home-hero__copy,.trips-intro>div,.reviews-intro>div:nth-of-type(2),.about-hero>div,.contact-intro {animation: hero-copy-in .72s cubic-bezier(.22,.75,.25,1) both}
+.plan-card,.reviews-intro>aside,.about-hero>figure,.contact-form-wrap {animation: hero-panel-in .78s .08s cubic-bezier(.22,.75,.25,1) both}
+.home-hero>img,.trips-intro>img,.reviews-intro>img {animation: hero-drift 18s ease-in-out infinite}
+
+@supports (animation-timeline: view()) {
+  .home-trips,.home-about,.popular-safaris,.booking-steps,.included,.host,.home-reviews,.faq-section,.trips-directory,.about-story,.about-values,.about-team,.about-numbers,.guest-photos,.reviews-content {animation: section-reveal linear both; animation-timeline: view(); animation-range: entry 0% entry 28%}
+}
+
+@media (max-width: 1100px) {
+  .included {grid-template-columns: 1fr; width: min(calc(100% - 68px),var(--shell))}
+  .included-collage {justify-self: center; width: min(100%,565px)}
+  .included-collage .included-collage__large {right: 0}
+  .included-collage .included-collage__badge {right: 0}
+}
+
+@media (max-width: 700px) {
+  .trips-intro,.reviews-intro,.about-hero,.contact-hero,.trip-detail-hero {width: calc(100% - 24px); margin-inline: 12px}
+  .trips-directory,.popular-safaris,.booking-grid,.about-story,.about-values,.about-team,.home-about>.section-shell {width: calc(100% - 32px)}
+  .included {width: calc(100% - 32px); gap: 38px}
+  .included h2 {font-size: 44px}
+  .included-copy>p {font-size: 16px}
+  .included-list button,.included-list button.is-active {grid-template-columns: 40px 1fr; gap: 14px; min-height: 0; padding: 18px 16px 18px 14px; border-radius: 20px}
+  .included-list__icon {width: 40px; height: 40px}
+  .included-list__text strong {font-size: 22px}
+  .included-list__text small {font-size: 15px}
+  .included-collage {width: 100%; min-height: 430px}
+  .included-collage .included-collage__large {right: 0; width: 78%; height: 300px; border-radius: 22px}
+  .included-collage .included-collage__small {top: 220px; width: 68%; height: 210px; border-width: 6px; border-radius: 22px}
+  .included-collage .included-collage__badge {right: 0; bottom: 34px; max-width: 76%; font-size: 12px; white-space: normal}
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .home-hero>img,.trips-intro>img,.reviews-intro>img,.home-hero__copy,.trips-intro>div,.reviews-intro>div:nth-of-type(2),.about-hero>div,.contact-intro,.plan-card,.reviews-intro>aside,.about-hero>figure,.contact-form-wrap,.trip-directory-card,.included-collage .included-collage__large,.included-collage .included-collage__small {animation: none!important}
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,*::before,*::after {scroll-behavior: auto!important; transition-duration: .01ms!important; animation-duration: .01ms!important; animation-iteration-count: 1!important}
 }
@@ -458,4 +538,60 @@ h1, h2, h3, h4 {line-height: 1.05; letter-spacing: -.035em}
   .home-reviews {padding: 0 12px}.home-reviews>.section-shell {padding: 52px 16px; border-radius: 24px}.home-reviews .center-heading h2 {font-size: 44px}.home-reviews .center-heading p {font-size: 16px}.rating-bar {align-items: center; margin-top: 36px}.rating-bar>strong {font-size: 48px}.rating-bar>span {flex: 1}.rating-bar small {font-size: 14px}.rating-bar .button {width: 100%}.home-review-grid {grid-template-columns: 1fr; margin-top: 32px}.home-review-grid article:nth-child(3) {grid-column: auto}.home-review-grid .review-featured {grid-row: auto}.home-review-grid .review-featured .home-review-photo {min-height: 360px}.home-review-meta {align-items: flex-start; flex-direction: column}
   .review-filters {overflow-x: auto; flex-wrap: nowrap; width: calc(100% - 32px); padding-top: 36px; margin-inline: auto}.review-filters button {white-space: nowrap}.guest-photos {width: calc(100% - 32px); padding-top: 42px}.guest-photos>div {grid-template-columns: repeat(2,1fr)}.reviews-content {width: calc(100% - 32px); padding-top: 28px}.review-card {padding: 24px}.review-card--photo {padding: 12px}.review-card--photo .review-card__body {padding: 14px}
   .about-hero {grid-template-columns: 1fr; min-height: auto}.about-hero>div {padding: 48px 24px}.about-hero h1 {font-size: 50px}.about-hero>figure {width: calc(100% - 32px); min-height: 394px; height: 394px; margin: 0 16px 16px}.about-story {grid-template-columns: 1fr; gap: 20px; padding-top: 72px}.about-values {width: calc(100% - 32px); padding-top: 64px}.about-values>div {grid-template-columns: 1fr}.about-values article {min-height: auto}.about-team {padding-top: 80px}.about-team>div {grid-template-columns: 1fr 1fr}.about-team article>div {height: 210px}.about-numbers {width: calc(100% - 24px); grid-template-columns: 1fr 1fr; padding: 32px 24px; gap: 28px}.about-numbers>div {min-height: 0}.about-numbers strong {font-size: 52px}
+}
+
+/* Final cascade for the interactive offer panel and shared page gutters. */
+@media (min-width: 1101px) {
+  .home-hero__copy h1 {width: 468px; font-size: 50px}
+  .home-hero .plan-card {position: absolute; top: 75px; right: auto; bottom: auto; left: 60%; width: 400px}
+}
+.trips-intro,.reviews-intro,.about-hero,.contact-hero,.trip-detail-hero {width: auto; max-width: none; margin-left: 34px; margin-right: 40px}
+.trips-directory,.popular-safaris,.booking-grid,.about-story,.about-values,.about-team {width: min(calc(100% - 128px),1312px)}
+.home-about>.section-shell {width: min(calc(100% - 128px),1312px)}
+.included {grid-template-columns: minmax(0,648px) minmax(420px,525px); gap: 64px; justify-content: space-between; width: min(calc(100% - 128px),1312px)}
+.included h2 {max-width: 560px; margin: 20px 0 16px; font-size: 60px; line-height: 1.02; letter-spacing: -1.5px}
+.included-copy>p {max-width: 520px; margin-bottom: 0; color: #5c574f; font-size: 18px; line-height: 1.55}
+.included .included-list {display: grid; gap: 8px; margin: 20px 0 0; padding: 0; list-style: none}
+.included .included-list li,.included .included-list li:first-child {display: block; padding: 0; border: 0; border-radius: 0; background: transparent}
+.included-list button {position: relative; display: grid; grid-template-columns: 44px 1fr; gap: 20px; align-items: start; width: 100%; min-height: 112px; overflow: hidden; padding: 22px; border: 0; border-left: 4px solid transparent; border-radius: 24px; background: transparent; text-align: left; transition: background-color .28s ease,border-color .28s ease,transform .28s ease}
+.included-list button.is-active {min-height: 172px; padding: 26px 28px 26px 20px; border-left-color: var(--orange); background: var(--cream)}
+.included-list__icon {display: grid; width: 44px; height: 44px; place-items: center; border-radius: 14px; background: var(--cream); transition: background-color .28s ease,transform .28s ease}
+.included-list button.is-active .included-list__icon {background: var(--orange)}
+.included-list__icon img {width: 26px; height: 26px}
+.included-list__text {display: grid; gap: 8px; min-width: 0}
+.included-list__text strong {font-size: 28px; line-height: 1.2; letter-spacing: -.42px}
+.included-list__text small {color: #4a453e; font-size: 17px; line-height: 1.55}
+.included-collage {position: relative; width: 525px; min-height: 620px}
+.included-collage .included-collage__large,.included-collage .included-collage__small {position: absolute; overflow: hidden; border-radius: 28px; animation: included-image-in .52s cubic-bezier(.22,.75,.25,1) both}
+.included-collage .included-collage__large {top: 0; right: -40px; width: 497px; height: 446px}
+.included-collage .included-collage__small {top: 310px; bottom: auto; left: 0; width: 366px; height: 310px; border: 8px solid white; box-shadow: 0 24px 48px rgba(20,18,16,.12)}
+.included-collage .included-collage__large img,.included-collage .included-collage__small img {position: absolute; width: 100%; height: 100%; border-radius: 0; object-fit: cover}
+.included-collage .included-collage__badge {position: absolute; z-index: 3; right: -40px; bottom: 58px; display: flex; align-items: center; gap: 10px; padding: 8px 16px 8px 8px; border-radius: 999px; background: white; box-shadow: 0 12px 14px rgba(20,18,16,.14); font-size: 14px; font-weight: 650; white-space: nowrap}
+.included-collage__badge i {display: grid; width: 34px; height: 34px; place-items: center; border-radius: 50%; background: var(--orange)}
+
+@media (hover:hover) {
+  .included-list button:hover:not(.is-active) {background: #faf9f7; transform: translateX(4px)}
+  .included-list button:hover .included-list__icon {transform: scale(1.06)}
+}
+
+@media (max-width: 1100px) {
+  .included {grid-template-columns: 1fr; width: min(calc(100% - 68px),var(--shell))}
+  .included-collage {justify-self: center; width: min(100%,565px)}
+  .included-collage .included-collage__large,.included-collage .included-collage__badge {right: 0}
+}
+
+@media (max-width: 700px) {
+  .trips-intro,.reviews-intro,.about-hero,.contact-hero,.trip-detail-hero {width: calc(100% - 24px); margin-inline: 12px}
+  .trips-directory,.popular-safaris,.booking-grid,.about-story,.about-values,.about-team,.home-about>.section-shell {width: calc(100% - 32px)}
+  .included {width: calc(100% - 32px); gap: 38px}
+  .included h2 {font-size: 44px}
+  .included-copy>p {font-size: 16px}
+  .included-list button,.included-list button.is-active {grid-template-columns: 40px 1fr; gap: 14px; min-height: 0; padding: 18px 16px 18px 14px; border-radius: 20px}
+  .included-list__icon {width: 40px; height: 40px}
+  .included-list__text strong {font-size: 22px}
+  .included-list__text small {font-size: 15px}
+  .included-collage {width: 100%; min-height: 430px}
+  .included-collage .included-collage__large {right: 0; width: 78%; height: 300px; border-radius: 22px}
+  .included-collage .included-collage__small {top: 220px; width: 68%; height: 210px; border-width: 6px; border-radius: 22px}
+  .included-collage .included-collage__badge {right: 0; bottom: 34px; max-width: 76%; font-size: 12px; white-space: normal}
 }

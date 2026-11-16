@@ -6,6 +6,7 @@ const nextConfig: NextConfig = {
   experimental: {useTypeScriptCli: false},
   images: {
     formats: ["image/avif", "image/webp"],
+    qualities: [75, 90],
   },
 };
 
