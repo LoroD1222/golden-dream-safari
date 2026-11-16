@@ -24,6 +24,26 @@ npm run dev
 
 Open [http://localhost:3000](http://localhost:3000). The itinerary editor is available at [http://localhost:3000/admin/itineraries](http://localhost:3000/admin/itineraries) in local development.
 
+### Sanity Studio
+
+The standalone Studio in `studio/` is connected to the **golden dream safaris** Sanity project (`iir1avhf`) and its `production` dataset. It is intentionally separate from the Next.js app, so the local itinerary editor continues to work without Sanity credentials.
+
+Hosted Studio: [golden-dream-safaris.sanity.studio](https://golden-dream-safaris.sanity.studio/)
+
+```bash
+cd studio
+npm install
+npm run dev
+```
+
+To validate and deploy Studio changes:
+
+```bash
+npm run schema:extract
+npm run build
+npm run schema:deploy
+```
+
 Run all repository checks:
 
 ```bash
@@ -75,6 +95,7 @@ src/data/site.ts                 Public trip cards, reviews and site copy
 src/features/itinerary/          Domain model, validation, editor and repositories
 data/seed-itineraries.json       Versioned local seed
 public/images/figma/             Exact exported Figma assets
+studio/                          Standalone Sanity Studio and itinerary schema
 docs/                            Design inventory and QA handoff
 ```
 

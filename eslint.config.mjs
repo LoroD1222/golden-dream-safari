@@ -5,5 +5,12 @@ import nextTypescript from "eslint-config-next/typescript";
 export default defineConfig([
   ...nextVitals,
   ...nextTypescript,
-  globalIgnores([".next/**", "node_modules/**", "data/itineraries.json"]),
+  globalIgnores([
+    ".next/**",
+    "node_modules/**",
+    "studio/.sanity/**",
+    "studio/dist/**",
+    "studio/node_modules/**",
+    "data/itineraries.json",
+  ]),
 ]);

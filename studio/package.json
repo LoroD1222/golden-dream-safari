@@ -1,0 +1,28 @@
+{
+  "name": "golden-dream-safaris-studio",
+  "version": "1.0.0",
+  "private": true,
+  "license": "UNLICENSED",
+  "scripts": {
+    "dev": "sanity dev",
+    "start": "sanity start",
+    "build": "sanity build",
+    "schema:extract": "sanity schema extract --path schema.json --force",
+    "schema:deploy": "sanity schemas deploy"
+  },
+  "dependencies": {
+    "@sanity/icons": "^5.2.3",
+    "@sanity/vision": "^6.23.0",
+    "react": "^19.2.4",
+    "react-dom": "^19.2.4",
+    "sanity": "^6.23.0",
+    "styled-components": "^6.1.18"
+  },
+  "devDependencies": {
+    "@sanity/eslint-config-studio": "^7.0.0",
+    "@types/react": "^19.2.14",
+    "eslint": "^10.0.0",
+    "prettier": "^3.5.0",
+    "typescript": "~6.0.0"
+  }
+}
