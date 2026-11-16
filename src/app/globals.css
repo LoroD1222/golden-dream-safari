@@ -219,6 +219,127 @@ h1, h2, h3, h4 {line-height: 1.05; letter-spacing: -.035em}
   .included-collage .included-collage__badge {right: 0; bottom: 34px; max-width: 76%; font-size: 12px; white-space: normal}
 }
 
+/* Interactive route map and exact itinerary controls */
+.interactive-route-map .route-map-canvas {
+  position: absolute;
+  z-index: 1;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  background: #eceae3;
+  font-family: inherit;
+}
+
+.interactive-route-map .leaflet-control-zoom {
+  margin-top: 14px;
+  margin-left: 14px;
+  overflow: hidden;
+  border: 1px solid #c9c5bd;
+  border-radius: 4px;
+  box-shadow: 0 1px 5px rgba(0,0,0,.16);
+}
+
+.interactive-route-map .leaflet-control-zoom a {
+  width: 34px;
+  height: 34px;
+  border-color: #d8d4cd;
+  color: var(--ink);
+  font: 24px/34px Arial, sans-serif;
+}
+
+.interactive-route-map .leaflet-control-zoom a:hover,
+.interactive-route-map .leaflet-control-zoom a:focus-visible {background: var(--orange)}
+.interactive-route-map .leaflet-control-attribution {font-size: 8px}
+.interactive-route-map .leaflet-popup-content-wrapper {border-radius: 4px; box-shadow: 0 3px 13px rgba(0,0,0,.22)}
+.interactive-route-map .leaflet-popup-content {margin: 16px 18px; color: var(--ink); font-family: inherit}
+.interactive-route-map .leaflet-popup-content strong {display: block; font-size: 16px; line-height: 1.3}
+.interactive-route-map .leaflet-popup-content p {margin: 7px 0; color: var(--muted); font-size: 13px; line-height: 1.35}
+.interactive-route-map .leaflet-popup-content button {padding: 0; border: 0; background: transparent; color: #c25e17; font: inherit; font-size: 13px; font-weight: 700; cursor: pointer}
+.interactive-route-map .leaflet-popup-tip {box-shadow: 3px 3px 8px rgba(0,0,0,.12)}
+.interactive-route-map .leaflet-interactive {transition: fill .2s ease,stroke-width .2s ease}
+
+.accommodation-heading .meal-plan-button {
+  display: inline-flex;
+  align-items: center;
+  justify-self: end;
+  gap: 8px;
+  width: max-content;
+  padding: 10px 16px 10px 14px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: white;
+  color: var(--ink);
+  font: inherit;
+  font-size: 16px;
+  font-weight: 650;
+  cursor: pointer;
+}
+
+.accommodation-heading .meal-plan-button:hover,
+.accommodation-heading .meal-plan-button:focus-visible {border-color: var(--orange); box-shadow: 0 4px 14px rgba(20,18,16,.08)}
+.meal-plan-note {margin: -8px 0 0 58px; padding: 12px 16px; border-radius: 14px; background: var(--cream); color: var(--muted); font-size: 14px; line-height: 1.5}
+
+.accommodation-option-list {min-width: 0}
+.accommodation-option-list>small {display: block; margin-bottom: 10px; color: var(--ink); font-size: 17px; font-weight: 650}
+.accommodation-option-list>button {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  width: 100%;
+  padding: 14px 16px;
+  border: 1.5px solid transparent;
+  border-radius: 16px;
+  background: transparent;
+  color: var(--ink);
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+  transition: border-color .2s ease,background-color .2s ease,transform .2s ease;
+}
+
+.accommodation-option-list>button:hover {transform: translateX(3px)}
+.accommodation-option-list>button:focus-visible {outline: 3px solid rgba(239,138,51,.3); outline-offset: 2px}
+.accommodation-option-list>button.is-selected {border-color: var(--orange); background: #fef3ea}
+.accommodation-option-list>button>span:first-child {padding-top: 2px}
+.accommodation-option-list>button>span:last-child {display: grid; gap: 2px; min-width: 0}
+.accommodation-option-list>button strong {font-size: 18px; line-height: 1.3}
+.accommodation-option-list>button small {overflow: hidden; color: var(--muted); font-size: 15px; line-height: 1.4; text-decoration: underline; text-overflow: ellipsis; white-space: nowrap}
+
+body .property-card {
+  position: relative;
+  display: flex;
+  height: 337px;
+  overflow: hidden;
+  margin: 0;
+  flex-direction: column;
+  border: 1px solid var(--line);
+  border-radius: 24px;
+  background: white;
+}
+
+.property-card__tier {position: absolute; z-index: 4; top: 14px; left: 14px; padding: 6px 12px; border-radius: 999px; background: var(--black); color: white; font-size: 12px; font-weight: 700; letter-spacing: .72px; text-transform: uppercase}
+body .property-card>.property-card__media {position: relative; display: block; width: 100%; height: 250px; overflow: hidden; padding: 0; background: #e9e5de}
+.property-card__media>img {object-fit: cover; transition: opacity .25s ease,transform .45s ease}
+.property-card:hover .property-card__media>img {transform: scale(1.025)}
+.property-card__media>button {position: absolute; z-index: 4; top: 50%; display: grid; width: 40px; height: 40px; padding: 0; place-items: center; border: 0; border-radius: 50%; background: white; box-shadow: 0 4px 14px rgba(20,18,16,.14); cursor: pointer; transform: translateY(-50%)}
+.property-card__media>button:first-of-type {left: 14px}
+.property-card__media>button:last-of-type {right: 14px}
+.property-card__media>button:hover,.property-card__media>button:focus-visible {background: var(--orange)}
+.property-card__media>small {position: absolute; z-index: 4; right: 14px; bottom: 12px; padding: 4px 8px; border-radius: 999px; background: rgba(20,18,16,.76); color: white; font-size: 11px}
+body .property-card>figcaption {display: block; padding: 14px 18px; color: var(--ink); font-size: 16px; font-weight: 700; line-height: 1.3}
+
+@media(max-width:1100px) {
+  body .property-card {height: 300px}
+  body .property-card>.property-card__media {height: 220px}
+}
+
+@media(max-width:600px) {
+  .accommodation-heading .meal-plan-button {grid-column: 1/-1; justify-self: start; max-width: 100%; font-size: 14px}
+  .meal-plan-note {margin-left: 0}
+  .accommodation-option-list>button small {white-space: normal}
+  body .property-card {height: 300px}
+}
+
 /* The interactive itinerary replaces the legacy static sidebar structure. */
 body .route-sidebar > div.route-help:nth-child(2) {
   margin-top: 0;
