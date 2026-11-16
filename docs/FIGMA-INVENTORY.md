@@ -18,7 +18,7 @@ Source: `Golden Dreams Safari` (`nXKD3sKPSaGsIsXLoPc0lA`), inspected on 2026-11-
 
 - Urbanist variable font.
 - Near-black navigation/footer surfaces, warm cream content surfaces and orange calls to action.
-- Large editorial headings, rounded cards, pill labels, soft neutral borders and generous section spacing.
+- Large editorial headings, rounded cards, soft neutral borders and generous section spacing. The repeated section-label pills are intentionally hidden by the latest client revision.
 - Shared header, mobile navigation, footer, buttons, FAQ, quote form and trip-card patterns.
 - Image-led hero sections and asymmetrical grids on wide screens, collapsed into a single readable flow on mobile.
 
@@ -43,4 +43,3 @@ Figma states were turned into working product behavior:
 - Unspecified lodge/campsite names and mid-range pricing are shown as “confirmed in your proposal” or “on request”; placeholder brackets are not exposed publicly.
 - Social profiles without confirmed URLs are omitted.
 - Trip cards without a published itinerary route lead to the quote flow instead of a 404 page.
-

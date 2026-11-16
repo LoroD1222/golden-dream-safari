@@ -109,3 +109,167 @@
   .included {min-height: 0; margin-top: 48px}
   .host {margin: 72px auto}
 }
+
+/* November 2026 mobile-first QA layer.
+   These rules intentionally live in one shared cascade so the same spacing,
+   touch-target and overflow behavior is used by every public route. */
+.section-pill {display: none!important}
+html,body {max-width: 100%; overflow-x: clip}
+main,section,article,aside,nav,header,footer,div {min-width: 0}
+
+@media (max-width: 700px) {
+  :root {--mobile-gutter: 16px}
+  .section-shell {width: calc(100% - (var(--mobile-gutter) * 2))}
+  .section-pad {padding-block: 64px}
+  .button {min-height: 48px}
+
+  .site-header {padding-inline: var(--mobile-gutter)}
+  .site-nav {top: 64px; right: 10px; left: 10px; max-height: calc(100svh - 76px); overflow-y: auto; padding: 14px}
+  .site-nav__item a {min-height: 44px; padding: 12px}
+  .site-nav__mobile-cta {justify-content: space-between}
+
+  .home-top .home-hero {min-height: 650px; padding: 38px 24px; border-radius: 22px}
+  .home-top .home-hero>img {object-position: 57% center}
+  .home-top .home-hero__copy {gap: 16px}
+  .home-top .home-hero__copy h1 {font-size: clamp(38px,11.1vw,44px); line-height: 1.04}
+  .home-top .home-hero__copy>p {font-size: 16px; line-height: 1.48}
+  .home-top .hero-actions {gap: 10px 14px}
+  .home-highlights {gap: 12px}
+  .highlight {min-height: 108px; padding: 18px; border-radius: 22px}
+  .highlight>img,.highlight--whatsapp .highlight__whatsapp-icon {flex-basis: 56px; width: 56px; height: 56px}
+  .highlight strong,.highlight--whatsapp>div>strong {font-size: 18px}
+  .highlight--orange>div>strong {font-size: 20px}
+
+  .section-heading,.center-heading {gap: 14px; margin-bottom: 28px}
+  .section-heading h2,.center-heading h2,.popular-safaris .center-heading h2 {margin-top: 0; font-size: clamp(36px,10.5vw,44px); line-height: 1.04}
+  .section-heading>p,.center-heading>p,.popular-safaris .center-heading>p {font-size: 16px}
+  .home-trips {margin-top: 54px}
+  .trip-bento {grid-template-rows: 390px 240px 230px 240px 330px; gap: 12px}
+  .trip-tile,.trip-mix {border-radius: 22px}
+  .trip-mix>div {padding: 22px}
+  .trip-mix h3 {font-size: 25px}
+  .home-about {margin-top: 48px}
+  .home-about>.section-shell {padding: 40px 16px}
+  .home-about__statement h2 {margin-top: 0; font-size: 32px; line-height: 1.15}
+  .home-about__photos figure {height: 260px; min-height: 260px}
+  .popular-safaris {padding-top: 56px}
+  .popular-card--figma,.popular-card--figma:last-child {min-height: 0}
+  .popular-card--figma .popular-card__photo {flex-basis: 300px}
+  .booking-grid h2,.included h2,.host>div:last-child h2,.home-reviews .center-heading h2 {margin-top: 0; font-size: clamp(36px,10.5vw,43px)}
+  .booking-grid {padding: 36px 16px}
+  .booking-actions {align-items: stretch; margin-left: 0}
+  .booking-actions .button {width: 100%; justify-content: space-between}
+  .included {padding-top: 56px}
+  .included-list button,.included-list button.is-active {grid-template-columns: 40px minmax(0,1fr)}
+  .included-collage .included-collage__badge {max-width: min(250px,78%)}
+  .host {gap: 36px}
+  .host-photo {min-height: 390px}
+  .home-reviews>.section-shell {padding: 42px 14px}
+  .rating-bar {gap: 12px; padding: 18px 14px}
+  .rating-bar>img {width: 52px; height: 52px}
+  .rating-bar>strong {font-size: 42px}
+  .home-review-grid article {padding: 22px 18px}
+  .home-review-grid .review-featured .home-review-photo {min-height: 300px}
+
+  .trips-intro {min-height: 560px}
+  .trips-intro>img {object-position: 62% center}
+  .trips-intro>div {padding: 46px 24px}
+  .trips-intro h1 {margin-top: 0; font-size: clamp(40px,12vw,50px); line-height: 1.02}
+  .trips-intro>div>div {display: grid; justify-items: start}
+  .trips-directory {padding-top: 56px}
+  .trips-filters>div {scrollbar-width: none}
+  .trips-filters>div::-webkit-scrollbar {display: none}
+
+  body .trip-detail-hero {display: flex; height: auto; min-height: 0; padding-bottom: 20px; flex-direction: column}
+  body .trip-detail-hero>img {object-position: 59% center}
+  body .trip-detail-hero__copy {position: relative; z-index: 2; width: auto; padding: 52px 24px 28px}
+  body .trip-detail-hero__copy h1 {font-size: clamp(39px,11vw,43px)}
+  body .trip-detail-hero__copy>div {align-items: flex-start; flex-direction: column}
+  body .trip-detail-hero>aside {position: relative; z-index: 2; inset: auto; width: auto; margin: 0 20px; padding: 22px}
+  .trip-facts {margin-top: 12px}
+  .trip-section-nav {top: 0}
+  .trip-section-nav>.section-shell {width: 100%; min-height: 0; padding: 10px 12px; gap: 12px; align-items: stretch; flex-direction: column}
+  .trip-section-nav>.section-shell>div:first-child {width: 100%; overflow-x: auto; padding-bottom: 4px; scrollbar-width: none}
+  .trip-section-nav>.section-shell>div:first-child::-webkit-scrollbar {display: none}
+  .trip-section-nav>.section-shell>div:last-child {display: none}
+  .trip-overview {grid-template-columns: 1fr; gap: 32px}
+  .trip-overview h2,.itinerary-heading h2,.trip-included>h2,.trip-review-heading h2,.related-trips>h2 {margin-top: 0; font-size: clamp(36px,10.5vw,43px)}
+  .overview-gallery__main {height: 320px}
+  .overview-gallery__thumbs>span {height: 64px}
+  .itinerary-section {padding-top: 64px; padding-bottom: 72px}
+  .itinerary-heading {margin-bottom: 28px}
+  .itinerary-heading>p {font-size: 16px}
+  .itinerary-layout {gap: 30px}
+  .route-sidebar {position: static; top: auto}
+  .day-list {gap: 28px}
+  .day-card>header {align-items: flex-start; flex-wrap: wrap; gap: 8px}
+  .day-card>header h3 {width: calc(100% - 66px); font-size: 23px; line-height: 1.15}
+  .day-summary {font-size: 16px}
+  .habitat {width: 100%}
+  .day-experience {grid-template-columns: 1fr}
+  .day-experience img {height: 220px}
+  .day-experience p {padding: 22px}
+  .accommodation-heading {grid-template-columns: 42px 1fr}
+  .accommodation-heading>span:last-child {grid-column: 1/-1; justify-self: stretch; text-align: center}
+  .accommodation-options {grid-template-columns: 1fr}
+  .trip-included>div,.trip-price>.section-shell>div:not(.trip-price__actions),.trip-review-section>div:last-child,.related-trips>div:last-child {grid-template-columns: 1fr}
+  .trip-price {padding-block: 72px}
+  .trip-price h2 {margin-top: 0; font-size: 43px}
+  .trip-price__actions {align-items: stretch; flex-direction: column}
+  .trip-review-heading {align-items: flex-start; flex-direction: column; gap: 16px}
+  .related-trips article a {justify-self: start; margin-top: 14px}
+
+  .reviews-intro {min-height: 810px}
+  .reviews-intro>div:nth-of-type(2) {top: 54px; right: 24px; bottom: auto; left: 24px}
+  .reviews-intro h1 {margin-top: 0; font-size: clamp(40px,12vw,50px)}
+  .reviews-intro>aside {right: 20px; bottom: 20px; left: 20px; width: auto; padding: 24px}
+  .review-masonry {columns: 1}
+  .guest-photo {height: 150px}
+
+  .about-hero>div {padding: 42px 24px}
+  .about-hero h1 {margin-top: 0; font-size: clamp(40px,12vw,50px)}
+  .about-hero>div>div {align-items: flex-start; flex-direction: column}
+  .about-hero>figure {min-height: 360px; height: 360px}
+  .about-story h2,.about-values>h2,.about-team>h2 {margin-top: 0; font-size: clamp(36px,10.5vw,44px)}
+  .about-team>div {grid-template-columns: 1fr}
+  .about-team article>div {height: 260px}
+  .about-numbers {grid-template-columns: 1fr; gap: 22px}
+  .about-numbers strong {font-size: 48px}
+
+  .contact-hero {gap: 34px; padding: 40px 16px 16px}
+  .contact-intro h1 {margin-top: 0; font-size: clamp(40px,12vw,50px)}
+  .contact-intro>p:nth-of-type(2) {font-size: 17px}
+  .contact-methods>a {grid-template-columns: 48px minmax(0,1fr) 18px; gap: 12px; padding: 14px}
+  .contact-methods>a>span:first-child {width: 48px; height: 48px}
+  .contact-methods strong {font-size: 17px}
+  .contact-form-wrap .quote-wizard,.contact-form-wrap .quote-sent {box-shadow: none}
+  .quote-step>h3 {font-size: 28px}
+
+  .site-footer {padding-top: 56px}
+  .footer-grid {gap: 36px}
+  .footer-brand {gap: 22px}
+  .footer-brand .brand {font-size: 21px}
+  .footer-cta {padding: 22px 18px}
+}
+
+@media (max-width: 360px) {
+  :root {--mobile-gutter: 12px}
+  .brand {font-size: 16px}
+  .brand img {width: 30px; height: 30px}
+  .home-top {padding-inline: 8px}
+  .home-top .home-hero {padding-inline: 20px}
+  .home-top .home-hero__copy h1 {font-size: 37px}
+  .hero-actions .button {width: 100%; justify-content: space-between}
+  .highlight {padding: 16px}
+  .tile--zanzibar,.tile--meru {grid-column: 1/-1}
+  .tile--zanzibar {grid-row: 3}
+  .tile--meru {grid-row: 4}
+  .tile--day {grid-row: 5}
+  .trip-mix {grid-row: 6; min-height: 350px}
+  .trip-bento {grid-template-rows: 360px 230px 220px 220px 230px 350px}
+  .rating-bar>img {width: 46px; height: 46px}
+  .rating-bar>strong {font-size: 38px}
+  .footer-columns {grid-template-columns: 1fr}
+  .footer-column:last-child {grid-column: auto}
+  .contact-methods em {font-size: 12px}
+}

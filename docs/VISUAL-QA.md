@@ -16,7 +16,7 @@ The Figma screens were compared during implementation at their native proportion
 
 ## Viewports
 
-Validated widths: 1440, 1024, 768 and 390 CSS pixels. Representative routes were checked for `scrollWidth > clientWidth`; no page-level horizontal overflow remained.
+Validated widths: 1440, 1024, 768, 430, 414, 390, 375, 360 and 320 CSS pixels. Every primary public route was rendered at 390×844, and the homepage was rendered at every listed mobile width. No page-level horizontal overflow, clipped heading or overlapping hero panel remained.
 
 ## Fixes made during QA
 
@@ -32,6 +32,9 @@ Validated widths: 1440, 1024, 768 and 390 CSS pixels. Representative routes were
 - Corrected the guest-photo/review asset mapping and the home popular-trip/review selections.
 - Corrected the contact method card, column balance and default quote selections to the Figma source.
 - Converted fixed responsive gallery imagery to sized `next/image` fill containers, removing recurring aspect-ratio warnings.
+- Removed the repeated dark eyebrow/section badge and its orange dot across all public routes at the client’s request.
+- Rebuilt the safari-detail mobile hero and price panel as natural flow content rather than a fixed 1000px overlay composition.
+- Added narrow-screen itinerary, accommodation, review, contact and footer layouts down to 320px.
 
 ## Content and accessibility checks
 
@@ -48,7 +51,7 @@ Audit date: 2026-11-16. Source of truth: Figma file `nXKD3sKPSaGsIsXLoPc0lA`. Th
 
 | Category | Figma reference | Implemented assets and locations |
 | --- | --- | --- |
-| Section markers | Home/header node `134:1600` | Exact 6px `orange-dot.svg` in every reusable section pill and image-label marker. |
+| Section markers | Home/header node `134:1600` | Reusable section pills are intentionally suppressed across all pages per the 2026-11-17 client revision. Orange markers remain only where they communicate image/card state. |
 | Header and primary CTAs | `134:1606`, `126:1636`, `128:1914` | `arrow-header.svg`, `arrow-hero.svg`, `arrow-footer.svg`; header, mobile navigation, shared buttons, footer CTA and 404 CTA. |
 | Homepage hero contact | `134:1600` | `whatsapp-hero.svg`; hero WhatsApp link. |
 | Homepage planner | `134:1600` | `form-globe.svg`, `form-calendar.svg`, `form-user.svg`, `form-chevron.svg`; planner fields and select treatment. |
@@ -98,7 +101,7 @@ Audit date: 2026-11-16. Source of truth: Figma file `nXKD3sKPSaGsIsXLoPc0lA`. Th
 | Figma comparisons | Node-level contexts inspected for `134:1600`, `63:2107`, `116:1618`, `135:1600`, `126:1638`, `127:1627`, `129:1600`, `129:1641`, `129:1659`, `128:1618`, `138:1620`, `138:1668`, `139:1629`, `139:1747`, `139:1770` and `145:1982`. |
 | Desktop browser QA | Homepage and itinerary page visually inspected at 1440px; exact TripAdvisor stars, planner marks, download, bed, meal, information and package icons visible. |
 | Tablet browser QA | Homepage inspected at 768×1024; `scrollWidth` remained within the viewport and the 116×20 star group remained aligned. |
-| Mobile browser QA | Homepage and itinerary inspected at 390×844; document `scrollWidth` was 375px with no page-level horizontal overflow. |
+| Mobile browser QA | Homepage rendered at 320, 360, 375, 390, 414 and 430px; homepage, trips, safari detail, about, reviews and contact rendered at 390×844 with no visible page-level overflow. |
 | Asset integrity | Browser check reported zero visible images/SVGs with `naturalWidth === 0`. |
 | Placeholder scan | Source scan reported zero Unicode/emoji icon substitutes in rendered `.tsx` files. Route-direction arrows in itinerary copy remain textual content, not UI icons. |
 | Runtime | Browser console contained zero warnings or errors during the responsive pass. |

@@ -8,5 +8,6 @@ export function ButtonLink({href, children, variant = "orange", className = ""}:
 }
 
 export function SectionPill({children}: {children: ReactNode}) {
-  return <span className="section-pill"><FigmaIcon name="orange-dot" width={6}/>{children}</span>;
+  void children;
+  return null;
 }
