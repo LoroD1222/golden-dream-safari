@@ -1,0 +1,59 @@
+[
+  {
+    "id": "golden-dream-tarangire-serengeti-ngorongoro",
+    "slug": "tarangire-serengeti-ngorongoro",
+    "title": "Tarangire, Serengeti & Ngorongoro Crater",
+    "summary": "Tarangire's baobab trees, the Serengeti plains and a morning in the Ngorongoro Crater.",
+    "heroImage": "/images/figma/9ee0aacc-baa1-43b0-90d6-54526abb5973.png",
+    "durationDays": 4,
+    "destinations": ["Tarangire National Park", "Serengeti National Park", "Ngorongoro Crater"],
+    "startingPrice": 180,
+    "currency": "USD",
+    "status": "published",
+    "days": [
+      {
+        "id": "day-1",
+        "dayNumber": 1,
+        "title": "Arusha → Tarangire National Park",
+        "summary": "Tarangire, known for its baobab trees and elephants.",
+        "habitat": "Baobab woodland",
+        "meals": ["Lunch", "Dinner"],
+        "activities": [{"id": "activity-1", "title": "Tarangire game drive", "description": "Pick-up from your hotel after breakfast, followed by a game drive and picnic lunch.", "location": "Tarangire National Park"}],
+        "accommodation": {"name": "Campsite or lodge", "category": "Group camping", "location": "Mto wa Mbu", "description": "Final property depends on the selected package."}
+      },
+      {
+        "id": "day-2",
+        "dayNumber": 2,
+        "title": "Mto wa Mbu → Serengeti National Park",
+        "summary": "Through the Ngorongoro Highlands to the Serengeti.",
+        "habitat": "Open grass plains and rocky kopjes",
+        "meals": ["Breakfast", "Lunch", "Dinner"],
+        "activities": [{"id": "activity-2", "title": "Drive to the Serengeti", "description": "Travel through the highlands into the Serengeti, with an afternoon game drive.", "location": "Serengeti National Park"}],
+        "accommodation": {"name": "Campsite or lodge", "category": "Group camping", "location": "Serengeti", "description": "Final property depends on the selected package."}
+      },
+      {
+        "id": "day-3",
+        "dayNumber": 3,
+        "title": "Serengeti → Ngorongoro Conservation Area",
+        "summary": "A morning game drive, then on to Ngorongoro.",
+        "habitat": "Highland forest and the crater rim",
+        "meals": ["Breakfast", "Lunch", "Dinner"],
+        "activities": [{"id": "activity-3", "title": "Morning game drive", "description": "Game drive on the way out of the Serengeti, then continue to the Ngorongoro area.", "location": "Serengeti and Ngorongoro"}],
+        "accommodation": {"name": "Campsite or lodge", "category": "Group camping", "location": "Ngorongoro", "description": "Final property depends on the selected package."}
+      },
+      {
+        "id": "day-4",
+        "dayNumber": 4,
+        "title": "Ngorongoro Crater → Arusha",
+        "summary": "Game drives on the crater floor, then back to Arusha.",
+        "habitat": "Crater floor grassland and the hippo pool",
+        "meals": ["Breakfast", "Lunch"],
+        "activities": [{"id": "activity-4", "title": "Ngorongoro Crater game drive", "description": "Descend into the crater for game drives and a picnic before returning to Arusha.", "location": "Ngorongoro Crater"}]
+      }
+    ],
+    "inclusions": ["Accommodation for 3 nights", "All meals on safari", "Transport in a safari vehicle", "Drinking water on the road", "Pick-up and drop-off at your Arusha hotel", "A driver-guide and a chef on camping safaris"],
+    "exclusions": ["International flights", "Tanzania visa", "Travel insurance", "Tips for your guide and chef", "Drinks other than water"],
+    "createdAt": "2026-11-16T00:00:00.000Z",
+    "updatedAt": "2026-11-16T00:00:00.000Z"
+  }
+]
