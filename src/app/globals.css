@@ -193,7 +193,7 @@ h1, h2, h3, h4 {line-height: 1.05; letter-spacing: -.035em}
 .home-hero>img,.trips-intro>img,.reviews-intro>img {animation: hero-drift 18s ease-in-out infinite}
 
 @supports (animation-timeline: view()) {
-  .home-trips,.home-about,.popular-safaris,.booking-steps,.included,.host,.home-reviews,.faq-section,.trips-directory,.about-story,.about-values,.about-team,.about-numbers,.guest-photos,.reviews-content {animation: section-reveal linear both; animation-timeline: view(); animation-range: entry 0% entry 28%}
+  .home-trips,.home-about,.popular-safaris,.booking-steps,.included,.host,.home-reviews,.trips-directory,.about-story,.about-values,.about-team,.about-numbers,.guest-photos,.reviews-content {animation: section-reveal linear both; animation-timeline: view(); animation-range: entry 0% entry 28%}
 }
 
 @media (max-width: 1100px) {
@@ -217,6 +217,83 @@ h1, h2, h3, h4 {line-height: 1.05; letter-spacing: -.035em}
   .included-collage .included-collage__large {right: 0; width: 78%; height: 300px; border-radius: 22px}
   .included-collage .included-collage__small {top: 220px; width: 68%; height: 210px; border-width: 6px; border-radius: 22px}
   .included-collage .included-collage__badge {right: 0; bottom: 34px; max-width: 76%; font-size: 12px; white-space: normal}
+}
+
+/* The interactive itinerary replaces the legacy static sidebar structure. */
+body .route-sidebar > div.route-help:nth-child(2) {
+  margin-top: 0;
+  padding: 28px;
+  border: 1px solid var(--line);
+  border-radius: 28px;
+  background: white;
+}
+
+body .route-sidebar > div.route-help:nth-child(2) > p {
+  display: block;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  color: var(--muted);
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+@media (max-width: 600px) {
+  body .route-sidebar > div.route-help:nth-child(2) {padding: 22px}
+}
+
+/* Keep the itinerary design overrides last in the cascade. */
+body .itinerary-heading {margin-bottom: 40px}
+body .itinerary-heading h2 {margin: 16px 0; font-size: 60px; line-height: 1.02; letter-spacing: -1.5px}
+body .itinerary-layout {grid-template-columns: 420px minmax(0,1fr); gap: 48px}
+body .route-sidebar {top: 122px; gap: 20px}
+body .route-help {padding: 28px; border-radius: 28px}
+body .route-help h3 {margin: 0; font-size: 28px}
+body .route-help .button {margin: 0}
+body .day-list {gap: 40px}
+body .day-card {display: flex; padding-bottom: 40px; flex-direction: column; gap: 20px}
+body .day-card>header span {padding: 6px 14px; font-size: 15px}
+body .day-card>header h3 {font-size: 28px}
+body .day-summary {margin: 0; font-size: 19px}
+body .habitat {margin: 0; padding: 14px 18px; border-radius: 16px}
+body .day-experience {grid-template-columns: 420px minmax(0,1fr); border-radius: 24px}
+body .day-experience img {height: 260px}
+body .accommodation-heading {grid-template-columns: 44px minmax(0,1fr) auto; gap: 14px; margin: 0}
+body .accommodation-heading>span:first-child {width: 44px; height: 44px}
+body .accommodation-heading h4 {font-size: 22px}
+body .accommodation-heading>span:last-child {padding: 10px 16px 10px 14px; font-size: 16px}
+body .accommodation-options {grid-template-columns: minmax(0,1fr) 360px; gap: 24px}
+body .accommodation-options>div:first-child>small {margin-bottom: 10px}
+body .accommodation-options>div:first-child>div {gap: 12px; padding: 14px 16px; border-radius: 16px}
+body .accommodation-options>div:first-child>div.is-selected {border-width: 1.5px; border-radius: 16px}
+body .property-card {position: relative; height: 337px; border-radius: 24px}
+body .property-card>small {margin: 14px}
+body .property-card>div {height: 250px; padding: 0}
+body .property-card>strong {padding: 14px 18px}
+
+@media(max-width:1100px) {
+  body .itinerary-layout {grid-template-columns: 340px minmax(0,1fr); gap: 32px}
+  body .day-experience {grid-template-columns: minmax(260px,42%) minmax(0,1fr)}
+  body .accommodation-options {grid-template-columns: 1fr}
+  body .property-card {height: 300px}
+  body .property-card>div {height: 220px}
+  body .question-card {max-width: none}
+}
+
+@media(max-width:800px) {
+  body .itinerary-heading h2 {font-size: 48px}
+  body .itinerary-layout {grid-template-columns: 1fr}
+  body .route-sidebar {position: relative; top: 0}
+  body .day-experience {grid-template-columns: 1fr 1fr}
+}
+
+@media(max-width:600px) {
+  body .itinerary-heading h2 {font-size: 43px}
+  body .day-card>header {align-items: flex-start; flex-direction: column}
+  body .day-experience {grid-template-columns: 1fr}
+  body .day-experience img {height: 240px}
+  body .accommodation-heading {grid-template-columns: 44px minmax(0,1fr)}
+  body .accommodation-heading>span:last-child {grid-column: 1/-1}
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -246,6 +323,134 @@ h1, h2, h3, h4 {line-height: 1.05; letter-spacing: -.035em}
   .trip-bento .tile--meru {justify-self: stretch}
   .trip-section-nav {max-width: 100vw; overflow: hidden}
   .trip-section-nav>.section-shell>div:first-child {max-width: 100%; overflow-x: auto}
+}
+
+/* Final Figma itinerary + FAQ fidelity and interaction pass */
+.itinerary-section {padding-top: 43px; padding-bottom: 110px}
+.itinerary-heading {margin-bottom: 40px}
+.itinerary-heading h2 {margin: 16px 0; font-size: 60px; line-height: 1.02; letter-spacing: -1.5px}
+.itinerary-heading>p {margin: 0; font-size: 18px; line-height: 1.55}
+.itinerary-layout {grid-template-columns: 420px minmax(0,1fr); gap: 48px}
+.route-sidebar {top: 122px; gap: 20px}
+.route-card {overflow: hidden; border: 1px solid var(--line); border-radius: 28px; background: var(--cream)}
+.interactive-route-map {position: relative; height: 300px; overflow: hidden; background: #eceae3; isolation: isolate}
+.route-map-layer {position: absolute; inset: 0; transition: transform .35s ease; transform-origin: 46% 56%}
+.route-map-layer>img {object-fit: cover}
+.route-map-controls {position: absolute; z-index: 5; top: 14px; left: 14px; display: grid; overflow: hidden; border: 1px solid #c9c5bd; border-radius: 4px; box-shadow: 0 1px 5px rgba(0,0,0,.16)}
+.route-map-controls button {display: grid; width: 34px; height: 34px; padding: 0; place-items: center; border: 0; border-bottom: 1px solid #d8d4cd; background: white; color: var(--ink); font-size: 24px; line-height: 1; cursor: pointer}
+.route-map-controls button:last-child {border-bottom: 0}
+.route-map-controls button:hover,.route-map-controls button:focus-visible {background: var(--orange)}
+.route-map-marker {position: absolute; z-index: 3; display: grid; width: 22px; height: 22px; padding: 0; place-items: center; border: 3px solid white; border-radius: 50%; background: var(--black); box-shadow: 0 3px 8px rgba(0,0,0,.25); color: white; font-size: 0; cursor: pointer; transform: translate(-50%,-50%); transition: width .2s,height .2s,background .2s,box-shadow .2s}
+.route-map-marker.is-active {width: 28px; height: 28px; background: var(--orange); box-shadow: 0 0 0 5px rgba(239,138,51,.25),0 3px 9px rgba(0,0,0,.25)}
+.route-map-marker:focus-visible {outline: 3px solid white; outline-offset: 3px}
+.route-map-popup {position: absolute; z-index: 4; top: 48px; right: 20px; left: 48px; min-height: 108px; padding: 16px 18px; border-radius: 4px; background: white; box-shadow: 0 3px 13px rgba(0,0,0,.22)}
+.route-map-popup strong {display: block; font-size: 16px}
+.route-map-popup p {margin: 7px 0; color: var(--muted); font-size: 13px; line-height: 1.35}
+.route-map-popup button,.route-selected-copy button {padding: 0; border: 0; background: transparent; color: #c25e17; font: inherit; font-weight: 700; cursor: pointer}
+.route-list {padding: 24px; background: var(--cream)}
+.route-list>small {display: block; margin-bottom: 10px; color: #a4520f; font-size: 13px; font-weight: 700; letter-spacing: 1.04px; text-transform: uppercase}
+.route-list>button {display: grid; width: 100%; grid-template-columns: 28px minmax(0,1fr) auto; gap: 14px; align-items: center; padding: 12px 0; border: 0; border-bottom: 1px solid var(--line); background: transparent; color: var(--ink); text-align: left; cursor: pointer}
+.route-list>button b {color: #a4520f; font-size: 14px}
+.route-list>button>span {font-size: 16px; font-weight: 650}
+.route-list>button>small {color: var(--muted); font-size: 14px}
+.route-list>button.is-active>span {color: #a4520f}
+.route-list>button:hover>span,.route-list>button:focus-visible>span {color: var(--orange)}
+.route-selected-copy {display: grid; gap: 6px; padding-top: 20px}
+.route-selected-copy strong {font-size: 18px}
+.route-selected-copy p {margin: 0; color: var(--muted); font-size: 15px; line-height: 1.45}
+.route-help {display: grid; gap: 14px; padding: 28px; border-radius: 28px}
+.route-help>span {font-size: 16px}
+.route-help h3 {margin: 0; font-size: 28px; letter-spacing: -.42px}
+.route-help p {margin: 0; line-height: 1.5}
+.route-help>div {display: flex; gap: 16px; align-items: center}
+.route-help .button {margin: 0}
+.route-help>div>a:last-child {display: inline-flex; gap: 6px; align-items: center; font-size: 16px; font-weight: 650}
+.day-list {gap: 40px}
+.day-card {display: flex; scroll-margin-top: 125px; padding-bottom: 40px; flex-direction: column; gap: 20px; outline: none}
+.day-card:focus-visible {border-radius: 24px; box-shadow: 0 0 0 3px rgba(239,138,51,.35)}
+.day-card>header {gap: 14px}
+.day-card>header span {padding: 6px 14px; font-size: 15px; font-weight: 700; line-height: 1.3}
+.day-card>header h3 {font-size: 28px; line-height: 1.2; letter-spacing: -.42px}
+.day-summary {margin: 0; font-size: 19px; font-weight: 500; line-height: 1.5}
+.habitat {margin: 0; padding: 14px 18px; border-radius: 16px; font-size: 16px; line-height: 1.4}
+.habitat small {font-size: 13px; letter-spacing: 1.04px}
+.day-experience {grid-template-columns: 420px minmax(0,1fr); border-radius: 24px}
+.day-experience img {height: 260px}
+.day-experience p {padding: 28px; font-size: 17px; line-height: 1.6}
+.accommodation-heading {grid-template-columns: 44px minmax(0,1fr) auto; gap: 14px; margin: 0}
+.accommodation-heading>span:first-child {width: 44px; height: 44px}
+.accommodation-heading h4 {font-size: 22px; line-height: 1.3}
+.accommodation-heading>span:last-child {padding: 10px 16px 10px 14px; font-size: 16px; font-weight: 650}
+.accommodation-options {grid-template-columns: minmax(0,1fr) 360px; gap: 24px}
+.accommodation-options>div:first-child>small {margin-bottom: 10px; color: var(--ink); font-size: 17px; font-weight: 650}
+.accommodation-options>div:first-child>div {gap: 12px; padding: 14px 16px; border-radius: 16px}
+.accommodation-options>div:first-child>div.is-selected {border-width: 1.5px}
+.accommodation-options>div:first-child p strong {font-size: 18px; line-height: 1.3}
+.accommodation-options>div:first-child p small {font-size: 15px; line-height: 1.4}
+.availability-note {margin: 6px 0 0; color: var(--muted); font-size: 14px; line-height: 1.45}
+.property-card {height: 337px; border-radius: 24px}
+.property-card>small {position: absolute; z-index: 2; margin: 14px; font-size: 12px; letter-spacing: .72px}
+.property-card>div {position: relative; height: 250px; padding: 0; justify-content: center}
+.property-card>div>span {font-size: 12px; letter-spacing: 1.2px}
+.property-card>div>i {position: absolute; top: 105px; display: grid; width: 40px; height: 40px; place-items: center; border-radius: 50%; background: white; color: var(--ink); font-size: 24px; font-style: normal}
+.property-card>div>i:first-of-type {left: 14px}
+.property-card>div>i:last-of-type {right: 14px}
+.property-card>strong {padding: 14px 18px; font-size: 16px}
+.dropoff-note {margin: 0}
+
+.faq-section {width: min(calc(100% - 160px),1280px); grid-template-columns: minmax(0,547fr) minmax(0,690fr); gap: 43px; padding: 120px 0}
+.faq-intro h2 {max-width: 547px; margin: 20px 0 16px; font-size: 60px; line-height: 1.02; letter-spacing: -1.5px}
+.faq-intro>p {max-width: 420px; margin: 0; font-size: 18px; line-height: 1.55}
+.question-card {width: 100%; max-width: none; min-height: 249px; margin-top: 20px; padding: 28px; border-radius: 24px}
+.question-avatar {width: 48px; height: 48px; margin-bottom: 16px; overflow: hidden}
+.question-avatar img {width: 60px; max-width: none; height: 60px; object-fit: cover; object-position: 50% 32%}
+.question-card h3 {margin: 0 0 8px; font-size: 22px; line-height: 1.2}
+.question-card p {margin: 0 0 20px; font-size: 16px; line-height: 1.5}
+.question-card .button {width: max-content; min-height: 51px; padding: 14px 20px}
+.faq-list {gap: 12px}
+.faq-list details {padding: 0 28px; border-radius: 22px}
+.faq-list summary {min-height: 76px; font-size: 22px; line-height: 1.2}
+.faq-list summary span {flex-basis: 36px; width: 36px; height: 36px}
+.faq-list details>p {max-width: 680px; padding: 0 60px 24px 0; font-size: 17px; line-height: 1.55}
+
+@media(max-width:1100px) {
+  .itinerary-layout {grid-template-columns: 340px minmax(0,1fr); gap: 32px}
+  .day-experience {grid-template-columns: minmax(260px,42%) minmax(0,1fr)}
+  .accommodation-options {grid-template-columns: 1fr}
+  .property-card {height: 300px}
+  .property-card>div {height: 220px}
+  .faq-section {width: min(calc(100% - 64px),900px); grid-template-columns: 1fr; gap: 48px}
+}
+
+@media(max-width:800px) {
+  .itinerary-section {padding-top: 72px}
+  .itinerary-heading h2 {font-size: 48px}
+  .itinerary-layout {grid-template-columns: 1fr}
+  .route-sidebar {position: relative; top: 0}
+  .route-card {display: grid; grid-template-columns: 1fr 1fr}
+  .interactive-route-map {height: 100%}
+  .day-experience {grid-template-columns: 1fr 1fr}
+  .faq-section {padding: 80px 0}
+}
+
+@media(max-width:600px) {
+  .itinerary-heading h2,.faq-intro h2 {font-size: 43px}
+  .route-card {display: block}
+  .interactive-route-map {height: 300px}
+  .route-map-popup {top: 46px; right: 16px; left: 52px; padding: 13px}
+  .route-list {padding: 20px}
+  .route-list>button {gap: 8px}
+  .route-list>button>span {font-size: 14px}
+  .route-help {padding: 22px}
+  .route-help>div {align-items: flex-start; flex-direction: column}
+  .day-card>header {align-items: flex-start; flex-direction: column}
+  .day-experience {grid-template-columns: 1fr}
+  .day-experience img {height: 240px}
+  .accommodation-heading {grid-template-columns: 44px minmax(0,1fr)}
+  .accommodation-heading>span:last-child {grid-column: 1/-1; width: max-content; max-width: 100%}
+  .faq-section {width: calc(100% - 32px); padding: 72px 0}
+  .faq-list details {padding: 0 20px}
+  .faq-list summary {font-size: 18px}
 }
 
 @media(max-width:600px) {
