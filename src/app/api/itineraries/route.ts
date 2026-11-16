@@ -1,7 +1,7 @@
 import {NextResponse} from "next/server";
 import {getItineraryRepository} from "@/features/itinerary/storage";
 import {itineraryInputSchema} from "@/features/itinerary/schema";
-import {requireItineraryAdmin, requirePersistentItineraryStorage} from "@/features/itinerary/admin-api";
+import {requireItineraryAdmin, requireWritableItineraryStorage} from "@/features/itinerary/admin-api";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -15,7 +15,7 @@ export async function GET(request: Request) {
 export async function POST(request: Request) {
   const unauthorized = requireItineraryAdmin(request);
   if (unauthorized) return unauthorized;
-  const unavailable = requirePersistentItineraryStorage();
+  const unavailable = requireWritableItineraryStorage();
   if (unavailable) return unavailable;
   const parsed = itineraryInputSchema.safeParse(await request.json().catch(() => null));
   if (!parsed.success) return NextResponse.json({message: "The itinerary contains invalid or missing fields.", issues: parsed.error.issues}, {status: 400});

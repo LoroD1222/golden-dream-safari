@@ -63,6 +63,6 @@ The PDF was rendered to PNG at 110 DPI. Both pages were visually checked for rea
 ## Production-only verification still required
 
 - Send a real quote after Resend sender verification and production environment configuration.
-- Repeat itinerary CRUD after enabling the production Sanity dataset.
+- Repeat itinerary CRUD on the final host only if it provides a persistent writable filesystem.
 - Verify final canonical URLs after the production domain is known.
 - Run a production Lighthouse/WebPageTest pass against the deployed Vercel preview; development-server timings are not representative.

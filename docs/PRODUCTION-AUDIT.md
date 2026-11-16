@@ -17,7 +17,7 @@ The supplied implementation was audited against the Figma file, source content, 
 
 ### Medium priority
 
-- Sanity array keys and token roles did not cleanly match the shared model. The adapter now normalizes `_key`, supports a separate read token, rejects duplicate slugs and reports missing deletes.
+- Local itinerary storage now serializes mutations, replaces files atomically, rejects duplicate slugs and reports missing deletes.
 - Quote requests lacked several production checks. Server and client validation now cover date ordering, reply-method requirements, body size, honeypot, bounded counters, rate limiting and duplicate suppression. Plain-text email is included alongside HTML.
 - The homepage planner dropped most values when it opened the quote wizard. Trip type, destination, dates and traveller count now carry through.
 - PDF layout could overflow on long content. Text uses font-aware wrapping, guarded page breaks, continuation headers, metadata and numbered footers. The canonical itinerary rendered cleanly across two pages.
@@ -42,7 +42,7 @@ The supplied implementation was audited against the Figma file, source content, 
 ## Remaining external checks
 
 1. **Resend delivery:** configure a verified production sender and recipient, then send one real request and confirm inbox delivery plus duplicate suppression after a successful send.
-2. **Sanity production adapter:** add the real project/dataset/tokens and repeat CRUD in a non-production dataset before cutover.
+2. **Hosted editing:** itinerary writes require a persistent Node filesystem; Vercel deployments intentionally keep the editor read-only because their filesystem is ephemeral.
 3. **Final origin:** set `NEXT_PUBLIC_SITE_URL` to the final HTTPS domain, redeploy and verify canonical, Open Graph, sitemap and robots URLs.
 4. **Deployed performance:** run Lighthouse/WebPageTest on the Vercel preview. Local development-server timing is intentionally not presented as production evidence.
 5. **Asset-retention decision:** `public/images/figma` contains 212 exports and the public directory is about 161 MiB, while 64 Figma paths are referenced by current source/data. The unused exports were preserved because they may belong to the requested reusable asset bundle. Prune or archive them only after confirming that retention requirement.

@@ -12,5 +12,5 @@ This block is written and re-added by `next dev` — verify at `node_modules/nex
 
 - Figma is the source of truth for the public website.
 - Do not copy the reusable itinerary reference project's UI.
-- Keep public presentation, itinerary domain logic, and storage adapters separate.
-- Local itinerary CRUD must work without Sanity or Resend credentials.
+- Keep public presentation, itinerary domain logic, and local storage separate.
+- Local itinerary CRUD must work without external service credentials.

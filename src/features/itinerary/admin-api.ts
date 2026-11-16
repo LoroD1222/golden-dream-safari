@@ -44,10 +44,10 @@ export function requireItineraryAdmin(request: Request) {
   });
 }
 
-export function requirePersistentItineraryStorage() {
-  if (process.env.VERCEL && process.env.ITINERARY_STORAGE !== "sanity") {
+export function requireWritableItineraryStorage() {
+  if (process.env.VERCEL) {
     return NextResponse.json(
-      {message: "Persistent itinerary storage is not configured. Set ITINERARY_STORAGE=sanity before editing itineraries on Vercel."},
+      {message: "Itinerary editing is disabled on Vercel because its local filesystem is ephemeral. Run the editor on a persistent Node filesystem."},
       {status: 503},
     );
   }

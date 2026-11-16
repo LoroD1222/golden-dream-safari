@@ -1,6 +1,6 @@
 # Golden Dream Safaris
 
-A complete Next.js implementation of the supplied Golden Dream Safaris Figma file. The public site follows the Figma layouts and content hierarchy, while the itinerary layer is repository-driven so it can run from local JSON today and move to Sanity later without rewriting the pages or editor.
+A complete Next.js implementation of the supplied Golden Dream Safaris Figma file. The public site follows the Figma layouts and content hierarchy, while the itinerary editor and public trip pages use a shared local JSON repository.
 
 ## What is included
 
@@ -9,7 +9,7 @@ A complete Next.js implementation of the supplied Golden Dream Safaris Figma fil
 - Four-step quote request form with validation, honeypot, rate limiting, duplicate protection and Resend delivery.
 - Local itinerary editor with create, read, update and delete support.
 - Runtime-generated itinerary PDF downloads.
-- Local JSON and Sanity repository adapters behind one interface.
+- Local JSON itinerary storage behind a repository interface.
 - Canonical metadata, Open Graph data and schema.org JSON-LD.
 
 ## Run locally
@@ -43,16 +43,10 @@ Copy `.env.example` to `.env.local` and set only the values needed for the selec
 | `RESEND_API_KEY` | Server-only Resend API key for quote delivery. |
 | `RESEND_FROM_EMAIL` | Verified Resend sender. |
 | `RESEND_TO_EMAIL` | Inbox that receives quote requests. |
-| `ITINERARY_STORAGE` | `local` (default) or `sanity`. |
 | `ITINERARY_ADMIN_USER` | HTTP Basic Auth username for the editor and itinerary APIs. |
 | `ITINERARY_ADMIN_PASSWORD` | HTTP Basic Auth password for the editor and itinerary APIs. |
-| `NEXT_PUBLIC_SANITY_PROJECT_ID` | Sanity project ID when the Sanity adapter is selected. |
-| `NEXT_PUBLIC_SANITY_DATASET` | Sanity dataset, normally `production`. |
-| `NEXT_PUBLIC_SANITY_API_VERSION` | Pinned Sanity API version. |
-| `SANITY_API_READ_TOKEN` | Optional server-only read token for a private dataset. |
-| `SANITY_API_WRITE_TOKEN` | Server-only token with document read/write access. |
 
-Do not expose `RESEND_API_KEY`, admin credentials or Sanity tokens through `NEXT_PUBLIC_` variables.
+Do not expose `RESEND_API_KEY` or admin credentials through `NEXT_PUBLIC_` variables.
 
 ## Quote delivery
 
@@ -60,23 +54,17 @@ Do not expose `RESEND_API_KEY`, admin credentials or Sanity tokens through `NEXT
 
 ## Itinerary storage and editor
 
-The public detail route, PDF route, API and editor all use the `ItineraryRepository` contract in `src/features/itinerary/model.ts`.
+The public detail route, PDF route, API and editor all use the `ItineraryRepository` contract in `src/features/itinerary/model.ts`. It reads and writes `data/itineraries.json` using a serialized mutation queue and atomic file replacement. The seed lives in `data/seed-itineraries.json`.
 
-- `ITINERARY_STORAGE=local`: reads and writes `data/itineraries.json` using a serialized mutation queue and atomic file replacement. The seed lives in `data/seed-itineraries.json`.
-- `ITINERARY_STORAGE=sanity`: uses the adapter in `src/features/itinerary/storage/sanity.ts`.
-
-The local store is suitable for local development and a persistent Node filesystem. Vercel filesystems are ephemeral, so write operations are refused with `503` on Vercel unless Sanity storage is selected. On hosted Vercel environments, the editor returns 404 unless both Basic Auth variables are configured.
-
-See `docs/SANITY-INTEGRATION.md` for the matching schema and migration steps.
+The local store is suitable for local development and any persistent Node filesystem. Vercel filesystems are ephemeral, so write operations return `503` there rather than pretending an edit will persist. On hosted Vercel environments, the editor returns `404` unless both Basic Auth variables are configured.
 
 ## Deployment
 
 1. Push the project to a Git provider and import it in Vercel.
 2. Set `NEXT_PUBLIC_SITE_URL` to the final HTTPS origin.
 3. Add the Resend variables.
-4. Use `ITINERARY_STORAGE=sanity` for durable hosted editing and add the Sanity variables.
-5. Add `ITINERARY_ADMIN_USER` and a strong `ITINERARY_ADMIN_PASSWORD` if the editor should be available.
-6. Deploy and verify `/sitemap.xml`, `/robots.txt`, a quote request, an itinerary save and a PDF download.
+4. Add `ITINERARY_ADMIN_USER` and a strong `ITINERARY_ADMIN_PASSWORD` if the editor will run on a host with a persistent filesystem.
+5. Deploy and verify `/sitemap.xml`, `/robots.txt`, a quote request and a PDF download. Verify itinerary saves only on a persistent Node host.
 
 ## Project map
 
@@ -87,13 +75,12 @@ src/data/site.ts                 Public trip cards, reviews and site copy
 src/features/itinerary/          Domain model, validation, editor and repositories
 data/seed-itineraries.json       Versioned local seed
 public/images/figma/             Exact exported Figma assets
-docs/                            Design inventory, CMS and QA handoff
+docs/                            Design inventory and QA handoff
 ```
 
 ## Handoff documents
 
 - `docs/FIGMA-INVENTORY.md`
-- `docs/SANITY-INTEGRATION.md`
 - `docs/VISUAL-QA.md`
 - `docs/FUNCTIONAL-TESTING.md`
 - `docs/PRODUCTION-AUDIT.md`
