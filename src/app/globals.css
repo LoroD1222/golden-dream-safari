@@ -541,9 +541,84 @@ h1, h2, h3, h4 {line-height: 1.05; letter-spacing: -.035em}
 }
 
 /* Final cascade for the interactive offer panel and shared page gutters. */
+/* Current Figma homepage and safari-detail frames. */
+.site-header {min-height: 82px; padding-top: 20px; padding-bottom: 20px}
+.site-header .header-quote {min-height: 42px; padding: 4px 4px 4px 18px; border: 0; font-size: 16px}
+.site-header .header-quote .button__arrow {width: 34px; height: 34px}
+.home-top {padding: 0 40px 0 34px}
+.home-top .home-hero {height: 522px; min-height: 522px; align-items: flex-end; padding: 72px 48px 72px 64px}
+.home-top .home-hero>img {object-position: center 74%}
+.home-top .home-hero__copy {display: flex; width: 468px; flex: 0 0 468px; gap: 18px}
+.home-top .home-hero__copy h1 {display: grid; width: 468px; margin: 0; font-size: 62px; line-height: 1.05; letter-spacing: -1.55px}
+.home-top .home-hero__copy h1 span {display: block}
+.home-top .home-hero__copy h1 em {color: var(--orange); font-style: normal}
+.home-top .hero-actions {gap: 12px}
+.home-top .hero-actions>a:last-child {gap: 8px; text-decoration: none}
+.home-highlights {grid-template-columns: repeat(3,minmax(0,1fr)); padding: 16px 0 0}
+.home-highlights .rating-stars {width: 84px!important; height: 19px!important}
+.highlight--whatsapp {background: var(--cream)}
+.highlight--whatsapp .highlight__whatsapp-icon {display: grid; flex: 0 0 64px; width: 64px; height: 64px; place-items: center; border-radius: 16px; background: #25d366}
+.highlight--whatsapp>div {display: grid; gap: 2px}
+.highlight--whatsapp>div>small {color: var(--muted); font-size: 15px; font-weight: 600}
+.highlight--whatsapp>div>strong {font-size: 20px; line-height: 1.4}
+.highlight--whatsapp>div>span {color: #138c45; font-size: 15px; font-weight: 650}
+
+body:has(.trip-detail-hero) .site-header {padding-right: 58px; padding-left: 64px}
+body .trip-detail-hero {width: auto; max-width: none; height: 620px; min-height: 620px; margin: 8px 24px 0; border-radius: 32px}
+body .trip-detail-hero__shade {background: linear-gradient(90deg,rgba(7,4,3,.92),rgba(7,4,3,.55) 55%,rgba(7,4,3,.05))}
+body .trip-detail-hero__copy {position: absolute; inset: 0 auto 0 0; display: flex; width: 712px; padding: 106px 0 0 72px; flex-direction: column; gap: 22px}
+body .trip-detail-hero__copy>p,body .trip-detail-hero__copy h1,body .trip-detail-hero__copy>div {margin: 0}
+body .trip-detail-hero__copy>p:first-child {color: #bdb6ab; font-size: 15px; font-weight: 500; line-height: 1.4}
+body .trip-detail-hero__copy h1 {width: 640px; font-size: 60px; line-height: 1.02; letter-spacing: -1.5px}
+body .trip-detail-hero__copy>p:nth-of-type(2) {width: 640px; color: #e4ded6; font-size: 19px; line-height: 1.55}
+body .trip-detail-hero__copy>div {gap: 24px}
+body .trip-detail-hero>aside {right: 56px; bottom: 56px; width: 340px; gap: 16px; padding: 28px; border-radius: 24px}
+body .trip-detail-hero>aside>small {color: var(--muted); font-size: 14px; font-weight: 650; letter-spacing: .84px}
+body .trip-detail-hero>aside>strong {font-size: 48px; letter-spacing: -.96px}
+body .trip-detail-hero>aside>strong span {margin-left: 6px; color: var(--muted); font-size: 17px}
+body .trip-detail-hero>aside>p {font-size: 15px; line-height: 1.4}
+body .trip-detail-hero>aside hr {width: 100%; margin: 0; border: 0; border-top: 1px solid var(--line)}
+.trip-facts {grid-template-columns: .91fr repeat(4,1fr); width: auto; max-width: none; min-height: 126px; margin: 20px 24px 0; padding: 28px 32px; border-radius: 24px}
+.trip-facts>div {display: flex; min-width: 0; min-height: 70px; gap: 14px; align-items: flex-start; padding: 0 0 0 24px; border-right: 1px solid var(--line)}
+.trip-facts>div:first-child {padding-left: 0}
+.trip-facts>div:last-child {padding-right: 0}
+.trip-fact__icon {display: grid; flex: 0 0 44px; width: 44px; height: 44px; place-items: center; border-radius: 12px; background: white}
+.trip-facts>div>span:last-child {display: grid; min-width: 0; gap: 4px}
+.trip-facts small {font-size: 14px; font-weight: 650; letter-spacing: .84px}
+.trip-facts strong {font-size: 18px; line-height: 1.3}
+.trip-section-nav {margin-top: 0}
+.trip-section-nav>.section-shell {min-height: 103px; padding-top: 8px; padding-bottom: 16px}
+.trip-section-nav>.section-shell>div:first-child {gap: 6px}
+.trip-section-nav>.section-shell>div:first-child a {padding: 10px 18px; border-radius: 999px}
+.trip-section-nav>.section-shell>div:last-child {gap: 12px}
+.trip-section-nav .download-button {padding: 14px 22px 14px 20px; border-width: 1.5px}
+
+@media (max-width: 1000px) {
+  body:has(.trip-detail-hero) .site-header {padding-inline: 22px}
+}
+
+@media (max-width: 700px) {
+  .site-header {min-height: 70px; padding-top: 13px; padding-bottom: 13px}
+  .home-top {padding-inline: 12px}
+  .home-top .home-hero {height: auto; min-height: 680px; padding: 42px 24px; align-items: flex-end}
+  .home-top .home-hero__copy {width: 100%; flex-basis: auto}
+  .home-top .home-hero__copy h1 {width: 100%; font-size: 44px; letter-spacing: -1px}
+  .home-top .home-hero__copy>p {width: 100%}
+  .home-top .hero-actions {align-items: flex-start; flex-direction: row; flex-wrap: wrap}
+  .home-highlights {grid-template-columns: 1fr}
+  body .trip-detail-hero {width: auto; height: auto; min-height: 1000px; margin: 8px 12px 0}
+  body .trip-detail-hero__copy {position: relative; inset: auto; width: auto; padding: 54px 24px 0; gap: 18px}
+  body .trip-detail-hero__copy h1,body .trip-detail-hero__copy>p:nth-of-type(2) {width: auto}
+  body .trip-detail-hero__copy h1 {font-size: 43px}
+  body .trip-detail-hero__copy>p:nth-of-type(2) {font-size: 17px}
+  body .trip-detail-hero>aside {right: 20px; bottom: 20px; left: 20px; width: auto}
+  .trip-facts {grid-template-columns: 1fr; width: auto; margin-inline: 12px; padding: 18px}
+  .trip-facts>div,.trip-facts>div:first-child,.trip-facts>div:last-child {min-height: 76px; padding: 16px 0; border-right: 0; border-bottom: 1px solid var(--line)}
+  .trip-facts>div:last-child {border-bottom: 0}
+}
+
 @media (min-width: 1101px) {
-  .home-hero__copy h1 {width: 468px; font-size: 50px}
-  .home-hero .plan-card {position: absolute; top: 75px; right: auto; bottom: auto; left: 60%; width: 400px}
+  .home-hero__copy h1 {width: 468px; font-size: 62px}
 }
 .trips-intro,.reviews-intro,.about-hero,.contact-hero,.trip-detail-hero {width: auto; max-width: none; margin-left: 34px; margin-right: 40px}
 .trips-directory,.popular-safaris,.booking-grid,.about-story,.about-values,.about-team {width: min(calc(100% - 128px),1312px)}
