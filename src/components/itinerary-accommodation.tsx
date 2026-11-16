@@ -15,18 +15,18 @@ type StayOption = {
 
 const stayOptionsByDay: Record<number, StayOption[]> = {
   1: [
-    {tier: "Group camping", property: "Karibu River Camp", location: "Mto wa Mbu", images: [{src: "/images/accommodations/karibu-river-camp.jpg", alt: "Karibu River Camp accommodation"}]},
-    {tier: "Mid-range lodge", property: "Nimali Tarangire", location: "Tarangire", images: [{src: "/images/accommodations/nimali-tarangire.webp", alt: "Nimali Tarangire lodge"}]},
-    {tier: "Private luxury", property: "Nimali Tarangire", location: "Tarangire", images: [{src: "/images/accommodations/nimali-tarangire.webp", alt: "Nimali Tarangire luxury lodge"}]},
+    {tier: "Group camping", property: "Karibu River Camp", location: "Mto wa Mbu", images: [{src: "/images/accommodations/karibu-river-camp.jpg", alt: "Karibu River Camp accommodation"}, {src: "/images/accommodations/lake-masek-tented-lodge.jpg", alt: "Safari tent accommodation interior"}]},
+    {tier: "Mid-range lodge", property: "Nimali Tarangire", location: "Tarangire", images: [{src: "/images/accommodations/nimali-tarangire.webp", alt: "Nimali Tarangire lodge"}, {src: "/images/accommodations/lake-masek-tented-lodge.jpg", alt: "Mid-range safari lodge room"}]},
+    {tier: "Private luxury", property: "Nimali Tarangire", location: "Tarangire", images: [{src: "/images/accommodations/nimali-tarangire.webp", alt: "Nimali Tarangire luxury lodge"}, {src: "/images/accommodations/melia-serengeti-lodge.jpg", alt: "Luxury safari lodge accommodation"}]},
   ],
   2: [
-    {tier: "Group camping", property: "Karibu River Camp", location: "Serengeti", images: [{src: "/images/accommodations/karibu-river-camp.jpg", alt: "Karibu River Camp accommodation"}]},
-    {tier: "Mid-range lodge", property: "Lake Masek Tented Lodge", location: "Serengeti", images: [{src: "/images/accommodations/lake-masek-tented-lodge.jpg", alt: "Lake Masek Tented Lodge"}]},
+    {tier: "Group camping", property: "Karibu River Camp", location: "Serengeti", images: [{src: "/images/accommodations/karibu-river-camp.jpg", alt: "Karibu River Camp accommodation"}, {src: "/images/accommodations/lake-masek-tented-lodge.jpg", alt: "Safari tent accommodation interior"}]},
+    {tier: "Mid-range lodge", property: "Lake Masek Tented Lodge", location: "Serengeti", images: [{src: "/images/accommodations/lake-masek-tented-lodge.jpg", alt: "Lake Masek Tented Lodge"}, {src: "/images/accommodations/nimali-tarangire.webp", alt: "Mid-range safari lodge room"}]},
     {tier: "Private luxury", property: "Melia Serengeti Lodge", location: "Serengeti", images: [{src: "/images/accommodations/melia-serengeti-lodge.jpg", alt: "Melia Serengeti Lodge"}, {src: "/images/accommodations/lemala-kuria-hills.jpg", alt: "Lemala Kuria Hills Lodge"}]},
   ],
   3: [
-    {tier: "Group camping", property: "Karibu River Camp", location: "Ngorongoro", images: [{src: "/images/accommodations/karibu-river-camp.jpg", alt: "Karibu River Camp accommodation"}]},
-    {tier: "Mid-range lodge", property: "Neptune Ngorongoro", location: "Ngorongoro", images: [{src: "/images/accommodations/neptune-ngorongoro.webp", alt: "Neptune Ngorongoro Luxury Lodge"}]},
+    {tier: "Group camping", property: "Karibu River Camp", location: "Ngorongoro", images: [{src: "/images/accommodations/karibu-river-camp.jpg", alt: "Karibu River Camp accommodation"}, {src: "/images/accommodations/lake-masek-tented-lodge.jpg", alt: "Safari tent accommodation interior"}]},
+    {tier: "Mid-range lodge", property: "Neptune Ngorongoro", location: "Ngorongoro", images: [{src: "/images/accommodations/neptune-ngorongoro.webp", alt: "Neptune Ngorongoro Luxury Lodge"}, {src: "/images/accommodations/nimali-tarangire.webp", alt: "Mid-range safari lodge room"}]},
     {tier: "Private luxury", property: "Lemala Kuria Hills", location: "Northern Serengeti", images: [{src: "/images/accommodations/lemala-kuria-hills.jpg", alt: "Lemala Kuria Hills Lodge"}, {src: "/images/accommodations/melia-serengeti-lodge.jpg", alt: "Melia Serengeti Lodge"}]},
   ],
 };
@@ -96,7 +96,7 @@ export function ItineraryAccommodation({day, isFinalDay}: {day: ItineraryDay; is
         onFocusCapture={() => setPaused(true)}
         onBlurCapture={event => {if (!event.currentTarget.contains(event.relatedTarget)) setPaused(false);}}
       >
-        <Image src={selectedImage.src} alt={selectedImage.alt} width={426} height={288} sizes="(max-width: 1100px) 100vw, 426px"/>
+        <Image key={`${selectedOption}-${slide}-${selectedImage.src}`} src={selectedImage.src} alt={selectedImage.alt} width={426} height={288} quality={92} sizes="(max-width: 1100px) 100vw, 426px"/>
         <span className={`trip-ref-lodge-badge trip-ref-lodge-badge--${selected.tier.toLowerCase().replaceAll(" ", "-")}`}>{selected.tier}</span>
         <div className="trip-ref-lodge-arrows">
           <button type="button" aria-label={`Previous ${selected.tier.toLowerCase()} accommodation`} onClick={() => moveSlide(-1)}>‹</button>

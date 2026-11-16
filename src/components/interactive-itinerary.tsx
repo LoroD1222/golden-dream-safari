@@ -93,7 +93,7 @@ export function InteractiveItinerary({
         </div>
 
         <div className="trip-ref-quote">
-          <div className="trip-ref-quote-heading"><FigmaIcon name="book" width={20}/> <span>Plan Trip</span></div>
+          <div className="trip-ref-quote-heading"><span className="trip-ref-quote-icon"><FigmaIcon name="book" width={22}/></span><span>Plan Trip</span></div>
           <h3>Experience this northern Tanzania safari for yourself.</h3>
           <p>Speak with a local planner for a thoughtful first proposal built around your dates and priorities.</p>
           <div className="trip-ref-quote-actions">

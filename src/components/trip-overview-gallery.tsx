@@ -25,7 +25,7 @@ export function TripOverviewGallery() {
 
   return <div className="overview-gallery" aria-label="Safari photo gallery">
     <div className="overview-gallery__main">
-      <Image key={activeImage.src} src={activeImage.src} alt={activeImage.alt} fill quality={90} sizes="(max-width: 1180px) 100vw, 600px"/>
+      <Image key={activeImage.src} src={activeImage.src} alt={activeImage.alt} fill unoptimized sizes="(max-width: 1180px) 100vw, 600px"/>
       <button type="button" className="overview-gallery__arrow overview-gallery__arrow--previous" aria-label="Previous safari photo" onClick={() => move(-1)}><FigmaIcon name="chevron-prev" width={22}/></button>
       <button type="button" className="overview-gallery__arrow overview-gallery__arrow--next" aria-label="Next safari photo" onClick={() => move(1)}><FigmaIcon name="chevron-next" width={22}/></button>
       <span className="overview-gallery__counter" aria-live="polite">{activeIndex + 1} / {galleryImages.length}</span>
@@ -33,7 +33,7 @@ export function TripOverviewGallery() {
     </div>
     <div className="overview-gallery__thumbs">
       {galleryImages.slice(0, 5).map((image, index) => <button type="button" className={index === activeIndex ? "is-active" : ""} aria-label={`Show photo ${index + 1}: ${image.alt}`} aria-pressed={index === activeIndex} onClick={() => setActiveIndex(index)} key={image.src}>
-        <Image src={image.src} alt="" fill sizes="120px"/>
+        <Image src={image.src} alt="" fill quality={90} sizes="120px"/>
         {index === 4 && <span>+4</span>}
       </button>)}
     </div>
