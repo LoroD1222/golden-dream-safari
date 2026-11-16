@@ -284,9 +284,15 @@ main,section,article,aside,nav,header,footer,div {min-width: 0}
 .popular-card__tags span {display: inline-flex; flex: 0 0 auto; align-items: center; line-height: 1.35; white-space: nowrap}
 
 .highlight--whatsapp .highlight__whatsapp-icon>.figma-icon {
-  width: 34px!important;
-  height: 34px!important;
+  width: 26px!important;
+  height: 26px!important;
   object-fit: contain;
+}
+.highlight--whatsapp .highlight__whatsapp-icon {
+  flex-basis: 56px;
+  width: 56px;
+  height: 56px;
+  border-radius: 14px;
 }
 
 .rating-stars {display: block; max-width: none; object-fit: contain}
@@ -316,9 +322,12 @@ main,section,article,aside,nav,header,footer,div {min-width: 0}
 
 .host-photo>img {object-position: 58% center}
 
-@media (max-width: 1240px) {
+@media (max-width: 1439px) {
   .popular-list--figma {grid-template-columns: repeat(2,minmax(0,1fr))}
   .popular-card--figma:last-child {grid-column: 1/-1; width: min(100%,calc(50% - 10px)); justify-self: center}
+}
+
+@media (max-width: 1240px) {
   .home-review-meta {grid-template-columns: 1fr; align-items: start}
   .review-source {justify-self: start; white-space: nowrap}
 }
