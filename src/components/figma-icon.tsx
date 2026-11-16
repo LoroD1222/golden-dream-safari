@@ -4,6 +4,8 @@ import Image from "next/image";
 const iconFiles = {
   "arrow-header": "arrow-header.svg",
   "arrow-hero": "arrow-hero.svg",
+  "arrow-plan": "arrow-plan.svg",
+  "arrow-host": "arrow-host.svg",
   "arrow-highlight": "arrow-highlight.svg",
   "arrow-card": "arrow-card.svg",
   "arrow-up-right": "arrow-up-right.svg",
@@ -92,8 +94,8 @@ export function FigmaIcon({name, width = 20, height = width, className = "", sty
 export function RatingStars({compact = false, className = ""}: {compact?: boolean; className?: string}) {
   return <FigmaIcon
     name={compact ? "stars-review" : "stars-rating"}
-    width={compact ? 104 : 116}
-    height={20}
+    width={compact ? 116 : 126}
+    height={compact ? 20 : 22}
     className={`rating-stars ${className}`.trim()}
   />;
 }

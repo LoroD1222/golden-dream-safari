@@ -20,7 +20,7 @@ export function SiteHeader() {
 
   return <header className="site-header">
     <Link className="brand" href="/" aria-label="Golden Dream Safaris home" onClick={() => setOpen(false)}>
-      <Image src="/images/figma/db8ea92f-29f5-45b6-addb-ebff1a9b64f4.png" alt="" width={35} height={35} priority />
+      <Image src="/images/figma/brand-mark.png" alt="" width={35} height={35} priority />
       <span>Golden Dream Safaris</span>
     </Link>
     <button className="menu-toggle" type="button" aria-expanded={open} aria-controls="site-navigation" onClick={() => setOpen(value => !value)}>

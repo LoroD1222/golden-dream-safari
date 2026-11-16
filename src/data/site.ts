@@ -160,11 +160,11 @@ export const reviews: ReviewData[] = [
   },
   {
     title: "Once in a lifetime experience",
-    quote: "The communication with him was very quick and clear! We felt in very good hands. Thanks to him we saw the big 5.",
+    quote: "The communication with him was very quick and clear! We felt in very good hands. Thanks to him we saw the Big 5. Totally recommend him!",
     author: "ri c",
     meta: "Oct 2025 · Couples",
     tag: "5-day safari",
-    image: "/images/figma/cffa1660-4788-40e2-917b-adeeb0c5fa17.png",
+    image: "/images/figma/review-philippa-h.png",
   },
   {
     title: "The best safari company you will find in Tanzania",
@@ -193,7 +193,7 @@ export const reviews: ReviewData[] = [
     author: "Jas P",
     meta: "Aug 2025 · Friends",
     tag: "Custom safari",
-    image: "/images/figma/7cc7b9ad-b19f-4bc2-a285-2e61a1e26038.png",
+    image: "/images/figma/review-ri-c.png",
   },
   {
     title: "Machame 6 days hike",
@@ -208,7 +208,7 @@ export const reviews: ReviewData[] = [
     author: "Philippa H",
     meta: "Rivervale, Australia · Sep 2025",
     tag: "4-day camping safari",
-    image: "/images/figma/25a10812-7694-4597-80d5-8bb9d6df15c6.png",
+    image: "/images/figma/review-jas-p.png",
   },
   {
     title: "Safari",
@@ -220,12 +220,12 @@ export const reviews: ReviewData[] = [
 ];
 
 export const guestPhotos = [
-  "/images/figma/601df417-5727-4ca4-b968-3b8ec152e400.png",
-  "/images/figma/d3190758-6057-424a-883a-6c0f91fde2bc.png",
-  "/images/figma/3fc2e9e0-1579-44dd-b285-444e57097507.png",
-  "/images/figma/b7278669-6506-4fbc-9d26-e903bfc3a0db.png",
-  "/images/figma/dc5abce8-bc43-4957-9765-83c7781d2c9f.png",
-  "/images/figma/3d977940-9c5f-46af-80b3-49b0c299992d.png",
+  "/images/figma/guest-1.png",
+  "/images/figma/guest-2.png",
+  "/images/figma/guest-3.png",
+  "/images/figma/guest-4.png",
+  "/images/figma/reviews-hero.png",
+  "/images/figma/guest-5.png",
 ];
 
 export const siteOrigin = (process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000").replace(/\/+$/, "");
