@@ -310,6 +310,86 @@ main,section,article,aside,nav,header,footer,div {min-width: 0}
 .trip-review-section .rating-stars,
 .review-card__top .rating-stars {width: 116px!important; height: 20px!important}
 
+/* Homepage trips — exact layout from Figma frame 63:1999. */
+.home-trips {
+  width: calc(100% - 62px);
+  max-width: none;
+}
+.home-trips .section-heading {
+  grid-template-columns: minmax(0,861px) minmax(300px,440px);
+  justify-content: space-between;
+  gap: 64px;
+  margin-bottom: 40px;
+}
+.home-trips .section-heading h2 {max-width: 861px}
+.home-trips .section-heading>p {max-width: 440px; margin-bottom: 2px; line-height: 1.55}
+.home-trips .trip-bento {
+  grid-template-columns: minmax(0,694.5fr) minmax(0,654.5fr);
+  grid-template-rows: 355px 315px 304px;
+  gap: 16px;
+}
+.home-trips .trip-tile,
+.home-trips .trip-mix {border-radius: 32px}
+.home-trips .trip-tile::after {
+  position: absolute;
+  z-index: 1;
+  inset: 38% 0 0;
+  content: "";
+  background: linear-gradient(180deg,transparent,rgba(8,5,3,.82));
+  pointer-events: none;
+}
+.home-trips .trip-tile__duration {
+  position: absolute;
+  z-index: 2;
+  top: 20px;
+  left: 20px;
+  padding: 8px 14px;
+  border-radius: 999px;
+  background: #fff;
+  color: var(--ink);
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 1;
+}
+.home-trips .trip-tile__arrow {
+  top: 20px;
+  right: 20px;
+  width: 44px;
+  height: 44px;
+}
+.home-trips .trip-tile>div {
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: 20px;
+  border-radius: 0;
+  background: transparent;
+  color: #fff;
+}
+.home-trips .trip-tile h3 {font-size: 28px; line-height: 1.08}
+.home-trips .trip-tile p {max-width: 620px; margin-top: 6px; color: rgba(255,255,255,.86); font-size: 17px}
+.home-trips .trip-mix::after {background: linear-gradient(90deg,rgba(7,4,3,.92),rgba(7,4,3,.3))}
+.home-trips .trip-mix>div {max-width: 660px; padding: 28px}
+.home-trips .trip-mix h3 {font-size: 28px}
+.home-trips .trip-mix p {font-size: 17px}
+
+@media (max-width: 1100px) {
+  .home-trips {width: min(calc(100% - 68px),var(--shell))}
+  .home-trips .section-heading {grid-template-columns: 1fr; gap: 18px}
+  .home-trips .section-heading>p {max-width: 680px; margin: 0}
+}
+
+@media (max-width: 700px) {
+  .home-trips {width: calc(100% - (var(--mobile-gutter) * 2))}
+  .home-trips .trip-tile,
+  .home-trips .trip-mix {border-radius: 22px}
+  .home-trips .trip-tile__duration {top: 14px; left: 14px; padding: 7px 11px; font-size: 12px}
+  .home-trips .trip-tile__arrow {top: 14px; right: 14px; width: 40px; height: 40px}
+  .home-trips .trip-tile>div {padding: 18px}
+  .home-trips .trip-tile h3 {font-size: 24px}
+  .home-trips .trip-tile p {font-size: 15px}
+}
+
 .home-review-meta {display: grid; grid-template-columns: minmax(0,1fr) auto; align-items: center}
 .home-review-meta>span:first-child {min-width: 0}
 .review-source {max-width: 100%; justify-self: end}
