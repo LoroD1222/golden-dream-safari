@@ -1,6 +1,6 @@
 # Figma inventory
 
-Source: `Golden Dreams Safari` (`nXKD3sKPSaGsIsXLoPc0lA`), inspected on 2026-11-16.
+Source: `Golden Dreams Safari` (`nXKD3sKPSaGsIsXLoPc0lA`), inspected on 2026-11-17.
 
 ## Primary frames
 
@@ -18,7 +18,7 @@ Source: `Golden Dreams Safari` (`nXKD3sKPSaGsIsXLoPc0lA`), inspected on 2026-11-
 
 - Urbanist variable font.
 - Near-black navigation/footer surfaces, warm cream content surfaces and orange calls to action.
-- Large editorial headings, rounded cards, soft neutral borders and generous section spacing. The repeated section-label pills are intentionally hidden by the latest client revision.
+- Large editorial headings, rounded cards, soft neutral borders and generous section spacing. The latest frames use compact orange-dot section labels throughout the public pages.
 - Shared header, mobile navigation, footer, buttons, FAQ, quote form and trip-card patterns.
 - Image-led hero sections and asymmetrical grids on wide screens, collapsed into a single readable flow on mobile.
 

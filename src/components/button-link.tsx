@@ -8,6 +8,5 @@ export function ButtonLink({href, children, variant = "orange", className = ""}:
 }
 
 export function SectionPill({children}: {children: ReactNode}) {
-  void children;
-  return null;
+  return <span className="section-pill"><span aria-hidden/>{children}</span>;
 }

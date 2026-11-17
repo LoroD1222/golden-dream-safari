@@ -26,7 +26,7 @@ npm audit --omit=dev       0 production vulnerabilities
 - With Resend intentionally unconfigured, submission returns an honest delivery error and direct-contact fallback.
 - FAQ disclosures open and reveal their answers.
 - Responsive public routes and the editor show no page-level horizontal overflow at 320, 360, 375, 390, 414, 430, 768, 1024 and 1440 CSS pixels.
-- Removal of the shared section-pill treatment does not remove real headings, breadcrumbs, navigation labels or interactive controls.
+- Shared section labels render without replacing real headings, breadcrumbs, navigation labels or interactive controls.
 - Every public and legal route returns the expected status, one `h1`, one `main`, a description and canonical metadata; sitemap and robots routes return `200`, and an unknown route returns `404`.
 
 ## Itinerary API and persistence

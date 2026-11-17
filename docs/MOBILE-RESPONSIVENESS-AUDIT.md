@@ -14,7 +14,7 @@ Audit date: 2026-11-17. Source of truth: the current Figma file `nXKD3sKPSaGsIsX
 
 ## Issues found
 
-- The dark rounded eyebrow/section badge with an orange dot was repeated across all routes and was explicitly requested for removal.
+- The latest Figma revision reintroduced compact orange-dot section labels across the public routes, superseding the earlier removal request.
 - Several late CSS overrides competed with the earlier mobile rules, especially on the homepage and safari-detail hero.
 - The safari-detail hero used a fixed 1000px mobile height and an absolutely positioned price card, creating unnecessary height and fragile overlap behavior.
 - Sticky trip navigation attempted to retain desktop actions on narrow screens.
@@ -24,7 +24,7 @@ Audit date: 2026-11-17. Source of truth: the current Figma file `nXKD3sKPSaGsIsX
 
 ## Fixes implemented
 
-- Removed the `.section-pill` visual globally, including the dark eyebrow badge shown in the review screenshot, while preserving real headings and breadcrumbs.
+- Restored the shared `.section-pill` treatment with the exact dot, spacing and rounded background from the latest Figma frames while preserving responsive wrapping.
 - Added one shared mobile cascade for route gutters, touch targets, overflow containment and responsive typography.
 - Rebuilt the trip-detail mobile hero as a natural document flow: copy first, then the pricing card, with no absolute overlap or fixed 1000px height.
 - Converted mobile trip navigation into a compact horizontally scrollable section rail and hid duplicated desktop-only download/quote actions from that sticky bar.
@@ -44,7 +44,7 @@ Audit date: 2026-11-17. Source of truth: the current Figma file `nXKD3sKPSaGsIsX
 
 ## Viewports tested
 
-Homepage screenshots were rendered at 320, 360, 375, 390, 414 and 430 CSS pixels. All primary public routes were rendered at 390×844. The final mobile comparison showed no clipped headings, page-level horizontal overflow, badge remnants or overlapping hero panels.
+Homepage screenshots were rendered at 320, 360, 375, 390, 414 and 430 CSS pixels. All primary public routes were rendered at 390×844. The final mobile comparison showed no clipped headings, page-level horizontal overflow or overlapping hero panels.
 
 The established 768, 1024 and 1440 desktop/tablet layouts remain covered by the existing visual QA checklist and production build.
 
@@ -53,4 +53,3 @@ The established 768, 1024 and 1440 desktop/tablet layouts remain covered by the 
 - Figma supplies dedicated 390px frames for the interactive offer panel, but not complete mobile frames for every route. Where a mobile frame was absent, the layout follows the current desktop design system and the audit brief’s mobile-first requirements.
 - The Next.js development overlay can appear in local screenshots; it is not part of production rendering.
 - Production-only Resend delivery and deployed Lighthouse/WebPageTest checks still require the final environment and domain.
-
