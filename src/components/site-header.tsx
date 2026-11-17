@@ -57,7 +57,7 @@ export function SiteHeader() {
     <button className={`site-nav-backdrop ${open ? "site-nav-backdrop--open" : ""}`} type="button" aria-label="Close navigation" aria-hidden="true" tabIndex={-1} onClick={() => setOpen(false)}/>
     <nav id="site-navigation" className={`site-nav ${open ? "site-nav--open" : ""}`} aria-label="Main navigation">
       {links.map((link, index) => <span className="site-nav__item" key={`${link.href}-${link.label}`}>
-        <Link aria-current={pathname === link.href ? "page" : undefined} href={link.href} onClick={() => setOpen(false)}>{link.label}</Link>
+        <Link aria-current={pathname === link.href ? "page" : undefined} href={link.href} onClick={() => setOpen(false)}>{link.label}{index === 0 && <FigmaIcon className="site-nav__chevron" name="quote-chevron" width={14}/>}</Link>
         {index < links.length - 1 && <i aria-hidden/>}
       </span>)}
       <Link className="button button--orange site-nav__mobile-cta" href="/contact#quote" onClick={() => setOpen(false)}>Get a free quote<span className="button__arrow" aria-hidden><FigmaIcon name="arrow-header" width={19}/></span></Link>

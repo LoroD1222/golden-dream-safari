@@ -43,6 +43,8 @@ h1, h2, h3, h4 {line-height: 1.05; letter-spacing: -.035em}
 .brand--light {color: #fff; font-size: 24px}
 .site-nav {display: flex; align-items: center; gap: 15px}
 .site-nav__item {display: flex; align-items: center; gap: 15px; white-space: nowrap; color: rgba(0,0,0,.76); font-size: 15px; font-weight: 550}
+.site-nav__item>a {display: flex; gap: 4px; align-items: center}
+.site-nav__chevron {flex: 0 0 14px}
 .site-nav__item i {display: block; width: 1px; height: 21px; background: rgba(0,0,0,.08)}
 .site-nav a[aria-current=page] {font-weight: 750; color: var(--black)}
 .header-quote {justify-self: end; min-height: 42px; font-size: 15px}
@@ -107,6 +109,8 @@ h1, h2, h3, h4 {line-height: 1.05; letter-spacing: -.035em}
 .field-row {display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 20px 0}
 .quote-wizard label,.quote-wizard fieldset {display: grid; gap: 8px; border: 0; font-weight: 650}
 .quote-wizard fieldset {margin: 20px 0; padding: 0}
+.quote-wizard fieldset.quote-stay-options {margin-top: 0}
+.quote-stay-options .tier-list {margin-top: 10px}
 .quote-wizard legend {margin-bottom: 10px; font-weight: 700}
 .quote-wizard input,.quote-wizard textarea,.quote-wizard select {width: 100%; min-height: 52px; padding: 13px 16px; border: 1px solid var(--line); border-radius: 18px; background: #fff; font-weight: 500}
 .quote-wizard textarea {min-height: 96px; resize: vertical}
@@ -148,7 +152,7 @@ h1, h2, h3, h4 {line-height: 1.05; letter-spacing: -.035em}
 .cms-page .admin-shell {max-width: none; margin: 0}.cms-page .admin-heading {display: none}
 
 @media (max-width: 1000px) {
-  .site-header {grid-template-columns: 1fr auto; padding-inline: 22px}.header-quote {display: none}.menu-toggle {display: grid; width: 44px; height: 44px; padding: 10px; border: 0; border-radius: 50%; background: var(--cream); place-content: center; gap: 4px}.menu-toggle span:not(.sr-only) {display: block; width: 20px; height: 2px; background: var(--ink)}.site-nav {position: absolute; top: 72px; right: 16px; left: 16px; display: none; align-items: stretch; padding: 18px; border: 1px solid var(--line); border-radius: 20px; background: white; box-shadow: 0 18px 50px rgba(0,0,0,.14)}.site-nav--open {display: grid}.site-nav__item {display: block}.site-nav__item i {display: none}.site-nav__item a {display: block; padding: 10px}.site-nav__mobile-cta {display: inline-flex; margin-top: 8px}.footer-grid {grid-template-columns: 1.5fr repeat(3,1fr); gap: 28px}.faq-section {grid-template-columns: 1fr; gap: 38px}.faq-intro>p {max-width: 620px}.question-card {max-width: 620px}.admin-page {padding: 24px}.admin-shell {grid-template-columns: 1fr}.admin-list {grid-template-columns: repeat(3,1fr)}.admin-list>.button {grid-column: 1/-1}
+  .site-header {grid-template-columns: 1fr auto; padding-inline: 22px}.header-quote {display: none}.menu-toggle {display: grid; width: 44px; height: 44px; padding: 10px; border: 0; border-radius: 50%; background: var(--cream); place-content: center; gap: 4px}.menu-toggle span:not(.sr-only) {display: block; width: 20px; height: 2px; background: var(--ink)}.site-nav {position: absolute; top: 72px; right: 16px; left: 16px; display: none; align-items: stretch; padding: 18px; border: 1px solid var(--line); border-radius: 20px; background: white; box-shadow: 0 18px 50px rgba(0,0,0,.14)}.site-nav--open {display: grid}.site-nav__item {display: block}.site-nav__item i {display: none}.site-nav__item a {display: block; padding: 10px}.site-nav__chevron {display: none}.site-nav__mobile-cta {display: inline-flex; margin-top: 8px}.footer-grid {grid-template-columns: 1.5fr repeat(3,1fr); gap: 28px}.faq-section {grid-template-columns: 1fr; gap: 38px}.faq-intro>p {max-width: 620px}.question-card {max-width: 620px}.admin-page {padding: 24px}.admin-shell {grid-template-columns: 1fr}.admin-list {grid-template-columns: repeat(3,1fr)}.admin-list>.button {grid-column: 1/-1}
 }
 
 @media (max-width: 1350px) {

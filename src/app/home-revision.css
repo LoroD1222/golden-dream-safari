@@ -19,8 +19,12 @@
 
 .home-about {margin-top: 50px; padding: 0 24px; background: #fff}
 .home-about>.section-shell {width: 100%; max-width: none; padding: 72px 64px; border: 1px solid #e6e2da; border-radius: 32px; background: var(--cream)}
-.home-about__statement {width: 100%; max-width: 1000px}
-.home-about__statement h2 {margin-top: 28px; font-size: 44px; font-weight: 650; line-height: 1.2; letter-spacing: -.66px}
+.home-about__statement {width: 100%; max-width: none}
+.home-about__statement h2 {max-width: 1000px; margin: 28px auto 0; font-size: 44px; font-weight: 650; line-height: 1.2; letter-spacing: -.66px}
+.home-about__statement>p {margin: 18px 0 0; color: #a4520f; font-size: 18px; font-weight: 650; letter-spacing: .06em; line-height: 1.3; text-transform: uppercase}
+.home-about__reasons {display: grid; width: 100%; margin-top: 28px; grid-template-columns: repeat(5,minmax(0,1fr)); gap: 12px; text-align: left}
+.home-about__reasons article {min-height: 126px; padding: 22px 20px; border-radius: 20px; background: #fff}
+.home-about__reasons h3 {margin: 14px 0 0; font-size: 18px; line-height: 1.3}
 .home-about__photos figure {height: 320px; min-height: 320px}
 .home-about__photos figcaption {font-size: 14px; font-weight: 650}
 .stat-card {min-height: 0; height: 264px; padding: 32px}
@@ -83,6 +87,8 @@
   .popular-list--figma {grid-template-columns: 1fr 1fr}
   .popular-card--figma:last-child {grid-column: 1/-1; width: calc(50% - 10px); justify-self: center}
   .booking-grid {grid-template-columns: 1fr; padding: 52px; gap: 48px}
+  .home-about__reasons {width: 100%; grid-template-columns: repeat(2,minmax(0,1fr))}
+  .home-about__reasons article:last-child {grid-column: 1/-1}
 }
 
 @media (max-width: 700px) {
@@ -92,6 +98,9 @@
   .home-about {padding-inline: 12px}
   .home-about>.section-shell {width: 100%; padding: 52px 16px}
   .home-about__statement h2 {font-size: 34px}
+  .home-about__statement>p {font-size: 14px; line-height: 1.45}
+  .home-about__reasons {grid-template-columns: 1fr}
+  .home-about__reasons article,.home-about__reasons article:last-child {grid-column: auto; min-height: 0}
   .stat-card {height: auto; min-height: 190px}
   .popular-list--figma {grid-template-columns: 1fr}
   .popular-card--figma,.popular-card--figma:last-child {grid-column: auto; width: 100%; height: auto; min-height: 650px}
