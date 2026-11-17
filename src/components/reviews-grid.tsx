@@ -16,6 +16,16 @@ const figmaGuestPhotos = [
   {src: "/images/figma/guest-5.png", alt: "Guests watching an elephant from a safari vehicle"},
 ];
 
+function ReviewCardMeta({meta}: {meta: string}) {
+  const parts = meta.split(" · ");
+  const hasTranslation = parts.length > 2;
+
+  return <small aria-label={meta} className={`review-card__meta${hasTranslation ? " review-card__meta--multiline" : ""}`}>
+    <span aria-hidden="true">{hasTranslation ? parts.slice(0, 2).join(" · ") : meta}</span>
+    {hasTranslation && <span aria-hidden="true">{parts.slice(2).join(" · ")}</span>}
+  </small>;
+}
+
 export function ReviewsGrid({reviews, categories, sourceUrl, sourceName}: {reviews: Review[]; categories: ReviewCategory[]; sourceUrl: string; sourceName: string}) {
   const [active, setActive] = useState(allFilter);
   const [expanded, setExpanded] = useState(false);
@@ -46,7 +56,7 @@ export function ReviewsGrid({reviews, categories, sourceUrl, sourceName}: {revie
         const image = review.images[0];
         return <article className={`review-card ${image ? "review-card--photo" : ""}`.trim()} key={review.id}>
           {image && <span className="review-card__image"><Image src={image.src} alt={image.alt || "Guest safari photo"} fill sizes="(max-width: 700px) 100vw, (max-width: 1000px) 50vw, 33vw"/></span>}
-          <div className="review-card__body"><div className="review-card__top"><span aria-label={`${review.rating} out of 5 stars`}><RatingStars compact/></span><small>{review.meta}</small></div><h2>{review.title}</h2><blockquote>“{review.quote}”</blockquote>{review.reply && <div className="victor-reply"><strong>{review.replyAuthor || "Victor"} replied</strong><p>“{review.reply}”</p></div>}<div className="review-author"><span>{review.author.charAt(0).toUpperCase()}</span><div><strong>{review.author}</strong><small>{review.authorLocation || review.meta}</small></div></div><a href={review.sourceUrl || sourceUrl}>Find on {review.source || sourceName} <FigmaIcon name="arrow-card" width={18}/></a></div>
+          <div className="review-card__body"><div className="review-card__top"><span aria-label={`${review.rating} out of 5 stars`}><RatingStars compact/></span><ReviewCardMeta meta={review.meta}/></div><h2>{review.title}</h2><blockquote>“{review.quote}”</blockquote>{review.reply && <div className="victor-reply"><strong>{review.replyAuthor || "Victor"} replied</strong><p>“{review.reply}”</p></div>}<div className="review-author"><span>{review.author.charAt(0).toUpperCase()}</span><div><strong>{review.author}</strong><small>{review.authorLocation || review.meta}</small></div></div><a href={review.sourceUrl || sourceUrl}>Find on {review.source || sourceName} <FigmaIcon name="arrow-card" width={18}/></a></div>
         </article>;
       })}</div>
       {visible.length === 0 && <p className="reviews-empty">No published reviews in this category yet.</p>}

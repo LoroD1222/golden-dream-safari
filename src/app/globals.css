@@ -856,10 +856,14 @@ body .property-card>strong {padding: 14px 18px}
 /* Stable card and quote-form sizing across laptop and tablet widths. */
 .review-card {width: 100%; min-width: 0; overflow: hidden; box-sizing: border-box}
 .review-card__body,.review-card__top,.review-author>div {min-width: 0}
-.review-card__top {display: grid; grid-template-columns: auto minmax(0,1fr); align-items: start}
+.review-card__top {display: grid; grid-template-columns: 104px minmax(0,1fr); align-items: start; gap: 12px}
 .review-card__top .rating-stars {flex: 0 0 auto}
-.review-card__top small {justify-self: end; max-width: 160px; overflow-wrap: anywhere; text-align: center; line-height: 1.25}
-.review-card h2,.review-card blockquote,.review-author small {overflow-wrap: anywhere}
+.review-card__top .review-card__meta {display: inline-flex; min-width: 0; max-width: 100%; align-items: center; justify-content: center; justify-self: end; box-sizing: border-box; text-align: center; line-height: 1.25; overflow-wrap: normal; word-break: normal}
+.review-card__meta>span {white-space: nowrap}
+.review-card__meta--multiline {flex-direction: column; gap: 1px; border-radius: 16px}
+.review-card__meta--multiline>span:last-child {font-size: 11px}
+.review-card h2,.review-card blockquote {overflow-wrap: anywhere}
+.review-author small {line-height: 1.35; overflow-wrap: normal; word-break: normal; text-wrap: pretty}
 .quote-wizard,.quote-step,.trip-choice,.tier-list>button,.tier-list>button>span,.field-row>* {min-width: 0}
 .quote-step>h3 {font-size: clamp(28px,3vw,34px); line-height: 1.05; overflow-wrap: anywhere}
 .trip-choice-grid {grid-template-columns: repeat(3,minmax(0,1fr))}
@@ -883,7 +887,7 @@ body .property-card>strong {padding: 14px 18px}
 @media (max-width: 700px) {
   .field-row {grid-template-columns: 1fr}
   .review-card__top {grid-template-columns: 1fr; gap: 10px}
-  .review-card__top small {justify-self: start; max-width: 100%; text-align: left}
+  .review-card__top .review-card__meta {justify-self: start; max-width: 100%; text-align: left}
   .quote-step>h3 {font-size: 28px}
 }
 
