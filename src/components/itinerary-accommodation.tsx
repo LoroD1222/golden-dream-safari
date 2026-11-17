@@ -3,7 +3,7 @@
 import Image from "next/image";
 import {useEffect, useState} from "react";
 import type {ItineraryDay} from "@/features/itinerary/model";
-import {TripMealIcon} from "@/components/trip-icons";
+import {FigmaIcon} from "@/components/figma-icon";
 
 const assetBasePath = "/itinerary-assets";
 
@@ -71,7 +71,7 @@ export function ItineraryAccommodation({day, isFinalDay}: {day: ItineraryDay; is
         aria-expanded={mealInfoOpen}
         aria-controls={`meal-plan-note-${day.dayNumber}`}
         onClick={() => setMealInfoOpen(open => !open)}
-      ><TripMealIcon/>Meal Plan: {day.meals.join(" · ")}<Image src={`${assetBasePath}/meal-info.svg`} alt="Meal-plan information" width={20} height={20}/></button>
+      ><FigmaIcon name="meal" width={20}/>Meal Plan: {day.meals.join(" · ")}<Image src={`${assetBasePath}/meal-info.svg`} alt="Meal-plan information" width={20} height={20}/></button>
     </div>
     {mealInfoOpen && <p className="trip-ref-meal-note" id={`meal-plan-note-${day.dayNumber}`}>Meals are prepared during the safari. Please tell us about allergies or dietary requirements when you request your quote.</p>}
     {!isFinalDay && selected && selectedImage && <div className="trip-ref-lodge">

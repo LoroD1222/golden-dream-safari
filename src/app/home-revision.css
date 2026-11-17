@@ -448,7 +448,8 @@ main,section,article,aside,nav,header,footer,div {min-width: 0}
     inset: 70px 0 0;
     display: block;
     border: 0;
-    background: rgba(12,10,8,.28);
+    background: rgba(12,10,8,.2);
+    backdrop-filter: blur(2px);
     opacity: 0;
     pointer-events: none;
     transition: opacity .24s ease;
@@ -457,16 +458,33 @@ main,section,article,aside,nav,header,footer,div {min-width: 0}
   .site-nav {
     z-index: 3;
     display: grid;
+    width: min(352px,calc(100vw - 24px));
+    grid-template-columns: repeat(2,minmax(0,1fr));
+    gap: 4px;
+    top: 74px;
+    right: 12px;
+    left: auto;
     max-height: calc(100svh - 88px);
     overflow-y: auto;
+    padding: 10px;
+    border: 1px solid rgba(36,29,23,.1);
+    border-radius: 18px;
+    background: rgba(255,255,255,.98);
+    box-shadow: 0 22px 60px rgba(24,18,13,.2);
     opacity: 0;
     pointer-events: none;
-    transform: translateY(-10px) scale(.985);
-    transform-origin: top center;
+    transform: translateY(-8px) scale(.97);
+    transform-origin: top right;
     visibility: hidden;
     transition: opacity .22s ease,transform .25s cubic-bezier(.22,.75,.25,1),visibility .22s;
   }
+  .site-nav__item {display: block; color: var(--ink); font-weight: 650}
+  .site-nav__item a {display: flex; min-height: 48px; align-items: center; padding: 10px 13px; border-radius: 12px; transition: background-color .18s ease,color .18s ease}
+  .site-nav__item a:hover,.site-nav__item a:focus-visible,.site-nav a[aria-current=page] {background: var(--cream); color: var(--ink)}
+  .site-nav__mobile-cta {grid-column: 1/-1; justify-content: space-between; margin-top: 4px; padding: 5px 5px 5px 18px}
   .site-nav--open {opacity: 1; pointer-events: auto; transform: translateY(0) scale(1); visibility: visible}
+  body:has(.site-nav--open) .whatsapp-widget,
+  body:has(.site-nav--open) .trip-download-mobile {opacity: 0; pointer-events: none; transform: translateY(10px)}
 }
 
 @media (max-width: 760px) {
@@ -514,8 +532,9 @@ main,section,article,aside,nav,header,footer,div {min-width: 0}
 .trip-download-consent {display: flex; gap: 11px; align-items: flex-start; margin: 20px 0; color: var(--muted); font-size: 13px; line-height: 1.45}
 .trip-download-consent input {flex: none; width: 18px; height: 18px; accent-color: var(--orange)}
 .trip-download-honeypot {position: absolute!important; width: 1px!important; height: 1px!important; overflow: hidden!important; clip: rect(0 0 0 0)!important; white-space: nowrap!important}
-.trip-download-submit {display: inline-flex; min-height: 54px; align-items: center; justify-content: center; gap: 13px; padding: 12px 22px; border: 0; border-radius: 999px; background: var(--orange); color: var(--ink); font-family: inherit; font-size: 15px; font-weight: 800; cursor: pointer; transition: background .18s,transform .18s}
-.trip-download-submit svg {width: 20px; height: 20px}
+.trip-download-submit {display: inline-flex; min-height: 54px; align-items: center; justify-content: space-between; gap: 16px; padding: 5px 5px 5px 21px; border: 0; border-radius: 999px; background: var(--orange); color: var(--ink); font-family: inherit; font-size: 15px; font-weight: 800; cursor: pointer; transition: background .18s,transform .18s}
+.trip-download-submit__arrow {display: grid; width: 42px; height: 42px; flex: none; place-items: center; border-radius: 50%; background: #fff}
+.trip-download-submit__arrow img {display: block; width: 20px; height: 20px}
 .trip-download-submit:hover,.trip-download-submit:focus-visible {background: var(--orange-bright); transform: translateY(-1px)}
 .trip-download-submit:focus-visible {outline: 3px solid rgba(164,82,15,.28); outline-offset: 3px}
 .trip-download-submit:disabled {opacity: .62; cursor: wait; transform: none}

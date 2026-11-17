@@ -3,6 +3,7 @@
 import {useCallback, useEffect, useRef, useState} from "react";
 import type {ItineraryDownloadConfig} from "@/features/itinerary/model";
 import {CheckCircleIcon, DownloadArrowIcon} from "@/components/trip-icons";
+import {FigmaIcon} from "@/components/figma-icon";
 import {decideItineraryDownload, MOBILE_DOWNLOAD_PROMPT_DELAY_MS, MOBILE_DOWNLOAD_PROMPT_EXPANDED_MS, successfulSubmissionEffect} from "@/features/itinerary/download-flow";
 
 export const tripDownloadPendingEvent = "golden-dream:trip-download-pending";
@@ -181,7 +182,10 @@ export function TripDownloadEnquiryForm({slug, title, durationDays, config}: {sl
       </div>
       <label className="trip-download-consent"><input name="consent" type="checkbox" required/> <span>I agree that Golden Dream Safaris may use these details to respond to my enquiry. *</span></label>
       <label className="trip-download-honeypot" aria-hidden="true">Website<input name="website" tabIndex={-1} autoComplete="off"/></label>
-      <button className="trip-download-submit" type="submit" disabled={state === "sending"}>{state === "sending" ? "Sending…" : "Send enquiry & download PDF"}<DownloadArrowIcon/></button>
+      <button className="trip-download-submit" type="submit" disabled={state === "sending"}>
+        <span>{state === "sending" ? "Sending…" : "Send enquiry"}</span>
+        <span className="trip-download-submit__arrow" aria-hidden><FigmaIcon name="detail-arrow" width={20}/></span>
+      </button>
     </form>
   </section>;
 }
