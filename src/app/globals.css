@@ -835,7 +835,7 @@ body .property-card>strong {padding: 14px 18px}
 .review-source img {border-radius: 50%}
 
 .reviews-intro>img {object-position: center}
-.review-filters {display: flex; flex-wrap: wrap; gap: 8px; width: min(calc(100% - 128px),1312px); padding-top: 48px; margin-inline: auto}
+.review-filters {display: flex; flex-wrap: wrap; gap: 8px; width: min(calc(100% - 128px),1312px); padding-top: 48px; margin: 0 auto}
 .review-filters button {padding: 12px 20px}
 .guest-photos {width: min(calc(100% - 128px),1312px); padding-top: 48px}
 .guest-photos h2 {margin-bottom: 24px}
@@ -932,7 +932,7 @@ body .property-card>strong {padding: 14px 18px}
   .home-top {padding-right: 12px}.home-hero {display: block; height: auto; min-height: 930px}.home-hero__copy {display: flex}.home-hero__copy h1 {font-size: 42px}.home-hero__copy>p {width: auto}.plan-card {position: absolute; top: auto; right: 18px; bottom: 18px; left: 18px; width: auto; height: 444px}.home-highlights {grid-template-columns: 1fr}
   .host {width: calc(100% - 32px); margin-block: 72px}.host-photo {min-height: 430px}.host-photo>span {padding: 14px}.host>div:last-child h2 {font-size: 44px}
   .home-reviews {padding: 0 12px}.home-reviews>.section-shell {padding: 52px 16px; border-radius: 24px}.home-reviews .center-heading h2 {font-size: 44px}.home-reviews .center-heading p {font-size: 16px}.rating-bar {align-items: center; margin-top: 36px}.rating-bar>strong {font-size: 48px}.rating-bar>span {flex: 1}.rating-bar small {font-size: 14px}.rating-bar .button {width: 100%}.home-review-grid {grid-template-columns: 1fr; margin-top: 32px}.home-review-grid article:nth-child(3) {grid-column: auto}.home-review-grid .review-featured {grid-row: auto}.home-review-grid .review-featured .home-review-photo {min-height: 360px}.home-review-meta {align-items: flex-start; flex-direction: column}
-  .review-filters {overflow-x: auto; flex-wrap: nowrap; width: calc(100% - 32px); padding-top: 36px; margin-inline: auto}.review-filters button {white-space: nowrap}.guest-photos {width: calc(100% - 32px); padding-top: 42px}.guest-photos>div {grid-template-columns: repeat(2,1fr)}.reviews-content {width: calc(100% - 32px); padding-top: 28px}.review-card {padding: 24px}.review-card--photo {padding: 12px}.review-card--photo .review-card__body {padding: 14px}
+  .review-filters {overflow-x: auto; flex-wrap: nowrap; width: calc(100% - 32px); padding-top: 36px; margin: 0 auto}.review-filters button {white-space: nowrap}.guest-photos {width: calc(100% - 32px); padding-top: 42px}.guest-photos>div {grid-template-columns: repeat(2,1fr)}.reviews-content {width: calc(100% - 32px); padding-top: 28px}.review-card {padding: 24px}.review-card--photo {padding: 12px}.review-card--photo .review-card__body {padding: 14px}
   .about-hero {grid-template-columns: 1fr; min-height: auto}.about-hero>div {padding: 48px 24px}.about-hero h1 {font-size: 50px}.about-hero>figure {width: calc(100% - 32px); min-height: 394px; height: 394px; margin: 0 16px 16px}.about-story {grid-template-columns: 1fr; gap: 20px; padding-top: 72px}.about-values {width: calc(100% - 32px); padding-top: 64px}.about-values>div {grid-template-columns: 1fr}.about-values article {min-height: auto}.about-team {padding-top: 80px}.about-team>div {grid-template-columns: 1fr 1fr}.about-team article>div {height: 210px}.about-numbers {width: calc(100% - 24px); grid-template-columns: 1fr 1fr; padding: 32px 24px; gap: 28px}.about-numbers>div {min-height: 0}.about-numbers strong {font-size: 52px}
 }
 

@@ -20,7 +20,8 @@ export function ReviewsGrid({reviews, categories, sourceUrl, sourceName}: {revie
       return true;
     }).slice(0, 6);
   }, [reviews]);
-  const visible = expanded ? filtered : filtered.slice(0, 6);
+  const initialReviewCount = 9;
+  const visible = expanded ? filtered : filtered.slice(0, initialReviewCount);
 
   function changeFilter(value: string) { setActive(value); setExpanded(false); }
 
@@ -40,7 +41,7 @@ export function ReviewsGrid({reviews, categories, sourceUrl, sourceName}: {revie
         </article>;
       })}</div>
       {visible.length === 0 && <p className="reviews-empty">No published reviews in this category yet.</p>}
-      {filtered.length > 6 && <button className="button button--outline show-more" type="button" onClick={() => setExpanded(value => !value)}>{expanded ? "Show fewer reviews" : "Show more reviews"}</button>}
+      {filtered.length > initialReviewCount && <button className="button button--outline show-more" type="button" onClick={() => setExpanded(value => !value)}>{expanded ? "Show fewer reviews" : "Show more reviews"}</button>}
     </section>
   </>;
 }

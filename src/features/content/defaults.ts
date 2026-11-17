@@ -22,7 +22,7 @@ export const defaultSiteSettings: SiteSettings = {
   reviews: {
     pageTitle: "What our guests say",
     pageIntroduction: "All reviews below are from Tripadvisor, written by guests who travelled with us.",
-    heroImage: "/images/figma/reviews-hero.png",
+    heroImage: "/images/figma/reviews-hero-figma.png",
     sourceName: "Tripadvisor",
     sourceUrl: "https://www.tripadvisor.com/Search?q=Golden%20Dream%20Safaris%20Tanzania",
     aggregateRating: 4.9,

@@ -21,7 +21,9 @@ export function TripsDirectory() {
     const matching = active === "All trips" ? otherTrips : otherTrips.filter(trip => trip.title.toLowerCase().includes(active.toLowerCase()));
     return [...matching].sort((a, b) => sort === "title" ? a.title.localeCompare(b.title) : (parseInt(a.duration) || 999) - (parseInt(b.duration) || 999));
   }, [active, sort]);
-  const sorted = [...visibleWildlife].sort((a,b) => sort === "title" ? a.title.localeCompare(b.title) : parseInt(a.duration) - parseInt(b.duration));
+  // The Figma frame defines the curated default order. Keep that order for the
+  // default view and only reorder when the visitor explicitly selects A–Z.
+  const sorted = sort === "title" ? [...visibleWildlife].sort((a,b) => a.title.localeCompare(b.title)) : visibleWildlife;
 
   return <section className="trips-directory section-shell"><div className="trips-filters"><div>{tabs.map(tab => <button className={active === tab ? "is-active" : ""} type="button" aria-pressed={active === tab} key={tab} onClick={() => setActive(tab)}>{tab}</button>)}</div><label>Sort:<select value={sort} onChange={event => setSort(event.target.value)}><option value="shortest">Shortest first</option><option value="title">A–Z</option></select></label></div>
     {sorted.length > 0 && <TripGroup title="Wildlife safaris" count={sorted.length} trips={sorted} accessory={active === "All trips" ? <div className="mix-card trips-mix-card"><Image src="/images/figma/de18e2f3-87a7-428d-b5b9-b36080db459b.png" alt="Zebra on the plains" fill sizes="33vw"/><div><span>Mix & match</span><h2>Duration of your choice</h2><p>Choose the length of your safari and the parks you want to visit. We&apos;ll make a proposal that fits, with no strings attached.</p><Link className="button button--orange" href="/contact#quote">Get a free quote<span className="button__arrow"><FigmaIcon name="arrow-header" width={20}/></span></Link></div></div> : undefined}/>} 
