@@ -3,34 +3,11 @@
 import Image from "next/image";
 import {useEffect, useState} from "react";
 import type {ItineraryDay} from "@/features/itinerary/model";
-import {FigmaIcon} from "@/components/figma-icon";
+import {getTripSupplement, type StayOption} from "@/features/itinerary/trip-supplements";
 
 const assetBasePath = "/itinerary-assets";
 
-type StayOption = {
-  tier: "Group camping" | "Mid-range lodge" | "Private luxury";
-  property: string;
-  location: string;
-  images: Array<{src: string; alt: string}>;
-};
-
-const stayOptionsByDay: Record<number, StayOption[]> = {
-  1: [
-    {tier: "Group camping", property: "Karibu River Camp", location: "Mto wa Mbu", images: [{src: "/images/accommodations/karibu-river-camp.jpg", alt: "Karibu River Camp accommodation"}, {src: "/images/accommodations/lake-masek-tented-lodge.jpg", alt: "Safari tent accommodation interior"}]},
-    {tier: "Mid-range lodge", property: "Nimali Tarangire", location: "Tarangire", images: [{src: "/images/accommodations/nimali-tarangire.webp", alt: "Nimali Tarangire lodge"}, {src: "/images/accommodations/lake-masek-tented-lodge.jpg", alt: "Mid-range safari lodge room"}]},
-    {tier: "Private luxury", property: "Nimali Tarangire", location: "Tarangire", images: [{src: "/images/accommodations/nimali-tarangire.webp", alt: "Nimali Tarangire luxury lodge"}, {src: "/images/accommodations/melia-serengeti-lodge.jpg", alt: "Luxury safari lodge accommodation"}]},
-  ],
-  2: [
-    {tier: "Group camping", property: "Karibu River Camp", location: "Serengeti", images: [{src: "/images/accommodations/karibu-river-camp.jpg", alt: "Karibu River Camp accommodation"}, {src: "/images/accommodations/lake-masek-tented-lodge.jpg", alt: "Safari tent accommodation interior"}]},
-    {tier: "Mid-range lodge", property: "Lake Masek Tented Lodge", location: "Serengeti", images: [{src: "/images/accommodations/lake-masek-tented-lodge.jpg", alt: "Lake Masek Tented Lodge"}, {src: "/images/accommodations/nimali-tarangire.webp", alt: "Mid-range safari lodge room"}]},
-    {tier: "Private luxury", property: "Melia Serengeti Lodge", location: "Serengeti", images: [{src: "/images/accommodations/melia-serengeti-lodge.jpg", alt: "Melia Serengeti Lodge"}, {src: "/images/accommodations/lemala-kuria-hills.jpg", alt: "Lemala Kuria Hills Lodge"}]},
-  ],
-  3: [
-    {tier: "Group camping", property: "Karibu River Camp", location: "Ngorongoro", images: [{src: "/images/accommodations/karibu-river-camp.jpg", alt: "Karibu River Camp accommodation"}, {src: "/images/accommodations/lake-masek-tented-lodge.jpg", alt: "Safari tent accommodation interior"}]},
-    {tier: "Mid-range lodge", property: "Neptune Ngorongoro", location: "Ngorongoro", images: [{src: "/images/accommodations/neptune-ngorongoro.webp", alt: "Neptune Ngorongoro Luxury Lodge"}, {src: "/images/accommodations/nimali-tarangire.webp", alt: "Mid-range safari lodge room"}]},
-    {tier: "Private luxury", property: "Lemala Kuria Hills", location: "Northern Serengeti", images: [{src: "/images/accommodations/lemala-kuria-hills.jpg", alt: "Lemala Kuria Hills Lodge"}, {src: "/images/accommodations/melia-serengeti-lodge.jpg", alt: "Melia Serengeti Lodge"}]},
-  ],
-};
+const stayOptionsByDay = getTripSupplement("tarangire-serengeti-ngorongoro").staysByDay;
 
 export function ItineraryAccommodation({day, isFinalDay}: {day: ItineraryDay; isFinalDay: boolean}) {
   const [selectedOption, setSelectedOption] = useState(0);
@@ -71,7 +48,7 @@ export function ItineraryAccommodation({day, isFinalDay}: {day: ItineraryDay; is
         aria-expanded={mealInfoOpen}
         aria-controls={`meal-plan-note-${day.dayNumber}`}
         onClick={() => setMealInfoOpen(open => !open)}
-      ><FigmaIcon name="meal" width={20}/>Meal Plan: {day.meals.join(" · ")}<Image src={`${assetBasePath}/meal-info.svg`} alt="Meal-plan information" width={20} height={20}/></button>
+      ><Image src={`${assetBasePath}/meal.png`} alt="" width={20} height={20}/>Meal Plan: {day.meals.join(" · ")}<Image src={`${assetBasePath}/meal-info.svg`} alt="Meal-plan information" width={20} height={20}/></button>
     </div>
     {mealInfoOpen && <p className="trip-ref-meal-note" id={`meal-plan-note-${day.dayNumber}`}>Meals are prepared during the safari. Please tell us about allergies or dietary requirements when you request your quote.</p>}
     {!isFinalDay && selected && selectedImage && <div className="trip-ref-lodge">

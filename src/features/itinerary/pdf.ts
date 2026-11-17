@@ -2,17 +2,38 @@ import "server-only";
 
 import {readFile} from "node:fs/promises";
 import path from "node:path";
-import {PDFDocument, StandardFonts, rgb, type PDFImage, type PDFFont, type PDFPage, type RGB} from "pdf-lib";
+import {
+  PDFDocument,
+  StandardFonts,
+  clip,
+  endPath,
+  popGraphicsState,
+  pushGraphicsState,
+  rectangle,
+  rgb,
+  type PDFImage,
+  type PDFFont,
+  type PDFPage,
+  type RGB,
+} from "pdf-lib";
 import type {Itinerary} from "@/features/itinerary/model";
+import type {ItineraryPdfProfile} from "@/features/itinerary/access";
 import {getItineraryDownloadConfig} from "@/features/itinerary/download-config";
 import {northernCircuitRouteStops} from "@/features/itinerary/route-data";
+import {getTripSupplement, type StayOption} from "@/features/itinerary/trip-supplements";
 
 const PAGE_SIZE: [number, number] = [595.28, 841.89];
-const ink = rgb(.07, .06, .055);
+const PAGE_WIDTH = PAGE_SIZE[0];
+const PAGE_HEIGHT = PAGE_SIZE[1];
+const ink = rgb(.075, .064, .055);
+const charcoal = rgb(.14, .19, .22);
 const orange = rgb(.95, .52, .18);
+const orangeDeep = rgb(.64, .28, .055);
 const cream = rgb(.965, .955, .94);
-const muted = rgb(.38, .35, .31);
+const pale = rgb(.982, .977, .968);
+const muted = rgb(.39, .37, .34);
 const line = rgb(.88, .85, .81);
+const white = rgb(1, 1, 1);
 
 function safeText(value: string) {
   return value.normalize("NFKD").replace(/[\u0300-\u036f]/g, "").replace(/[–—]/g, "-").replace(/→/g, "to").replace(/[‘’]/g, "'").replace(/[“”]/g, '"').replace(/[^\x20-\x7E]/g, "");
@@ -32,6 +53,13 @@ function wrap(text: string, font: PDFFont, size: number, width: number) {
   return lines;
 }
 
+function drawLines(page: PDFPage, text: string, options: {x: number; y: number; width: number; size: number; font: PDFFont; color?: RGB; lineHeight?: number; maxLines?: number}) {
+  const lineHeight = options.lineHeight || options.size * 1.38;
+  const lines = wrap(text, options.font, options.size, options.width).slice(0, options.maxLines);
+  lines.forEach((item, index) => page.drawText(item, {x: options.x, y: options.y - index * lineHeight, size: options.size, font: options.font, color: options.color || ink}));
+  return options.y - lines.length * lineHeight;
+}
+
 async function embedPublicImage(pdf: PDFDocument, source?: string) {
   if (!source || !source.startsWith("/") || source.includes("..")) return null;
   try {
@@ -42,16 +70,112 @@ async function embedPublicImage(pdf: PDFDocument, source?: string) {
   return null;
 }
 
-function drawContainedImage(page: PDFPage, image: PDFImage, box: {x: number; y: number; width: number; height: number}) {
-  page.drawRectangle({...box, color: cream});
+async function embedFirstPublicImage(pdf: PDFDocument, sources: string[]) {
+  for (const source of sources) {
+    const image = await embedPublicImage(pdf, source);
+    if (image) return image;
+  }
+  return null;
+}
+
+function drawCoverImage(page: PDFPage, image: PDFImage, box: {x: number; y: number; width: number; height: number}) {
+  const scale = Math.max(box.width / image.width, box.height / image.height);
+  const width = image.width * scale;
+  const height = image.height * scale;
+  page.pushOperators(pushGraphicsState(), rectangle(box.x, box.y, box.width, box.height), clip(), endPath());
+  page.drawImage(image, {x: box.x + (box.width - width) / 2, y: box.y + (box.height - height) / 2, width, height});
+  page.pushOperators(popGraphicsState());
+}
+
+function drawFitImage(page: PDFPage, image: PDFImage, box: {x: number; y: number; width: number; height: number}) {
   const scale = Math.min(box.width / image.width, box.height / image.height);
   const width = image.width * scale;
   const height = image.height * scale;
   page.drawImage(image, {x: box.x + (box.width - width) / 2, y: box.y + (box.height - height) / 2, width, height});
 }
 
-export async function generateItineraryPdf(itinerary: Itinerary) {
+function formatDate(value?: string) {
+  if (!value) return "To be confirmed";
+  const date = new Date(`${value}T12:00:00Z`);
+  return Number.isNaN(date.valueOf()) ? value : new Intl.DateTimeFormat("en", {day: "numeric", month: "short", year: "numeric", timeZone: "UTC"}).format(date);
+}
+
+function drawSectionTitle(page: PDFPage, title: string, subtitle: string | undefined, fonts: {regular: PDFFont; bold: PDFFont}) {
+  page.drawText(safeText(title).toUpperCase(), {x: 42, y: 754, size: 8.5, font: fonts.bold, color: orangeDeep});
+  page.drawText(safeText(title), {x: 42, y: 716, size: 29, font: fonts.bold, color: ink});
+  if (subtitle) drawLines(page, subtitle, {x: 42, y: 691, width: 505, size: 10.5, font: fonts.regular, color: muted, lineHeight: 15, maxLines: 2});
+}
+
+function drawBulletList(page: PDFPage, items: string[], options: {x: number; y: number; width: number; font: PDFFont; maxItems?: number; negative?: boolean}) {
+  let y = options.y;
+  for (const item of items.slice(0, options.maxItems || items.length)) {
+    const lines = wrap(item, options.font, 8.7, options.width - 22).slice(0, 3);
+    page.drawCircle({x: options.x + 5, y: y + 3, size: 3, color: options.negative ? muted : orange});
+    lines.forEach((text, index) => page.drawText(text, {x: options.x + 18, y: y - index * 12, size: 8.7, font: options.font, color: ink}));
+    y -= lines.length * 12 + 7;
+  }
+  return y;
+}
+
+function drawPageHeader(page: PDFPage, companyName: string, label: string, fonts: {regular: PDFFont; bold: PDFFont}) {
+  page.drawText(safeText(companyName).toUpperCase(), {x: 42, y: 811, size: 8.5, font: fonts.bold, color: orangeDeep});
+  const clipped = safeText(label).slice(0, 68);
+  page.drawText(clipped, {x: 553 - Math.min(300, fonts.regular.widthOfTextAtSize(clipped, 8)), y: 811, size: 8, font: fonts.regular, color: muted});
+  page.drawLine({start: {x: 42, y: 800}, end: {x: 553, y: 800}, thickness: .7, color: line});
+}
+
+function drawFactCard(page: PDFPage, label: string, value: string, x: number, y: number, width: number, fonts: {regular: PDFFont; bold: PDFFont}) {
+  page.drawRectangle({x, y, width, height: 64, color: pale, borderColor: line, borderWidth: .55});
+  page.drawText(safeText(label).toUpperCase(), {x: x + 10, y: y + 44, size: 6.7, font: fonts.bold, color: orangeDeep});
+  drawLines(page, value, {x: x + 10, y: y + 27, width: width - 20, size: 8.5, font: fonts.bold, color: ink, lineHeight: 10.5, maxLines: 2});
+}
+
+function drawRouteMap(page: PDFPage, stops: typeof northernCircuitRouteStops, fonts: {regular: PDFFont; bold: PDFFont}) {
+  const map = {x: 42, y: 348, width: 245, height: 302};
+  page.drawRectangle({...map, color: cream, borderColor: line, borderWidth: .6});
+  page.drawText("NORTHERN TANZANIA ROUTE", {x: 58, y: 624, size: 7.2, font: fonts.bold, color: orangeDeep});
+  const minLng = 34.55;
+  const maxLng = 37.05;
+  const minLat = -4.05;
+  const maxLat = -2.05;
+  const points = stops.map((stop, index) => ({
+    x: map.x + 31 + ((stop.coordinates.lng - minLng) / (maxLng - minLng)) * (map.width - 62) + (index === stops.length - 1 ? 6 : 0),
+    y: map.y + 36 + ((stop.coordinates.lat - minLat) / (maxLat - minLat)) * (map.height - 86) + (index === stops.length - 1 ? -10 : 0),
+  }));
+  points.slice(0, -1).forEach((point, index) => page.drawLine({start: point, end: points[index + 1], thickness: 1.8, color: orange, dashArray: [5, 4]}));
+  points.forEach((point, index) => {
+    page.drawCircle({x: point.x, y: point.y, size: index === 0 || index === points.length - 1 ? 7 : 6, color: index === 0 || index === points.length - 1 ? charcoal : orange, borderColor: white, borderWidth: 2});
+    page.drawCircle({x: point.x, y: point.y, size: 1.7, color: white});
+  });
+  page.drawText("Schematic route - not to scale", {x: 58, y: 363, size: 6.5, font: fonts.regular, color: muted});
+  let listY = 625;
+  stops.forEach((stop, index) => {
+    page.drawText(String(index + 1).padStart(2, "0"), {x: 318, y: listY, size: 7.5, font: fonts.bold, color: orangeDeep});
+    page.drawText(safeText(stop.name), {x: 344, y: listY, size: 10, font: fonts.bold, color: ink});
+    page.drawText(safeText(stop.label), {x: 516, y: listY, size: 7, font: fonts.regular, color: muted});
+    drawLines(page, stop.description, {x: 344, y: listY - 14, width: 199, size: 7.4, font: fonts.regular, color: muted, lineHeight: 9.5, maxLines: 2});
+    listY -= 47;
+  });
+}
+
+async function drawAccommodationCards(page: PDFPage, pdf: PDFDocument, stays: StayOption[], fonts: {regular: PDFFont; bold: PDFFont}) {
+  const cardWidth = 163;
+  for (const [index, stay] of stays.slice(0, 3).entries()) {
+    const x = 42 + index * 174;
+    const y = 55;
+    page.drawRectangle({x, y, width: cardWidth, height: 137, color: pale, borderColor: line, borderWidth: .65});
+    const image = await embedFirstPublicImage(pdf, stay.images.map(item => item.src));
+    if (image) drawCoverImage(page, image, {x, y: y + 67, width: cardWidth, height: 70});
+    else page.drawRectangle({x, y: y + 67, width: cardWidth, height: 70, color: cream});
+    page.drawText(safeText(stay.tier).toUpperCase(), {x: x + 10, y: y + 51, size: 6.2, font: fonts.bold, color: orangeDeep});
+    drawLines(page, stay.property, {x: x + 10, y: y + 35, width: cardWidth - 20, size: 8.7, font: fonts.bold, color: ink, lineHeight: 10, maxLines: 2});
+    page.drawText(safeText(stay.location), {x: x + 10, y: y + 10, size: 6.8, font: fonts.regular, color: muted});
+  }
+}
+
+export async function generateItineraryPdf(itinerary: Itinerary, profile?: ItineraryPdfProfile) {
   const config = getItineraryDownloadConfig(itinerary);
+  const supplement = getTripSupplement(itinerary.slug);
   const pdf = await PDFDocument.create();
   pdf.setTitle(`${itinerary.title} itinerary`);
   pdf.setAuthor(config.companyName);
@@ -60,133 +184,142 @@ export async function generateItineraryPdf(itinerary: Itinerary) {
   const regular = await pdf.embedFont(StandardFonts.Helvetica);
   const bold = await pdf.embedFont(StandardFonts.HelveticaBold);
   const italic = await pdf.embedFont(StandardFonts.HelveticaOblique);
+  const fonts = {regular, bold, italic};
   const hero = await embedPublicImage(pdf, itinerary.heroImage);
   const logo = await embedPublicImage(pdf, config.companyLogo || "/images/figma/brand-mark.png");
-  let page = pdf.addPage(PAGE_SIZE);
-  let y = 795;
-
-  const drawHeader = (label = itinerary.title) => {
-    page.drawText(config.companyName.toUpperCase(), {x: 42, y: 811, size: 8.5, font: bold, color: orange});
-    const clipped = safeText(label).slice(0, 72);
-    page.drawText(clipped, {x: 553 - Math.min(300, regular.widthOfTextAtSize(clipped, 8)), y: 811, size: 8, font: regular, color: muted});
-    page.drawLine({start: {x: 42, y: 800}, end: {x: 553, y: 800}, thickness: .8, color: line});
-    y = 778;
-  };
-  const newPage = (label?: string) => { page = pdf.addPage(PAGE_SIZE); drawHeader(label); };
-  const ensure = (height: number, label?: string) => { if (y - height < 58) newPage(label); };
-  const paragraph = (text: string, options: {size?: number; font?: PDFFont; color?: RGB; indent?: number; gap?: number; width?: number} = {}) => {
-    const size = options.size || 10;
-    const font = options.font || regular;
-    const indent = options.indent || 0;
-    const lines = wrap(text, font, size, options.width || 511 - indent);
-    ensure(lines.length * size * 1.4 + (options.gap || 0));
-    for (const textLine of lines) { page.drawText(textLine, {x: 42 + indent, y, size, font, color: options.color || ink}); y -= size * 1.4; }
-    y -= options.gap || 0;
-  };
-  const sectionHeading = (title: string) => {
-    ensure(52);
-    y -= 4;
-    page.drawText(safeText(title).toUpperCase(), {x: 42, y, size: 9, font: bold, color: orange});
-    y -= 22;
-  };
-  const bulletList = (items: string[], positive = true) => {
-    for (const item of items) {
-      const lines = wrap(item, regular, 9.5, 475);
-      ensure(lines.length * 14 + 5);
-      page.drawCircle({x: 49, y: y + 3, size: 3.3, color: positive ? orange : muted});
-      for (const textLine of lines) { page.drawText(textLine, {x: 62, y, size: 9.5, font: regular, color: ink}); y -= 13.5; }
-      y -= 3;
-    }
-  };
-
-  if (hero) drawContainedImage(page, hero, {x: 0, y: 392, width: 595.28, height: 450});
-  else page.drawRectangle({x: 0, y: 392, width: 595.28, height: 450, color: ink});
-  page.drawRectangle({x: 0, y: 392, width: 595.28, height: 450, color: ink, opacity: .48});
-  if (logo) drawContainedImage(page, logo, {x: 42, y: 772, width: 34, height: 34});
-  page.drawText(config.companyName.toUpperCase(), {x: 85, y: 785, size: 9, font: bold, color: rgb(1,1,1)});
-  wrap(itinerary.title, bold, 31, 500).slice(0, 4).forEach((titleLine, index) => page.drawText(titleLine, {x: 42, y: 650 - index * 36, size: 31, font: bold, color: rgb(1,1,1)}));
-  page.drawText(`${itinerary.durationDays} DAYS / ${Math.max(0, itinerary.durationDays - 1)} NIGHTS`, {x: 42, y: 432, size: 10, font: bold, color: orange});
-  y = 355;
-  paragraph(itinerary.summary, {size: 13, width: 500, gap: 20});
-  [["DURATION", `${itinerary.durationDays} days`], ["PRICE", itinerary.startingPrice ? `From ${itinerary.currency} ${itinerary.startingPrice} pp/day` : "On request"], ["STYLE", itinerary.travelStyle || "Camping, lodge or private"]].forEach(([label, value], index) => {
-    const x = 42 + index * 171;
-    page.drawRectangle({x, y: 180, width: 157, height: 70, color: cream, borderColor: line, borderWidth: .5});
-    page.drawText(label, {x: x + 13, y: 228, size: 7.5, font: bold, color: orange});
-    wrap(value, bold, 10, 131).slice(0, 2).forEach((textLine, lineIndex) => page.drawText(textLine, {x: x + 13, y: 207 - lineIndex * 13, size: 10, font: bold, color: ink}));
-  });
-  page.drawText("DESTINATIONS", {x: 42, y: 144, size: 7.5, font: bold, color: orange});
-  wrap(itinerary.destinations.join("  /  "), regular, 10, 500).slice(0, 3).forEach((textLine, index) => page.drawText(textLine, {x: 42, y: 124 - index * 14, size: 10, font: regular, color: ink}));
-
-  newPage("Your route");
-  sectionHeading("Your safari route");
-  paragraph("A northern Tanzania journey planned from Arusha through the country's most celebrated wildlife landscapes.", {size: 11, color: muted, gap: 18});
-  const routeStops = itinerary.slug === "tarangire-serengeti-ngorongoro" ? northernCircuitRouteStops : itinerary.destinations.map((name, index) => ({name, label: `Stop ${index + 1}`}));
-  const routeTop = y;
-  routeStops.forEach((stop, index) => {
-    const stopY = routeTop - index * 54;
-    if (index < routeStops.length - 1) page.drawLine({start: {x: 58, y: stopY - 9}, end: {x: 58, y: stopY - 47}, thickness: 1.5, color: orange, dashArray: [4, 4]});
-    page.drawCircle({x: 58, y: stopY, size: index === 0 || index === routeStops.length - 1 ? 7 : 6, color: index === 0 || index === routeStops.length - 1 ? ink : orange, borderColor: rgb(1,1,1), borderWidth: 2});
-    page.drawText(String(index + 1).padStart(2, "0"), {x: 82, y: stopY - 3, size: 8, font: bold, color: orange});
-    page.drawText(safeText(stop.name), {x: 108, y: stopY - 4, size: 12, font: bold, color: ink});
-    page.drawText(safeText(stop.label), {x: 430, y: stopY - 3, size: 8.5, font: regular, color: muted});
-  });
-  y = routeTop - routeStops.length * 54 - 8;
-  sectionHeading("At a glance");
-  paragraph(`${itinerary.durationDays} days beginning and ending in Arusha. Each day can be refined around your dates, preferred comfort level and the wildlife experiences you care about most.`, {size: 10.5});
-
   const fallbackDayImages = ["/images/figma/98118ae1-bb7c-432c-b7b1-433d27c59b13.png", "/images/figma/8a34ea1e-253b-41f7-8c0c-cac8586c40b4.png", "/images/figma/27222719-4ba9-4724-a440-0fcb7923b931.png", "/images/figma/66d4cce3-2303-4bdf-a3b9-8d8f56ab67de.png"];
+  const routeStops = itinerary.slug === "tarangire-serengeti-ngorongoro" ? northernCircuitRouteStops : itinerary.destinations.map((name, index) => ({name, label: `Stop ${index + 1}`, description: "Safari destination", dayNumber: index + 1, coordinates: {lat: -3.7 + index * .22, lng: 35.2 + index * .25}}));
+
+  const cover = pdf.addPage(PAGE_SIZE);
+  if (hero) drawCoverImage(cover, hero, {x: 0, y: 282, width: PAGE_WIDTH, height: PAGE_HEIGHT - 282});
+  else cover.drawRectangle({x: 0, y: 282, width: PAGE_WIDTH, height: PAGE_HEIGHT - 282, color: charcoal});
+  cover.drawRectangle({x: 0, y: 282, width: PAGE_WIDTH, height: PAGE_HEIGHT - 282, color: ink, opacity: .5});
+  cover.drawRectangle({x: 0, y: 0, width: PAGE_WIDTH, height: 282, color: white});
+  if (logo) drawFitImage(cover, logo, {x: 42, y: 780, width: 34, height: 34});
+  cover.drawText(safeText(config.companyName), {x: 86, y: 795, size: 11, font: bold, color: white});
+  drawLines(cover, config.companyDescription, {x: 86, y: 780, width: 390, size: 7.2, font: regular, color: rgb(.9, .88, .85), lineHeight: 10, maxLines: 2});
+  cover.drawText("TAILOR-MADE TANZANIA SAFARI", {x: 42, y: 694, size: 8.5, font: bold, color: orange});
+  drawLines(cover, itinerary.title, {x: 42, y: 654, width: 505, size: 31, font: bold, color: white, lineHeight: 36, maxLines: 3});
+  drawLines(cover, itinerary.summary, {x: 42, y: 532, width: 485, size: 12, font: regular, color: white, lineHeight: 17, maxLines: 4});
+  const contactLine = [config.contactPhone, config.contactEmail, config.contactWebsite].filter(Boolean).join("  /  ");
+  cover.drawText(safeText(contactLine), {x: 42, y: 310, size: 7.5, font: regular, color: white});
+  const dates = profile ? `${formatDate(profile.arrival)} - ${formatDate(profile.departure)}` : "Flexible / to be confirmed";
+  const guestCount = profile ? profile.adults + profile.children : 0;
+  const guests = profile ? `${guestCount} guest${guestCount === 1 ? "" : "s"} (${profile.adults} adult${profile.adults === 1 ? "" : "s"}${profile.children ? `, ${profile.children} child${profile.children === 1 ? "" : "ren"}` : ""})` : "Tailored to your group";
+  const facts = [
+    ["Duration", `${itinerary.durationDays} days / ${Math.max(0, itinerary.durationDays - 1)} nights`],
+    ["Travel dates", dates],
+    ["Guests", guests],
+    ["Travel style", profile?.travelStyle || itinerary.travelStyle || "Camping, lodge or private"],
+    ["Starting price", itinerary.startingPrice ? `From ${itinerary.currency} ${itinerary.startingPrice} pp/day` : "On request"],
+  ];
+  facts.forEach(([label, value], index) => drawFactCard(cover, label, value, 42 + index * 103, 165, 94, fonts));
+  cover.drawText("DESTINATIONS", {x: 42, y: 139, size: 7, font: bold, color: orangeDeep});
+  drawLines(cover, itinerary.destinations.join("  /  "), {x: 42, y: 121, width: 510, size: 9.2, font: regular, color: ink, lineHeight: 13, maxLines: 2});
+
+  const routePage = pdf.addPage(PAGE_SIZE);
+  drawPageHeader(routePage, config.companyName, itinerary.title, fonts);
+  drawSectionTitle(routePage, "Your safari route", "A clear view of the journey from Arusha through northern Tanzania's celebrated wildlife landscapes.", fonts);
+  drawRouteMap(routePage, routeStops, fonts);
+  routePage.drawRectangle({x: 42, y: 76, width: 511, height: 238, color: pale, borderColor: line, borderWidth: .6});
+  routePage.drawText("TRIP AT A GLANCE", {x: 60, y: 286, size: 7.2, font: bold, color: orangeDeep});
+  const overview = [["Dates", dates], ["Guests", guests], ["Style", profile?.travelStyle || itinerary.travelStyle || "Tailored safari"], ["Start / finish", "Your accommodation in Arusha"]];
+  overview.forEach(([label, value], index) => {
+    const x = 60 + (index % 2) * 248;
+    const y = 250 - Math.floor(index / 2) * 76;
+    routePage.drawText(safeText(label).toUpperCase(), {x, y, size: 6.5, font: bold, color: orangeDeep});
+    drawLines(routePage, value, {x, y: y - 17, width: 210, size: 9.5, font: bold, color: ink, lineHeight: 12, maxLines: 2});
+  });
+  drawLines(routePage, "All driving times and distances shown in this itinerary are estimates. Your guide may adjust the route for wildlife movements, road conditions and park regulations.", {x: 60, y: 111, width: 470, size: 7.5, font: italic, color: muted, lineHeight: 10, maxLines: 3});
+
   for (const [index, day] of itinerary.days.entries()) {
-    ensure(335, `Day ${day.dayNumber}`);
-    if (y < 760) { page.drawLine({start: {x: 42, y: y + 12}, end: {x: 553, y: y + 12}, thickness: .7, color: line}); }
-    page.drawText(`DAY ${day.dayNumber}`, {x: 42, y, size: 8.5, font: bold, color: orange}); y -= 21;
-    for (const titleLine of wrap(day.title, bold, 18, 510)) { page.drawText(titleLine, {x: 42, y, size: 18, font: bold, color: ink}); y -= 21; }
-    paragraph(day.summary, {size: 9.5, color: muted, gap: 8});
+    const page = pdf.addPage(PAGE_SIZE);
+    drawPageHeader(page, config.companyName, `Day ${day.dayNumber} - ${day.title}`, fonts);
+    page.drawText(`DAY ${day.dayNumber}`, {x: 42, y: 754, size: 8.5, font: bold, color: orangeDeep});
+    drawLines(page, day.title, {x: 42, y: 722, width: 510, size: 23, font: bold, color: ink, lineHeight: 27, maxLines: 2});
+    drawLines(page, day.summary, {x: 42, y: 666, width: 510, size: 10, font: regular, color: muted, lineHeight: 14, maxLines: 2});
+    const travel = supplement.travelByDay[day.dayNumber];
+    const dayFacts = [["Habitat", day.habitat || "Varied safari landscape"], ["Driving", travel?.driveTime || "Route dependent"], ["Distance", travel?.distance || "Route dependent"], ["Activity", travel?.activityLevel || "Easy safari day"]];
+    dayFacts.forEach(([label, value], factIndex) => drawFactCard(page, label, value, 42 + factIndex * 130, 581, 120, fonts));
     const dayImage = await embedPublicImage(pdf, day.image || fallbackDayImages[index]);
-    if (dayImage) { ensure(145); drawContainedImage(page, dayImage, {x: 42, y: y - 130, width: 511, height: 130}); y -= 143; }
-    if (day.habitat) {
-      page.drawRectangle({x: 42, y: y - 28, width: 511, height: 28, color: cream});
-      page.drawText("HABITAT", {x: 55, y: y - 18, size: 7, font: bold, color: orange});
-      page.drawText(safeText(day.habitat), {x: 112, y: y - 19, size: 8.5, font: bold, color: ink}); y -= 40;
+    if (dayImage) drawCoverImage(page, dayImage, {x: 42, y: 350, width: 511, height: 210});
+    else page.drawRectangle({x: 42, y: 350, width: 511, height: 210, color: cream});
+    page.drawRectangle({x: 42, y: 350, width: 511, height: 23, color: ink, opacity: .72});
+    page.drawText(safeText(`${day.title} - safari experience`), {x: 53, y: 358, size: 7.2, font: regular, color: white});
+    page.drawText("DAY PLAN", {x: 42, y: 325, size: 7.2, font: bold, color: orangeDeep});
+    let planY = 306;
+    day.activities.slice(0, 2).forEach(activity => {
+      page.drawText(safeText(activity.title), {x: 42, y: planY, size: 10, font: bold, color: ink});
+      const meta = [activity.time, activity.location].filter(Boolean).join(" / ");
+      if (meta) page.drawText(safeText(meta).slice(0, 70), {x: 553 - Math.min(240, italic.widthOfTextAtSize(safeText(meta), 7.2)), y: planY, size: 7.2, font: italic, color: muted});
+      planY = drawLines(page, activity.description, {x: 42, y: planY - 16, width: 510, size: 8.5, font: regular, color: muted, lineHeight: 11.5, maxLines: 2}) - 7;
+    });
+    page.drawRectangle({x: 42, y: 220, width: 511, height: 46, color: cream, borderColor: line, borderWidth: .55});
+    page.drawText("MEAL PLAN", {x: 56, y: 248, size: 6.7, font: bold, color: orangeDeep});
+    page.drawText(safeText(day.meals.join(" / ") || "Not listed"), {x: 56, y: 232, size: 8.7, font: bold, color: ink});
+    page.drawText("OVERNIGHT", {x: 300, y: 248, size: 6.7, font: bold, color: orangeDeep});
+    const overnight = day.accommodation ? `${day.accommodation.category} - ${day.accommodation.location}` : "Return to Arusha / drop-off";
+    page.drawText(safeText(overnight), {x: 300, y: 232, size: 8.7, font: bold, color: ink});
+    const stays = supplement.staysByDay[day.dayNumber] || [];
+    if (stays.length) {
+      page.drawText("ACCOMMODATION OPTIONS", {x: 42, y: 202, size: 7.2, font: bold, color: orangeDeep});
+      await drawAccommodationCards(page, pdf, stays, fonts);
+    } else {
+      page.drawRectangle({x: 42, y: 88, width: 511, height: 112, color: pale, borderColor: line, borderWidth: .6});
+      page.drawText("END OF SAFARI", {x: 60, y: 172, size: 7.2, font: bold, color: orangeDeep});
+      drawLines(page, "After the crater game drive and picnic lunch, return to your accommodation in Arusha. Airport transfer or an extra hotel night can be added on request.", {x: 60, y: 150, width: 470, size: 9.5, font: regular, color: ink, lineHeight: 14, maxLines: 4});
     }
-    page.drawText("DAY PLAN", {x: 42, y, size: 7.5, font: bold, color: orange}); y -= 16;
-    for (const activity of day.activities) {
-      ensure(42);
-      page.drawText(safeText(activity.title), {x: 42, y, size: 9.5, font: bold, color: ink});
-      const meta = safeText([activity.time, activity.location].filter(Boolean).join("  /  "));
-      if (meta) page.drawText(meta, {x: 553 - Math.min(250, regular.widthOfTextAtSize(meta, 7.5)), y, size: 7.5, font: italic, color: muted});
-      y -= 15;
-      paragraph(activity.description, {size: 8.5, color: muted, gap: 5});
-    }
-    ensure(56);
-    page.drawRectangle({x: 42, y: y - 42, width: 511, height: 42, color: cream, borderColor: line, borderWidth: .5});
-    page.drawText("MEALS", {x: 55, y: y - 15, size: 7, font: bold, color: orange});
-    page.drawText(safeText(day.meals.join(" / ") || "Not listed"), {x: 55, y: y - 31, size: 8.5, font: regular, color: ink});
-    if (day.accommodation) {
-      page.drawText("ACCOMMODATION", {x: 282, y: y - 15, size: 7, font: bold, color: orange});
-      page.drawText(safeText(`${day.accommodation.name} - ${day.accommodation.location}`), {x: 282, y: y - 31, size: 8.5, font: regular, color: ink});
-    }
-    y -= 58;
-    const accommodationImage = await embedPublicImage(pdf, day.accommodation?.image);
-    if (accommodationImage) { ensure(145); drawContainedImage(page, accommodationImage, {x: 42, y: y - 130, width: 511, height: 130}); y -= 143; }
   }
 
-  newPage("What's included");
-  sectionHeading("What's included"); bulletList(itinerary.inclusions);
-  y -= 8; sectionHeading("Not included"); bulletList(itinerary.exclusions, false);
-  if (itinerary.practicalInformation?.length) { y -= 8; sectionHeading("Practical information"); bulletList(itinerary.practicalInformation); }
-  ensure(145); y -= 18;
-  page.drawRectangle({x: 42, y: y - 120, width: 511, height: 120, color: ink});
-  page.drawText("READY TO PLAN YOUR SAFARI?", {x: 62, y: y - 28, size: 9, font: bold, color: orange});
-  page.drawText(config.companyName, {x: 62, y: y - 52, size: 16, font: bold, color: rgb(1,1,1)});
-  page.drawText(safeText(config.contactEmail), {x: 62, y: y - 76, size: 9.5, font: regular, color: rgb(1,1,1)});
-  page.drawText(safeText(`${config.contactPhone}  /  ${config.contactLocation}`), {x: 62, y: y - 95, size: 9.5, font: regular, color: rgb(1,1,1)});
+  const includedPage = pdf.addPage(PAGE_SIZE);
+  drawPageHeader(includedPage, config.companyName, "Inclusions, exclusions and optional experiences", fonts);
+  drawSectionTitle(includedPage, "What your safari includes", "Your final quotation confirms the exact package, selected accommodation and any requested upgrades.", fonts);
+  includedPage.drawRectangle({x: 42, y: 395, width: 245, height: 270, color: pale, borderColor: line, borderWidth: .6});
+  includedPage.drawRectangle({x: 308, y: 395, width: 245, height: 270, color: pale, borderColor: line, borderWidth: .6});
+  includedPage.drawText("INCLUDED", {x: 60, y: 638, size: 8, font: bold, color: orangeDeep});
+  drawBulletList(includedPage, itinerary.inclusions, {x: 60, y: 613, width: 208, font: regular, maxItems: 9});
+  includedPage.drawText("NOT INCLUDED", {x: 326, y: 638, size: 8, font: bold, color: muted});
+  drawBulletList(includedPage, itinerary.exclusions, {x: 326, y: 613, width: 208, font: regular, maxItems: 9, negative: true});
+  includedPage.drawText("OPTIONAL EXPERIENCES", {x: 42, y: 365, size: 8, font: bold, color: orangeDeep});
+  const optionalY = 335;
+  supplement.optionalExperiences.forEach((item, index) => {
+    const x = 42 + (index % 2) * 266;
+    const y = optionalY - Math.floor(index / 2) * 112;
+    includedPage.drawRectangle({x, y: y - 86, width: 245, height: 92, color: white, borderColor: line, borderWidth: .6});
+    includedPage.drawText(safeText(item.name), {x: x + 14, y: y - 16, size: 9.5, font: bold, color: ink});
+    includedPage.drawText(safeText(item.price), {x: x + 14, y: y - 34, size: 8, font: bold, color: orangeDeep});
+    drawLines(includedPage, item.note, {x: x + 14, y: y - 52, width: 217, size: 7.5, font: regular, color: muted, lineHeight: 10, maxLines: 3});
+  });
+
+  const practicalPage = pdf.addPage(PAGE_SIZE);
+  drawPageHeader(practicalPage, config.companyName, "Practical travel information", fonts);
+  drawSectionTitle(practicalPage, "Before you travel", "A compact checklist for a comfortable, well-prepared safari in northern Tanzania.", fonts);
+  practicalPage.drawText("PRACTICAL INFORMATION", {x: 42, y: 649, size: 8, font: bold, color: orangeDeep});
+  const practical = itinerary.practicalInformation?.length ? itinerary.practicalInformation : [
+    "Bring a valid passport, arrange the appropriate Tanzania visa and travel with comprehensive travel insurance.",
+    "Park roads can be dusty and uneven. Soft-sided luggage is easier to store in the safari vehicle.",
+    "Please tell us about allergies, dietary requirements, mobility needs and celebrations before arrival.",
+    "Drinking water is supplied on safari. Keep cash for tips and small personal purchases.",
+  ];
+  drawBulletList(practicalPage, practical, {x: 42, y: 623, width: 235, font: regular, maxItems: 7});
+  practicalPage.drawText("PACKING NOTES", {x: 308, y: 649, size: 8, font: bold, color: orangeDeep});
+  drawBulletList(practicalPage, supplement.packingNotes, {x: 308, y: 623, width: 235, font: regular, maxItems: 7});
+  practicalPage.drawLine({start: {x: 42, y: 396}, end: {x: 553, y: 396}, thickness: .7, color: line});
+  practicalPage.drawText("IMPORTANT BOOKING CONDITIONS", {x: 42, y: 370, size: 8, font: bold, color: orangeDeep});
+  drawBulletList(practicalPage, supplement.bookingConditions, {x: 42, y: 343, width: 511, font: regular, maxItems: 6, negative: true});
+  practicalPage.drawRectangle({x: 42, y: 58, width: 511, height: 110, color: ink});
+  practicalPage.drawText("READY TO PLAN YOUR SAFARI?", {x: 62, y: 145, size: 8, font: bold, color: orange});
+  practicalPage.drawText(safeText(config.companyName), {x: 62, y: 120, size: 18, font: bold, color: white});
+  drawLines(practicalPage, config.companyDescription, {x: 62, y: 102, width: 300, size: 7.5, font: regular, color: rgb(.88, .86, .82), lineHeight: 10, maxLines: 3});
+  const contacts = [config.contactPhone, config.contactWhatsApp ? `WhatsApp ${config.contactWhatsApp}` : "", config.contactEmail, config.contactWebsite].filter((value): value is string => Boolean(value));
+  contacts.forEach((item, index) => practicalPage.drawText(safeText(item), {x: 382, y: 139 - index * 22, size: 8.2, font: index === 0 ? bold : regular, color: white}));
 
   const pages = pdf.getPages();
-  pages.forEach((pdfPage, index) => {
-    pdfPage.drawLine({start: {x: 42, y: 38}, end: {x: 553, y: 38}, thickness: .6, color: line});
-    pdfPage.drawText(`${config.companyName}  /  ${safeText(itinerary.title).slice(0, 55)}`, {x: 42, y: 21, size: 7.5, font: regular, color: muted});
+  pages.forEach((page, index) => {
+    page.drawLine({start: {x: 42, y: 39}, end: {x: 553, y: 39}, thickness: .55, color: line});
+    page.drawText(`${safeText(config.companyName)}  /  ${safeText(config.contactWebsite || config.contactEmail)}`, {x: 42, y: 21, size: 7.1, font: regular, color: muted});
     const pageNumber = `${index + 1} / ${pages.length}`;
-    pdfPage.drawText(pageNumber, {x: 553 - regular.widthOfTextAtSize(pageNumber, 7.5), y: 21, size: 7.5, font: bold, color: muted});
+    page.drawText(pageNumber, {x: 553 - regular.widthOfTextAtSize(pageNumber, 7.2), y: 21, size: 7.2, font: bold, color: muted});
   });
   return pdf.save();
 }

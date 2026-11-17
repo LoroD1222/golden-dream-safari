@@ -31,6 +31,8 @@ const downloadConfigSchema = z.object({
   contactEmail: z.email().max(254),
   contactPhone: z.string().trim().min(1).max(60),
   contactLocation: z.string().trim().min(1).max(120),
+  contactWebsite: z.string().trim().max(180).optional(),
+  contactWhatsApp: z.string().trim().max(60).optional(),
 });
 
 const daySchema = z.object({

@@ -90,6 +90,8 @@ export function ItineraryAdmin({initialItems, storageLabel}: {initialItems: Itin
         <label>PDF contact email<input type="email" value={draft.download.contactEmail} onChange={e => setDraft({...draft, download: {...draft.download!, contactEmail: e.target.value}})}/></label>
         <label>PDF contact phone<input value={draft.download.contactPhone} onChange={e => setDraft({...draft, download: {...draft.download!, contactPhone: e.target.value}})}/></label>
         <label>PDF contact location<input value={draft.download.contactLocation} onChange={e => setDraft({...draft, download: {...draft.download!, contactLocation: e.target.value}})}/></label>
+        <label>PDF website<input value={draft.download.contactWebsite || ""} onChange={e => setDraft({...draft, download: {...draft.download!, contactWebsite: e.target.value || undefined}})}/></label>
+        <label>PDF WhatsApp<input value={draft.download.contactWhatsApp || ""} onChange={e => setDraft({...draft, download: {...draft.download!, contactWhatsApp: e.target.value || undefined}})}/></label>
       </div></div>}
       <div className="admin-days-heading"><div><span>Day management</span><h2>{draft.days.length} itinerary days</h2></div><button className="button button--outline" type="button" onClick={() => setDraft({...draft, durationDays: draft.days.length + 1, days: [...draft.days, newDay(draft.days.length + 1)]})}>+ Add day</button></div>
       <div className="admin-days">{draft.days.map((day, dayIndex) => <article className="admin-day" key={day.id}>

@@ -124,7 +124,13 @@ export async function POST(request: NextRequest) {
   duplicates.set(fingerprint, now);
   const response = NextResponse.json({message: "Your request was sent.", downloadAccess: Boolean(data.downloadIntent)});
   if (data.downloadIntent && data.tripSlug) {
-    response.cookies.set(itineraryAccessCookieName(data.tripSlug), createItineraryAccessToken(data.tripSlug), itineraryAccessCookieOptions);
+    response.cookies.set(itineraryAccessCookieName(data.tripSlug), createItineraryAccessToken(data.tripSlug, Date.now(), undefined, {
+      arrival: data.arrival,
+      departure: data.departure,
+      adults: data.adults,
+      children: data.children,
+      travelStyle: data.travelStyle,
+    }), itineraryAccessCookieOptions);
   }
   return response;
 }

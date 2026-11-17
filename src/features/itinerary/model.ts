@@ -40,6 +40,8 @@ export type ItineraryDownloadConfig = {
   contactEmail: string;
   contactPhone: string;
   contactLocation: string;
+  contactWebsite?: string;
+  contactWhatsApp?: string;
 };
 
 export type Itinerary = {

@@ -1,7 +1,7 @@
 import "server-only";
 
 import type {NextRequest} from "next/server";
-import {itineraryAccessCookieName, verifyItineraryAccessToken} from "@/features/itinerary/access";
+import {itineraryAccessCookieName, readItineraryPdfProfile, verifyItineraryAccessToken} from "@/features/itinerary/access";
 import {getItineraryDownloadConfig} from "@/features/itinerary/download-config";
 import {generateItineraryPdf} from "@/features/itinerary/pdf";
 import {getItineraryRepository} from "@/features/itinerary/storage";
@@ -15,7 +15,7 @@ export async function protectedItineraryPdfResponse(request: NextRequest, slug: 
   if (!itinerary || itinerary.status !== "published") return new Response("Itinerary not found.", {status: 404, headers: {...privateHeaders, "content-type": "text/plain; charset=utf-8"}});
   if (!getItineraryDownloadConfig(itinerary).enabled) return new Response("PDF downloads are not enabled for this trip.", {status: 403, headers: {...privateHeaders, "content-type": "text/plain; charset=utf-8"}});
   try {
-    const bytes = await generateItineraryPdf(itinerary);
+    const bytes = await generateItineraryPdf(itinerary, readItineraryPdfProfile(slug, token));
     return new Response(Buffer.from(bytes), {headers: {...privateHeaders, "content-type": "application/pdf", "content-disposition": `attachment; filename="${itinerary.slug}-itinerary.pdf"`}});
   } catch (error) {
     console.error("Itinerary PDF generation failed", error);

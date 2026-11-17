@@ -14,6 +14,8 @@ export const defaultItineraryDownloadConfig: ItineraryDownloadConfig = {
   contactEmail: "goldendreamsafaris@gmail.com",
   contactPhone: "+255 763 571 646",
   contactLocation: "Arusha, Tanzania",
+  contactWebsite: "www.golden-dream-safaris.com",
+  contactWhatsApp: "+255 763 571 646",
 };
 
 export function getItineraryDownloadConfig(itinerary: Pick<Itinerary, "download">) {

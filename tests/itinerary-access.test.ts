@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import test from "node:test";
-import {createItineraryAccessToken, itineraryAccessCookieName, safeTripSlug, verifyItineraryAccessToken} from "../src/features/itinerary/access";
+import {createItineraryAccessToken, itineraryAccessCookieName, readItineraryPdfProfile, safeTripSlug, verifyItineraryAccessToken} from "../src/features/itinerary/access";
 
 const secret = "test-only-itinerary-secret";
 const now = Date.UTC(2026, 10, 17);
@@ -20,4 +20,12 @@ test("rejects tampered and expired access", () => {
   const token = createItineraryAccessToken("tarangire-serengeti-ngorongoro", now, secret);
   assert.equal(verifyItineraryAccessToken("tarangire-serengeti-ngorongoro", `${token}tampered`, now, secret), false);
   assert.equal(verifyItineraryAccessToken("tarangire-serengeti-ngorongoro", token, now + 366 * 24 * 60 * 60 * 1000, secret), false);
+});
+
+test("round-trips a signed PDF traveller profile", () => {
+  const profile = {arrival: "2027-02-10", departure: "2027-02-14", adults: 2, children: 1, travelStyle: "Mid-range lodge" as const};
+  const token = createItineraryAccessToken("tarangire-serengeti-ngorongoro", now, secret, profile);
+  assert.equal(verifyItineraryAccessToken("tarangire-serengeti-ngorongoro", token, now, secret), true);
+  assert.deepEqual(readItineraryPdfProfile("tarangire-serengeti-ngorongoro", token, now, secret), profile);
+  assert.equal(readItineraryPdfProfile("great-migration", token, now, secret), undefined);
 });
