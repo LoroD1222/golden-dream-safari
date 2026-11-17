@@ -7,12 +7,20 @@ import {FigmaIcon, RatingStars} from "@/components/figma-icon";
 
 const allFilter = "all";
 const photosFilter = "photos";
+const figmaGuestPhotos = [
+  {src: "/images/figma/guest-1.png", alt: "Golden Dream guests at the Serengeti National Park entrance"},
+  {src: "/images/figma/guest-2.png", alt: "Golden Dream guest visiting a Maasai community"},
+  {src: "/images/figma/guest-3.png", alt: "Safari guest with a giraffe in the background"},
+  {src: "/images/figma/guest-4.png", alt: "Safari guest overlooking the Ngorongoro landscape"},
+  {src: "/images/figma/reviews-hero-figma.png", alt: "Golden Dream guests and guide beside a safari vehicle"},
+  {src: "/images/figma/guest-5.png", alt: "Guests watching an elephant from a safari vehicle"},
+];
 
 export function ReviewsGrid({reviews, categories, sourceUrl, sourceName}: {reviews: Review[]; categories: ReviewCategory[]; sourceUrl: string; sourceName: string}) {
   const [active, setActive] = useState(allFilter);
   const [expanded, setExpanded] = useState(false);
   const filtered = useMemo(() => reviews.filter(review => active === allFilter || active === photosFilter ? (active !== photosFilter || review.images.length > 0) : review.categoryIds.includes(active)), [active, reviews]);
-  const photos = useMemo(() => {
+  const cmsPhotos = useMemo(() => {
     const seen = new Set<string>();
     return reviews.flatMap(review => review.images).filter(image => {
       if (seen.has(image.src)) return false;
@@ -20,6 +28,7 @@ export function ReviewsGrid({reviews, categories, sourceUrl, sourceName}: {revie
       return true;
     }).slice(0, 6);
   }, [reviews]);
+  const photos = cmsPhotos.length >= 6 ? cmsPhotos : figmaGuestPhotos;
   const initialReviewCount = 9;
   const visible = expanded ? filtered : filtered.slice(0, initialReviewCount);
 
