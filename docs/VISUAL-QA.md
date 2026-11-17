@@ -14,6 +14,19 @@ The Figma screens were compared during implementation at their native proportion
 | `/contact` | Pass | Pass | Pass | Contact hero, wizard and FAQ. |
 | `/admin/itineraries` | Pass | Pass | Pass | Editor remains usable in a single-column mobile layout. |
 
+## Public design-system audit — 2026-11-17
+
+The six public routes were rechecked against Figma frames `63:1883`, `126:1618`, `136:1600`, `137:1600`, `138:1600` and `139:1600`. Button labels, variants, arrow treatments, heading hierarchy and body copy remain aligned with the supplied design. The repeated rounded section badge with an orange dot is the sole intentional visual override: it has been removed everywhere and replaced by plain uppercase editorial text at the client’s request.
+
+| Route | Buttons checked | Text checked | Shared badge override |
+| --- | --- | --- | --- |
+| `/` | Header quote, hero quote, WhatsApp, destination and trip CTAs | Hero, section headings, trip cards, booking, host, reviews and FAQ | Plain eyebrow labels only. |
+| `/trips` | Header quote, filters, sort and trip-card actions | Directory hero, category copy, prices and card metadata | Plain eyebrow labels only. |
+| `/trips/tarangire-serengeti-ngorongoro` | Quote, WhatsApp, download, itinerary links and price actions | Hero, facts, overview, daily itinerary, inclusions, price and reviews | Plain eyebrow labels only. |
+| `/reviews` | Tripadvisor CTA, filters and show-more action | Hero summary, guest metadata, review cards and replies | Plain eyebrow labels only. |
+| `/about` | Quote and WhatsApp actions | Hero, story, values, team and company numbers | Plain eyebrow labels only. |
+| `/contact` | Contact methods, wizard navigation, choice controls and FAQ | Contact introduction, all four form steps and help copy | Plain eyebrow labels only. |
+
 ## Viewports
 
 Validated widths: 1440, 1024, 768, 430, 414, 390, 375, 360 and 320 CSS pixels. Every primary public route was rendered at 390×844, and the homepage was rendered at every listed mobile width. No page-level horizontal overflow, clipped heading or overlapping hero panel remained.
@@ -35,6 +48,8 @@ Validated widths: 1440, 1024, 768, 430, 414, 390, 375, 360 and 320 CSS pixels. E
 - Removed the repeated dark eyebrow/section badge and its orange dot across all public routes at the client’s request.
 - Rebuilt the safari-detail mobile hero and price panel as natural flow content rather than a fixed 1000px overlay composition.
 - Added narrow-screen itinerary, accommodation, review, contact and footer layouts down to 320px.
+- Restored the mobile Day trips tile grid track after a late homepage override collapsed its image container to zero height.
+- Added the 95-quality FAQ portrait setting to the Next image allowlist so the supplied high-resolution crop renders without configuration warnings.
 
 ## Content and accessibility checks
 

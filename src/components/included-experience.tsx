@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import {useState} from "react";
-import {SectionPill} from "@/components/button-link";
+import {SectionEyebrow} from "@/components/button-link";
 
 const offers = [
   {
@@ -50,7 +50,7 @@ export function IncludedExperience() {
   return (
     <section className="included section-shell section-pad" id="included">
       <div className="included-copy">
-        <SectionPill>What we offer</SectionPill>
+        <SectionEyebrow>What we offer</SectionEyebrow>
         <h2>What&apos;s included in every safari</h2>
         <p>Park entry fees, accommodation, all meals, transport in a safari vehicle and drinking water. Airport transfers and a hotel in Arusha can be added on request.</p>
         <ol className="included-list" aria-label="Safari inclusions">

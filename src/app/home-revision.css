@@ -5,7 +5,7 @@
 }
 
 .home-top .home-hero__copy {width: 580px; flex-basis: 580px}
-.home-top .home-hero__copy .section-pill {align-self: flex-start}
+.home-top .home-hero__copy .section-eyebrow {align-self: flex-start}
 .home-top .button--light .button__arrow {background: var(--orange)}
 .home-top .home-hero__copy h1 {display: block; width: 580px; max-width: 580px}
 .home-top .home-hero__copy>p {width: 480px; max-width: 100%; font-size: 16px}
@@ -381,6 +381,7 @@ main,section,article,aside,nav,header,footer,div {min-width: 0}
 
 @media (max-width: 700px) {
   .home-trips {width: calc(100% - (var(--mobile-gutter) * 2))}
+  .home-trips .trip-bento {grid-template-rows: 390px 240px 230px 240px 330px}
   .home-trips .trip-tile,
   .home-trips .trip-mix {border-radius: 22px}
   .home-trips .trip-tile__duration {top: 14px; left: 14px; padding: 7px 11px; font-size: 12px}
@@ -388,6 +389,10 @@ main,section,article,aside,nav,header,footer,div {min-width: 0}
   .home-trips .trip-tile>div {padding: 18px}
   .home-trips .trip-tile h3 {font-size: 24px}
   .home-trips .trip-tile p {font-size: 15px}
+}
+
+@media (max-width: 360px) {
+  .home-trips .trip-bento {grid-template-rows: 360px 230px 220px 220px 230px 350px}
 }
 
 .home-review-meta {display: grid; grid-template-columns: minmax(0,1fr) auto; align-items: center}

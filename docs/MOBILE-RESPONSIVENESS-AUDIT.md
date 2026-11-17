@@ -14,7 +14,7 @@ Audit date: 2026-11-17. Source of truth: the current Figma file `nXKD3sKPSaGsIsX
 
 ## Issues found
 
-- The latest Figma revision reintroduced compact orange-dot section labels across the public routes, superseding the earlier removal request.
+- A later Figma revision reintroduced compact orange-dot section labels across the public routes, conflicting with the client-approved direction to avoid the repeated generic capsule treatment.
 - Several late CSS overrides competed with the earlier mobile rules, especially on the homepage and safari-detail hero.
 - The safari-detail hero used a fixed 1000px mobile height and an absolutely positioned price card, creating unnecessary height and fragile overlap behavior.
 - Sticky trip navigation attempted to retain desktop actions on narrow screens.
@@ -24,7 +24,7 @@ Audit date: 2026-11-17. Source of truth: the current Figma file `nXKD3sKPSaGsIsX
 
 ## Fixes implemented
 
-- Restored the shared `.section-pill` treatment with the exact dot, spacing and rounded background from the latest Figma frames while preserving responsive wrapping.
+- Removed the shared capsule-and-dot treatment from every public route and replaced it with a plain editorial eyebrow. The client direction intentionally overrides this one Figma motif while retaining the Figma typography, spacing, copy and button system.
 - Added one shared mobile cascade for route gutters, touch targets, overflow containment and responsive typography.
 - Rebuilt the trip-detail mobile hero as a natural document flow: copy first, then the pricing card, with no absolute overlap or fixed 1000px height.
 - Converted mobile trip navigation into a compact horizontally scrollable section rail and hid duplicated desktop-only download/quote actions from that sticky bar.

@@ -3,7 +3,7 @@ import {FaqSection} from "@/components/faq-section";
 import {MarketingShell} from "@/components/marketing-shell";
 import {QuoteWizard} from "@/components/quote-wizard";
 import {StructuredData} from "@/components/structured-data";
-import {SectionPill} from "@/components/button-link";
+import {SectionEyebrow} from "@/components/button-link";
 import {contactDetails, otherTrips, siteOrigin, wildlifeTrips} from "@/data/site";
 import {FigmaIcon, type FigmaIconName} from "@/components/figma-icon";
 
@@ -37,7 +37,7 @@ export default async function ContactPage({searchParams}: {searchParams: Promise
     <section className="contact-hero section-shell">
       <div className="contact-intro">
         <p>Home&nbsp; / &nbsp;Contact</p>
-        <SectionPill>Contact</SectionPill>
+        <SectionEyebrow>Contact</SectionEyebrow>
         <h1>Ask for a quote</h1>
         <p>Tell us about your trip and we&apos;ll reply with a proposal and a price. Asking is free and commits you to nothing.</p>
         <div className="contact-methods">

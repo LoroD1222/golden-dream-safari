@@ -7,6 +7,6 @@ export function ButtonLink({href, children, variant = "orange", className = ""}:
   return <Link className={`button button--${variant} ${className}`.trim()} href={href}>{children}<span className="button__arrow" aria-hidden><FigmaIcon name={arrow} width={20}/></span></Link>;
 }
 
-export function SectionPill({children}: {children: ReactNode}) {
-  return <span className="section-pill"><span aria-hidden/>{children}</span>;
+export function SectionEyebrow({children}: {children: ReactNode}) {
+  return <span className="section-eyebrow">{children}</span>;
 }

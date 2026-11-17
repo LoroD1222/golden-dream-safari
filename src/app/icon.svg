@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-labelledby="title">
+  <title id="title">Golden Dream Safaris</title>
+  <defs>
+    <radialGradient id="sky" cx="50%" cy="58%" r="62%">
+      <stop offset="0" stop-color="#fff5a8"/>
+      <stop offset=".32" stop-color="#ffd15a"/>
+      <stop offset=".68" stop-color="#ef8a33"/>
+      <stop offset="1" stop-color="#a94b17"/>
+    </radialGradient>
+    <linearGradient id="ring" x1="12" y1="8" x2="52" y2="56" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#ffd36b"/>
+      <stop offset=".55" stop-color="#ef8a33"/>
+      <stop offset="1" stop-color="#a74a18"/>
+    </linearGradient>
+    <clipPath id="sunset">
+      <circle cx="32" cy="32" r="22"/>
+    </clipPath>
+  </defs>
+
+  <circle cx="32" cy="32" r="31" fill="#0b0907"/>
+  <circle cx="32" cy="32" r="24" fill="none" stroke="url(#ring)" stroke-width="2"/>
+  <circle cx="32" cy="32" r="22" fill="url(#sky)"/>
+
+  <g clip-path="url(#sunset)" fill="#17100b">
+    <path d="M8 43.5c7-1.8 13.5-2.6 20.1-2.3 8.2.3 14.3 2 27.9 5.8V58H8z"/>
+    <path d="M11 29.4c3.5-4.4 8.8-6 15.7-4.8 2.8-3.8 7.4-5.2 12.8-2.7 5.6-1.2 10.7 1.2 13.5 5.6-4.8 2.5-10.3 2.8-16.1 1.3-4 3.5-11.9 4.2-17.6 1.6-3 .4-5.8.1-8.3-1z"/>
+    <path d="M30.4 46.8l1.5-12.2-5.1-4.7 1.5-1.5 4.2 3.4.3-6.3h2l.2 7 5.6-4 1.4 1.7-6.3 5.4 1.9 11.2z"/>
+    <path d="M7 45c7.7-1.5 14.2-1.9 21-1.1 7.5.8 14.2 2.8 29 7.3v8.2H7z" opacity=".9"/>
+  </g>
+
+  <circle cx="32" cy="32" r="29" fill="none" stroke="#f5b34d" stroke-opacity=".35"/>
+</svg>
