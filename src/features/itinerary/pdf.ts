@@ -61,19 +61,41 @@ function drawLines(page: PDFPage, text: string, options: {x: number; y: number; 
   return options.y - lines.length * lineHeight;
 }
 
-async function embedPublicImage(pdf: PDFDocument, source?: string) {
-  if (!source || !source.startsWith("/") || source.includes("..")) return null;
+type ImageCache = Map<string, Promise<PDFImage | null>>;
+
+async function loadImageBytes(source: string) {
+  if (source.startsWith("/") && !source.includes("..")) return readFile(path.join(process.cwd(), "public", source));
+  const url = new URL(source);
+  if (url.protocol !== "https:" || url.hostname !== "cdn.sanity.io") return null;
+  url.searchParams.set("w", "1600");
+  url.searchParams.set("fit", "max");
+  url.searchParams.set("q", "82");
+  const response = await fetch(url, {signal: AbortSignal.timeout(8_000)});
+  if (!response.ok) return null;
+  const bytes = new Uint8Array(await response.arrayBuffer());
+  return bytes.length <= 12_000_000 ? bytes : null;
+}
+
+async function embedImage(pdf: PDFDocument, source: string | undefined, cache: ImageCache) {
+  if (!source) return null;
+  const existing = cache.get(source);
+  if (existing) return existing;
+  const pending = (async () => {
   try {
-    const bytes = await readFile(path.join(process.cwd(), "public", source));
+    const bytes = await loadImageBytes(source);
+    if (!bytes) return null;
     if (bytes[0] === 0xff && bytes[1] === 0xd8) return await pdf.embedJpg(bytes);
     if (bytes[0] === 0x89 && bytes[1] === 0x50) return await pdf.embedPng(bytes);
   } catch {}
   return null;
+  })();
+  cache.set(source, pending);
+  return pending;
 }
 
-async function embedFirstPublicImage(pdf: PDFDocument, sources: string[]) {
+async function embedFirstImage(pdf: PDFDocument, sources: string[], cache: ImageCache) {
   for (const source of sources) {
-    const image = await embedPublicImage(pdf, source);
+    const image = await embedImage(pdf, source, cache);
     if (image) return image;
   }
   return null;
@@ -159,18 +181,18 @@ function drawRouteMap(page: PDFPage, stops: typeof northernCircuitRouteStops, fo
   });
 }
 
-async function drawAccommodationCards(page: PDFPage, pdf: PDFDocument, stays: StayOption[], fonts: {regular: PDFFont; bold: PDFFont}) {
+async function drawAccommodationCards(page: PDFPage, pdf: PDFDocument, stays: StayOption[], fonts: {regular: PDFFont; bold: PDFFont}, imageCache: ImageCache) {
   const cardWidth = 163;
   for (const [index, stay] of stays.slice(0, 3).entries()) {
     const x = 42 + index * 174;
     const y = 55;
     page.drawRectangle({x, y, width: cardWidth, height: 137, color: pale, borderColor: line, borderWidth: .65});
-    const image = await embedFirstPublicImage(pdf, stay.images.map(item => item.src));
+    const image = await embedFirstImage(pdf, stay.images.map(item => item.src), imageCache);
     if (image) drawCoverImage(page, image, {x, y: y + 67, width: cardWidth, height: 70});
     else page.drawRectangle({x, y: y + 67, width: cardWidth, height: 70, color: cream});
     page.drawText(safeText(stay.tier).toUpperCase(), {x: x + 10, y: y + 51, size: 6.2, font: fonts.bold, color: orangeDeep});
     drawLines(page, stay.property, {x: x + 10, y: y + 35, width: cardWidth - 20, size: 8.7, font: fonts.bold, color: ink, lineHeight: 10, maxLines: 2});
-    page.drawText(safeText(stay.location), {x: x + 10, y: y + 10, size: 6.8, font: fonts.regular, color: muted});
+    drawLines(page, stay.location, {x: x + 10, y: y + 11, width: cardWidth - 20, size: 6.8, font: fonts.regular, color: muted, lineHeight: 8, maxLines: 1});
   }
 }
 
@@ -189,9 +211,11 @@ export async function generateItineraryPdf(itinerary: Itinerary, profile?: Itine
   const bold = await pdf.embedFont(StandardFonts.HelveticaBold);
   const italic = await pdf.embedFont(StandardFonts.HelveticaOblique);
   const fonts = {regular, bold, italic};
-  const hero = await embedPublicImage(pdf, itinerary.heroImage);
-  const logo = await embedPublicImage(pdf, config.companyLogo || "/images/figma/brand-mark.png");
+  const imageCache: ImageCache = new Map();
   const fallbackDayImages = ["/images/figma/98118ae1-bb7c-432c-b7b1-433d27c59b13.png", "/images/figma/8a34ea1e-253b-41f7-8c0c-cac8586c40b4.png", "/images/figma/27222719-4ba9-4724-a440-0fcb7923b931.png", "/images/figma/66d4cce3-2303-4bdf-a3b9-8d8f56ab67de.png"];
+  const heroSources = [itinerary.heroImage, fallbackDayImages[0]].filter((source): source is string => Boolean(source));
+  const hero = await embedFirstImage(pdf, heroSources, imageCache);
+  const logo = await embedFirstImage(pdf, [config.companyLogo || "", "/images/figma/brand-mark.png"].filter(Boolean), imageCache);
   const routeStops = itinerary.routeStops?.length ? itinerary.routeStops : itinerary.slug === "tarangire-serengeti-ngorongoro" ? northernCircuitRouteStops : itinerary.destinations.map((name, index) => ({name, label: `Stop ${index + 1}`, description: "Safari destination", dayNumber: index + 1, coordinates: {lat: -3.7 + index * .22, lng: 35.2 + index * .25}}));
 
   const cover = pdf.addPage(PAGE_SIZE);
@@ -245,29 +269,26 @@ export async function generateItineraryPdf(itinerary: Itinerary, profile?: Itine
     const travel = supplement.travelByDay[day.dayNumber];
     const dayFacts = [["Habitat", day.habitat || "Varied safari landscape"], ["Driving", day.driveTime || travel?.driveTime || "Route dependent"], ["Distance", day.distance || travel?.distance || "Route dependent"], ["Activity", day.activityLevel || travel?.activityLevel || "Easy safari day"]];
     dayFacts.forEach(([label, value], factIndex) => drawFactCard(page, label, value, 42 + factIndex * 130, 581, 120, fonts));
-    const dayImage = await embedPublicImage(pdf, day.image || fallbackDayImages[index]);
+    const dayImage = await embedFirstImage(pdf, [day.image || "", fallbackDayImages[index] || fallbackDayImages[0]].filter(Boolean), imageCache);
     if (dayImage) drawCoverImage(page, dayImage, {x: 42, y: 350, width: 511, height: 210});
     else page.drawRectangle({x: 42, y: 350, width: 511, height: 210, color: cream});
     page.drawRectangle({x: 42, y: 350, width: 511, height: 23, color: ink, opacity: .72});
-    page.drawText(safeText(`${day.title} - safari experience`), {x: 53, y: 358, size: 7.2, font: regular, color: white});
-    page.drawText("DAY PLAN", {x: 42, y: 325, size: 7.2, font: bold, color: orangeDeep});
-    let planY = 306;
-    day.activities.slice(0, 2).forEach(activity => {
-      page.drawText(safeText(activity.title), {x: 42, y: planY, size: 10, font: bold, color: ink});
-      const meta = [activity.time, activity.location].filter(Boolean).join(" / ");
-      if (meta) page.drawText(safeText(meta).slice(0, 70), {x: 553 - Math.min(240, italic.widthOfTextAtSize(safeText(meta), 7.2)), y: planY, size: 7.2, font: italic, color: muted});
-      planY = drawLines(page, activity.description, {x: 42, y: planY - 16, width: 510, size: 8.5, font: regular, color: muted, lineHeight: 11.5, maxLines: 2}) - 7;
-    });
+    page.drawText(safeText(day.imageAlt || `${day.title} - safari experience`), {x: 53, y: 358, size: 7.2, font: regular, color: white});
+    page.drawText("DAY EXPERIENCE", {x: 42, y: 325, size: 7.2, font: bold, color: orangeDeep});
+    drawLines(page, day.narrative || day.activities[0]?.description || day.summary, {x: 42, y: 306, width: 330, size: 8.4, font: regular, color: muted, lineHeight: 11.4, maxLines: 4});
+    page.drawText("ACTIVITIES", {x: 396, y: 325, size: 7.2, font: bold, color: orangeDeep});
+    const activityTitles = day.activities.slice(0, 3).map(activity => activity.title).join(" / ") || "Safari day at leisure";
+    drawLines(page, activityTitles, {x: 396, y: 306, width: 157, size: 8.2, font: bold, color: ink, lineHeight: 11.4, maxLines: 4});
     page.drawRectangle({x: 42, y: 220, width: 511, height: 46, color: cream, borderColor: line, borderWidth: .55});
     page.drawText("MEAL PLAN", {x: 56, y: 248, size: 6.7, font: bold, color: orangeDeep});
-    page.drawText(safeText(day.meals.join(" / ") || "Not listed"), {x: 56, y: 232, size: 8.7, font: bold, color: ink});
+    drawLines(page, day.meals.join(" / ") || "Not listed", {x: 56, y: 232, width: 220, size: 8.7, font: bold, color: ink, lineHeight: 10, maxLines: 1});
     page.drawText("OVERNIGHT", {x: 300, y: 248, size: 6.7, font: bold, color: orangeDeep});
     const overnight = day.accommodation ? `${day.accommodation.category} - ${day.accommodation.location}` : "Return to Arusha / drop-off";
-    page.drawText(safeText(overnight), {x: 300, y: 232, size: 8.7, font: bold, color: ink});
+    drawLines(page, overnight, {x: 300, y: 232, width: 236, size: 8.7, font: bold, color: ink, lineHeight: 10, maxLines: 1});
     const stays = staysByDay[day.dayNumber]?.length ? staysByDay[day.dayNumber] : supplement.staysByDay[day.dayNumber] || [];
     if (stays.length) {
       page.drawText("ACCOMMODATION OPTIONS", {x: 42, y: 202, size: 7.2, font: bold, color: orangeDeep});
-      await drawAccommodationCards(page, pdf, stays, fonts);
+      await drawAccommodationCards(page, pdf, stays, fonts, imageCache);
     } else {
       page.drawRectangle({x: 42, y: 88, width: 511, height: 112, color: pale, borderColor: line, borderWidth: .6});
       page.drawText("END OF SAFARI", {x: 60, y: 172, size: 7.2, font: bold, color: orangeDeep});

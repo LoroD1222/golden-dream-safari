@@ -4,7 +4,7 @@ export const defaultItineraryDownloadConfig: ItineraryDownloadConfig = {
   enabled: true,
   buttonLabel: "Download itinerary",
   mobileTitle: "Download itinerary",
-  mobileDescription: "Complete the enquiry form to receive your PDF itinerary.",
+  mobileDescription: "Free PDF with the complete day-by-day safari plan.",
   lockedMessage: "Complete and submit this form to unlock your downloadable PDF itinerary.",
   successMessage: "Thank you. Your itinerary is ready to download.",
   errorMessage: "We could not send your enquiry. Please try again.",

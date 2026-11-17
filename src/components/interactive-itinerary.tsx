@@ -31,13 +31,8 @@ export function InteractiveItinerary({
   const activeStop = routeStops[selectedStop];
   const allDaysOpen = days.length > 0 && openDays.size === days.length;
 
-  function selectStop(index: number, scroll = false) {
+  function selectStop(index: number) {
     setSelectedStop(index);
-    if (scroll) {
-      const dayIndex = days.findIndex(day => day.dayNumber === routeStops[index].dayNumber);
-      if (dayIndex >= 0) setOpenDays(current => new Set(current).add(dayIndex));
-      document.getElementById(`day-${routeStops[index].dayNumber}`)?.scrollIntoView({behavior: "smooth", block: "start"});
-    }
   }
 
   function toggleDay(index: number) {
@@ -56,7 +51,7 @@ export function InteractiveItinerary({
       <div className="trip-ref-itinerary-sticky">
         <div className="trip-route-map-card">
           <div className="trip-route-map-canvas">
-            <SafariRouteMap stops={routeStops} selectedIndex={selectedStop} onSelect={setSelectedStop} onExplore={index => selectStop(index, true)}/>
+            <SafariRouteMap stops={routeStops} selectedIndex={selectedStop} onSelect={setSelectedStop} onExplore={selectStop}/>
           </div>
           <div className="trip-route-map-stops">
             <p className="trip-route-map-kicker">Your route</p>
@@ -65,7 +60,7 @@ export function InteractiveItinerary({
                 type="button"
                 className={selectedStop === index ? "is-active" : ""}
                 aria-pressed={selectedStop === index}
-                onClick={() => selectStop(index, true)}
+                onClick={() => selectStop(index)}
               >
                 <span>{String(index + 1).padStart(2, "0")}</span>
                 <strong>{stop.name}</strong>
@@ -75,7 +70,7 @@ export function InteractiveItinerary({
             <div className="trip-route-map-detail" aria-live="polite">
               <strong>{activeStop.name}</strong>
               <p>{activeStop.description}</p>
-              <button type="button" onClick={() => selectStop(selectedStop, true)}>Explore this destination ↗</button>
+              <button type="button" onClick={() => selectStop(selectedStop)}>View on map ↗</button>
             </div>
           </div>
         </div>
