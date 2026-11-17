@@ -4,19 +4,19 @@ import type {NextRequest} from "next/server";
 import {itineraryAccessCookieName, readItineraryPdfProfile, verifyItineraryAccessToken} from "@/features/itinerary/access";
 import {getItineraryDownloadConfig} from "@/features/itinerary/download-config";
 import {generateItineraryPdf} from "@/features/itinerary/pdf";
-import {getItineraryRepository} from "@/features/itinerary/storage";
-import {getAccommodationRepository, getSiteSettingsRepository} from "@/features/content/storage";
+import {getPublicItineraryRepository} from "@/features/itinerary/storage";
+import {getPublicAccommodationRepository, getPublicSiteSettingsRepository} from "@/features/content/storage";
 
 const privateHeaders = {"cache-control": "private, no-store", "x-robots-tag": "noindex, nofollow"};
 
 export async function protectedItineraryPdfResponse(request: NextRequest, slug: string) {
   const token = request.cookies.get(itineraryAccessCookieName(slug))?.value;
   if (!verifyItineraryAccessToken(slug, token)) return new Response("Complete the trip enquiry form before downloading this itinerary.", {status: 403, headers: {...privateHeaders, "content-type": "text/plain; charset=utf-8"}});
-  const itinerary = await getItineraryRepository().get(slug);
+  const itinerary = await getPublicItineraryRepository().get(slug);
   if (!itinerary || itinerary.status !== "published") return new Response("Itinerary not found.", {status: 404, headers: {...privateHeaders, "content-type": "text/plain; charset=utf-8"}});
   if (!getItineraryDownloadConfig(itinerary).enabled) return new Response("PDF downloads are not enabled for this trip.", {status: 403, headers: {...privateHeaders, "content-type": "text/plain; charset=utf-8"}});
   try {
-    const [accommodations, siteSettings] = await Promise.all([getAccommodationRepository().list(), getSiteSettingsRepository().get()]);
+    const [accommodations, siteSettings] = await Promise.all([getPublicAccommodationRepository().list(), getPublicSiteSettingsRepository().get()]);
     const bytes = await generateItineraryPdf(itinerary, readItineraryPdfProfile(slug, token), accommodations, siteSettings);
     return new Response(Buffer.from(bytes), {headers: {...privateHeaders, "content-type": "application/pdf", "content-disposition": `attachment; filename="${itinerary.slug}-itinerary.pdf"`}});
   } catch (error) {

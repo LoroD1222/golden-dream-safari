@@ -1,0 +1,48 @@
+import {StarIcon} from '@sanity/icons/Star'
+import {defineArrayMember, defineField, defineType} from 'sanity'
+
+export const goldenDreamReview = defineType({
+  name: 'goldenDreamReview',
+  title: 'Guest review',
+  type: 'document',
+  icon: StarIcon,
+  groups: [
+    {name: 'review', title: 'Review', default: true},
+    {name: 'classification', title: 'Categories & trips'},
+    {name: 'media', title: 'Photos'},
+    {name: 'response', title: 'Reply'},
+    {name: 'publishing', title: 'Publishing'},
+  ],
+  fields: [
+    defineField({name: 'legacyId', type: 'string', hidden: true, readOnly: true}),
+    defineField({name: 'title', title: 'Review title', type: 'string', group: 'review', validation: (rule) => rule.required().max(240)}),
+    defineField({name: 'quote', title: 'Review text', type: 'text', rows: 8, group: 'review', validation: (rule) => rule.required().max(8000)}),
+    defineField({name: 'rating', title: 'Rating', type: 'number', group: 'review', validation: (rule) => rule.required().integer().min(1).max(5)}),
+    defineField({name: 'author', title: 'Guest name', type: 'string', group: 'review', validation: (rule) => rule.required().max(160)}),
+    defineField({name: 'authorLocation', title: 'Guest location', type: 'string', group: 'review', validation: (rule) => rule.max(160)}),
+    defineField({name: 'meta', title: 'Display meta', type: 'string', group: 'review', description: 'For example “Jul 2026 · Couples · Translated from Norwegian”.', validation: (rule) => rule.required().max(240)}),
+    defineField({name: 'travelDate', title: 'Travel date', type: 'date', group: 'review'}),
+    defineField({name: 'publishedDate', title: 'Published date', type: 'date', group: 'review'}),
+    defineField({name: 'travelerType', title: 'Traveller type', type: 'string', group: 'review', validation: (rule) => rule.max(100)}),
+    defineField({name: 'source', title: 'Review source', type: 'string', group: 'review', validation: (rule) => rule.required().max(100)}),
+    defineField({name: 'sourceUrl', title: 'Source URL', type: 'url', group: 'review', validation: (rule) => rule.uri({scheme: ['http', 'https']})}),
+    defineField({name: 'sourceReviewId', title: 'Source review ID', type: 'string', group: 'review', validation: (rule) => rule.max(200)}),
+    defineField({name: 'originalLanguage', title: 'Original language', type: 'string', group: 'review', validation: (rule) => rule.max(80)}),
+    defineField({name: 'translated', title: 'Translated review', type: 'boolean', group: 'review', initialValue: false}),
+    defineField({name: 'categories', title: 'Review categories', type: 'array', group: 'classification', of: [defineArrayMember({type: 'reference', to: [{type: 'goldenDreamReviewCategory'}]})], validation: (rule) => rule.unique()}),
+    defineField({name: 'trips', title: 'Related trips', type: 'array', group: 'classification', of: [defineArrayMember({type: 'reference', to: [{type: 'goldenDreamItinerary'}]})], validation: (rule) => rule.unique()}),
+    defineField({name: 'images', title: 'Guest photos', type: 'array', group: 'media', of: [defineArrayMember({type: 'goldenDreamImage'})], validation: (rule) => rule.max(24)}),
+    defineField({name: 'reply', title: 'Company reply', type: 'text', rows: 5, group: 'response', validation: (rule) => rule.max(4000)}),
+    defineField({name: 'replyAuthor', title: 'Reply author', type: 'string', group: 'response', validation: (rule) => rule.max(120)}),
+    defineField({name: 'replyDate', title: 'Reply date', type: 'date', group: 'response'}),
+    defineField({name: 'verified', title: 'Verified review', type: 'boolean', group: 'publishing', initialValue: true}),
+    defineField({name: 'featuredOnHomepage', title: 'Feature on homepage', type: 'boolean', group: 'publishing', initialValue: false}),
+    defineField({name: 'featuredOnTripPages', title: 'Feature on trip pages', type: 'boolean', group: 'publishing', initialValue: false}),
+    defineField({name: 'status', title: 'Website status', type: 'string', group: 'publishing', initialValue: 'draft', options: {list: ['draft', 'published', 'archived'], layout: 'radio'}, validation: (rule) => rule.required()}),
+    defineField({name: 'order', title: 'Display order', type: 'number', group: 'publishing', initialValue: 100, validation: (rule) => rule.required().integer().min(0)}),
+  ],
+  preview: {
+    select: {title: 'title', author: 'author', rating: 'rating', media: 'images.0.image'},
+    prepare({title, author, rating, media}) { return {title: title || 'Untitled review', subtitle: `${rating || '—'} stars · ${author || 'Unknown guest'}`, media} },
+  },
+})

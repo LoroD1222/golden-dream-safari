@@ -7,8 +7,8 @@ import {FaqSection} from "@/components/faq-section";
 import {MarketingShell} from "@/components/marketing-shell";
 import {StructuredData} from "@/components/structured-data";
 import {siteOrigin, wildlifeTrips as allWildlifeTrips} from "@/data/site";
-import {getItineraryRepository} from "@/features/itinerary/storage";
-import {getAccommodationRepository, getReviewRepository, getSiteSettingsRepository} from "@/features/content/storage";
+import {getPublicItineraryRepository} from "@/features/itinerary/storage";
+import {getPublicAccommodationRepository, getPublicReviewRepository, getPublicSiteSettingsRepository} from "@/features/content/storage";
 import {FigmaIcon, RatingStars} from "@/components/figma-icon";
 import {InteractiveItinerary} from "@/components/interactive-itinerary";
 import {TripOverviewGallery} from "@/components/trip-overview-gallery";
@@ -28,16 +28,16 @@ const fallbackHighlights = [
 ];
 
 export async function generateMetadata({params}: {params: Promise<{slug: string}>}): Promise<Metadata> {
-  const item = await getItineraryRepository().get((await params).slug);
+  const item = await getPublicItineraryRepository().get((await params).slug);
   if (!item || item.status !== "published") return {title: "Trip not found", robots: {index: false, follow: false}};
   return {title: item.title, description: item.summary, alternates: {canonical: `/trips/${item.slug}`}, openGraph: {title: item.title, description: item.summary, url: `/trips/${item.slug}`, images: item.heroImage ? [{url: item.heroImage, alt: item.title}] : []}};
 }
 
 export default async function TripDetailPage({params}: {params: Promise<{slug: string}>}) {
-  const itineraryRepository = getItineraryRepository();
+  const itineraryRepository = getPublicItineraryRepository();
   const itinerary = await itineraryRepository.get((await params).slug);
   if (!itinerary || itinerary.status !== "published") notFound();
-  const [allReviewItems, settings, accommodations, itineraryItems] = await Promise.all([getReviewRepository().list(), getSiteSettingsRepository().get(), getAccommodationRepository().list(), itineraryRepository.list()]);
+  const [allReviewItems, settings, accommodations, itineraryItems] = await Promise.all([getPublicReviewRepository().list(), getPublicSiteSettingsRepository().get(), getPublicAccommodationRepository().list(), itineraryRepository.list()]);
   const publishedReviews = allReviewItems.filter(review => review.status === "published");
   const relatedReviews = publishedReviews.filter(review => review.tripSlugs.includes(itinerary.slug) || review.featuredOnTripPages);
   const tripReviews = (relatedReviews.length ? relatedReviews : publishedReviews).slice(0, 3);

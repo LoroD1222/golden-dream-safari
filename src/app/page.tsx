@@ -8,7 +8,7 @@ import {StructuredData} from "@/components/structured-data";
 import {FigmaIcon, RatingStars} from "@/components/figma-icon";
 import {IncludedExperience} from "@/components/included-experience";
 import {contactDetails, siteOrigin} from "@/data/site";
-import {getReviewRepository, getSiteSettingsRepository} from "@/features/content/storage";
+import {getPublicReviewRepository, getPublicSiteSettingsRepository} from "@/features/content/storage";
 
 export const dynamic = "force-dynamic";
 
@@ -33,7 +33,7 @@ const popularSafaris = [
   {slug: "big-four-parks", title: "The Big Four Parks", image: "/images/figma/30c45480-4860-487f-917d-97dcd475776c.png", duration: "5 days · 4 nights", price: "$200", priceLabel: "From · camping, joining a group", parks: "Tarangire · Serengeti · Ngorongoro · Manyara", description: "Every famous northern park in one trip, from Tarangire's baobabs to Lake Manyara's tree-climbing lions.", tags: ["4 national parks", "Tree-climbing lions"], badge: undefined},
 ] as const;
 export default async function HomePage() {
-  const [reviewItems, settings] = await Promise.all([getReviewRepository().list(), getSiteSettingsRepository().get()]);
+  const [reviewItems, settings] = await Promise.all([getPublicReviewRepository().list(), getPublicSiteSettingsRepository().get()]);
   const publishedReviews = reviewItems.filter(review => review.status === "published");
   const featuredReviews = publishedReviews.filter(review => review.featuredOnHomepage);
   const reviews = (featuredReviews.length ? featuredReviews : publishedReviews).slice(0, 3);

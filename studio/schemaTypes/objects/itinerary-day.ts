@@ -27,11 +27,21 @@ export const itineraryDay = defineType({
       validation: (rule) => rule.required().min(10).max(4000),
     }),
     defineField({
+      name: 'narrative',
+      title: 'Day narrative',
+      type: 'text',
+      rows: 6,
+      validation: (rule) => rule.max(6000),
+    }),
+    defineField({
       name: 'habitat',
       title: 'Habitat',
       type: 'string',
       validation: (rule) => rule.max(160),
     }),
+    defineField({name: 'driveTime', title: 'Driving or hiking time', type: 'string', validation: (rule) => rule.max(120)}),
+    defineField({name: 'distance', title: 'Distance', type: 'string', validation: (rule) => rule.max(120)}),
+    defineField({name: 'activityLevel', title: 'Activity level', type: 'string', validation: (rule) => rule.max(120)}),
     defineField({
       name: 'meals',
       title: 'Meals',
@@ -54,13 +64,17 @@ export const itineraryDay = defineType({
       validation: (rule) => rule.max(20),
     }),
     defineField({
-      name: 'accommodation',
-      title: 'Accommodation',
-      type: 'itineraryAccommodation',
+      name: 'accommodations',
+      title: 'Accommodation options',
+      type: 'array',
+      of: [defineArrayMember({type: 'reference', to: [{type: 'goldenDreamAccommodation'}]})],
+      validation: (rule) => rule.max(12).unique(),
     }),
+    defineField({name: 'image', title: 'Day image', type: 'goldenDreamImage'}),
+    defineField({name: 'dropOffNote', title: 'Drop-off note', type: 'text', rows: 3, validation: (rule) => rule.max(1000)}),
   ],
   preview: {
-    select: {dayNumber: 'dayNumber', title: 'title', media: 'accommodation.image'},
+    select: {dayNumber: 'dayNumber', title: 'title', media: 'image.image'},
     prepare({dayNumber, title, media}) {
       return {title: `Day ${dayNumber || '—'} · ${title || 'Untitled'}`, media}
     },

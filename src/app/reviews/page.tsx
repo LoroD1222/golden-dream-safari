@@ -5,14 +5,14 @@ import {FigmaIcon, RatingStars} from "@/components/figma-icon";
 import {ReviewsGrid} from "@/components/reviews-grid";
 import {siteOrigin} from "@/data/site";
 import {StructuredData} from "@/components/structured-data";
-import {getReviewCategoryRepository, getReviewRepository, getSiteSettingsRepository} from "@/features/content/storage";
+import {getPublicReviewCategoryRepository, getPublicReviewRepository, getPublicSiteSettingsRepository} from "@/features/content/storage";
 
 export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {title: "Guest reviews", description: "Read Tripadvisor reviews and see safari photos from Golden Dream guests.", alternates: {canonical: "/reviews"}, openGraph: {title: "What our guests say", url: "/reviews", images: [{url: "/images/figma/reviews-hero.png", alt: "Golden Dream safari guests"}]}};
 
 export default async function ReviewsPage() {
-  const [reviews, categories, settings] = await Promise.all([getReviewRepository().list(), getReviewCategoryRepository().list(), getSiteSettingsRepository().get()]);
+  const [reviews, categories, settings] = await Promise.all([getPublicReviewRepository().list(), getPublicReviewCategoryRepository().list(), getPublicSiteSettingsRepository().get()]);
   const publishedReviews = reviews.filter(review => review.status === "published");
   const publishedCategories = categories.filter(category => category.status === "published");
   const reviewSettings = settings.reviews;

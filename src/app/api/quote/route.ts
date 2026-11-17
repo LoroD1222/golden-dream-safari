@@ -4,7 +4,7 @@ import {Resend} from "resend";
 import {z} from "zod";
 import {createItineraryAccessToken, itineraryAccessCookieName, itineraryAccessCookieOptions} from "@/features/itinerary/access";
 import {getItineraryDownloadConfig} from "@/features/itinerary/download-config";
-import {getItineraryRepository} from "@/features/itinerary/storage";
+import {getPublicItineraryRepository} from "@/features/itinerary/storage";
 
 export const runtime = "nodejs";
 
@@ -88,7 +88,7 @@ export async function POST(request: NextRequest) {
   if (!parsed.success) return NextResponse.json({message: "Please check the required fields and try again."}, {status: 400});
 
   const data = parsed.data;
-  const itinerary = data.downloadIntent && data.tripSlug ? await getItineraryRepository().get(data.tripSlug) : null;
+  const itinerary = data.downloadIntent && data.tripSlug ? await getPublicItineraryRepository().get(data.tripSlug) : null;
   if (data.downloadIntent && (!itinerary || itinerary.status !== "published")) return NextResponse.json({message: "This trip is no longer available."}, {status: 404});
   if (itinerary && !getItineraryDownloadConfig(itinerary).enabled) return NextResponse.json({message: "PDF downloads are not available for this trip."}, {status: 403});
   const fingerprint = createHash("sha256").update(`${data.email}|${data.name}|${data.trips.join(",")}|${data.arrival}|${data.message}`).digest("hex");
