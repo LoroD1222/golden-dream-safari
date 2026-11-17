@@ -17,6 +17,22 @@ const accommodationSchema = z.object({
   image: z.string().trim().max(500).optional(),
 });
 
+const downloadConfigSchema = z.object({
+  enabled: z.boolean(),
+  buttonLabel: z.string().trim().min(1).max(80),
+  mobileTitle: z.string().trim().min(1).max(80),
+  mobileDescription: z.string().trim().min(1).max(240),
+  lockedMessage: z.string().trim().min(1).max(240),
+  successMessage: z.string().trim().min(1).max(240),
+  errorMessage: z.string().trim().min(1).max(240),
+  companyName: z.string().trim().min(1).max(120),
+  companyDescription: z.string().trim().min(1).max(500),
+  companyLogo: z.string().trim().max(500).optional(),
+  contactEmail: z.email().max(254),
+  contactPhone: z.string().trim().min(1).max(60),
+  contactLocation: z.string().trim().min(1).max(120),
+});
+
 const daySchema = z.object({
   id: z.string().min(1).max(100),
   dayNumber: z.number().int().min(1).max(60),
@@ -26,6 +42,7 @@ const daySchema = z.object({
   meals: z.array(z.string().trim().min(1).max(80)).max(6),
   activities: z.array(activitySchema).max(20),
   accommodation: accommodationSchema.optional(),
+  image: z.string().trim().max(500).optional(),
 });
 
 export const itineraryInputSchema = z.object({
@@ -41,6 +58,9 @@ export const itineraryInputSchema = z.object({
   days: z.array(daySchema).min(1).max(60),
   inclusions: z.array(z.string().trim().min(1).max(240)).max(40),
   exclusions: z.array(z.string().trim().min(1).max(240)).max(40),
+  travelStyle: z.string().trim().max(120).optional(),
+  practicalInformation: z.array(z.string().trim().min(1).max(500)).max(30).optional(),
+  download: downloadConfigSchema.optional(),
 }).superRefine((itinerary, context) => {
   if (itinerary.durationDays !== itinerary.days.length) {
     context.addIssue({code: "custom", path: ["durationDays"], message: "Duration must match the number of itinerary days."});

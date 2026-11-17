@@ -2,6 +2,9 @@ import {createHash} from "node:crypto";
 import {NextRequest, NextResponse} from "next/server";
 import {Resend} from "resend";
 import {z} from "zod";
+import {createItineraryAccessToken, itineraryAccessCookieName, itineraryAccessCookieOptions} from "@/features/itinerary/access";
+import {getItineraryDownloadConfig} from "@/features/itinerary/download-config";
+import {getItineraryRepository} from "@/features/itinerary/storage";
 
 export const runtime = "nodejs";
 
@@ -23,6 +26,8 @@ const quoteSchema = z.object({
   message: z.string().trim().max(3000),
   consent: z.literal(true),
   website: z.string().max(0),
+  tripSlug: z.string().trim().regex(/^[a-z0-9]+(?:-[a-z0-9]+)*$/).max(120).optional(),
+  downloadIntent: z.boolean().optional(),
 }).superRefine((data, context) => {
   if (Boolean(data.arrival) !== Boolean(data.departure)) {
     context.addIssue({code: "custom", path: [data.arrival ? "departure" : "arrival"], message: "Provide both dates or leave both blank."});
@@ -32,6 +37,11 @@ const quoteSchema = z.object({
   }
   if (data.preferredContact === "WhatsApp" && !data.whatsapp) {
     context.addIssue({code: "custom", path: ["whatsapp"], message: "A WhatsApp number is required when WhatsApp is selected."});
+  }
+  if (data.downloadIntent) {
+    if (!data.tripSlug) context.addIssue({code: "custom", path: ["tripSlug"], message: "A trip is required."});
+    if (!data.arrival || !data.departure) context.addIssue({code: "custom", path: ["arrival"], message: "Preferred travel dates are required."});
+    if (data.message.length < 10) context.addIssue({code: "custom", path: ["message"], message: "Tell us a little about your trip."});
   }
 });
 
@@ -78,6 +88,9 @@ export async function POST(request: NextRequest) {
   if (!parsed.success) return NextResponse.json({message: "Please check the required fields and try again."}, {status: 400});
 
   const data = parsed.data;
+  const itinerary = data.downloadIntent && data.tripSlug ? await getItineraryRepository().get(data.tripSlug) : null;
+  if (data.downloadIntent && (!itinerary || itinerary.status !== "published")) return NextResponse.json({message: "This trip is no longer available."}, {status: 404});
+  if (itinerary && !getItineraryDownloadConfig(itinerary).enabled) return NextResponse.json({message: "PDF downloads are not available for this trip."}, {status: 403});
   const fingerprint = createHash("sha256").update(`${data.email}|${data.name}|${data.trips.join(",")}|${data.arrival}|${data.message}`).digest("hex");
   const duplicateAt = duplicates.get(fingerprint);
   if (duplicateAt && now - duplicateAt < DUPLICATE_WINDOW) return NextResponse.json({message: "This request was already sent recently."}, {status: 409});
@@ -109,5 +122,9 @@ export async function POST(request: NextRequest) {
   if (result.error) return NextResponse.json({message: "Email delivery failed. Please try again or contact us directly."}, {status: 502});
 
   duplicates.set(fingerprint, now);
-  return NextResponse.json({message: "Your request was sent."});
+  const response = NextResponse.json({message: "Your request was sent.", downloadAccess: Boolean(data.downloadIntent)});
+  if (data.downloadIntent && data.tripSlug) {
+    response.cookies.set(itineraryAccessCookieName(data.tripSlug), createItineraryAccessToken(data.tripSlug), itineraryAccessCookieOptions);
+  }
+  return response;
 }

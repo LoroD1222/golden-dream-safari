@@ -23,6 +23,23 @@ export type ItineraryDay = {
   meals: string[];
   activities: Activity[];
   accommodation?: Accommodation;
+  image?: string;
+};
+
+export type ItineraryDownloadConfig = {
+  enabled: boolean;
+  buttonLabel: string;
+  mobileTitle: string;
+  mobileDescription: string;
+  lockedMessage: string;
+  successMessage: string;
+  errorMessage: string;
+  companyName: string;
+  companyDescription: string;
+  companyLogo?: string;
+  contactEmail: string;
+  contactPhone: string;
+  contactLocation: string;
 };
 
 export type Itinerary = {
@@ -39,6 +56,9 @@ export type Itinerary = {
   days: ItineraryDay[];
   inclusions: string[];
   exclusions: string[];
+  travelStyle?: string;
+  practicalInformation?: string[];
+  download?: ItineraryDownloadConfig;
   createdAt: string;
   updatedAt: string;
 };

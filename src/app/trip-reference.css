@@ -74,8 +74,7 @@
   box-shadow: 0 2px 13px rgba(0,0,0,.05);
 }
 .trip-ref-quote-heading {display: flex; gap: 11px; align-items: center; color: var(--orange); font-size: 16px; font-weight: 700; line-height: 20px}
-.trip-ref-quote-icon {display: grid; flex: none; width: 40px; height: 40px; place-items: center; border: 1px solid color-mix(in srgb,var(--orange) 24%,white); border-radius: 12px; background: color-mix(in srgb,var(--orange) 12%,white)}
-.trip-ref-quote-heading img {flex: none; width: 22px; height: 22px}
+.trip-ref-quote-icon {display: block; flex: none; width: 25px; height: 25px; color: var(--orange)}
 .trip-ref-quote h3 {margin: 18px 0 0; color: #243138; font-size: 23px; font-weight: 700; line-height: 1.33; letter-spacing: -.02em}
 .trip-ref-quote p {margin: 18px 0 0; color: #243138; font-size: 15px; line-height: 1.4}
 .trip-ref-quote-actions {display: flex; gap: 12px; align-items: center; flex-wrap: wrap; margin-top: 18px}
@@ -167,6 +166,7 @@
 .trip-ref-meal {display: inline-flex; min-height: 45px; max-width: 100%; align-items: center; gap: 7px; padding: 8px 15px; border: 0; border-radius: 30px; background: #fff; box-shadow: 0 2px 5px rgba(0,0,0,.1); color: #111; font-family: inherit; font-size: 20px; font-weight: 500; line-height: 28px; text-align: left; cursor: pointer; transition: box-shadow .2s,transform .2s}
 .trip-ref-meal:hover,.trip-ref-meal:focus-visible {box-shadow: 0 3px 10px rgba(0,0,0,.18); transform: translateY(-1px)}
 .trip-ref-meal img {flex: none; width: 20px; height: 20px}
+.trip-ref-meal>svg {display: block; flex: none; width: 21px; height: 21px; color: #a4520f}
 .trip-ref-meal-note {max-width: 500px; margin: -13px 0 22px; color: var(--rit-muted); font: 400 13px/1.65 Poppins,Inter,Arial,sans-serif}
 
 .trip-ref-lodge {display: grid; grid-template-columns: minmax(0,351px) minmax(0,1fr); gap: 11px; align-items: start; margin-bottom: 35px}

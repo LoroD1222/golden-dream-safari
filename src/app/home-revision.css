@@ -484,6 +484,83 @@ main,section,article,aside,nav,header,footer,div {min-width: 0}
   .whatsapp-widget__fab::before {animation: none}
 }
 
+/* Trip-specific gated itinerary download. */
+.trip-download-mobile {display: none}
+
+.trip-download-enquiry {
+  display: grid;
+  grid-template-columns: minmax(0,.82fr) minmax(520px,1.18fr);
+  gap: clamp(42px,7vw,105px);
+  align-items: start;
+  scroll-margin-top: 126px;
+}
+.trip-download-enquiry__intro {position: sticky; top: 132px}
+.trip-download-enquiry__intro>span {display: inline-flex; padding: 8px 13px; border-radius: 999px; background: var(--cream); color: #a4520f; font-size: 13px; font-weight: 750}
+.trip-download-enquiry h2 {max-width: 520px; margin: 22px 0 18px; font-size: clamp(46px,5.2vw,68px); line-height: .98; letter-spacing: -.045em}
+.trip-download-enquiry__intro>p {max-width: 520px; color: var(--muted); font-size: 18px; line-height: 1.6}
+.trip-download-enquiry form {padding: 32px; border: 1px solid var(--line); border-radius: 28px; background: #fff; box-shadow: 0 18px 55px rgba(31,24,18,.07)}
+.trip-download-feedback {display: flex; gap: 11px; align-items: flex-start; margin-bottom: 22px; padding: 15px 17px; border: 1px solid #e9b27f; border-radius: 15px; background: #fff5eb; color: #7e3f0c; font-weight: 700; line-height: 1.45}
+.trip-download-feedback svg {flex: 0 0 22px; width: 22px; height: 22px}
+.trip-download-feedback.is-success {border-color: #8ad9ac; background: #edfff4; color: #116c39}
+.trip-download-feedback.is-error {border-color: #e4a2a2; background: #fff2f2; color: #9d2424}
+.trip-download-form-grid {display: grid; grid-template-columns: 1fr 1fr; gap: 18px}
+.trip-download-form-grid label {display: grid; gap: 8px; color: var(--ink); font-size: 14px; font-weight: 700}
+.trip-download-form-grid label>span {color: #b54f0b}
+.trip-download-form-grid label>small {display: inline; margin-left: 4px; color: var(--muted); font-size: 12px; font-weight: 500}
+.trip-download-form-grid .span-2 {grid-column: 1/-1}
+.trip-download-form-grid input,.trip-download-form-grid select,.trip-download-form-grid textarea {width: 100%; min-height: 52px; padding: 13px 15px; border: 1px solid #d8d2ca; border-radius: 13px; background: #fff; color: var(--ink); font: inherit; font-weight: 500; outline: none; transition: border-color .18s,box-shadow .18s}
+.trip-download-form-grid textarea {min-height: 132px; resize: vertical; line-height: 1.55}
+.trip-download-form-grid input:focus,.trip-download-form-grid select:focus,.trip-download-form-grid textarea:focus {border-color: var(--orange); box-shadow: 0 0 0 3px rgba(239,138,51,.16)}
+.trip-download-consent {display: flex; gap: 11px; align-items: flex-start; margin: 20px 0; color: var(--muted); font-size: 13px; line-height: 1.45}
+.trip-download-consent input {flex: none; width: 18px; height: 18px; accent-color: var(--orange)}
+.trip-download-honeypot {position: absolute!important; width: 1px!important; height: 1px!important; overflow: hidden!important; clip: rect(0 0 0 0)!important; white-space: nowrap!important}
+.trip-download-submit {display: inline-flex; min-height: 54px; align-items: center; justify-content: center; gap: 13px; padding: 12px 22px; border: 0; border-radius: 999px; background: var(--orange); color: var(--ink); font-family: inherit; font-size: 15px; font-weight: 800; cursor: pointer; transition: background .18s,transform .18s}
+.trip-download-submit svg {width: 20px; height: 20px}
+.trip-download-submit:hover,.trip-download-submit:focus-visible {background: var(--orange-bright); transform: translateY(-1px)}
+.trip-download-submit:focus-visible {outline: 3px solid rgba(164,82,15,.28); outline-offset: 3px}
+.trip-download-submit:disabled {opacity: .62; cursor: wait; transform: none}
+
+@media(max-width:1100px) {
+  .trip-download-mobile {
+    --download-floating-bottom: calc(max(15px,env(safe-area-inset-bottom)) + 70px);
+    position: fixed;
+    z-index: 79;
+    right: max(15px,env(safe-area-inset-right));
+    bottom: var(--download-floating-bottom);
+    display: block;
+    max-width: min(390px,calc(100vw - 30px));
+  }
+  .trip-download-mobile.is-hidden {pointer-events: none; opacity: 0}
+  .trip-download-mobile__prompt {position: relative; overflow: hidden; border: 1px solid rgba(239,138,51,.45); border-radius: 20px; background: #fff; box-shadow: 0 15px 45px rgba(30,22,15,.21); animation: trip-download-in .32s cubic-bezier(.22,.75,.25,1) both}
+  .trip-download-mobile__main {display: grid; width: 100%; grid-template-columns: 48px 1fr; gap: 13px; align-items: center; padding: 15px 45px 15px 15px; border: 0; background: transparent; color: var(--ink); text-align: left; cursor: pointer}
+  .trip-download-mobile__icon,.trip-download-mobile__compact {display: grid; place-items: center; background: var(--orange); color: var(--ink)}
+  .trip-download-mobile__icon {width: 48px; height: 48px; border-radius: 15px}
+  .trip-download-mobile svg {width: 23px; height: 23px}
+  .trip-download-mobile__main span:last-child {display: grid; gap: 3px}
+  .trip-download-mobile__main strong {font-size: 16px}
+  .trip-download-mobile__main small {color: var(--muted); font-size: 12px; line-height: 1.35}
+  .trip-download-mobile__close {position: absolute; top: 8px; right: 8px; display: grid; width: 30px; height: 30px; padding: 0; border: 0; border-radius: 50%; place-items: center; background: var(--cream); color: var(--ink); font-size: 20px; cursor: pointer}
+  .trip-download-mobile__compact {width: 54px; height: 54px; border: 0; border-radius: 50%; box-shadow: 0 10px 28px rgba(164,82,15,.3); cursor: pointer; animation: trip-download-in .25s ease both}
+  .trip-download-mobile__compact:hover,.trip-download-mobile__compact:focus-visible {transform: translateY(-2px); outline: 3px solid rgba(239,138,51,.3); outline-offset: 3px}
+  .trip-download-enquiry {grid-template-columns: 1fr; gap: 28px}
+  .trip-download-enquiry__intro {position: static}
+}
+
+@media(max-width:650px) {
+  .trip-download-enquiry {width: calc(100% - 24px); padding-top: 70px; padding-bottom: 80px}
+  .trip-download-enquiry h2 {font-size: 44px}
+  .trip-download-enquiry form {padding: 22px 16px; border-radius: 22px}
+  .trip-download-form-grid {grid-template-columns: 1fr}
+  .trip-download-form-grid .span-2 {grid-column: auto}
+  .trip-download-submit {width: 100%}
+}
+
+@keyframes trip-download-in {from {opacity: 0; transform: translateY(12px) scale(.97)} to {opacity: 1; transform: none}}
+
+@media(prefers-reduced-motion:reduce) {
+  .trip-download-mobile__prompt,.trip-download-mobile__compact {animation: none}
+}
+
 /* Figma source-of-truth pass: header, tour overview and itinerary. */
 @media (min-width: 1001px) {
   .site-header {

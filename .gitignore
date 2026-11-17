@@ -1,5 +1,7 @@
 node_modules/
 .next/
+.test-dist/
+output/
 .env
 .env.local
 .env.*.local

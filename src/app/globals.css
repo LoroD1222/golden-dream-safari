@@ -686,6 +686,8 @@ body .property-card>strong {padding: 14px 18px}
 .home-review-grid article>a,.review-card>a,.trip-review-section article>a,.trip-review-heading>a,.related-trips article a {display: flex; align-items: center; gap: 6px}
 .trip-directory-card>footer a {justify-content: flex-end}
 .download-button {display: flex; align-items: center; gap: 10px}
+.download-button:disabled {opacity: .62; cursor: wait}
+.download-button>svg {width: 19px; height: 19px}
 .trip-detail-hero>aside>a>span>b {display: flex; align-items: center; gap: 6px}
 .trip-overview li {display: flex; align-items: flex-start; gap: 10px}
 .trip-overview li::before {content: none}

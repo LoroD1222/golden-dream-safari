@@ -7,6 +7,7 @@ import {ItineraryAccommodation} from "@/components/itinerary-accommodation";
 import {SafariRouteMap} from "@/components/safari-route-map";
 import type {ItineraryDay} from "@/features/itinerary/model";
 import {northernCircuitRouteStops} from "@/features/itinerary/route-data";
+import {TripPlanIcon} from "@/components/trip-icons";
 
 const dayImages = [
   "/images/figma/98118ae1-bb7c-432c-b7b1-433d27c59b13.png",
@@ -93,7 +94,7 @@ export function InteractiveItinerary({
         </div>
 
         <div className="trip-ref-quote">
-          <div className="trip-ref-quote-heading"><span className="trip-ref-quote-icon"><FigmaIcon name="book" width={22}/></span><span>Plan Trip</span></div>
+          <div className="trip-ref-quote-heading"><TripPlanIcon className="trip-ref-quote-icon"/><span>Plan Trip</span></div>
           <h3>Experience this northern Tanzania safari for yourself.</h3>
           <p>Speak with a local planner for a thoughtful first proposal built around your dates and priorities.</p>
           <div className="trip-ref-quote-actions">

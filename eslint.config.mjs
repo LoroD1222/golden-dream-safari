@@ -7,6 +7,7 @@ export default defineConfig([
   ...nextTypescript,
   globalIgnores([
     ".next/**",
+    ".test-dist/**",
     "node_modules/**",
     "studio/.sanity/**",
     "studio/dist/**",
