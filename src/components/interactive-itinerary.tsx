@@ -5,42 +5,28 @@ import {useState} from "react";
 import {FigmaIcon} from "@/components/figma-icon";
 import {ItineraryAccommodation} from "@/components/itinerary-accommodation";
 import {SafariRouteMap} from "@/components/safari-route-map";
-import type {ItineraryDay} from "@/features/itinerary/model";
+import type {ItineraryDay, ItineraryRouteStop} from "@/features/itinerary/model";
 import {northernCircuitRouteStops} from "@/features/itinerary/route-data";
 import {TripPlanIcon} from "@/components/trip-icons";
+import type {StayOption} from "@/features/itinerary/trip-supplements";
 
-const dayImages = [
-  "/images/figma/98118ae1-bb7c-432c-b7b1-433d27c59b13.png",
-  "/images/figma/8a34ea1e-253b-41f7-8c0c-cac8586c40b4.png",
-  "/images/figma/27222719-4ba9-4724-a440-0fcb7923b931.png",
-  "/images/figma/66d4cce3-2303-4bdf-a3b9-8d8f56ab67de.png",
-];
-
-const exactStories = [
-  "Pick-up from your hotel at around 8:30 am after breakfast. Game drives in Tarangire among the baobabs, with a picnic lunch in the park.",
-  "After breakfast, drive through the highlands into the Serengeti. Afternoon game drives across the plains, with lunch beside the park.",
-  "Game drives on the way out of the Serengeti, a picnic lunch, then the drive to Ngorongoro for the night.",
-  "After an early breakfast, descend into the crater for game drives. Lunch at the hippo pool picnic site, then back up the rim and the drive to Arusha.",
-];
-
-function stopForDay(dayNumber: number) {
-  return dayNumber === 1 ? 1 : dayNumber === 2 ? 3 : dayNumber === 3 ? 4 : 5;
-}
+const fallbackDayImages = ["/images/figma/98118ae1-bb7c-432c-b7b1-433d27c59b13.png", "/images/figma/8a34ea1e-253b-41f7-8c0c-cac8586c40b4.png", "/images/figma/27222719-4ba9-4724-a440-0fcb7923b931.png", "/images/figma/66d4cce3-2303-4bdf-a3b9-8d8f56ab67de.png"];
 
 export function InteractiveItinerary({
-  slug,
   days,
+  routeStops: providedRouteStops,
+  staysByDay,
   quoteHref,
   whatsappHref,
 }: {
-  slug: string;
   days: ItineraryDay[];
+  routeStops?: ItineraryRouteStop[];
+  staysByDay?: Record<number, StayOption[]>;
   quoteHref: string;
   whatsappHref: string;
 }) {
-  const isNorthernCircuit = slug === "tarangire-serengeti-ngorongoro";
-  const routeStops = northernCircuitRouteStops;
-  const [selectedStop, setSelectedStop] = useState(1);
+  const routeStops = providedRouteStops?.length ? providedRouteStops : northernCircuitRouteStops;
+  const [selectedStop, setSelectedStop] = useState(routeStops.length > 1 ? 1 : 0);
   const [openDays, setOpenDays] = useState<Set<number>>(() => new Set([0]));
   const activeStop = routeStops[selectedStop];
   const allDaysOpen = days.length > 0 && openDays.size === days.length;
@@ -61,7 +47,8 @@ export function InteractiveItinerary({
       else next.add(index);
       return next;
     });
-    setSelectedStop(stopForDay(days[index].dayNumber));
+    const stopIndex = routeStops.findIndex(stop => stop.dayNumber === days[index].dayNumber);
+    setSelectedStop(stopIndex >= 0 ? stopIndex : 0);
   }
 
   return <section className="trip-ref-itinerary section-shell" id="itinerary">
@@ -132,11 +119,11 @@ export function InteractiveItinerary({
           <p className="trip-ref-day-summary">{day.summary}</p>
           {day.habitat && <dl className="trip-ref-day-facts"><div><dt>Habitat</dt><dd>{day.habitat}</dd></div></dl>}
           <div className="trip-ref-day-experience has-both">
-            <figure><Image src={dayImages[index] || dayImages[0]} alt={`${day.title} safari experience`} fill sizes="(max-width: 900px) 100vw, 50vw"/></figure>
-            <p className="trip-ref-day-narrative">{isNorthernCircuit ? exactStories[index] : day.activities[0]?.description}</p>
+            <figure><Image src={day.image || fallbackDayImages[index] || fallbackDayImages[0]} alt={day.imageAlt || `${day.title} safari experience`} fill sizes="(max-width: 900px) 100vw, 50vw"/></figure>
+            <p className="trip-ref-day-narrative">{day.narrative || day.activities[0]?.description}</p>
           </div>
-          <ItineraryAccommodation day={day} isFinalDay={day.dayNumber === days.length}/>
-          {day.dayNumber === days.length && <p className="trip-ref-dropoff-note">No overnight today. This afternoon we drive back to Arusha and drop you at your accommodation.</p>}
+          <ItineraryAccommodation day={day} options={staysByDay?.[day.dayNumber] || []} isFinalDay={day.dayNumber === days.length}/>
+          {day.dayNumber === days.length && <p className="trip-ref-dropoff-note">{day.dropOffNote || "No overnight today. This afternoon we drive back to Arusha and drop you at your accommodation."}</p>}
         </div>
       </details>)}
     </div>

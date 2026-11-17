@@ -3,8 +3,9 @@
 import Image from "next/image";
 import {useState} from "react";
 import {FigmaIcon} from "@/components/figma-icon";
+import type {ItineraryImage} from "@/features/itinerary/model";
 
-const galleryImages = [
+const fallbackGalleryImages = [
   {src: "/images/figma/4353112e-ba38-4c14-9336-9799369efbd9.png", alt: "Elephants beneath acacia trees in Tarangire"},
   {src: "/images/figma/cd51dec0-9215-4d8f-988d-5d464ec8c982.png", alt: "Open northern Tanzania safari plains"},
   {src: "/images/figma/627866e6-a863-4800-8f42-0315205e17e2.png", alt: "Zebras on the Serengeti plains"},
@@ -15,7 +16,8 @@ const galleryImages = [
   {src: "/images/figma/27222719-4ba9-4724-a440-0fcb7923b931.png", alt: "Ngorongoro wildlife safari scene"},
 ];
 
-export function TripOverviewGallery() {
+export function TripOverviewGallery({images}: {images?: ItineraryImage[]}) {
+  const galleryImages = images?.length ? images : fallbackGalleryImages;
   const [activeIndex, setActiveIndex] = useState(0);
   const activeImage = galleryImages[activeIndex];
 

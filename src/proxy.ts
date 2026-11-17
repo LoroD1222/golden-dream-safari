@@ -13,4 +13,4 @@ export function proxy(request: NextRequest) {
   return new NextResponse("Authentication required", {status: 401, headers: {"WWW-Authenticate": 'Basic realm="Golden Dream itinerary editor"'}});
 }
 
-export const config = {matcher: ["/admin/:path*", "/api/itineraries/:path*"]};
+export const config = {matcher: ["/admin/:path*", "/api/itineraries/:path*", "/api/reviews/:path*", "/api/review-categories/:path*", "/api/accommodations/:path*", "/api/site-settings/:path*"]};

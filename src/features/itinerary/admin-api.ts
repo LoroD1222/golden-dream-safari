@@ -53,3 +53,6 @@ export function requireWritableItineraryStorage() {
   }
   return null;
 }
+
+export const requireContentAdmin = requireItineraryAdmin;
+export const requireWritableContentStorage = requireWritableItineraryStorage;

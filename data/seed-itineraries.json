@@ -5,8 +5,42 @@
     "title": "Tarangire, Serengeti & Ngorongoro Crater",
     "summary": "Tarangire's baobab trees, the Serengeti plains and a morning in the Ngorongoro Crater.",
     "heroImage": "/images/figma/9ee0aacc-baa1-43b0-90d6-54526abb5973.png",
+    "overviewTitle": "About this safari",
+    "overviewParagraphs": [
+      "Africa's famous baobab trees combined with Tanzania's best-known parks. Day 1 is in Tarangire, days 2 and 3 in the Serengeti, and day 4 in the Ngorongoro Crater.",
+      "You can join a group to keep the cost down, or book a private tour. The itinerary can be changed: add a park, an extra night or a few days on Zanzibar."
+    ],
+    "highlights": [
+      "Baobab trees and elephant herds in Tarangire",
+      "Game drives across the Serengeti plains",
+      "Picnic lunch at the hippo pool on the crater floor",
+      "A chance to see the Big Five",
+      "Hotel pick-up and drop-off in Arusha"
+    ],
+    "galleryImages": [
+      {"src":"/images/figma/4353112e-ba38-4c14-9336-9799369efbd9.png","alt":"Elephants beneath acacia trees in Tarangire"},
+      {"src":"/images/figma/cd51dec0-9215-4d8f-988d-5d464ec8c982.png","alt":"Open northern Tanzania safari plains"},
+      {"src":"/images/figma/627866e6-a863-4800-8f42-0315205e17e2.png","alt":"Zebras on the Serengeti plains"},
+      {"src":"/images/figma/844cb356-1c6b-427b-a31b-586e7b78c6b6.png","alt":"Hippos resting beside the water"},
+      {"src":"/images/figma/27096cab-2e77-46b5-9b4f-1aa9fbe1012c.png","alt":"Leopard resting in a tree"},
+      {"src":"/images/figma/98118ae1-bb7c-432c-b7b1-433d27c59b13.png","alt":"Elephants crossing Tarangire National Park"},
+      {"src":"/images/figma/8a34ea1e-253b-41f7-8c0c-cac8586c40b4.png","alt":"Wildlife on the Serengeti grasslands"},
+      {"src":"/images/figma/27222719-4ba9-4724-a440-0fcb7923b931.png","alt":"Ngorongoro wildlife safari scene"}
+    ],
+    "routeStops": [
+      {"name":"Arusha","label":"Day 1","description":"Arrival, briefing and the northern circuit starting point.","dayNumber":1,"coordinates":{"lat":-3.3869,"lng":36.683}},
+      {"name":"Tarangire National Park","label":"Day 1","description":"Baobab trees, big elephant herds and the Tarangire River.","dayNumber":1,"coordinates":{"lat":-3.8333,"lng":36}},
+      {"name":"Mto wa Mbu","label":"Night 1","description":"A lively safari town between Tarangire and the highlands.","dayNumber":1,"coordinates":{"lat":-3.35,"lng":35.85}},
+      {"name":"Serengeti National Park","label":"Days 2–3","description":"Open plains, rocky kopjes and some of Tanzania's best wildlife viewing.","dayNumber":2,"coordinates":{"lat":-2.3333,"lng":34.8333}},
+      {"name":"Ngorongoro Crater","label":"Days 3–4","description":"A wildlife-rich caldera with a picnic stop beside the hippo pool.","dayNumber":3,"coordinates":{"lat":-3.1618,"lng":35.5877}},
+      {"name":"Arusha","label":"Day 4","description":"Return to your Arusha accommodation after the crater game drive.","dayNumber":4,"coordinates":{"lat":-3.3869,"lng":36.683}}
+    ],
     "durationDays": 4,
-    "destinations": ["Tarangire National Park", "Serengeti National Park", "Ngorongoro Crater"],
+    "destinations": [
+      "Tarangire National Park",
+      "Serengeti National Park",
+      "Ngorongoro Crater"
+    ],
     "startingPrice": 180,
     "currency": "USD",
     "status": "published",
@@ -16,43 +50,98 @@
         "dayNumber": 1,
         "title": "Arusha → Tarangire National Park",
         "summary": "Tarangire, known for its baobab trees and elephants.",
+        "narrative": "Pick-up from your hotel at around 8:30 am after breakfast. Game drives in Tarangire among the baobabs, with a picnic lunch in the park.",
         "habitat": "Baobab woodland",
+        "driveTime": "Approx. 2.5-3 hours",
+        "distance": "Approx. 120 km",
+        "activityLevel": "Easy game-drive day",
         "meals": ["Lunch", "Dinner"],
         "activities": [{"id": "activity-1", "title": "Tarangire game drive", "description": "Pick-up from your hotel after breakfast, followed by a game drive and picnic lunch.", "location": "Tarangire National Park"}],
-        "accommodation": {"name": "Campsite or lodge", "category": "Group camping", "location": "Mto wa Mbu", "description": "Final property depends on the selected package."}
+        "accommodation": {"name": "Campsite or lodge", "category": "Group camping", "location": "Mto wa Mbu", "description": "Final property depends on the selected package."},
+        "accommodationIds": ["accommodation-karibu-river-camp","accommodation-nimali-tarangire","accommodation-nimali-tarangire-private"],
+        "image": "/images/figma/98118ae1-bb7c-432c-b7b1-433d27c59b13.png",
+        "imageAlt": "Arusha to Tarangire National Park safari experience"
       },
       {
         "id": "day-2",
         "dayNumber": 2,
         "title": "Mto wa Mbu → Serengeti National Park",
         "summary": "Through the Ngorongoro Highlands to the Serengeti.",
+        "narrative": "After breakfast, drive through the highlands into the Serengeti. Afternoon game drives across the plains, with lunch beside the park.",
         "habitat": "Open grass plains and rocky kopjes",
+        "driveTime": "Approx. 5-6 hours with game viewing",
+        "distance": "Approx. 230 km",
+        "activityLevel": "Long scenic transfer",
         "meals": ["Breakfast", "Lunch", "Dinner"],
         "activities": [{"id": "activity-2", "title": "Drive to the Serengeti", "description": "Travel through the highlands into the Serengeti, with an afternoon game drive.", "location": "Serengeti National Park"}],
-        "accommodation": {"name": "Campsite or lodge", "category": "Group camping", "location": "Serengeti", "description": "Final property depends on the selected package."}
+        "accommodation": {"name": "Campsite or lodge", "category": "Group camping", "location": "Serengeti", "description": "Final property depends on the selected package."},
+        "accommodationIds": ["accommodation-karibu-river-camp","accommodation-lake-masek","accommodation-melia-serengeti"],
+        "image": "/images/figma/8a34ea1e-253b-41f7-8c0c-cac8586c40b4.png",
+        "imageAlt": "Mto wa Mbu to Serengeti National Park safari experience"
       },
       {
         "id": "day-3",
         "dayNumber": 3,
         "title": "Serengeti → Ngorongoro Conservation Area",
         "summary": "A morning game drive, then on to Ngorongoro.",
+        "narrative": "Game drives on the way out of the Serengeti, a picnic lunch, then the drive to Ngorongoro for the night.",
         "habitat": "Highland forest and the crater rim",
+        "driveTime": "Approx. 3-4 hours with game viewing",
+        "distance": "Approx. 150 km",
+        "activityLevel": "Easy game-drive day",
         "meals": ["Breakfast", "Lunch", "Dinner"],
         "activities": [{"id": "activity-3", "title": "Morning game drive", "description": "Game drive on the way out of the Serengeti, then continue to the Ngorongoro area.", "location": "Serengeti and Ngorongoro"}],
-        "accommodation": {"name": "Campsite or lodge", "category": "Group camping", "location": "Ngorongoro", "description": "Final property depends on the selected package."}
+        "accommodation": {"name": "Campsite or lodge", "category": "Group camping", "location": "Ngorongoro", "description": "Final property depends on the selected package."},
+        "accommodationIds": ["accommodation-karibu-river-camp","accommodation-neptune-ngorongoro","accommodation-lemala-kuria-hills"],
+        "image": "/images/figma/27222719-4ba9-4724-a440-0fcb7923b931.png",
+        "imageAlt": "Serengeti to Ngorongoro Conservation Area safari experience"
       },
       {
         "id": "day-4",
         "dayNumber": 4,
         "title": "Ngorongoro Crater → Arusha",
         "summary": "Game drives on the crater floor, then back to Arusha.",
+        "narrative": "After an early breakfast, descend into the crater for game drives. Lunch at the hippo pool picnic site, then back up the rim and the drive to Arusha.",
         "habitat": "Crater floor grassland and the hippo pool",
+        "driveTime": "Approx. 4-5 hours to Arusha",
+        "distance": "Approx. 190 km",
+        "activityLevel": "Crater drive and transfer",
         "meals": ["Breakfast", "Lunch"],
-        "activities": [{"id": "activity-4", "title": "Ngorongoro Crater game drive", "description": "Descend into the crater for game drives and a picnic before returning to Arusha.", "location": "Ngorongoro Crater"}]
+        "activities": [{"id": "activity-4", "title": "Ngorongoro Crater game drive", "description": "Descend into the crater for game drives and a picnic before returning to Arusha.", "location": "Ngorongoro Crater"}],
+        "image": "/images/figma/66d4cce3-2303-4bdf-a3b9-8d8f56ab67de.png",
+        "imageAlt": "Ngorongoro Crater to Arusha safari experience",
+        "dropOffNote": "No overnight today. This afternoon we drive back to Arusha and drop you at your accommodation."
       }
     ],
     "inclusions": ["Accommodation for 3 nights", "All meals on safari", "Transport in a safari vehicle", "Drinking water on the road", "Pick-up and drop-off at your Arusha hotel", "A driver-guide and a chef on camping safaris"],
     "exclusions": ["International flights", "Tanzania visa", "Travel insurance", "Tips for your guide and chef", "Drinks other than water"],
+    "onRequestItems": ["Airport transfers", "A hotel in Arusha the night before or after", "Special diets: tell us when you book", "Extra days in Tarangire, Lake Manyara or Arusha NP"],
+    "priceIntroduction": "Prices range from $200 per person per day (camping, joining a group) to $550 per person per day (private safari with lodge accommodation). Your price depends on the number of people, the parks, the accommodation, private or group, the season and the length of the trip.",
+    "priceTiers": [
+      {"name":"Group camping","price":"$200","suffix":"/pp/day","description":"Join a group and stay at campsites. A chef travels with you."},
+      {"name":"Mid-range lodge","price":"On request","description":"Lodges and tented camps, private or with a small group."},
+      {"name":"Private luxury","price":"up to $550","suffix":"/pp/day","description":"Your own vehicle and guide, staying in safari lodges."}
+    ],
+    "optionalExperiences": [
+      {"name":"Private safari vehicle upgrade","price":"On request","note":"Your own vehicle and guide throughout the safari."},
+      {"name":"Serengeti balloon safari","price":"On request","note":"Subject to season, route and availability."},
+      {"name":"Extra night in Arusha","price":"Quoted separately","note":"Before or after your safari, with transfer options."},
+      {"name":"Zanzibar extension","price":"Tailored quote","note":"Flights, transfers and beach accommodation can be arranged."}
+    ],
+    "practicalInformation": ["Bring a valid passport, arrange the appropriate Tanzania visa and travel with comprehensive travel insurance.", "Park roads can be dusty and uneven. Soft-sided luggage is easier to store in the safari vehicle.", "Please tell us about allergies, dietary requirements, mobility needs and celebrations before arrival.", "Drinking water is supplied on safari. Keep cash for tips and small personal purchases."],
+    "packingNotes": ["Light neutral clothing, a warm layer for early mornings and the Ngorongoro highlands, and a light rain jacket.", "Closed walking shoes, sun hat, sunglasses, sunscreen, insect repellent and personal medication.", "Binoculars, camera, spare batteries and a soft-sided bag suitable for the safari vehicle.", "Tanzania uses UK-style Type G plugs. Keep valuables, documents and essential medication in your day bag."],
+    "bookingConditions": ["This itinerary is a proposal. Accommodation, room category and final routing remain subject to availability until confirmed in writing.", "Wildlife sightings cannot be guaranteed. Driving times and distances are estimates and may change with road, weather and park conditions.", "Your final quotation will state the deposit, payment schedule, cancellation terms and any seasonal supplements.", "Travellers are responsible for passports, visas, travel insurance, vaccinations and medical advice applicable to their journey."],
+    "faqs": [
+      {"question":"How much does a safari cost?","answer":"From $200 per person per day (camping, joining a group) to $550 per person per day (private safari, lodge accommodation). Park fees, accommodation, meals, transport and drinking water are included."},
+      {"question":"What's included?","answer":"Accommodation, meals on safari, transport, drinking water and park activities listed in your proposal are included."},
+      {"question":"Can I change the itinerary?","answer":"Yes. Every trip can be changed until it fits your dates, interests and preferred comfort level."},
+      {"question":"Private tour or join a group?","answer":"Both are possible. Tell us your preference and we will explain the options for your dates."},
+      {"question":"When is the best time to go?","answer":"Tanzania is a year-round destination. The best time depends on the parks, wildlife and activities you want to experience."},
+      {"question":"Can you arrange airport transfers and a hotel in Arusha?","answer":"Yes. Airport transfers and an Arusha hotel before or after your trip can be added on request."},
+      {"question":"I have dietary requirements. Is that OK?","answer":"Yes. Tell us about dietary requirements when you request your quote so the team can plan ahead."},
+      {"question":"How do I book?","answer":"Send your dates and group details. We will prepare an itinerary and price, then explain the next steps."}
+    ],
+    "relatedTripSlugs": ["serengeti-ngorongoro-crater","great-migration","big-four-parks"],
     "createdAt": "2026-11-16T00:00:00.000Z",
     "updatedAt": "2026-11-16T00:00:00.000Z"
   }

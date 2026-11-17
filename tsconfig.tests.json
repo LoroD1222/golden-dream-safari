@@ -12,6 +12,8 @@
   "include": [
     "src/features/itinerary/access.ts",
     "src/features/itinerary/download-flow.ts",
+    "src/features/itinerary/schema.ts",
+    "src/features/content/schema.ts",
     "tests/**/*.ts"
   ]
 }

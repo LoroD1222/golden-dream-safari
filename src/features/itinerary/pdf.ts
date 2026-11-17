@@ -21,6 +21,7 @@ import type {ItineraryPdfProfile} from "@/features/itinerary/access";
 import {getItineraryDownloadConfig} from "@/features/itinerary/download-config";
 import {northernCircuitRouteStops} from "@/features/itinerary/route-data";
 import {getTripSupplement, type StayOption} from "@/features/itinerary/trip-supplements";
+import type {AccommodationRecord, SiteSettings} from "@/features/content/model";
 
 const PAGE_SIZE: [number, number] = [595.28, 841.89];
 const PAGE_WIDTH = PAGE_SIZE[0];
@@ -173,9 +174,12 @@ async function drawAccommodationCards(page: PDFPage, pdf: PDFDocument, stays: St
   }
 }
 
-export async function generateItineraryPdf(itinerary: Itinerary, profile?: ItineraryPdfProfile) {
-  const config = getItineraryDownloadConfig(itinerary);
+export async function generateItineraryPdf(itinerary: Itinerary, profile?: ItineraryPdfProfile, accommodations: AccommodationRecord[] = [], siteSettings?: SiteSettings) {
+  const itineraryConfig = getItineraryDownloadConfig(itinerary);
+  const config = siteSettings ? {...itineraryConfig, companyName: siteSettings.company.name, companyDescription: siteSettings.company.description, companyLogo: siteSettings.company.logo, contactEmail: siteSettings.company.email, contactPhone: siteSettings.company.phone, contactLocation: siteSettings.company.location, contactWebsite: siteSettings.company.website, contactWhatsApp: siteSettings.company.whatsapp} : itineraryConfig;
   const supplement = getTripSupplement(itinerary.slug);
+  const accommodationMap = new Map(accommodations.filter(item => item.status === "published").map(item => [item.id, item]));
+  const staysByDay = Object.fromEntries(itinerary.days.map(day => [day.dayNumber, (day.accommodationIds || []).map(id => accommodationMap.get(id)).filter((item): item is AccommodationRecord => Boolean(item && item.category !== "Other")).map(item => ({tier: item.category as StayOption["tier"], property: item.name, location: item.location, images: item.images.map(image => ({src: image.src, alt: image.alt}))}))]));
   const pdf = await PDFDocument.create();
   pdf.setTitle(`${itinerary.title} itinerary`);
   pdf.setAuthor(config.companyName);
@@ -188,7 +192,7 @@ export async function generateItineraryPdf(itinerary: Itinerary, profile?: Itine
   const hero = await embedPublicImage(pdf, itinerary.heroImage);
   const logo = await embedPublicImage(pdf, config.companyLogo || "/images/figma/brand-mark.png");
   const fallbackDayImages = ["/images/figma/98118ae1-bb7c-432c-b7b1-433d27c59b13.png", "/images/figma/8a34ea1e-253b-41f7-8c0c-cac8586c40b4.png", "/images/figma/27222719-4ba9-4724-a440-0fcb7923b931.png", "/images/figma/66d4cce3-2303-4bdf-a3b9-8d8f56ab67de.png"];
-  const routeStops = itinerary.slug === "tarangire-serengeti-ngorongoro" ? northernCircuitRouteStops : itinerary.destinations.map((name, index) => ({name, label: `Stop ${index + 1}`, description: "Safari destination", dayNumber: index + 1, coordinates: {lat: -3.7 + index * .22, lng: 35.2 + index * .25}}));
+  const routeStops = itinerary.routeStops?.length ? itinerary.routeStops : itinerary.slug === "tarangire-serengeti-ngorongoro" ? northernCircuitRouteStops : itinerary.destinations.map((name, index) => ({name, label: `Stop ${index + 1}`, description: "Safari destination", dayNumber: index + 1, coordinates: {lat: -3.7 + index * .22, lng: 35.2 + index * .25}}));
 
   const cover = pdf.addPage(PAGE_SIZE);
   if (hero) drawCoverImage(cover, hero, {x: 0, y: 282, width: PAGE_WIDTH, height: PAGE_HEIGHT - 282});
@@ -239,7 +243,7 @@ export async function generateItineraryPdf(itinerary: Itinerary, profile?: Itine
     drawLines(page, day.title, {x: 42, y: 722, width: 510, size: 23, font: bold, color: ink, lineHeight: 27, maxLines: 2});
     drawLines(page, day.summary, {x: 42, y: 666, width: 510, size: 10, font: regular, color: muted, lineHeight: 14, maxLines: 2});
     const travel = supplement.travelByDay[day.dayNumber];
-    const dayFacts = [["Habitat", day.habitat || "Varied safari landscape"], ["Driving", travel?.driveTime || "Route dependent"], ["Distance", travel?.distance || "Route dependent"], ["Activity", travel?.activityLevel || "Easy safari day"]];
+    const dayFacts = [["Habitat", day.habitat || "Varied safari landscape"], ["Driving", day.driveTime || travel?.driveTime || "Route dependent"], ["Distance", day.distance || travel?.distance || "Route dependent"], ["Activity", day.activityLevel || travel?.activityLevel || "Easy safari day"]];
     dayFacts.forEach(([label, value], factIndex) => drawFactCard(page, label, value, 42 + factIndex * 130, 581, 120, fonts));
     const dayImage = await embedPublicImage(pdf, day.image || fallbackDayImages[index]);
     if (dayImage) drawCoverImage(page, dayImage, {x: 42, y: 350, width: 511, height: 210});
@@ -260,7 +264,7 @@ export async function generateItineraryPdf(itinerary: Itinerary, profile?: Itine
     page.drawText("OVERNIGHT", {x: 300, y: 248, size: 6.7, font: bold, color: orangeDeep});
     const overnight = day.accommodation ? `${day.accommodation.category} - ${day.accommodation.location}` : "Return to Arusha / drop-off";
     page.drawText(safeText(overnight), {x: 300, y: 232, size: 8.7, font: bold, color: ink});
-    const stays = supplement.staysByDay[day.dayNumber] || [];
+    const stays = staysByDay[day.dayNumber]?.length ? staysByDay[day.dayNumber] : supplement.staysByDay[day.dayNumber] || [];
     if (stays.length) {
       page.drawText("ACCOMMODATION OPTIONS", {x: 42, y: 202, size: 7.2, font: bold, color: orangeDeep});
       await drawAccommodationCards(page, pdf, stays, fonts);
@@ -282,7 +286,7 @@ export async function generateItineraryPdf(itinerary: Itinerary, profile?: Itine
   drawBulletList(includedPage, itinerary.exclusions, {x: 326, y: 613, width: 208, font: regular, maxItems: 9, negative: true});
   includedPage.drawText("OPTIONAL EXPERIENCES", {x: 42, y: 365, size: 8, font: bold, color: orangeDeep});
   const optionalY = 335;
-  supplement.optionalExperiences.forEach((item, index) => {
+  (itinerary.optionalExperiences?.length ? itinerary.optionalExperiences : supplement.optionalExperiences).forEach((item, index) => {
     const x = 42 + (index % 2) * 266;
     const y = optionalY - Math.floor(index / 2) * 112;
     includedPage.drawRectangle({x, y: y - 86, width: 245, height: 92, color: white, borderColor: line, borderWidth: .6});
@@ -303,10 +307,10 @@ export async function generateItineraryPdf(itinerary: Itinerary, profile?: Itine
   ];
   drawBulletList(practicalPage, practical, {x: 42, y: 623, width: 235, font: regular, maxItems: 7});
   practicalPage.drawText("PACKING NOTES", {x: 308, y: 649, size: 8, font: bold, color: orangeDeep});
-  drawBulletList(practicalPage, supplement.packingNotes, {x: 308, y: 623, width: 235, font: regular, maxItems: 7});
+  drawBulletList(practicalPage, itinerary.packingNotes?.length ? itinerary.packingNotes : supplement.packingNotes, {x: 308, y: 623, width: 235, font: regular, maxItems: 7});
   practicalPage.drawLine({start: {x: 42, y: 396}, end: {x: 553, y: 396}, thickness: .7, color: line});
   practicalPage.drawText("IMPORTANT BOOKING CONDITIONS", {x: 42, y: 370, size: 8, font: bold, color: orangeDeep});
-  drawBulletList(practicalPage, supplement.bookingConditions, {x: 42, y: 343, width: 511, font: regular, maxItems: 6, negative: true});
+  drawBulletList(practicalPage, itinerary.bookingConditions?.length ? itinerary.bookingConditions : supplement.bookingConditions, {x: 42, y: 343, width: 511, font: regular, maxItems: 6, negative: true});
   practicalPage.drawRectangle({x: 42, y: 58, width: 511, height: 110, color: ink});
   practicalPage.drawText("READY TO PLAN YOUR SAFARI?", {x: 62, y: 145, size: 8, font: bold, color: orange});
   practicalPage.drawText(safeText(config.companyName), {x: 62, y: 120, size: 18, font: bold, color: white});

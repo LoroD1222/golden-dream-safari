@@ -1,0 +1,8 @@
+[
+  {"id":"category-safaris","name":"Safaris","slug":"safaris","description":"Wildlife safaris and game-drive journeys.","status":"published","order":10,"createdAt":"2026-11-17T00:00:00.000Z","updatedAt":"2026-11-17T00:00:00.000Z"},
+  {"id":"category-kilimanjaro","name":"Kilimanjaro","slug":"kilimanjaro","description":"Kilimanjaro climbs and mountain crews.","status":"published","order":20,"createdAt":"2026-11-17T00:00:00.000Z","updatedAt":"2026-11-17T00:00:00.000Z"},
+  {"id":"category-camping","name":"Camping","slug":"camping","description":"Camping safari experiences.","status":"published","order":30,"createdAt":"2026-11-17T00:00:00.000Z","updatedAt":"2026-11-17T00:00:00.000Z"},
+  {"id":"category-custom","name":"Custom trips","slug":"custom-trips","description":"Tailor-made and mixed itineraries.","status":"published","order":40,"createdAt":"2026-11-17T00:00:00.000Z","updatedAt":"2026-11-17T00:00:00.000Z"},
+  {"id":"category-zanzibar","name":"Zanzibar","slug":"zanzibar","description":"Island extensions and beach stays.","status":"published","order":50,"createdAt":"2026-11-17T00:00:00.000Z","updatedAt":"2026-11-17T00:00:00.000Z"},
+  {"id":"category-day-trips","name":"Day trips","slug":"day-trips","description":"One-day parks and excursions.","status":"published","order":60,"createdAt":"2026-11-17T00:00:00.000Z","updatedAt":"2026-11-17T00:00:00.000Z"}
+]

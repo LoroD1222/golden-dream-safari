@@ -3,18 +3,15 @@
 import Image from "next/image";
 import {useEffect, useState} from "react";
 import type {ItineraryDay} from "@/features/itinerary/model";
-import {getTripSupplement, type StayOption} from "@/features/itinerary/trip-supplements";
+import type {StayOption} from "@/features/itinerary/trip-supplements";
 
 const assetBasePath = "/itinerary-assets";
 
-const stayOptionsByDay = getTripSupplement("tarangire-serengeti-ngorongoro").staysByDay;
-
-export function ItineraryAccommodation({day, isFinalDay}: {day: ItineraryDay; isFinalDay: boolean}) {
+export function ItineraryAccommodation({day, options, isFinalDay}: {day: ItineraryDay; options: StayOption[]; isFinalDay: boolean}) {
   const [selectedOption, setSelectedOption] = useState(0);
   const [slide, setSlide] = useState(0);
   const [paused, setPaused] = useState(false);
   const [mealInfoOpen, setMealInfoOpen] = useState(false);
-  const options = stayOptionsByDay[day.dayNumber] || [];
   const selected = options[selectedOption];
   const selectedImage = selected?.images[slide] || selected?.images[0];
 
