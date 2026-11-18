@@ -282,6 +282,182 @@ main,section,article,aside,nav,header,footer,div {min-width: 0}
   .contact-methods em {font-size: 12px}
 }
 
+/* Itinerary price section — Figma node 128:1707. */
+.trip-price {
+  padding: 120px 24px 0;
+  background: #fff;
+  color: #fff;
+}
+
+.trip-price__card {
+  display: flex;
+  width: 100%;
+  padding: 72px;
+  flex-direction: column;
+  gap: 40px;
+  overflow: hidden;
+  border-radius: 32px;
+  background: #0b0907;
+}
+
+.trip-price__heading {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+.trip-price__heading .section-pill {
+  background: #1c1814;
+  color: #fff;
+}
+
+.trip-price__heading h2 {
+  width: min(100%, 860px);
+  margin: 0;
+  font-size: 60px;
+  line-height: 1.02;
+  letter-spacing: -1.5px;
+}
+
+.trip-price__heading > p {
+  width: min(100%, 760px);
+  margin: 0;
+  color: #bdb6ab;
+  font-size: 18px;
+  line-height: 1.55;
+}
+
+.trip-price__choice-heading {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.trip-price__choice-heading h3 {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 0;
+  font-size: 22px;
+  line-height: 1.25;
+}
+
+.trip-price__choice-heading h3 span {
+  display: grid;
+  width: 34px;
+  height: 34px;
+  flex: 0 0 34px;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--orange);
+  color: var(--ink);
+  font-size: 16px;
+}
+
+.trip-price__choice-heading p {
+  margin: 0;
+  color: #bdb6ab;
+  font-size: 16px;
+  line-height: 1.5;
+  text-align: right;
+}
+
+.trip-price__travel-grid,
+.trip-price__tier-grid {
+  display: grid;
+  gap: 16px;
+}
+
+.trip-price__travel-grid {grid-template-columns: repeat(2, minmax(0, 1fr))}
+.trip-price__tier-grid {grid-template-columns: repeat(3, minmax(0, 1fr))}
+
+.trip-price__travel-grid article,
+.trip-price__tier-grid article {
+  min-height: 0;
+  padding: 28px;
+  border-radius: 22px;
+  background: #1c1814;
+}
+
+.trip-price__travel-grid article > div {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+}
+
+.trip-price__travel-grid h4,
+.trip-price__tier-grid h4 {
+  margin: 0;
+  color: #fff;
+  font-size: 22px;
+  line-height: 1.25;
+}
+
+.trip-price__travel-grid article > div span {
+  padding: 7px 12px;
+  border-radius: 999px;
+  background: rgba(247, 137, 40, .16);
+  color: var(--orange);
+  font-size: 13px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.trip-price__travel-grid p,
+.trip-price__tier-grid p {
+  margin: 14px 0 0;
+  color: #bdb6ab;
+  font-size: 16px;
+  line-height: 1.55;
+}
+
+.trip-price__tier-grid strong {
+  display: block;
+  margin-top: 24px;
+  color: var(--orange);
+  font-size: 40px;
+  line-height: 1;
+}
+
+.trip-price__included-note {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 0;
+  color: #fff;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+.trip-price__included-note svg {flex: 0 0 auto}
+.trip-price__actions {margin-top: 0}
+.trip-price__actions .whatsapp-text-link {color: #fff}
+
+@media (max-width: 900px) {
+  .trip-price {padding: 88px 16px 0}
+  .trip-price__card {padding: 48px 32px}
+  .trip-price__heading h2 {font-size: 50px}
+  .trip-price__choice-heading {align-items: flex-start; flex-direction: column; gap: 10px}
+  .trip-price__choice-heading p {text-align: left}
+  .trip-price__tier-grid {grid-template-columns: 1fr}
+}
+
+@media (max-width: 600px) {
+  .trip-price {padding: 72px 12px 0}
+  .trip-price__card {padding: 36px 20px; gap: 32px; border-radius: 24px}
+  .trip-price__heading h2 {font-size: 42px; letter-spacing: -.8px}
+  .trip-price__heading > p {font-size: 16px}
+  .trip-price__travel-grid {grid-template-columns: 1fr}
+  .trip-price__travel-grid article,
+  .trip-price__tier-grid article {padding: 22px 20px}
+  .trip-price__travel-grid article > div {align-items: flex-start; flex-direction: column; gap: 10px}
+  .trip-price__actions {align-items: stretch; flex-direction: column}
+  .trip-price__actions .button {justify-content: space-between}
+}
+
 /* Homepage annotation pass — Figma is the source of truth. */
 .home-about__photos img,
 .popular-card__photo>img,

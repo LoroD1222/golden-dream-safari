@@ -30,6 +30,19 @@
     margin-inline: 0;
   }
 
+  /* These two compositions have deliberately fixed inner proportions in
+     Figma. Keep the page responsive, but do not stretch the copy and imagery
+     apart on wide monitors. */
+  body .included {
+    width: min(calc(100% - 128px), 1312px);
+    margin-inline: auto;
+  }
+
+  body .about-hero {
+    width: min(calc(100% - 74px), 1366px);
+    margin-inline: auto;
+  }
+
   body .trip-overview {
     grid-template-columns: minmax(0, 1.08fr) minmax(0, 1fr);
   }
