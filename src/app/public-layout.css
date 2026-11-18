@@ -1,0 +1,124 @@
+/* Final public-page frame system. Figma uses full-width sections with small,
+   consistent page gutters rather than a fixed desktop content cap. */
+:root {
+  --public-frame-left: 34px;
+  --public-frame-right: 40px;
+}
+
+@media (min-width: 701px) {
+  body .section-shell,
+  body .faq-section,
+  body .trip-ref-itinerary {
+    width: auto;
+    max-width: none;
+    margin-right: var(--public-frame-right);
+    margin-left: var(--public-frame-left);
+  }
+
+  body .home-about,
+  body .booking-steps,
+  body .home-reviews {
+    padding-right: var(--public-frame-right);
+    padding-left: var(--public-frame-left);
+  }
+
+  body .home-about > .section-shell,
+  body .booking-steps > .section-shell,
+  body .home-reviews > .section-shell {
+    width: 100%;
+    max-width: none;
+    margin-inline: 0;
+  }
+
+  body .trip-overview {
+    grid-template-columns: minmax(0, 1.08fr) minmax(0, 1fr);
+  }
+
+  body .overview-gallery {
+    width: 100%;
+  }
+
+  body .site-footer {
+    padding-right: var(--public-frame-right);
+    padding-left: var(--public-frame-left);
+  }
+
+  body .footer-grid,
+  body .footer-cta,
+  body .footer-wordmark,
+  body .footer-bottom {
+    width: 100%;
+    max-width: none;
+    margin-right: 0;
+    margin-left: 0;
+  }
+
+  /* Policy copy keeps a readable line length inside the full site frame. */
+  body .legal-page {
+    width: min(calc(100% - 74px), 900px);
+    margin-inline: auto;
+  }
+}
+
+@media (max-width: 700px) {
+  :root {
+    --public-frame-left: 16px;
+    --public-frame-right: 16px;
+  }
+
+  body .section-shell,
+  body .faq-section,
+  body .trip-ref-itinerary,
+  body .home-about > .section-shell {
+    width: auto;
+    max-width: none;
+    margin-right: var(--public-frame-right);
+    margin-left: var(--public-frame-left);
+  }
+
+  body .trips-intro,
+  body .reviews-intro,
+  body .about-hero,
+  body .contact-hero,
+  body .trip-detail-hero,
+  body .trip-facts {
+    width: auto;
+    margin-right: 12px;
+    margin-left: 12px;
+  }
+
+  body .trip-section-nav > .section-shell {
+    width: 100%;
+    margin-inline: 0;
+  }
+
+  body .home-about,
+  body .booking-steps,
+  body .home-reviews {
+    padding-right: 12px;
+    padding-left: 12px;
+  }
+
+  body .home-about > .section-shell,
+  body .booking-steps > .section-shell,
+  body .home-reviews > .section-shell {
+    width: 100%;
+    max-width: none;
+    margin-inline: 0;
+  }
+
+  body .site-footer {
+    padding-right: var(--public-frame-right);
+    padding-left: var(--public-frame-left);
+  }
+
+  body .footer-grid,
+  body .footer-cta,
+  body .footer-wordmark,
+  body .footer-bottom {
+    width: 100%;
+    max-width: none;
+    margin-right: 0;
+    margin-left: 0;
+  }
+}
