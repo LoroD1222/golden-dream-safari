@@ -42,6 +42,26 @@
   body .included {
     margin-top: 48px;
   }
+
+  /* Let the two About hero panels use the full cream frame. The copy starts
+     near the left edge and the portrait finishes near the right edge instead
+     of both panels being held in a narrow composition at the centre. */
+  body .about-hero {
+    grid-template-columns: minmax(0, 1fr) clamp(380px, 42%, 520px);
+    gap: clamp(32px, 4vw, 64px);
+    padding: 40px;
+  }
+
+  body .about-hero > div {
+    min-width: 0;
+    padding: 0;
+  }
+
+  body .about-hero > figure {
+    width: 100%;
+    min-width: 0;
+    margin-right: 0;
+  }
 }
 
 @media (min-width: 701px) {
@@ -150,21 +170,6 @@
   body .included > .included-copy {grid-column: 2}
   body .included > .included-collage {grid-column: 4}
 
-  body .about-hero {
-    width: auto;
-    max-width: none;
-    grid-template-columns: minmax(0, 1fr) 654px 56px 520px minmax(0, 1fr);
-  }
-
-  body .about-hero > div {
-    grid-column: 2;
-    padding: 64px 0;
-  }
-
-  body .about-hero > figure {
-    grid-column: 4;
-    margin-right: 0;
-  }
 }
 
 /* At compact desktop widths the former fixed 648px/525px columns were wider
