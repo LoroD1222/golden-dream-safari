@@ -101,6 +101,17 @@ async function embedFirstImage(pdf: PDFDocument, sources: string[], cache: Image
   return null;
 }
 
+async function preloadImages(pdf: PDFDocument, sources: string[], cache: ImageCache, concurrency = 6) {
+  const queue = [...new Set(sources.filter(Boolean))];
+  let cursor = 0;
+  await Promise.all(Array.from({length: Math.min(concurrency, queue.length)}, async () => {
+    while (cursor < queue.length) {
+      const source = queue[cursor++];
+      await embedImage(pdf, source, cache);
+    }
+  }));
+}
+
 function drawCoverImage(page: PDFPage, image: PDFImage, box: {x: number; y: number; width: number; height: number}) {
   const scale = Math.max(box.width / image.width, box.height / image.height);
   const width = image.width * scale;
@@ -214,6 +225,17 @@ export async function generateItineraryPdf(itinerary: Itinerary, profile?: Itine
   const imageCache: ImageCache = new Map();
   const fallbackDayImages = ["/images/figma/98118ae1-bb7c-432c-b7b1-433d27c59b13.png", "/images/figma/8a34ea1e-253b-41f7-8c0c-cac8586c40b4.png", "/images/figma/27222719-4ba9-4724-a440-0fcb7923b931.png", "/images/figma/66d4cce3-2303-4bdf-a3b9-8d8f56ab67de.png"];
   const heroSources = [itinerary.heroImage, fallbackDayImages[0]].filter((source): source is string => Boolean(source));
+  const accommodationSources = itinerary.days.flatMap(day => {
+    const stays = staysByDay[day.dayNumber]?.length ? staysByDay[day.dayNumber] : supplement.staysByDay[day.dayNumber] || [];
+    return stays.flatMap(stay => stay.images.map(image => image.src));
+  });
+  await preloadImages(pdf, [
+    ...heroSources,
+    config.companyLogo || "",
+    "/images/figma/brand-mark.png",
+    ...itinerary.days.flatMap((day, index) => [day.image || "", fallbackDayImages[index] || fallbackDayImages[0]]),
+    ...accommodationSources,
+  ], imageCache);
   const hero = await embedFirstImage(pdf, heroSources, imageCache);
   const logo = await embedFirstImage(pdf, [config.companyLogo || "", "/images/figma/brand-mark.png"].filter(Boolean), imageCache);
   const routeStops = itinerary.routeStops?.length ? itinerary.routeStops : itinerary.slug === "tarangire-serengeti-ngorongoro" ? northernCircuitRouteStops : itinerary.destinations.map((name, index) => ({name, label: `Stop ${index + 1}`, description: "Safari destination", dayNumber: index + 1, coordinates: {lat: -3.7 + index * .22, lng: 35.2 + index * .25}}));

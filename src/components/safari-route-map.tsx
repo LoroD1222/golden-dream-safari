@@ -79,7 +79,13 @@ export function SafariRouteMap({
         action.textContent = "Explore this destination →";
         action.addEventListener("click", () => onExploreRef.current(index));
         popup.append(title, description, action);
-        marker.bindPopup(popup, {closeButton: false, maxWidth: 285, minWidth: 245, offset: [0, -4]});
+        marker.bindPopup(popup, {
+          autoPan: false,
+          closeButton: false,
+          maxWidth: 285,
+          minWidth: 245,
+          offset: [0, -4],
+        });
         marker.on("click", () => onSelectRef.current(index));
         return marker;
       });
@@ -107,7 +113,7 @@ export function SafariRouteMap({
       marker.setRadius(index === markerIndex ? 13 : 10);
     });
     const selected = stops[selectedIndex];
-    instance.flyTo([selected.coordinates.lat, selected.coordinates.lng], Math.max(7, instance.getZoom()), {duration: .7});
+    instance.setView([selected.coordinates.lat, selected.coordinates.lng], Math.max(7, instance.getZoom()), {animate: false});
     markers.current[markerIndex]?.openPopup();
   }, [selectedIndex, stops]);
 

@@ -857,10 +857,10 @@ body .property-card>strong {padding: 14px 18px}
 /* Stable card and quote-form sizing across laptop and tablet widths. */
 .review-card {width: 100%; min-width: 0; overflow: hidden; box-sizing: border-box}
 .review-card__body,.review-card__top,.review-author>div {min-width: 0}
-.review-card__top {display: grid; grid-template-columns: 104px minmax(0,1fr); align-items: start; gap: 12px}
+.review-card__top {display: grid; grid-template-columns: 116px minmax(0,1fr); align-items: start; gap: 12px}
 .review-card__top .rating-stars {flex: 0 0 auto}
 .review-card__top .review-card__meta {display: inline-flex; min-width: 0; max-width: 100%; align-items: center; justify-content: center; justify-self: end; box-sizing: border-box; text-align: center; line-height: 1.25; overflow-wrap: normal; word-break: normal}
-.review-card__meta>span {white-space: nowrap}
+.review-card__meta>span {max-width: 100%; white-space: normal; text-wrap: balance}
 .review-card__meta--multiline {flex-direction: column; gap: 1px; border-radius: 16px}
 .review-card__meta--multiline>span:last-child {font-size: 11px}
 .review-card h2,.review-card blockquote {overflow-wrap: anywhere}

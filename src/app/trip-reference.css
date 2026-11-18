@@ -27,6 +27,7 @@
 
 .trip-route-map-card {
   overflow: hidden;
+  overflow-anchor: none;
   border: 1px solid var(--rit-line);
   border-radius: 20px;
   background: var(--rit-cream);
@@ -185,11 +186,12 @@
 .trip-ref-lodge-name {display: block; margin: 2px 0 0 36px; color: var(--rit-muted); overflow-wrap: anywhere; text-decoration: underline; text-underline-offset: 2px}
 .trip-ref-lodge-options>small {display: block; margin: -10px 0 20px; color: var(--rit-muted); font-size: 12px; font-weight: 400; line-height: 1.6}
 .trip-ref-lodge figure {position: relative; min-width: 0; margin: 0; overflow: hidden; border: 1px solid var(--rit-line); border-radius: 15px; background: #fff; box-shadow: 0 9px 24px rgba(42,31,20,.09)}
-.trip-ref-lodge figure>img {display: block; width: 100%; height: 288px; border-radius: 14px 14px 0 0; object-fit: cover; animation: trip-ref-image-in .24s ease both; transition: transform .35s ease}
-.trip-ref-lodge figure:hover>img {transform: scale(1.025)}
+.trip-ref-lodge-photo {position: relative; display: block; height: var(--trip-ref-lodge-photo-height,288px); overflow: hidden; border-radius: 14px 14px 0 0}
+.trip-ref-lodge-photo>img {object-fit: cover; animation: trip-ref-image-in .24s ease both; transition: transform .35s ease}
+.trip-ref-lodge figure:hover .trip-ref-lodge-photo>img {transform: scale(1.025)}
 .trip-ref-lodge-badge {position: absolute; top: 14px; left: 14px; padding: 7px 11px; border-radius: 999px; background: var(--rit-ink); box-shadow: 0 6px 18px rgba(42,31,20,.18); color: #fff; font-size: 10px; font-weight: 800; letter-spacing: .06em; text-transform: uppercase}
 .trip-ref-lodge-badge--private-luxury,.trip-ref-lodge-badge--group-camping {background: var(--rit-ink)}
-.trip-ref-lodge-arrows {position: absolute; right: 12px; bottom: 57px; display: flex; align-items: center; gap: 7px}
+.trip-ref-lodge-arrows {position: absolute; right: 12px; bottom: 12px; display: flex; align-items: center; gap: 7px}
 .trip-ref-lodge-arrows button {display: grid; width: 38px; height: 38px; padding: 0; border: 0; border-radius: 50%; place-items: center; background: rgba(255,255,255,.95); box-shadow: 0 3px 12px rgba(0,0,0,.15); color: var(--orange); font-size: 27px; line-height: 1; cursor: pointer; transition: background-color .2s,color .2s,transform .2s}
 .trip-ref-lodge-arrows button:hover,.trip-ref-lodge-arrows button:focus-visible {background: var(--orange); color: var(--ink); transform: scale(1.07)}
 .trip-ref-lodge-arrows button:active {transform: scale(.94)}
@@ -238,7 +240,7 @@
   .trip-ref-day-narrative {padding: 20px; font-size: 14px; line-height: 1.7}
   .trip-ref-accommodation-label,.trip-ref-meal {font-size: 16px; line-height: 1.4}
   .trip-ref-lodge-tier {font-size: 16px}
-  .trip-ref-lodge figure>img {height: 260px}
+  .trip-ref-lodge-photo {--trip-ref-lodge-photo-height:260px}
 }
 
 @media(max-width:480px) {

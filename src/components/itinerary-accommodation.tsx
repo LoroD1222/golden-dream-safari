@@ -71,13 +71,22 @@ export function ItineraryAccommodation({day, options, isFinalDay}: {day: Itinera
         onFocusCapture={() => setPaused(true)}
         onBlurCapture={event => {if (!event.currentTarget.contains(event.relatedTarget)) setPaused(false);}}
       >
-        <Image key={`${selectedOption}-${slide}-${selectedImage.src}`} src={selectedImage.src} alt={selectedImage.alt} width={426} height={288} quality={92} sizes="(max-width: 1100px) 100vw, 426px"/>
-        <span className={`trip-ref-lodge-badge trip-ref-lodge-badge--${selected.tier.toLowerCase().replaceAll(" ", "-")}`}>{selected.tier}</span>
-        <div className="trip-ref-lodge-arrows">
-          <button type="button" aria-label={`Previous ${selected.tier.toLowerCase()} accommodation`} onClick={() => moveSlide(-1)}>‹</button>
-          <span>{slide + 1} / {selected.images.length}</span>
-          <button type="button" aria-label={`Next ${selected.tier.toLowerCase()} accommodation`} onClick={() => moveSlide(1)}>›</button>
-        </div>
+        <span className="trip-ref-lodge-photo" style={{height: "var(--trip-ref-lodge-photo-height, 288px)"}}>
+          <Image
+            key={`${selectedOption}-${slide}-${selectedImage.src}`}
+            src={selectedImage.src}
+            alt={selectedImage.alt}
+            fill
+            quality={95}
+            sizes="(max-width: 1100px) 100vw, 426px"
+          />
+          <span className={`trip-ref-lodge-badge trip-ref-lodge-badge--${selected.tier.toLowerCase().replaceAll(" ", "-")}`}>{selected.tier}</span>
+          <span className="trip-ref-lodge-arrows">
+            <button type="button" aria-label={`Previous ${selected.tier.toLowerCase()} accommodation`} onClick={() => moveSlide(-1)}>‹</button>
+            <span>{slide + 1} / {selected.images.length}</span>
+            <button type="button" aria-label={`Next ${selected.tier.toLowerCase()} accommodation`} onClick={() => moveSlide(1)}>›</button>
+          </span>
+        </span>
         <figcaption>{selected.property}</figcaption>
       </figure>
     </div>}
