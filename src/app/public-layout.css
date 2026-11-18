@@ -11,10 +11,15 @@
     --public-frame-right: 90px;
   }
 
-  body .site-header,
   body .home-top {
     padding-right: var(--public-frame-right);
     padding-left: var(--public-frame-left);
+  }
+
+  /* The navigation is a wider Figma frame than the page sections. */
+  body .site-header {
+    padding-right: 40px;
+    padding-left: 40px;
   }
 
   body .review-filters,
@@ -22,6 +27,20 @@
   body .reviews-content {
     margin-right: var(--public-frame-right);
     margin-left: var(--public-frame-left);
+  }
+
+  /* Keep the homepage transitions on one rhythm. The Figma frame uses the
+     same breathing room after the trip grid and after the statistics panel. */
+  body .home-about {
+    margin-top: 48px;
+  }
+
+  body .popular-safaris {
+    padding-top: 48px;
+  }
+
+  body .included {
+    margin-top: 48px;
   }
 }
 
@@ -145,6 +164,66 @@
   body .about-hero > figure {
     grid-column: 4;
     margin-right: 0;
+  }
+}
+
+/* At compact desktop widths the former fixed 648px/525px columns were wider
+   than the public frame. Let both columns share the available width so the
+   section remains centered and never spills past the 90px page gutters. */
+@media (min-width: 1101px) and (max-width: 1311px) {
+  body .included {
+    grid-template-columns: minmax(0, 1.08fr) minmax(420px, .92fr);
+    gap: 48px;
+    align-items: center;
+    justify-content: center;
+  }
+
+  body .included > .included-copy,
+  body .included > .included-collage {
+    min-width: 0;
+  }
+
+  body .included > .included-collage {
+    width: 100%;
+  }
+
+  body .included-collage .included-collage__large,
+  body .included-collage .included-collage__badge {
+    right: 0;
+  }
+}
+
+@media (min-width: 1001px) {
+  /* The FAQ copy remains visible while the longer accordion column moves. */
+  body .faq-intro {
+    position: sticky;
+    top: 102px;
+    align-self: start;
+  }
+}
+
+/* Asset finishing requested in the visual review. */
+body .booking-actions > a:last-child .figma-icon {
+  filter: brightness(0) saturate(100%);
+}
+
+body .booking-step:first-child h3 .figma-icon {
+  filter: invert(34%) sepia(92%) saturate(1014%) hue-rotate(354deg) brightness(86%) contrast(91%);
+}
+
+body .trip-review-heading > a > img {
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+body .footer-wordmark {
+  overflow: hidden;
+  text-align: center;
+}
+
+@media (min-width: 701px) {
+  body .footer-wordmark {
+    font-size: clamp(76px, 12.2vw, 176px);
   }
 }
 
