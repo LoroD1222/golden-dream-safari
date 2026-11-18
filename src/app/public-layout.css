@@ -38,6 +38,29 @@
     width: 100%;
   }
 
+  /* The itinerary detail was designed around centered, fixed-width content.
+     Keep that route on its original frame while the other public pages use
+     the wider Figma layout above. */
+  body:has(.trip-detail-hero) .section-shell {
+    width: min(calc(100% - 68px), var(--shell));
+    margin-inline: auto;
+  }
+
+  body:has(.trip-detail-hero) .trip-overview {
+    width: min(calc(100% - 128px), 1312px);
+    grid-template-columns: minmax(0, 648px) minmax(0, 600px);
+    gap: 64px;
+  }
+
+  body:has(.trip-detail-hero) .overview-gallery {
+    width: 600px;
+  }
+
+  body:has(.trip-detail-hero) .trip-ref-itinerary {
+    width: min(calc(100% - 68px), 1312px);
+    margin-inline: auto;
+  }
+
   body .site-footer {
     padding-right: var(--public-frame-right);
     padding-left: var(--public-frame-left);
