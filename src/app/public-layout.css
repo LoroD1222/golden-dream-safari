@@ -5,6 +5,26 @@
   --public-frame-right: 40px;
 }
 
+@media (min-width: 1101px) {
+  :root {
+    --public-frame-left: 90px;
+    --public-frame-right: 90px;
+  }
+
+  body .site-header,
+  body .home-top {
+    padding-right: var(--public-frame-right);
+    padding-left: var(--public-frame-left);
+  }
+
+  body .review-filters,
+  body .guest-photos,
+  body .reviews-content {
+    margin-right: var(--public-frame-right);
+    margin-left: var(--public-frame-left);
+  }
+}
+
 @media (min-width: 701px) {
   body .section-shell,
   body .faq-section,
@@ -38,22 +58,24 @@
     width: 100%;
   }
 
-  /* The itinerary detail was designed around centered, fixed-width content.
-     Keep that route on its original frame while the other public pages use
-     the wider Figma layout above. */
+  /* Keep the same public gutter on the itinerary route. Components with a
+     deliberately capped inner composition are centered inside that frame. */
   body:has(.trip-detail-hero) .section-shell:not(.trip-detail-hero) {
-    width: min(calc(100% - 68px), var(--shell));
-    margin-inline: auto;
+    width: auto;
+    max-width: none;
+    margin-right: var(--public-frame-right);
+    margin-left: var(--public-frame-left);
   }
 
   body:has(.trip-detail-hero) .trip-detail-hero {
     width: auto;
     max-width: none;
-    margin: 8px 24px 0;
+    margin: 8px var(--public-frame-right) 0 var(--public-frame-left);
   }
 
   body:has(.trip-detail-hero) .trip-overview {
-    width: min(calc(100% - 128px), 1312px);
+    width: min(calc(100% - var(--public-frame-left) - var(--public-frame-right)), 1312px);
+    margin-inline: auto;
     grid-template-columns: minmax(0, 648px) minmax(0, 600px);
     gap: 64px;
   }
@@ -63,8 +85,13 @@
   }
 
   body:has(.trip-detail-hero) .trip-ref-itinerary {
-    width: min(calc(100% - 68px), 1312px);
+    width: min(calc(100% - var(--public-frame-left) - var(--public-frame-right)), 1312px);
     margin-inline: auto;
+  }
+
+  body:has(.trip-detail-hero) .trip-price {
+    padding-right: var(--public-frame-right);
+    padding-left: var(--public-frame-left);
   }
 
   body .site-footer {
