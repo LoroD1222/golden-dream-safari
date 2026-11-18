@@ -41,9 +41,15 @@
   /* The itinerary detail was designed around centered, fixed-width content.
      Keep that route on its original frame while the other public pages use
      the wider Figma layout above. */
-  body:has(.trip-detail-hero) .section-shell {
+  body:has(.trip-detail-hero) .section-shell:not(.trip-detail-hero) {
     width: min(calc(100% - 68px), var(--shell));
     margin-inline: auto;
+  }
+
+  body:has(.trip-detail-hero) .trip-detail-hero {
+    width: auto;
+    max-width: none;
+    margin: 8px 24px 0;
   }
 
   body:has(.trip-detail-hero) .trip-overview {
