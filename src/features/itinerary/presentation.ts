@@ -9,8 +9,8 @@ export function formatItineraryDuration(itinerary: Pick<Itinerary, "durationDays
   return `${itinerary.durationDays} ${itinerary.durationDays === 1 ? "day" : "days"} · ${nights} ${nights === 1 ? "night" : "nights"}`;
 }
 
-export function itineraryPriceSuffix(itinerary: Pick<Itinerary, "tripType">) {
-  return itinerary.tripType === "Wildlife safari" ? "/pp/day" : "/pp";
+export function itineraryPriceSuffix() {
+  return "/pp";
 }
 
 export function formatItineraryPrice(
@@ -23,5 +23,5 @@ export function formatItineraryPrice(
     currency: itinerary.currency,
     maximumFractionDigits: 0,
   }).format(itinerary.startingPrice);
-  return `${options.prefix || "From"} ${amount}${itineraryPriceSuffix(itinerary)}`;
+  return `${options.prefix || "From"} ${amount}${itineraryPriceSuffix()}`;
 }

@@ -35,8 +35,14 @@ test("every published itinerary has one canonical, auditable price record", () =
   }
 
   const safari = items.find(item => item.slug === "tarangire-serengeti-ngorongoro");
-  assert.equal(safari?.startingPrice, 180);
+  assert.equal(safari?.startingPrice, 720);
   assert.equal((safari?.priceTiers as Array<{price: string}> | undefined)?.[0]?.price, "$180");
+
+  for (const slug of ["tarangire-serengeti-ngorongoro", "tarangire-national-park-day-safari", "ngorongoro-crater-day-trip"]) {
+    const featured = items.find(item => item.slug === slug);
+    assert.equal(featured?.status, "published", `${slug} must remain published for the homepage`);
+    assert.equal(typeof featured?.startingPrice, "number", `${slug} must have a confirmed homepage price`);
+  }
 });
 
 test("a review can belong to an expanding set of categories", () => {

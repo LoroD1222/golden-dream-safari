@@ -120,7 +120,7 @@
       "Serengeti National Park",
       "Ngorongoro Crater"
     ],
-    "startingPrice": 180,
+    "startingPrice": 720,
     "currency": "USD",
     "status": "published",
     "days": [
@@ -282,7 +282,7 @@
       "Special diets: tell us when you book",
       "Extra days in Tarangire, Lake Manyara or Arusha NP"
     ],
-    "priceIntroduction": "The published group-camping rate starts from $180 per person per day. Your exact price depends on the number of people, accommodation, season and whether the safari is private or shared.",
+    "priceIntroduction": "This four-day group-camping safari starts from $720 per person, calculated from the published $180 per-person daily rate. Your exact price depends on the number of people, accommodation, season and whether the safari is private or shared.",
     "priceTiers": [
       {
         "name": "Group camping",
@@ -345,7 +345,7 @@
     "faqs": [
       {
         "question": "How much does a safari cost?",
-        "answer": "This itinerary starts from $180 per person per day for group camping. Private lodge arrangements can be up to $550 per person per day. Park fees, accommodation, meals, transport and drinking water are included."
+        "answer": "This four-day itinerary starts from $720 per person for group camping, calculated from $180 per person per day. Private lodge arrangements can be up to $550 per person per day. Park fees, accommodation, meals, transport and drinking water are included."
       },
       {
         "question": "What's included?",
