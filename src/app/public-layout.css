@@ -172,21 +172,26 @@
   }
 }
 
-/* The Figma sections use full-width outer frames, but their text and imagery
-   sit in centered fixed-width compositions. Extra desktop width belongs on
-   the outside of the composition, never between its two columns. */
+/* Keep the inclusion copy and collage on the same outer frame as the other
+   homepage sections. The columns retain their designed reading widths while
+   their outer edges align to the shared page gutters. */
 @media (min-width: 1312px) {
   body .included {
     width: auto;
     max-width: none;
-    grid-template-columns: minmax(0, 1fr) 648px 64px 525px minmax(0, 1fr);
-    gap: 0;
-    justify-content: stretch;
+    grid-template-columns: minmax(0, 648px) minmax(420px, 525px);
+    gap: 64px;
+    justify-content: space-between;
   }
 
-  body .included > .included-copy {grid-column: 2}
-  body .included > .included-collage {grid-column: 4}
+  body .included > .included-copy,
+  body .included > .included-collage {
+    grid-column: auto;
+  }
 
+  body .included > .included-collage {justify-self: end}
+  body .included-collage .included-collage__large,
+  body .included-collage .included-collage__badge {right: 0}
 }
 
 /* At compact desktop widths the former fixed 648px/525px columns were wider
