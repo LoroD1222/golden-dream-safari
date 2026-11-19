@@ -22,6 +22,13 @@
     padding-left: var(--public-frame-left);
   }
 
+  /* Keep the Reviews introduction clear of the rating card. */
+  body .reviews-intro > div:nth-of-type(2) > p:last-child {
+    max-width: 520px;
+    line-height: 1.5;
+    text-wrap: pretty;
+  }
+
   body .review-filters,
   body .guest-photos,
   body .reviews-content {
