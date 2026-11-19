@@ -917,6 +917,9 @@ body .property-card>strong {padding: 14px 18px}
 .about-team>div {gap: 16px; margin-top: 40px}
 .about-team article {padding: 0; border: 0; border-radius: 0}
 .about-team article>div {height: 280px; border-radius: 24px; text-transform: uppercase; letter-spacing: .1em; font-size: 12px}
+.about-team article>.about-team__photo {position: relative; overflow: hidden; background: #ddd8cf}
+.about-team__photo img {object-fit: cover; transition: transform .45s ease}
+.about-team article:hover .about-team__photo img {transform: scale(1.025)}
 .about-team article h3 {margin: 14px 6px 2px; font-size: 20px}
 .about-team article p {margin: 0 6px}
 .about-numbers {width: calc(100% - 48px); max-width: none; padding: 56px; border-radius: 32px; background: var(--black); color: white}
