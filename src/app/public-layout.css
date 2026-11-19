@@ -16,10 +16,10 @@
     padding-left: var(--public-frame-left);
   }
 
-  /* The navigation is a wider Figma frame than the page sections. */
+  /* Keep the shared navigation on the same frame as every public section. */
   body .site-header {
-    padding-right: 40px;
-    padding-left: 40px;
+    padding-right: var(--public-frame-right);
+    padding-left: var(--public-frame-left);
   }
 
   body .review-filters,
@@ -65,6 +65,11 @@
 }
 
 @media (min-width: 701px) {
+  body .site-header {
+    padding-right: var(--public-frame-right);
+    padding-left: var(--public-frame-left);
+  }
+
   body .section-shell,
   body .faq-section,
   body .trip-ref-itinerary {
@@ -246,6 +251,11 @@ body .footer-wordmark {
     max-width: none;
     margin-right: var(--public-frame-right);
     margin-left: var(--public-frame-left);
+  }
+
+  body .site-header {
+    padding-right: var(--public-frame-right);
+    padding-left: var(--public-frame-left);
   }
 
   body .trips-intro,
