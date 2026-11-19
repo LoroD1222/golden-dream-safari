@@ -25,11 +25,11 @@ export function TripOverviewGallery({images}: {images?: ItineraryImage[]}) {
     setActiveIndex(current => (current + direction + galleryImages.length) % galleryImages.length);
   }
 
-  return <div className="overview-gallery" aria-label="Safari photo gallery">
+  return <div className="overview-gallery" aria-label="Trip photo gallery">
     <div className="overview-gallery__main">
       <Image key={activeImage.src} src={activeImage.src} alt={activeImage.alt} fill unoptimized sizes="(max-width: 1180px) 100vw, 600px"/>
-      <button type="button" className="overview-gallery__arrow overview-gallery__arrow--previous" aria-label="Previous safari photo" onClick={() => move(-1)}><FigmaIcon name="chevron-prev" width={22}/></button>
-      <button type="button" className="overview-gallery__arrow overview-gallery__arrow--next" aria-label="Next safari photo" onClick={() => move(1)}><FigmaIcon name="chevron-next" width={22}/></button>
+      <button type="button" className="overview-gallery__arrow overview-gallery__arrow--previous" aria-label="Previous trip photo" onClick={() => move(-1)}><FigmaIcon name="chevron-prev" width={22}/></button>
+      <button type="button" className="overview-gallery__arrow overview-gallery__arrow--next" aria-label="Next trip photo" onClick={() => move(1)}><FigmaIcon name="chevron-next" width={22}/></button>
       <span className="overview-gallery__counter" aria-live="polite">{activeIndex + 1} / {galleryImages.length}</span>
       <div className="overview-gallery__dots" aria-hidden="true">{galleryImages.map((image, index) => <span className={index === activeIndex ? "is-active" : ""} key={image.src}/>)}</div>
     </div>

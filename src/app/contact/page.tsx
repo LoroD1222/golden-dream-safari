@@ -4,8 +4,9 @@ import {MarketingShell} from "@/components/marketing-shell";
 import {QuoteWizard} from "@/components/quote-wizard";
 import {StructuredData} from "@/components/structured-data";
 import {SectionEyebrow} from "@/components/button-link";
-import {contactDetails, otherTrips, siteOrigin, wildlifeTrips} from "@/data/site";
+import {contactDetails, siteOrigin} from "@/data/site";
 import {FigmaIcon, type FigmaIconName} from "@/components/figma-icon";
+import {getPublicItineraryRepository} from "@/features/itinerary/storage";
 
 export const metadata: Metadata = {
   title: "Contact & free safari quote",
@@ -28,10 +29,10 @@ function safeDate(value?: string) {
 
 export default async function ContactPage({searchParams}: {searchParams: Promise<ContactQuery>}) {
   const query = await searchParams;
-  const selected = [...wildlifeTrips, ...otherTrips].find(trip => trip.slug === query.trip);
-  const initialTrip = selected?.category === "Trek" ? selected.title.includes("Kilimanjaro") ? "Kilimanjaro" : "Mount Meru" : selected?.category === "Island" ? "Zanzibar" : selected ? "Wildlife safari" : query.tripType === "Trek" ? "Kilimanjaro" : query.tripType === "Zanzibar" ? "Zanzibar" : query.tripType === "Safari" ? "Wildlife safari" : undefined;
+  const selected = query.trip ? await getPublicItineraryRepository().get(query.trip) : null;
+  const initialTrip = selected?.tripType === "Kilimanjaro trek" ? "Kilimanjaro" : selected?.tripType === "Mount Meru trek" ? "Mount Meru" : selected?.tripType === "Zanzibar stay" ? "Zanzibar" : selected?.tripType === "Day trip" ? "Day trip" : selected ? "Wildlife safari" : query.tripType === "Trek" || query.tripType === "Kilimanjaro" ? "Kilimanjaro" : query.tripType === "Zanzibar" ? "Zanzibar" : query.tripType === "Safari" ? "Wildlife safari" : undefined;
   const initialAdults = query.travellers ? Math.min(40, Math.max(1, Number.parseInt(query.travellers, 10) || 2)) : undefined;
-  const initialMessage = query.destination ? `I am interested in visiting ${query.destination}.` : undefined;
+  const initialMessage = query.destination ? `I am interested in visiting ${query.destination}.` : selected ? `I am interested in the ${selected.title} itinerary.` : undefined;
   return <MarketingShell>
     <StructuredData data={{"@context":"https://schema.org","@type":"ContactPage",name:"Contact Golden Dream Safaris",url:`${siteOrigin}/contact`}}/>
     <section className="contact-hero section-shell">

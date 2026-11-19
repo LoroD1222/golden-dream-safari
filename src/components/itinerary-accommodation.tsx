@@ -47,7 +47,11 @@ export function ItineraryAccommodation({day, options, isFinalDay}: {day: Itinera
         onClick={() => setMealInfoOpen(open => !open)}
       ><Image src={`${assetBasePath}/meal.png`} alt="" width={20} height={20}/>Meal Plan: {day.meals.join(" · ")}<Image src={`${assetBasePath}/meal-info.svg`} alt="Meal-plan information" width={20} height={20}/></button>
     </div>
-    {mealInfoOpen && <p className="trip-ref-meal-note" id={`meal-plan-note-${day.dayNumber}`}>Meals are prepared during the safari. Please tell us about allergies or dietary requirements when you request your quote.</p>}
+    {mealInfoOpen && <p className="trip-ref-meal-note" id={`meal-plan-note-${day.dayNumber}`}>Meals are prepared during the trip. Please tell us about allergies or dietary requirements when you request your quote.</p>}
+    {!isFinalDay && !selected && day.accommodation && <div className="trip-ref-accommodation-text">
+      <span>{day.accommodation.category === "Other" ? "Mountain stay" : day.accommodation.category}</span>
+      <div><h4>{day.accommodation.name}</h4><p>{day.accommodation.description}</p><small>{day.accommodation.location}</small></div>
+    </div>}
     {!isFinalDay && selected && selectedImage && <div className="trip-ref-lodge">
       <div className="trip-ref-lodge-options" role="group" aria-label={`Day ${day.dayNumber} accommodation options`}>
         <p>Options based on your packages:</p>

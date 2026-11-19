@@ -8,7 +8,7 @@ import {FigmaIcon} from "@/components/figma-icon";
 
 const links = [
   {href: "/trips", label: "Safaris"},
-  {href: "/trips#treks-zanzibar", label: "Kilimanjaro"},
+  {href: "/kilimanjaro", label: "Kilimanjaro"},
   {href: "/trips#treks-zanzibar", label: "Zanzibar"},
   {href: "/trips#day-trips", label: "Day trips"},
   {href: "/about", label: "About"},

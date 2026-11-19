@@ -1,0 +1,43 @@
+{
+  "sourceDirectory": "Downloads",
+  "sourceDocumentCount": 5,
+  "itineraryCount": 5,
+  "routes": [
+    {
+      "sourceId": "download-pdf:Copy of Quotation Golden Dream Safaris - CLIENT NAME.pdf",
+      "slug": "tarangire-ngorongoro-crater-2-days",
+      "tripType": "Wildlife safari",
+      "days": 2
+    },
+    {
+      "sourceId": "download-pdf:Copy of Quotation Golden Dream Safaris - CLIENT NAME (1).pdf",
+      "slug": "lake-manyara-serengeti-ngorongoro",
+      "tripType": "Wildlife safari",
+      "days": 4
+    },
+    {
+      "sourceId": "download-pdf:Copy of Quotation Golden Dream Safaris - CLIENT NAME (2).pdf",
+      "slug": "big-four-parks",
+      "tripType": "Wildlife safari",
+      "days": 5
+    },
+    {
+      "sourceId": "download-pdf:Copy of Quotation Golden Dream Safaris - CLIENT NAME (3).pdf",
+      "slug": "seven-day-northern-parks-safari",
+      "tripType": "Wildlife safari",
+      "days": 7
+    },
+    {
+      "sourceId": "download-pdf:Copy of Quotation Golden Dream Safaris - CLIENT NAME (4).pdf#shira-route-7-days",
+      "slug": "7-days-shira-route",
+      "tripType": "Kilimanjaro trek",
+      "days": 7
+    }
+  ],
+  "validation": {
+    "sourceDocumentsPresent": true,
+    "slugsUnique": true,
+    "sourceIdsUnique": true,
+    "dayCountsMatch": true
+  }
+}

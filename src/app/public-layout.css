@@ -294,3 +294,94 @@ body .footer-wordmark {
     margin-left: 0;
   }
 }
+
+/* Keep every package hero readable between the wide Figma frame and the
+   stacked mobile layout. The copy column now reserves the price card's full
+   width instead of continuing underneath it. */
+@media (min-width: 901px) and (max-width: 1430px) {
+  body .trip-detail-hero {
+    height: auto;
+    min-height: 680px;
+  }
+
+  body .trip-detail-hero__copy {
+    width: calc(100% - 400px);
+    min-width: 0;
+    padding: 78px 0 48px 48px;
+    gap: 18px;
+  }
+
+  body .trip-detail-hero__copy h1,
+  body .trip-detail-hero__copy > p:nth-of-type(2) {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  body .trip-detail-hero__copy h1 {
+    font-size: clamp(44px, 4.4vw, 56px);
+    line-height: 1.04;
+  }
+
+  body .trip-detail-hero__copy > p:nth-of-type(2) {
+    font-size: 17px;
+    line-height: 1.5;
+  }
+
+  body .trip-detail-hero > aside {
+    right: 32px;
+    bottom: 40px;
+    width: 300px;
+  }
+}
+
+@media (max-width: 900px) {
+  body .section-shell.trip-detail-hero {
+    display: flex;
+    height: auto;
+    min-height: 0;
+    padding-bottom: 20px;
+    flex-direction: column;
+  }
+
+  body .trip-detail-hero__shade {
+    background: linear-gradient(180deg,rgba(7,4,3,.88),rgba(7,4,3,.7));
+  }
+
+  body .trip-detail-hero__copy {
+    position: relative;
+    z-index: 2;
+    inset: auto;
+    width: auto;
+    padding: 52px 24px 28px;
+    gap: 18px;
+  }
+
+  body .trip-detail-hero__copy h1,
+  body .trip-detail-hero__copy > p:nth-of-type(2) {
+    width: auto;
+    max-width: 100%;
+  }
+
+  body .trip-detail-hero__copy h1 {
+    font-size: clamp(39px, 7vw, 48px);
+    overflow-wrap: anywhere;
+  }
+
+  body .trip-detail-hero__copy > p:nth-of-type(2) {
+    font-size: 17px;
+  }
+
+  body .trip-detail-hero__copy > div {
+    align-items: flex-start;
+    flex-wrap: wrap;
+  }
+
+  body .trip-detail-hero > aside {
+    position: relative;
+    z-index: 2;
+    inset: auto;
+    width: auto;
+    margin: 0 20px;
+    padding: 22px;
+  }
+}

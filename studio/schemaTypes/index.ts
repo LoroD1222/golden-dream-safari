@@ -5,6 +5,7 @@ import {goldenDreamReviewCategory} from './documents/golden-dream-review-categor
 import {goldenDreamSettings} from './documents/golden-dream-settings'
 import {goldenDreamImage} from './objects/golden-dream-image'
 import {itineraryActivity} from './objects/itinerary-activity'
+import {itineraryAccommodation} from './objects/itinerary-accommodation'
 import {itineraryDay} from './objects/itinerary-day'
 import {itineraryFaq} from './objects/itinerary-faq'
 import {itineraryPriceTier} from './objects/itinerary-price-tier'
@@ -19,6 +20,7 @@ export const schemaTypes = [
   goldenDreamReviewCategory,
   goldenDreamImage,
   itineraryDay,
+  itineraryAccommodation,
   itineraryActivity,
   itineraryRouteStop,
   itineraryPriceTier,

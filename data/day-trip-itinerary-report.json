@@ -1,0 +1,31 @@
+{
+  "sourceDirectory": "Serengeti_Wild_Tours_Day_Trips_FINAL_SEO_RANK_MATH_v3",
+  "itineraryCount": 3,
+  "routes": [
+    {
+      "sourceId": "download-html:tarangire-national-park-day-safari-from-arusha-moshi.html",
+      "slug": "tarangire-national-park-day-safari",
+      "price": 280,
+      "tripType": "Day trip"
+    },
+    {
+      "sourceId": "download-html:ngorongoro-crater-day-trip-from-arusha-moshi.html",
+      "slug": "ngorongoro-crater-day-trip",
+      "price": 380,
+      "tripType": "Day trip"
+    },
+    {
+      "sourceId": "download-html:materuni-waterfalls-coffee-day-trip-from-moshi-arusha.html",
+      "slug": "materuni-waterfalls-coffee-day-trip",
+      "price": 95,
+      "tripType": "Day trip"
+    }
+  ],
+  "validation": {
+    "sourceDocumentsPresent": true,
+    "onlyThreeSelected": true,
+    "slugsUnique": true,
+    "sourceIdsUnique": true,
+    "dayCountsMatch": true
+  }
+}

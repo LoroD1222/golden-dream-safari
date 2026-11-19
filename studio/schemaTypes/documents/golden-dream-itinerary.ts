@@ -24,8 +24,34 @@ export const goldenDreamItinerary = defineType({
   ],
   fields: [
     defineField({name: 'legacyId', type: 'string', hidden: true, readOnly: true}),
+    defineField({
+      name: 'sourceId',
+      title: 'Source ID',
+      description: 'Stable identifier used by repeatable imports. One source route maps to one trip document.',
+      type: 'string',
+      group: 'publishing',
+      validation: (rule) => rule.max(240).custom(async (sourceId, context) => {
+        if (!sourceId) return true
+        const documentId = context.document?._id?.replace(/^drafts\./, '') || ''
+        const duplicateCount = await context.getClient({apiVersion: '2026-11-19'}).fetch<number>(
+          'count(*[_type == "goldenDreamItinerary" && sourceId == $sourceId && !(_id in [$documentId, $draftId])])',
+          {sourceId, documentId, draftId: `drafts.${documentId}`},
+        )
+        return duplicateCount === 0 || 'This source route already has an itinerary.'
+      }),
+    }),
+    defineField({name: 'sourcePath', title: 'Source path', type: 'string', group: 'publishing', readOnly: true, validation: (rule) => rule.max(500)}),
+    defineField({name: 'sourceUrl', title: 'Original source URL', type: 'url', group: 'publishing'}),
     defineField({name: 'title', title: 'Title', type: 'string', group: 'overview', validation: (rule) => rule.required().min(2).max(180)}),
     defineField({name: 'slug', title: 'Slug', type: 'slug', group: 'overview', options: {source: 'title', maxLength: 120}, validation: (rule) => rule.required()}),
+    defineField({
+      name: 'tripType',
+      title: 'Trip type',
+      type: 'string',
+      group: 'overview',
+      options: {list: ['Wildlife safari', 'Kilimanjaro trek', 'Mount Meru trek', 'Zanzibar stay', 'Day trip'], layout: 'dropdown'},
+    }),
+    defineField({name: 'routeFamily', title: 'Route family', description: 'For example, Lemosho Route or Northern Circuit Route.', type: 'string', group: 'overview', validation: (rule) => rule.max(160)}),
     defineField({name: 'summary', title: 'Summary', type: 'text', rows: 4, group: 'overview', validation: (rule) => rule.required().min(10).max(4000)}),
     defineField({name: 'heroImage', title: 'Hero image', type: 'goldenDreamImage', group: 'overview'}),
     defineField({name: 'overviewTitle', title: 'Overview heading', type: 'string', group: 'overview', validation: (rule) => rule.max(180)}),

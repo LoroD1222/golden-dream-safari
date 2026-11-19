@@ -17,6 +17,7 @@ import {
   type RGB,
 } from "pdf-lib";
 import type {Itinerary} from "@/features/itinerary/model";
+import {formatItineraryPrice} from "@/features/itinerary/presentation";
 import type {ItineraryPdfProfile} from "@/features/itinerary/access";
 import {getItineraryDownloadConfig} from "@/features/itinerary/download-config";
 import {northernCircuitRouteStops} from "@/features/itinerary/route-data";
@@ -261,7 +262,7 @@ export async function generateItineraryPdf(itinerary: Itinerary, profile?: Itine
     ["Travel dates", dates],
     ["Guests", guests],
     ["Travel style", profile?.travelStyle || itinerary.travelStyle || "Camping, lodge or private"],
-    ["Starting price", itinerary.startingPrice ? `From ${itinerary.currency} ${itinerary.startingPrice} pp/day` : "On request"],
+    ["Starting price", formatItineraryPrice(itinerary, {unavailable: "On request"})],
   ];
   facts.forEach(([label, value], index) => drawFactCard(cover, label, value, 42 + index * 103, 165, 94, fonts));
   cover.drawText("DESTINATIONS", {x: 42, y: 139, size: 7, font: bold, color: orangeDeep});

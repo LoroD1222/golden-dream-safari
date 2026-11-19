@@ -5,13 +5,18 @@ import {localItineraryRepository} from "@/features/itinerary/storage/local-json"
 import {listSanityItineraries} from "@/sanity/content";
 
 async function list(): Promise<Itinerary[]> {
+  const localItems = await localItineraryRepository.list();
   try {
-    const items = await listSanityItineraries();
-    if (items.length > 0) return items;
+    const sanityItems = await listSanityItineraries();
+    if (sanityItems.length > 0) {
+      const bySlug = new Map(localItems.map(item => [item.slug, item]));
+      sanityItems.forEach(item => bySlug.set(item.slug, item));
+      return [...bySlug.values()].sort((a, b) => b.updatedAt.localeCompare(a.updatedAt));
+    }
   } catch (error) {
     console.error("Sanity trip read failed; using the local fallback.", error);
   }
-  return localItineraryRepository.list();
+  return localItems;
 }
 
 export const publicItineraryRepository = {

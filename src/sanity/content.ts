@@ -45,7 +45,8 @@ const settingsQuery = defineQuery(/* groq */ `
 
 const itinerariesQuery = defineQuery(/* groq */ `
   *[_type == "goldenDreamItinerary"] | order(_updatedAt desc) {
-    "id": _id, "slug": slug.current, title, summary,
+    "id": _id, sourceId, sourcePath, sourceUrl, tripType, routeFamily,
+    "slug": slug.current, title, summary,
     "heroImage": heroImage.image.asset->url,
     overviewTitle, overviewParagraphs, highlights,
     galleryImages[]{${imageProjection}},
@@ -56,6 +57,7 @@ const itinerariesQuery = defineQuery(/* groq */ `
       activityLevel, meals,
       activities[]{"id": _key, title, description, time, location},
       "accommodationIds": accommodations[]._ref,
+      accommodation {name, category, location, description, "image": image.asset->url},
       "image": image.image.asset->url, "imageAlt": image.alt, dropOffNote
     },
     inclusions, exclusions, onRequestItems, priceIntroduction,
@@ -85,5 +87,9 @@ export async function getSanitySettings() {
 }
 
 export async function listSanityItineraries() {
-  return sanityClient.fetch<Itinerary[]>(itinerariesQuery);
+  const items = await sanityClient.fetch<Array<Omit<Itinerary, "startingPrice"> & {startingPrice?: number | null}>>(itinerariesQuery);
+  return items.map(item => ({
+    ...item,
+    startingPrice: typeof item.startingPrice === "number" ? item.startingPrice : undefined,
+  }));
 }

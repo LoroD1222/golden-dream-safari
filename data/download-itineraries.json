@@ -1,0 +1,1724 @@
+[
+  {
+    "id": "download-tarangire-ngorongoro-crater-2-days",
+    "sourceId": "download-pdf:Copy of Quotation Golden Dream Safaris - CLIENT NAME.pdf",
+    "sourcePath": "Copy of Quotation Golden Dream Safaris - CLIENT NAME.pdf",
+    "tripType": "Wildlife safari",
+    "routeFamily": "Tarangire National Park · Ngorongoro Crater",
+    "slug": "tarangire-ngorongoro-crater-2-days",
+    "title": "2 Day Tarangire & Ngorongoro Safari",
+    "summary": "Elephants and baobabs in Tarangire followed by a game drive on the floor of Ngorongoro Crater.",
+    "heroImage": "/images/figma/98118ae1-bb7c-432c-b7b1-433d27c59b13.png",
+    "overviewTitle": "About this 2-day safari",
+    "overviewParagraphs": [
+      "This route combines Tarangire National Park, Ngorongoro Crater in a private northern Tanzania safari based on the supplied Golden Dream quotation.",
+      "Accommodation can be camping, tented lodge or lodge. Final properties, travel dates and price are confirmed for your group before booking."
+    ],
+    "highlights": [
+      "Game drives in Tarangire National Park",
+      "Game drives in Ngorongoro Crater"
+    ],
+    "galleryImages": [
+      {
+        "src": "/images/figma/98118ae1-bb7c-432c-b7b1-433d27c59b13.png",
+        "alt": "2 Day Tarangire & Ngorongoro Safari"
+      },
+      {
+        "src": "/images/figma/279a986b-f6f3-4660-96c5-716505530be6.png",
+        "alt": "Lake Manyara safari landscape"
+      },
+      {
+        "src": "/images/figma/8a34ea1e-253b-41f7-8c0c-cac8586c40b4.png",
+        "alt": "Wildlife on the Serengeti plains"
+      },
+      {
+        "src": "/images/figma/27222719-4ba9-4724-a440-0fcb7923b931.png",
+        "alt": "Wildlife in the Ngorongoro Conservation Area"
+      },
+      {
+        "src": "/images/figma/27096cab-2e77-46b5-9b4f-1aa9fbe1012c.png",
+        "alt": "Leopard resting in a tree"
+      }
+    ],
+    "routeStops": [
+      {
+        "name": "Tarangire National Park",
+        "label": "Day 1",
+        "description": "Baobab woodland, the Tarangire River and large elephant herds.",
+        "dayNumber": 1,
+        "coordinates": {
+          "lat": -3.8333,
+          "lng": 36
+        }
+      },
+      {
+        "name": "Ngorongoro Crater",
+        "label": "Day 2",
+        "description": "Descend to the crater floor, then return to Arusha.",
+        "dayNumber": 2,
+        "coordinates": {
+          "lat": -3.1618,
+          "lng": 35.5877
+        }
+      }
+    ],
+    "durationDays": 2,
+    "destinations": [
+      "Tarangire National Park",
+      "Ngorongoro Crater"
+    ],
+    "currency": "USD",
+    "status": "published",
+    "days": [
+      {
+        "id": "tarangire-ngorongoro-crater-2-days-day-1",
+        "dayNumber": 1,
+        "title": "Tarangire National Park",
+        "summary": "Baobab woodland, the Tarangire River and large elephant herds.",
+        "narrative": "Leave Arusha after breakfast for a game drive in Tarangire National Park. The river attracts wildlife during the dry season, while the park's baobabs frame sightings of elephants, giraffes, hippos, buffaloes, zebras, wildebeest, lions and hyenas. Picnic lunch is served inside the park.",
+        "habitat": "Baobab woodland and river valley",
+        "activityLevel": "Easy game-drive day",
+        "meals": [
+          "Lunch",
+          "Dinner"
+        ],
+        "activities": [
+          {
+            "id": "tarangire-ngorongoro-crater-2-days-activity-1",
+            "title": "Tarangire National Park experience",
+            "description": "Leave Arusha after breakfast for a game drive in Tarangire National Park. The river attracts wildlife during the dry season, while the park's baobabs frame sightings of elephants, giraffes, hippos, buffaloes, zebras, wildebeest, lions and hyenas. Picnic lunch is served inside the park.",
+            "location": "Tarangire National Park"
+          }
+        ],
+        "accommodation": {
+          "name": "Campsite, tented lodge or lodge",
+          "category": "Other",
+          "location": "Mto wa Mbu",
+          "description": "The quotation suggests Kizumba Campsite, Fanaka Lodge or Lake Manyara Wildlife Lodge, subject to the selected comfort level and availability."
+        },
+        "image": "/images/figma/98118ae1-bb7c-432c-b7b1-433d27c59b13.png",
+        "imageAlt": "Tarangire National Park safari experience"
+      },
+      {
+        "id": "tarangire-ngorongoro-crater-2-days-day-2",
+        "dayNumber": 2,
+        "title": "Ngorongoro Crater to Arusha",
+        "summary": "Descend to the crater floor, then return to Arusha.",
+        "narrative": "After an early breakfast, descend into Ngorongoro Crater for game drives among lions, buffaloes, hippos, flamingos, wildebeest, zebras, gazelles, leopards, rhinos, hyenas and elephants. Lunch is served at the hippo pool picnic site before the afternoon drive back to Arusha.",
+        "habitat": "Crater grassland, woodland and wetlands",
+        "activityLevel": "Crater game drive and transfer",
+        "meals": [
+          "Breakfast",
+          "Lunch"
+        ],
+        "activities": [
+          {
+            "id": "tarangire-ngorongoro-crater-2-days-activity-2",
+            "title": "Ngorongoro Crater experience",
+            "description": "After an early breakfast, descend into Ngorongoro Crater for game drives among lions, buffaloes, hippos, flamingos, wildebeest, zebras, gazelles, leopards, rhinos, hyenas and elephants. Lunch is served at the hippo pool picnic site before the afternoon drive back to Arusha.",
+            "location": "Ngorongoro Crater"
+          }
+        ],
+        "image": "/images/figma/27222719-4ba9-4724-a440-0fcb7923b931.png",
+        "imageAlt": "Ngorongoro Crater to Arusha safari experience",
+        "dropOffNote": "Return to your Arusha accommodation at approximately 5-6 pm. Accommodation in Arusha is booked independently."
+      }
+    ],
+    "inclusions": [
+      "Accommodation and meals stated in the itinerary",
+      "Breakfast, lunch and dinner while on safari unless noted otherwise",
+      "National park and conservation fees",
+      "Professional driver-guide",
+      "Transport in a 4x4 safari vehicle",
+      "Game drives described in the itinerary",
+      "Drinking water during game drives",
+      "Government taxes",
+      "Pick-up and drop-off at your Arusha accommodation"
+    ],
+    "exclusions": [
+      "Tanzania visa",
+      "International and domestic flights",
+      "Travel insurance and vaccinations",
+      "Personal items and alcoholic drinks",
+      "Tips for the safari team",
+      "Accommodation before and after the safari unless confirmed"
+    ],
+    "onRequestItems": [
+      "Airport transfers",
+      "Private safari",
+      "Accommodation upgrade",
+      "Olduvai Gorge visit where the route allows",
+      "Serengeti balloon safari"
+    ],
+    "priceIntroduction": "This source quotation does not publish a package rate. Request a tailored price for your dates, group size and accommodation choice.",
+    "priceTiers": [
+      {
+        "name": "Camping",
+        "price": "On request",
+        "description": "A value-focused safari with campsite accommodation and the published park route."
+      },
+      {
+        "name": "Tented lodge",
+        "price": "On request",
+        "description": "A private safari using tented lodges selected for the route."
+      },
+      {
+        "name": "Lodge",
+        "price": "On request",
+        "description": "A private safari with upgraded lodge accommodation."
+      }
+    ],
+    "optionalExperiences": [
+      {
+        "name": "Private safari",
+        "price": "On request",
+        "note": "Choose your dates and travel with a dedicated vehicle and guide."
+      },
+      {
+        "name": "Olduvai Gorge",
+        "price": "From $45/pp",
+        "note": "Available on compatible private itineraries and subject to confirmation."
+      },
+      {
+        "name": "Serengeti balloon safari",
+        "price": "On request",
+        "note": "Subject to route, season and availability."
+      }
+    ],
+    "travelStyle": "Private safari with camping, tented lodge or lodge options",
+    "practicalInformation": [
+      "Driving times and wildlife viewing plans can change with road, weather and park conditions.",
+      "Bring a valid passport, the appropriate visa and comprehensive travel insurance.",
+      "Tell us about dietary requirements, allergies and mobility needs before the safari."
+    ],
+    "bookingConditions": [
+      "This itinerary is a proposal based on the supplied quotation. Final accommodation, price and availability are confirmed in writing.",
+      "Wildlife sightings cannot be guaranteed and the guide may adjust game-drive timing for current conditions."
+    ],
+    "faqs": [
+      {
+        "question": "Can this safari be private?",
+        "answer": "Yes. The route can be arranged as a private safari and adjusted around your dates, group and accommodation preference."
+      },
+      {
+        "question": "Which accommodation is included?",
+        "answer": "The quotation lists camping, tented lodge and lodge options. The final properties and room category are confirmed with your tailored quote."
+      },
+      {
+        "question": "Are park fees and meals included?",
+        "answer": "Park fees, the listed game drives, drinking water and meals shown in the itinerary are included."
+      },
+      {
+        "question": "Where does the safari start and finish?",
+        "answer": "Pick-up and drop-off are at your accommodation in Arusha unless another arrangement is confirmed."
+      },
+      {
+        "question": "Can I add airport transfers?",
+        "answer": "Yes. Transfers from Kilimanjaro International Airport or Arusha Airport can be quoted separately."
+      }
+    ],
+    "relatedTripSlugs": [
+      "lake-manyara-serengeti-ngorongoro",
+      "big-four-parks",
+      "seven-day-northern-parks-safari"
+    ],
+    "createdAt": "2026-11-19T12:30:00.000Z",
+    "updatedAt": "2026-11-19T12:30:00.000Z"
+  },
+  {
+    "id": "download-lake-manyara-serengeti-ngorongoro",
+    "sourceId": "download-pdf:Copy of Quotation Golden Dream Safaris - CLIENT NAME (1).pdf",
+    "sourcePath": "Copy of Quotation Golden Dream Safaris - CLIENT NAME (1).pdf",
+    "tripType": "Wildlife safari",
+    "routeFamily": "Lake Manyara National Park · Serengeti National Park · Ngorongoro Crater",
+    "slug": "lake-manyara-serengeti-ngorongoro",
+    "title": "4 Day Lake Manyara, Serengeti & Ngorongoro Safari",
+    "summary": "Lake Manyara's forest and lake shore, two Serengeti game-drive days and Ngorongoro Crater.",
+    "heroImage": "/images/figma/279a986b-f6f3-4660-96c5-716505530be6.png",
+    "overviewTitle": "About this 4-day safari",
+    "overviewParagraphs": [
+      "This route combines Lake Manyara National Park, Serengeti National Park, Ngorongoro Crater in a private northern Tanzania safari based on the supplied Golden Dream quotation.",
+      "Accommodation can be camping, tented lodge or lodge. Final properties, travel dates and price are confirmed for your group before booking."
+    ],
+    "highlights": [
+      "Game drives in Lake Manyara National Park",
+      "Game drives in Serengeti National Park",
+      "Game drives in Ngorongoro Crater"
+    ],
+    "galleryImages": [
+      {
+        "src": "/images/figma/279a986b-f6f3-4660-96c5-716505530be6.png",
+        "alt": "4 Day Lake Manyara, Serengeti & Ngorongoro Safari"
+      },
+      {
+        "src": "/images/figma/98118ae1-bb7c-432c-b7b1-433d27c59b13.png",
+        "alt": "Elephants in northern Tanzania"
+      },
+      {
+        "src": "/images/figma/8a34ea1e-253b-41f7-8c0c-cac8586c40b4.png",
+        "alt": "Wildlife on the Serengeti plains"
+      },
+      {
+        "src": "/images/figma/27222719-4ba9-4724-a440-0fcb7923b931.png",
+        "alt": "Wildlife in the Ngorongoro Conservation Area"
+      },
+      {
+        "src": "/images/figma/27096cab-2e77-46b5-9b4f-1aa9fbe1012c.png",
+        "alt": "Leopard resting in a tree"
+      }
+    ],
+    "routeStops": [
+      {
+        "name": "Lake Manyara National Park",
+        "label": "Day 1",
+        "description": "Game drives beside the Rift Valley escarpment and alkaline lake.",
+        "dayNumber": 1,
+        "coordinates": {
+          "lat": -3.4714,
+          "lng": 35.8172
+        }
+      },
+      {
+        "name": "Serengeti National Park",
+        "label": "Day 2",
+        "description": "Cross the Ngorongoro Highlands into the Serengeti's open plains.",
+        "dayNumber": 2,
+        "coordinates": {
+          "lat": -2.3333,
+          "lng": 34.8333
+        }
+      },
+      {
+        "name": "Serengeti National Park",
+        "label": "Day 3",
+        "description": "Morning game drives followed by the journey to Ngorongoro.",
+        "dayNumber": 3,
+        "coordinates": {
+          "lat": -2.3333,
+          "lng": 34.8333
+        }
+      },
+      {
+        "name": "Ngorongoro Crater",
+        "label": "Day 4",
+        "description": "Descend to the crater floor, then return to Arusha.",
+        "dayNumber": 4,
+        "coordinates": {
+          "lat": -3.1618,
+          "lng": 35.5877
+        }
+      }
+    ],
+    "durationDays": 4,
+    "destinations": [
+      "Lake Manyara National Park",
+      "Serengeti National Park",
+      "Ngorongoro Crater"
+    ],
+    "currency": "USD",
+    "status": "published",
+    "days": [
+      {
+        "id": "lake-manyara-serengeti-ngorongoro-day-1",
+        "dayNumber": 1,
+        "title": "Lake Manyara National Park",
+        "summary": "Game drives beside the Rift Valley escarpment and alkaline lake.",
+        "narrative": "After breakfast, drive to Lake Manyara National Park for game drives. The park is known for tree-climbing lions and seasonal flamingos, and also supports elephants, giraffes, hippos, buffaloes, zebras, wildebeest and monkeys. Enjoy a picnic lunch in the park.",
+        "habitat": "Groundwater forest, lake shore and woodland",
+        "activityLevel": "Easy game-drive day",
+        "meals": [
+          "Breakfast",
+          "Lunch",
+          "Dinner"
+        ],
+        "activities": [
+          {
+            "id": "lake-manyara-serengeti-ngorongoro-activity-1",
+            "title": "Lake Manyara National Park experience",
+            "description": "After breakfast, drive to Lake Manyara National Park for game drives. The park is known for tree-climbing lions and seasonal flamingos, and also supports elephants, giraffes, hippos, buffaloes, zebras, wildebeest and monkeys. Enjoy a picnic lunch in the park.",
+            "location": "Lake Manyara National Park"
+          }
+        ],
+        "accommodation": {
+          "name": "Campsite, tented lodge or lodge",
+          "category": "Other",
+          "location": "Mto wa Mbu",
+          "description": "The quotation suggests Kizumba Campsite, Fanaka Lodge or Lake Manyara Wildlife Lodge, subject to the selected comfort level and availability."
+        },
+        "image": "/images/figma/279a986b-f6f3-4660-96c5-716505530be6.png",
+        "imageAlt": "Lake Manyara National Park safari experience"
+      },
+      {
+        "id": "lake-manyara-serengeti-ngorongoro-day-2",
+        "dayNumber": 2,
+        "title": "Serengeti National Park",
+        "summary": "Cross the Ngorongoro Highlands into the Serengeti's open plains.",
+        "narrative": "Drive through the Ngorongoro Highlands to Serengeti National Park. The Serengeti's diverse habitats support wildebeest, lions, zebras, warthogs, leopards, giraffes, gazelles, buffaloes, impalas, hyenas, cheetahs, elephants and hippos. Enjoy lunch and afternoon game drives inside the park.",
+        "habitat": "Open plains and rocky kopjes",
+        "activityLevel": "Scenic transfer and game drive",
+        "meals": [
+          "Breakfast",
+          "Lunch",
+          "Dinner"
+        ],
+        "activities": [
+          {
+            "id": "lake-manyara-serengeti-ngorongoro-activity-2",
+            "title": "Serengeti National Park experience",
+            "description": "Drive through the Ngorongoro Highlands to Serengeti National Park. The Serengeti's diverse habitats support wildebeest, lions, zebras, warthogs, leopards, giraffes, gazelles, buffaloes, impalas, hyenas, cheetahs, elephants and hippos. Enjoy lunch and afternoon game drives inside the park.",
+            "location": "Serengeti National Park"
+          }
+        ],
+        "accommodation": {
+          "name": "Campsite, tented lodge or lodge",
+          "category": "Other",
+          "location": "Central Serengeti",
+          "description": "The quotation suggests Seronera Campsite, Seronera Tented Lodge or Seronera Wildlife Lodge, subject to the selected comfort level and availability."
+        },
+        "image": "/images/figma/8a34ea1e-253b-41f7-8c0c-cac8586c40b4.png",
+        "imageAlt": "Serengeti National Park safari experience"
+      },
+      {
+        "id": "lake-manyara-serengeti-ngorongoro-day-3",
+        "dayNumber": 3,
+        "title": "Serengeti to Ngorongoro",
+        "summary": "Morning game drives followed by the journey to Ngorongoro.",
+        "narrative": "Enjoy a final Serengeti game drive and picnic lunch while travelling towards Ngorongoro. On a private safari, an optional Olduvai Gorge visit can be added before continuing to the overnight stop near the crater.",
+        "habitat": "Serengeti plains and Ngorongoro highlands",
+        "activityLevel": "Game drive and scenic transfer",
+        "meals": [
+          "Breakfast",
+          "Lunch",
+          "Dinner"
+        ],
+        "activities": [
+          {
+            "id": "lake-manyara-serengeti-ngorongoro-activity-3",
+            "title": "Serengeti National Park experience",
+            "description": "Enjoy a final Serengeti game drive and picnic lunch while travelling towards Ngorongoro. On a private safari, an optional Olduvai Gorge visit can be added before continuing to the overnight stop near the crater.",
+            "location": "Serengeti National Park"
+          }
+        ],
+        "accommodation": {
+          "name": "Campsite, tented camp or lodge",
+          "category": "Other",
+          "location": "Ngorongoro Conservation Area",
+          "description": "The quotation suggests Simba Campsite, Ngorongoro Wild Tented Camp or Ngorongoro Rhino Lodge, subject to the selected comfort level and availability."
+        },
+        "image": "/images/figma/27222719-4ba9-4724-a440-0fcb7923b931.png",
+        "imageAlt": "Serengeti to Ngorongoro safari experience"
+      },
+      {
+        "id": "lake-manyara-serengeti-ngorongoro-day-4",
+        "dayNumber": 4,
+        "title": "Ngorongoro Crater to Arusha",
+        "summary": "Descend to the crater floor, then return to Arusha.",
+        "narrative": "After an early breakfast, descend into Ngorongoro Crater for game drives among lions, buffaloes, hippos, flamingos, wildebeest, zebras, gazelles, leopards, rhinos, hyenas and elephants. Lunch is served at the hippo pool picnic site before the afternoon drive back to Arusha.",
+        "habitat": "Crater grassland, woodland and wetlands",
+        "activityLevel": "Crater game drive and transfer",
+        "meals": [
+          "Breakfast",
+          "Lunch"
+        ],
+        "activities": [
+          {
+            "id": "lake-manyara-serengeti-ngorongoro-activity-4",
+            "title": "Ngorongoro Crater experience",
+            "description": "After an early breakfast, descend into Ngorongoro Crater for game drives among lions, buffaloes, hippos, flamingos, wildebeest, zebras, gazelles, leopards, rhinos, hyenas and elephants. Lunch is served at the hippo pool picnic site before the afternoon drive back to Arusha.",
+            "location": "Ngorongoro Crater"
+          }
+        ],
+        "image": "/images/figma/27222719-4ba9-4724-a440-0fcb7923b931.png",
+        "imageAlt": "Ngorongoro Crater to Arusha safari experience",
+        "dropOffNote": "Return to your Arusha accommodation at approximately 5-6 pm. Accommodation in Arusha is booked independently."
+      }
+    ],
+    "inclusions": [
+      "Accommodation and meals stated in the itinerary",
+      "Breakfast, lunch and dinner while on safari unless noted otherwise",
+      "National park and conservation fees",
+      "Professional driver-guide",
+      "Transport in a 4x4 safari vehicle",
+      "Game drives described in the itinerary",
+      "Drinking water during game drives",
+      "Government taxes",
+      "Pick-up and drop-off at your Arusha accommodation"
+    ],
+    "exclusions": [
+      "Tanzania visa",
+      "International and domestic flights",
+      "Travel insurance and vaccinations",
+      "Personal items and alcoholic drinks",
+      "Tips for the safari team",
+      "Accommodation before and after the safari unless confirmed"
+    ],
+    "onRequestItems": [
+      "Airport transfers",
+      "Private safari",
+      "Accommodation upgrade",
+      "Olduvai Gorge visit where the route allows",
+      "Serengeti balloon safari"
+    ],
+    "priceIntroduction": "This source quotation does not publish a package rate. Request a tailored price for your dates, group size and accommodation choice.",
+    "priceTiers": [
+      {
+        "name": "Camping",
+        "price": "On request",
+        "description": "A value-focused safari with campsite accommodation and the published park route."
+      },
+      {
+        "name": "Tented lodge",
+        "price": "On request",
+        "description": "A private safari using tented lodges selected for the route."
+      },
+      {
+        "name": "Lodge",
+        "price": "On request",
+        "description": "A private safari with upgraded lodge accommodation."
+      }
+    ],
+    "optionalExperiences": [
+      {
+        "name": "Private safari",
+        "price": "On request",
+        "note": "Choose your dates and travel with a dedicated vehicle and guide."
+      },
+      {
+        "name": "Olduvai Gorge",
+        "price": "From $45/pp",
+        "note": "Available on compatible private itineraries and subject to confirmation."
+      },
+      {
+        "name": "Serengeti balloon safari",
+        "price": "On request",
+        "note": "Subject to route, season and availability."
+      }
+    ],
+    "travelStyle": "Private safari with camping, tented lodge or lodge options",
+    "practicalInformation": [
+      "Driving times and wildlife viewing plans can change with road, weather and park conditions.",
+      "Bring a valid passport, the appropriate visa and comprehensive travel insurance.",
+      "Tell us about dietary requirements, allergies and mobility needs before the safari."
+    ],
+    "bookingConditions": [
+      "This itinerary is a proposal based on the supplied quotation. Final accommodation, price and availability are confirmed in writing.",
+      "Wildlife sightings cannot be guaranteed and the guide may adjust game-drive timing for current conditions."
+    ],
+    "faqs": [
+      {
+        "question": "Can this safari be private?",
+        "answer": "Yes. The route can be arranged as a private safari and adjusted around your dates, group and accommodation preference."
+      },
+      {
+        "question": "Which accommodation is included?",
+        "answer": "The quotation lists camping, tented lodge and lodge options. The final properties and room category are confirmed with your tailored quote."
+      },
+      {
+        "question": "Are park fees and meals included?",
+        "answer": "Park fees, the listed game drives, drinking water and meals shown in the itinerary are included."
+      },
+      {
+        "question": "Where does the safari start and finish?",
+        "answer": "Pick-up and drop-off are at your accommodation in Arusha unless another arrangement is confirmed."
+      },
+      {
+        "question": "Can I add airport transfers?",
+        "answer": "Yes. Transfers from Kilimanjaro International Airport or Arusha Airport can be quoted separately."
+      }
+    ],
+    "relatedTripSlugs": [
+      "tarangire-ngorongoro-crater-2-days",
+      "big-four-parks",
+      "seven-day-northern-parks-safari"
+    ],
+    "createdAt": "2026-11-19T12:30:00.000Z",
+    "updatedAt": "2026-11-19T12:30:00.000Z"
+  },
+  {
+    "id": "download-big-four-parks",
+    "sourceId": "download-pdf:Copy of Quotation Golden Dream Safaris - CLIENT NAME (2).pdf",
+    "sourcePath": "Copy of Quotation Golden Dream Safaris - CLIENT NAME (2).pdf",
+    "tripType": "Wildlife safari",
+    "routeFamily": "Lake Manyara National Park · Tarangire National Park · Serengeti National Park · Ngorongoro Crater",
+    "slug": "big-four-parks",
+    "title": "5 Day Lake Manyara, Tarangire, Serengeti & Ngorongoro Safari",
+    "summary": "Five days linking four of northern Tanzania's best-known wildlife areas in one private safari.",
+    "heroImage": "/images/figma/fcb78e89-1d4d-4e01-9c6c-fdaec6e228d9.png",
+    "overviewTitle": "About this 5-day safari",
+    "overviewParagraphs": [
+      "This route combines Lake Manyara National Park, Tarangire National Park, Serengeti National Park, Ngorongoro Crater in a private northern Tanzania safari based on the supplied Golden Dream quotation.",
+      "Accommodation can be camping, tented lodge or lodge. Final properties, travel dates and price are confirmed for your group before booking."
+    ],
+    "highlights": [
+      "Game drives in Lake Manyara National Park",
+      "Game drives in Tarangire National Park",
+      "Game drives in Serengeti National Park",
+      "Game drives in Ngorongoro Crater"
+    ],
+    "galleryImages": [
+      {
+        "src": "/images/figma/fcb78e89-1d4d-4e01-9c6c-fdaec6e228d9.png",
+        "alt": "5 Day Lake Manyara, Tarangire, Serengeti & Ngorongoro Safari"
+      },
+      {
+        "src": "/images/figma/98118ae1-bb7c-432c-b7b1-433d27c59b13.png",
+        "alt": "Elephants in northern Tanzania"
+      },
+      {
+        "src": "/images/figma/279a986b-f6f3-4660-96c5-716505530be6.png",
+        "alt": "Lake Manyara safari landscape"
+      },
+      {
+        "src": "/images/figma/8a34ea1e-253b-41f7-8c0c-cac8586c40b4.png",
+        "alt": "Wildlife on the Serengeti plains"
+      },
+      {
+        "src": "/images/figma/27222719-4ba9-4724-a440-0fcb7923b931.png",
+        "alt": "Wildlife in the Ngorongoro Conservation Area"
+      },
+      {
+        "src": "/images/figma/27096cab-2e77-46b5-9b4f-1aa9fbe1012c.png",
+        "alt": "Leopard resting in a tree"
+      }
+    ],
+    "routeStops": [
+      {
+        "name": "Lake Manyara National Park",
+        "label": "Day 1",
+        "description": "Game drives beside the Rift Valley escarpment and alkaline lake.",
+        "dayNumber": 1,
+        "coordinates": {
+          "lat": -3.4714,
+          "lng": 35.8172
+        }
+      },
+      {
+        "name": "Tarangire National Park",
+        "label": "Day 2",
+        "description": "Baobab woodland, the Tarangire River and large elephant herds.",
+        "dayNumber": 2,
+        "coordinates": {
+          "lat": -3.8333,
+          "lng": 36
+        }
+      },
+      {
+        "name": "Serengeti National Park",
+        "label": "Day 3",
+        "description": "Cross the Ngorongoro Highlands into the Serengeti's open plains.",
+        "dayNumber": 3,
+        "coordinates": {
+          "lat": -2.3333,
+          "lng": 34.8333
+        }
+      },
+      {
+        "name": "Serengeti National Park",
+        "label": "Day 4",
+        "description": "Morning game drives followed by the journey to Ngorongoro.",
+        "dayNumber": 4,
+        "coordinates": {
+          "lat": -2.3333,
+          "lng": 34.8333
+        }
+      },
+      {
+        "name": "Ngorongoro Crater",
+        "label": "Day 5",
+        "description": "Descend to the crater floor, then return to Arusha.",
+        "dayNumber": 5,
+        "coordinates": {
+          "lat": -3.1618,
+          "lng": 35.5877
+        }
+      }
+    ],
+    "durationDays": 5,
+    "destinations": [
+      "Lake Manyara National Park",
+      "Tarangire National Park",
+      "Serengeti National Park",
+      "Ngorongoro Crater"
+    ],
+    "currency": "USD",
+    "status": "published",
+    "days": [
+      {
+        "id": "big-four-parks-day-1",
+        "dayNumber": 1,
+        "title": "Lake Manyara National Park",
+        "summary": "Game drives beside the Rift Valley escarpment and alkaline lake.",
+        "narrative": "After breakfast, drive to Lake Manyara National Park for game drives. The park is known for tree-climbing lions and seasonal flamingos, and also supports elephants, giraffes, hippos, buffaloes, zebras, wildebeest and monkeys. Enjoy a picnic lunch in the park.",
+        "habitat": "Groundwater forest, lake shore and woodland",
+        "activityLevel": "Easy game-drive day",
+        "meals": [
+          "Breakfast",
+          "Lunch",
+          "Dinner"
+        ],
+        "activities": [
+          {
+            "id": "big-four-parks-activity-1",
+            "title": "Lake Manyara National Park experience",
+            "description": "After breakfast, drive to Lake Manyara National Park for game drives. The park is known for tree-climbing lions and seasonal flamingos, and also supports elephants, giraffes, hippos, buffaloes, zebras, wildebeest and monkeys. Enjoy a picnic lunch in the park.",
+            "location": "Lake Manyara National Park"
+          }
+        ],
+        "accommodation": {
+          "name": "Campsite, tented lodge or lodge",
+          "category": "Other",
+          "location": "Mto wa Mbu",
+          "description": "The quotation suggests Kizumba Campsite, Fanaka Lodge or Lake Manyara Wildlife Lodge, subject to the selected comfort level and availability."
+        },
+        "image": "/images/figma/279a986b-f6f3-4660-96c5-716505530be6.png",
+        "imageAlt": "Lake Manyara National Park safari experience"
+      },
+      {
+        "id": "big-four-parks-day-2",
+        "dayNumber": 2,
+        "title": "Tarangire National Park",
+        "summary": "Baobab woodland, the Tarangire River and large elephant herds.",
+        "narrative": "Leave Arusha after breakfast for a game drive in Tarangire National Park. The river attracts wildlife during the dry season, while the park's baobabs frame sightings of elephants, giraffes, hippos, buffaloes, zebras, wildebeest, lions and hyenas. Picnic lunch is served inside the park.",
+        "habitat": "Baobab woodland and river valley",
+        "activityLevel": "Easy game-drive day",
+        "meals": [
+          "Lunch",
+          "Dinner"
+        ],
+        "activities": [
+          {
+            "id": "big-four-parks-activity-2",
+            "title": "Tarangire National Park experience",
+            "description": "Leave Arusha after breakfast for a game drive in Tarangire National Park. The river attracts wildlife during the dry season, while the park's baobabs frame sightings of elephants, giraffes, hippos, buffaloes, zebras, wildebeest, lions and hyenas. Picnic lunch is served inside the park.",
+            "location": "Tarangire National Park"
+          }
+        ],
+        "accommodation": {
+          "name": "Campsite, tented lodge or lodge",
+          "category": "Other",
+          "location": "Mto wa Mbu",
+          "description": "The quotation suggests Kizumba Campsite, Fanaka Lodge or Lake Manyara Wildlife Lodge, subject to the selected comfort level and availability."
+        },
+        "image": "/images/figma/98118ae1-bb7c-432c-b7b1-433d27c59b13.png",
+        "imageAlt": "Tarangire National Park safari experience"
+      },
+      {
+        "id": "big-four-parks-day-3",
+        "dayNumber": 3,
+        "title": "Serengeti National Park",
+        "summary": "Cross the Ngorongoro Highlands into the Serengeti's open plains.",
+        "narrative": "Drive through the Ngorongoro Highlands to Serengeti National Park. The Serengeti's diverse habitats support wildebeest, lions, zebras, warthogs, leopards, giraffes, gazelles, buffaloes, impalas, hyenas, cheetahs, elephants and hippos. Enjoy lunch and afternoon game drives inside the park.",
+        "habitat": "Open plains and rocky kopjes",
+        "activityLevel": "Scenic transfer and game drive",
+        "meals": [
+          "Breakfast",
+          "Lunch",
+          "Dinner"
+        ],
+        "activities": [
+          {
+            "id": "big-four-parks-activity-3",
+            "title": "Serengeti National Park experience",
+            "description": "Drive through the Ngorongoro Highlands to Serengeti National Park. The Serengeti's diverse habitats support wildebeest, lions, zebras, warthogs, leopards, giraffes, gazelles, buffaloes, impalas, hyenas, cheetahs, elephants and hippos. Enjoy lunch and afternoon game drives inside the park.",
+            "location": "Serengeti National Park"
+          }
+        ],
+        "accommodation": {
+          "name": "Campsite, tented lodge or lodge",
+          "category": "Other",
+          "location": "Central Serengeti",
+          "description": "The quotation suggests Seronera Campsite, Seronera Tented Lodge or Seronera Wildlife Lodge, subject to the selected comfort level and availability."
+        },
+        "image": "/images/figma/8a34ea1e-253b-41f7-8c0c-cac8586c40b4.png",
+        "imageAlt": "Serengeti National Park safari experience"
+      },
+      {
+        "id": "big-four-parks-day-4",
+        "dayNumber": 4,
+        "title": "Serengeti to Ngorongoro",
+        "summary": "Morning game drives followed by the journey to Ngorongoro.",
+        "narrative": "Enjoy a final Serengeti game drive and picnic lunch while travelling towards Ngorongoro. On a private safari, an optional Olduvai Gorge visit can be added before continuing to the overnight stop near the crater.",
+        "habitat": "Serengeti plains and Ngorongoro highlands",
+        "activityLevel": "Game drive and scenic transfer",
+        "meals": [
+          "Breakfast",
+          "Lunch",
+          "Dinner"
+        ],
+        "activities": [
+          {
+            "id": "big-four-parks-activity-4",
+            "title": "Serengeti National Park experience",
+            "description": "Enjoy a final Serengeti game drive and picnic lunch while travelling towards Ngorongoro. On a private safari, an optional Olduvai Gorge visit can be added before continuing to the overnight stop near the crater.",
+            "location": "Serengeti National Park"
+          }
+        ],
+        "accommodation": {
+          "name": "Campsite, tented camp or lodge",
+          "category": "Other",
+          "location": "Ngorongoro Conservation Area",
+          "description": "The quotation suggests Simba Campsite, Ngorongoro Wild Tented Camp or Ngorongoro Rhino Lodge, subject to the selected comfort level and availability."
+        },
+        "image": "/images/figma/27222719-4ba9-4724-a440-0fcb7923b931.png",
+        "imageAlt": "Serengeti to Ngorongoro safari experience"
+      },
+      {
+        "id": "big-four-parks-day-5",
+        "dayNumber": 5,
+        "title": "Ngorongoro Crater to Arusha",
+        "summary": "Descend to the crater floor, then return to Arusha.",
+        "narrative": "After an early breakfast, descend into Ngorongoro Crater for game drives among lions, buffaloes, hippos, flamingos, wildebeest, zebras, gazelles, leopards, rhinos, hyenas and elephants. Lunch is served at the hippo pool picnic site before the afternoon drive back to Arusha.",
+        "habitat": "Crater grassland, woodland and wetlands",
+        "activityLevel": "Crater game drive and transfer",
+        "meals": [
+          "Breakfast",
+          "Lunch"
+        ],
+        "activities": [
+          {
+            "id": "big-four-parks-activity-5",
+            "title": "Ngorongoro Crater experience",
+            "description": "After an early breakfast, descend into Ngorongoro Crater for game drives among lions, buffaloes, hippos, flamingos, wildebeest, zebras, gazelles, leopards, rhinos, hyenas and elephants. Lunch is served at the hippo pool picnic site before the afternoon drive back to Arusha.",
+            "location": "Ngorongoro Crater"
+          }
+        ],
+        "image": "/images/figma/27222719-4ba9-4724-a440-0fcb7923b931.png",
+        "imageAlt": "Ngorongoro Crater to Arusha safari experience",
+        "dropOffNote": "Return to your Arusha accommodation at approximately 5-6 pm. Accommodation in Arusha is booked independently."
+      }
+    ],
+    "inclusions": [
+      "Accommodation and meals stated in the itinerary",
+      "Breakfast, lunch and dinner while on safari unless noted otherwise",
+      "National park and conservation fees",
+      "Professional driver-guide",
+      "Transport in a 4x4 safari vehicle",
+      "Game drives described in the itinerary",
+      "Drinking water during game drives",
+      "Government taxes",
+      "Pick-up and drop-off at your Arusha accommodation"
+    ],
+    "exclusions": [
+      "Tanzania visa",
+      "International and domestic flights",
+      "Travel insurance and vaccinations",
+      "Personal items and alcoholic drinks",
+      "Tips for the safari team",
+      "Accommodation before and after the safari unless confirmed"
+    ],
+    "onRequestItems": [
+      "Airport transfers",
+      "Private safari",
+      "Accommodation upgrade",
+      "Olduvai Gorge visit where the route allows",
+      "Serengeti balloon safari"
+    ],
+    "priceIntroduction": "This source quotation does not publish a package rate. Request a tailored price for your dates, group size and accommodation choice.",
+    "priceTiers": [
+      {
+        "name": "Camping",
+        "price": "On request",
+        "description": "A value-focused safari with campsite accommodation and the published park route."
+      },
+      {
+        "name": "Tented lodge",
+        "price": "On request",
+        "description": "A private safari using tented lodges selected for the route."
+      },
+      {
+        "name": "Lodge",
+        "price": "On request",
+        "description": "A private safari with upgraded lodge accommodation."
+      }
+    ],
+    "optionalExperiences": [
+      {
+        "name": "Private safari",
+        "price": "On request",
+        "note": "Choose your dates and travel with a dedicated vehicle and guide."
+      },
+      {
+        "name": "Olduvai Gorge",
+        "price": "From $45/pp",
+        "note": "Available on compatible private itineraries and subject to confirmation."
+      },
+      {
+        "name": "Serengeti balloon safari",
+        "price": "On request",
+        "note": "Subject to route, season and availability."
+      }
+    ],
+    "travelStyle": "Private safari with camping, tented lodge or lodge options",
+    "practicalInformation": [
+      "Driving times and wildlife viewing plans can change with road, weather and park conditions.",
+      "Bring a valid passport, the appropriate visa and comprehensive travel insurance.",
+      "Tell us about dietary requirements, allergies and mobility needs before the safari."
+    ],
+    "bookingConditions": [
+      "This itinerary is a proposal based on the supplied quotation. Final accommodation, price and availability are confirmed in writing.",
+      "Wildlife sightings cannot be guaranteed and the guide may adjust game-drive timing for current conditions."
+    ],
+    "faqs": [
+      {
+        "question": "Can this safari be private?",
+        "answer": "Yes. The route can be arranged as a private safari and adjusted around your dates, group and accommodation preference."
+      },
+      {
+        "question": "Which accommodation is included?",
+        "answer": "The quotation lists camping, tented lodge and lodge options. The final properties and room category are confirmed with your tailored quote."
+      },
+      {
+        "question": "Are park fees and meals included?",
+        "answer": "Park fees, the listed game drives, drinking water and meals shown in the itinerary are included."
+      },
+      {
+        "question": "Where does the safari start and finish?",
+        "answer": "Pick-up and drop-off are at your accommodation in Arusha unless another arrangement is confirmed."
+      },
+      {
+        "question": "Can I add airport transfers?",
+        "answer": "Yes. Transfers from Kilimanjaro International Airport or Arusha Airport can be quoted separately."
+      }
+    ],
+    "relatedTripSlugs": [
+      "tarangire-ngorongoro-crater-2-days",
+      "lake-manyara-serengeti-ngorongoro",
+      "seven-day-northern-parks-safari"
+    ],
+    "createdAt": "2026-11-19T12:30:00.000Z",
+    "updatedAt": "2026-11-19T12:30:00.000Z"
+  },
+  {
+    "id": "download-seven-day-northern-parks-safari",
+    "sourceId": "download-pdf:Copy of Quotation Golden Dream Safaris - CLIENT NAME (3).pdf",
+    "sourcePath": "Copy of Quotation Golden Dream Safaris - CLIENT NAME (3).pdf",
+    "tripType": "Wildlife safari",
+    "routeFamily": "Arusha National Park · Lake Manyara National Park · Tarangire National Park · Serengeti National Park · Ngorongoro Crater",
+    "slug": "seven-day-northern-parks-safari",
+    "title": "7 Day Arusha, Manyara, Tarangire, Serengeti & Ngorongoro Safari",
+    "summary": "A complete northern parks journey with three Serengeti days and time in Arusha, Lake Manyara, Tarangire and Ngorongoro.",
+    "heroImage": "/images/figma/8a34ea1e-253b-41f7-8c0c-cac8586c40b4.png",
+    "overviewTitle": "About this 7-day safari",
+    "overviewParagraphs": [
+      "This route combines Arusha National Park, Lake Manyara National Park, Tarangire National Park, Serengeti National Park, Ngorongoro Crater in a private northern Tanzania safari based on the supplied Golden Dream quotation.",
+      "Accommodation can be camping, tented lodge or lodge. Final properties, travel dates and price are confirmed for your group before booking."
+    ],
+    "highlights": [
+      "Game drives in Arusha National Park",
+      "Game drives in Lake Manyara National Park",
+      "Game drives in Tarangire National Park",
+      "Game drives in Serengeti National Park",
+      "Game drives in Ngorongoro Crater"
+    ],
+    "galleryImages": [
+      {
+        "src": "/images/figma/8a34ea1e-253b-41f7-8c0c-cac8586c40b4.png",
+        "alt": "7 Day Arusha, Manyara, Tarangire, Serengeti & Ngorongoro Safari"
+      },
+      {
+        "src": "/images/figma/98118ae1-bb7c-432c-b7b1-433d27c59b13.png",
+        "alt": "Elephants in northern Tanzania"
+      },
+      {
+        "src": "/images/figma/279a986b-f6f3-4660-96c5-716505530be6.png",
+        "alt": "Lake Manyara safari landscape"
+      },
+      {
+        "src": "/images/figma/27222719-4ba9-4724-a440-0fcb7923b931.png",
+        "alt": "Wildlife in the Ngorongoro Conservation Area"
+      },
+      {
+        "src": "/images/figma/27096cab-2e77-46b5-9b4f-1aa9fbe1012c.png",
+        "alt": "Leopard resting in a tree"
+      }
+    ],
+    "routeStops": [
+      {
+        "name": "Arusha National Park",
+        "label": "Day 1",
+        "description": "A scenic first game drive beneath Mount Meru.",
+        "dayNumber": 1,
+        "coordinates": {
+          "lat": -3.2508,
+          "lng": 36.8299
+        }
+      },
+      {
+        "name": "Lake Manyara National Park",
+        "label": "Day 2",
+        "description": "Game drives beside the Rift Valley escarpment and alkaline lake.",
+        "dayNumber": 2,
+        "coordinates": {
+          "lat": -3.4714,
+          "lng": 35.8172
+        }
+      },
+      {
+        "name": "Tarangire National Park",
+        "label": "Day 3",
+        "description": "Baobab woodland, the Tarangire River and large elephant herds.",
+        "dayNumber": 3,
+        "coordinates": {
+          "lat": -3.8333,
+          "lng": 36
+        }
+      },
+      {
+        "name": "Serengeti National Park",
+        "label": "Day 4",
+        "description": "Cross the Ngorongoro Highlands into the Serengeti's open plains.",
+        "dayNumber": 4,
+        "coordinates": {
+          "lat": -2.3333,
+          "lng": 34.8333
+        }
+      },
+      {
+        "name": "Serengeti National Park",
+        "label": "Day 5",
+        "description": "A full day of game drives with time to follow wildlife movements.",
+        "dayNumber": 5,
+        "coordinates": {
+          "lat": -2.3333,
+          "lng": 34.8333
+        }
+      },
+      {
+        "name": "Serengeti National Park",
+        "label": "Day 6",
+        "description": "Morning game drives followed by the journey to Ngorongoro.",
+        "dayNumber": 6,
+        "coordinates": {
+          "lat": -2.3333,
+          "lng": 34.8333
+        }
+      },
+      {
+        "name": "Ngorongoro Crater",
+        "label": "Day 7",
+        "description": "Descend to the crater floor, then return to Arusha.",
+        "dayNumber": 7,
+        "coordinates": {
+          "lat": -3.1618,
+          "lng": 35.5877
+        }
+      }
+    ],
+    "durationDays": 7,
+    "destinations": [
+      "Arusha National Park",
+      "Lake Manyara National Park",
+      "Tarangire National Park",
+      "Serengeti National Park",
+      "Ngorongoro Crater"
+    ],
+    "currency": "USD",
+    "status": "published",
+    "days": [
+      {
+        "id": "seven-day-northern-parks-safari-day-1",
+        "dayNumber": 1,
+        "title": "Arusha National Park",
+        "summary": "A scenic first game drive beneath Mount Meru.",
+        "narrative": "Travel to Arusha National Park for a morning game drive through its varied landscapes. Look for black-and-white colobus monkeys, buffaloes, zebras, giraffes, hippos and elephants, with a picnic lunch inside the park before returning to Arusha.",
+        "habitat": "Montane forest, lakes and open grassland",
+        "activityLevel": "Easy game-drive day",
+        "meals": [
+          "Lunch"
+        ],
+        "activities": [
+          {
+            "id": "seven-day-northern-parks-safari-activity-1",
+            "title": "Arusha National Park experience",
+            "description": "Travel to Arusha National Park for a morning game drive through its varied landscapes. Look for black-and-white colobus monkeys, buffaloes, zebras, giraffes, hippos and elephants, with a picnic lunch inside the park before returning to Arusha.",
+            "location": "Arusha National Park"
+          }
+        ],
+        "accommodation": {
+          "name": "Arusha hotel (not included)",
+          "category": "Other",
+          "location": "Arusha",
+          "description": "Dinner and overnight accommodation in Arusha are booked independently."
+        },
+        "image": "/images/figma/c299246f-2033-43be-a3a4-eebbe6d23354.png",
+        "imageAlt": "Arusha National Park safari experience"
+      },
+      {
+        "id": "seven-day-northern-parks-safari-day-2",
+        "dayNumber": 2,
+        "title": "Lake Manyara National Park",
+        "summary": "Game drives beside the Rift Valley escarpment and alkaline lake.",
+        "narrative": "After breakfast, drive to Lake Manyara National Park for game drives. The park is known for tree-climbing lions and seasonal flamingos, and also supports elephants, giraffes, hippos, buffaloes, zebras, wildebeest and monkeys. Enjoy a picnic lunch in the park.",
+        "habitat": "Groundwater forest, lake shore and woodland",
+        "activityLevel": "Easy game-drive day",
+        "meals": [
+          "Breakfast",
+          "Lunch",
+          "Dinner"
+        ],
+        "activities": [
+          {
+            "id": "seven-day-northern-parks-safari-activity-2",
+            "title": "Lake Manyara National Park experience",
+            "description": "After breakfast, drive to Lake Manyara National Park for game drives. The park is known for tree-climbing lions and seasonal flamingos, and also supports elephants, giraffes, hippos, buffaloes, zebras, wildebeest and monkeys. Enjoy a picnic lunch in the park.",
+            "location": "Lake Manyara National Park"
+          }
+        ],
+        "accommodation": {
+          "name": "Campsite, tented lodge or lodge",
+          "category": "Other",
+          "location": "Mto wa Mbu",
+          "description": "The quotation suggests Kizumba Campsite, Fanaka Lodge or Lake Manyara Wildlife Lodge, subject to the selected comfort level and availability."
+        },
+        "image": "/images/figma/279a986b-f6f3-4660-96c5-716505530be6.png",
+        "imageAlt": "Lake Manyara National Park safari experience"
+      },
+      {
+        "id": "seven-day-northern-parks-safari-day-3",
+        "dayNumber": 3,
+        "title": "Tarangire National Park",
+        "summary": "Baobab woodland, the Tarangire River and large elephant herds.",
+        "narrative": "Leave Arusha after breakfast for a game drive in Tarangire National Park. The river attracts wildlife during the dry season, while the park's baobabs frame sightings of elephants, giraffes, hippos, buffaloes, zebras, wildebeest, lions and hyenas. Picnic lunch is served inside the park.",
+        "habitat": "Baobab woodland and river valley",
+        "activityLevel": "Easy game-drive day",
+        "meals": [
+          "Lunch",
+          "Dinner"
+        ],
+        "activities": [
+          {
+            "id": "seven-day-northern-parks-safari-activity-3",
+            "title": "Tarangire National Park experience",
+            "description": "Leave Arusha after breakfast for a game drive in Tarangire National Park. The river attracts wildlife during the dry season, while the park's baobabs frame sightings of elephants, giraffes, hippos, buffaloes, zebras, wildebeest, lions and hyenas. Picnic lunch is served inside the park.",
+            "location": "Tarangire National Park"
+          }
+        ],
+        "accommodation": {
+          "name": "Campsite, tented lodge or lodge",
+          "category": "Other",
+          "location": "Mto wa Mbu",
+          "description": "The quotation suggests Kizumba Campsite, Fanaka Lodge or Lake Manyara Wildlife Lodge, subject to the selected comfort level and availability."
+        },
+        "image": "/images/figma/98118ae1-bb7c-432c-b7b1-433d27c59b13.png",
+        "imageAlt": "Tarangire National Park safari experience"
+      },
+      {
+        "id": "seven-day-northern-parks-safari-day-4",
+        "dayNumber": 4,
+        "title": "Serengeti National Park",
+        "summary": "Cross the Ngorongoro Highlands into the Serengeti's open plains.",
+        "narrative": "Drive through the Ngorongoro Highlands to Serengeti National Park. The Serengeti's diverse habitats support wildebeest, lions, zebras, warthogs, leopards, giraffes, gazelles, buffaloes, impalas, hyenas, cheetahs, elephants and hippos. Enjoy lunch and afternoon game drives inside the park.",
+        "habitat": "Open plains and rocky kopjes",
+        "activityLevel": "Scenic transfer and game drive",
+        "meals": [
+          "Breakfast",
+          "Lunch",
+          "Dinner"
+        ],
+        "activities": [
+          {
+            "id": "seven-day-northern-parks-safari-activity-4",
+            "title": "Serengeti National Park experience",
+            "description": "Drive through the Ngorongoro Highlands to Serengeti National Park. The Serengeti's diverse habitats support wildebeest, lions, zebras, warthogs, leopards, giraffes, gazelles, buffaloes, impalas, hyenas, cheetahs, elephants and hippos. Enjoy lunch and afternoon game drives inside the park.",
+            "location": "Serengeti National Park"
+          }
+        ],
+        "accommodation": {
+          "name": "Campsite, tented lodge or lodge",
+          "category": "Other",
+          "location": "Central Serengeti",
+          "description": "The quotation suggests Seronera Campsite, Seronera Tented Lodge or Seronera Wildlife Lodge, subject to the selected comfort level and availability."
+        },
+        "image": "/images/figma/8a34ea1e-253b-41f7-8c0c-cac8586c40b4.png",
+        "imageAlt": "Serengeti National Park safari experience"
+      },
+      {
+        "id": "seven-day-northern-parks-safari-day-5",
+        "dayNumber": 5,
+        "title": "Full day in Serengeti National Park",
+        "summary": "A full day of game drives with time to follow wildlife movements.",
+        "narrative": "Spend the day exploring the Serengeti on private game drives. Your guide plans the route around current wildlife movements and will look for the great migration when its herds are in the accessible part of the ecosystem.",
+        "habitat": "Open plains and rocky kopjes",
+        "activityLevel": "Full-day game drive",
+        "meals": [
+          "Breakfast",
+          "Lunch",
+          "Dinner"
+        ],
+        "activities": [
+          {
+            "id": "seven-day-northern-parks-safari-activity-5",
+            "title": "Serengeti National Park experience",
+            "description": "Spend the day exploring the Serengeti on private game drives. Your guide plans the route around current wildlife movements and will look for the great migration when its herds are in the accessible part of the ecosystem.",
+            "location": "Serengeti National Park"
+          }
+        ],
+        "accommodation": {
+          "name": "Campsite, tented lodge or lodge",
+          "category": "Other",
+          "location": "Central Serengeti",
+          "description": "The quotation suggests Seronera Campsite, Seronera Tented Lodge or Seronera Wildlife Lodge, subject to the selected comfort level and availability."
+        },
+        "image": "/images/figma/8a34ea1e-253b-41f7-8c0c-cac8586c40b4.png",
+        "imageAlt": "Full day in Serengeti National Park safari experience"
+      },
+      {
+        "id": "seven-day-northern-parks-safari-day-6",
+        "dayNumber": 6,
+        "title": "Serengeti to Ngorongoro",
+        "summary": "Morning game drives followed by the journey to Ngorongoro.",
+        "narrative": "Enjoy a final Serengeti game drive and picnic lunch while travelling towards Ngorongoro. On a private safari, an optional Olduvai Gorge visit can be added before continuing to the overnight stop near the crater.",
+        "habitat": "Serengeti plains and Ngorongoro highlands",
+        "activityLevel": "Game drive and scenic transfer",
+        "meals": [
+          "Breakfast",
+          "Lunch",
+          "Dinner"
+        ],
+        "activities": [
+          {
+            "id": "seven-day-northern-parks-safari-activity-6",
+            "title": "Serengeti National Park experience",
+            "description": "Enjoy a final Serengeti game drive and picnic lunch while travelling towards Ngorongoro. On a private safari, an optional Olduvai Gorge visit can be added before continuing to the overnight stop near the crater.",
+            "location": "Serengeti National Park"
+          }
+        ],
+        "accommodation": {
+          "name": "Campsite, tented camp or lodge",
+          "category": "Other",
+          "location": "Ngorongoro Conservation Area",
+          "description": "The quotation suggests Simba Campsite, Ngorongoro Wild Tented Camp or Ngorongoro Rhino Lodge, subject to the selected comfort level and availability."
+        },
+        "image": "/images/figma/27222719-4ba9-4724-a440-0fcb7923b931.png",
+        "imageAlt": "Serengeti to Ngorongoro safari experience"
+      },
+      {
+        "id": "seven-day-northern-parks-safari-day-7",
+        "dayNumber": 7,
+        "title": "Ngorongoro Crater to Arusha",
+        "summary": "Descend to the crater floor, then return to Arusha.",
+        "narrative": "After an early breakfast, descend into Ngorongoro Crater for game drives among lions, buffaloes, hippos, flamingos, wildebeest, zebras, gazelles, leopards, rhinos, hyenas and elephants. Lunch is served at the hippo pool picnic site before the afternoon drive back to Arusha.",
+        "habitat": "Crater grassland, woodland and wetlands",
+        "activityLevel": "Crater game drive and transfer",
+        "meals": [
+          "Breakfast",
+          "Lunch"
+        ],
+        "activities": [
+          {
+            "id": "seven-day-northern-parks-safari-activity-7",
+            "title": "Ngorongoro Crater experience",
+            "description": "After an early breakfast, descend into Ngorongoro Crater for game drives among lions, buffaloes, hippos, flamingos, wildebeest, zebras, gazelles, leopards, rhinos, hyenas and elephants. Lunch is served at the hippo pool picnic site before the afternoon drive back to Arusha.",
+            "location": "Ngorongoro Crater"
+          }
+        ],
+        "image": "/images/figma/27222719-4ba9-4724-a440-0fcb7923b931.png",
+        "imageAlt": "Ngorongoro Crater to Arusha safari experience",
+        "dropOffNote": "Return to your Arusha accommodation at approximately 5-6 pm. Accommodation in Arusha is booked independently."
+      }
+    ],
+    "inclusions": [
+      "Accommodation and meals stated in the itinerary",
+      "Breakfast, lunch and dinner while on safari unless noted otherwise",
+      "National park and conservation fees",
+      "Professional driver-guide",
+      "Transport in a 4x4 safari vehicle",
+      "Game drives described in the itinerary",
+      "Drinking water during game drives",
+      "Government taxes",
+      "Pick-up and drop-off at your Arusha accommodation"
+    ],
+    "exclusions": [
+      "Tanzania visa",
+      "International and domestic flights",
+      "Travel insurance and vaccinations",
+      "Personal items and alcoholic drinks",
+      "Tips for the safari team",
+      "Accommodation before and after the safari unless confirmed"
+    ],
+    "onRequestItems": [
+      "Airport transfers",
+      "Private safari",
+      "Accommodation upgrade",
+      "Olduvai Gorge visit where the route allows",
+      "Serengeti balloon safari"
+    ],
+    "priceIntroduction": "This source quotation does not publish a package rate. Request a tailored price for your dates, group size and accommodation choice.",
+    "priceTiers": [
+      {
+        "name": "Camping",
+        "price": "On request",
+        "description": "A value-focused safari with campsite accommodation and the published park route."
+      },
+      {
+        "name": "Tented lodge",
+        "price": "On request",
+        "description": "A private safari using tented lodges selected for the route."
+      },
+      {
+        "name": "Lodge",
+        "price": "On request",
+        "description": "A private safari with upgraded lodge accommodation."
+      }
+    ],
+    "optionalExperiences": [
+      {
+        "name": "Private safari",
+        "price": "On request",
+        "note": "Choose your dates and travel with a dedicated vehicle and guide."
+      },
+      {
+        "name": "Olduvai Gorge",
+        "price": "From $45/pp",
+        "note": "Available on compatible private itineraries and subject to confirmation."
+      },
+      {
+        "name": "Serengeti balloon safari",
+        "price": "On request",
+        "note": "Subject to route, season and availability."
+      }
+    ],
+    "travelStyle": "Private safari with camping, tented lodge or lodge options",
+    "practicalInformation": [
+      "Driving times and wildlife viewing plans can change with road, weather and park conditions.",
+      "Bring a valid passport, the appropriate visa and comprehensive travel insurance.",
+      "Tell us about dietary requirements, allergies and mobility needs before the safari."
+    ],
+    "bookingConditions": [
+      "This itinerary is a proposal based on the supplied quotation. Final accommodation, price and availability are confirmed in writing.",
+      "Wildlife sightings cannot be guaranteed and the guide may adjust game-drive timing for current conditions."
+    ],
+    "faqs": [
+      {
+        "question": "Can this safari be private?",
+        "answer": "Yes. The route can be arranged as a private safari and adjusted around your dates, group and accommodation preference."
+      },
+      {
+        "question": "Which accommodation is included?",
+        "answer": "The quotation lists camping, tented lodge and lodge options. The final properties and room category are confirmed with your tailored quote."
+      },
+      {
+        "question": "Are park fees and meals included?",
+        "answer": "Park fees, the listed game drives, drinking water and meals shown in the itinerary are included."
+      },
+      {
+        "question": "Where does the safari start and finish?",
+        "answer": "Pick-up and drop-off are at your accommodation in Arusha unless another arrangement is confirmed."
+      },
+      {
+        "question": "Can I add airport transfers?",
+        "answer": "Yes. Transfers from Kilimanjaro International Airport or Arusha Airport can be quoted separately."
+      }
+    ],
+    "relatedTripSlugs": [
+      "tarangire-ngorongoro-crater-2-days",
+      "lake-manyara-serengeti-ngorongoro",
+      "big-four-parks"
+    ],
+    "createdAt": "2026-11-19T12:30:00.000Z",
+    "updatedAt": "2026-11-19T12:30:00.000Z"
+  },
+  {
+    "id": "download-7-days-shira-route",
+    "sourceId": "download-pdf:Copy of Quotation Golden Dream Safaris - CLIENT NAME (4).pdf#shira-route-7-days",
+    "sourcePath": "Copy of Quotation Golden Dream Safaris - CLIENT NAME (4).pdf",
+    "tripType": "Kilimanjaro trek",
+    "routeFamily": "Shira Route",
+    "slug": "7-days-shira-route",
+    "title": "7 Day Shira Route Kilimanjaro Climb",
+    "summary": "A western Kilimanjaro camping route across the Shira Plateau, joining the southern circuit for Barranco, Karanga, Barafu and the summit.",
+    "heroImage": "/images/kilimanjaro-packages/7-days-lemosho-route-kilimanjaro-shira-plateau.jpg",
+    "overviewTitle": "Why choose the 7 Day Shira Route?",
+    "overviewParagraphs": [
+      "The Shira Route begins on Kilimanjaro's western side and crosses the broad Shira Plateau before joining the southern circuit.",
+      "The route uses mountain camps throughout and includes Lava Tower, Barranco Wall, Karanga, Barafu and a summit attempt from the east side of the mountain."
+    ],
+    "highlights": [
+      "Western approach across the Shira Plateau",
+      "Seven mountain days with a local guide team",
+      "Full-service mountain camping",
+      "Uhuru Peak summit attempt"
+    ],
+    "galleryImages": [
+      {
+        "src": "/images/kilimanjaro-packages/7-days-lemosho-route-kilimanjaro-shira-plateau.jpg",
+        "alt": "Shira Plateau on Mount Kilimanjaro"
+      },
+      {
+        "src": "/images/kilimanjaro-packages/kilimanjaro-high-camp-green-tents.jpg",
+        "alt": "Mountain camp on Kilimanjaro"
+      },
+      {
+        "src": "/images/kilimanjaro-packages/kilimanjaro-barranco-camp-yellow-tents.jpg",
+        "alt": "Barranco Camp on Kilimanjaro"
+      },
+      {
+        "src": "/images/kilimanjaro-packages/kilimanjaro-summit-sunrise-serengeti-wild-tours.jpg",
+        "alt": "Sunrise near Uhuru Peak"
+      }
+    ],
+    "routeStops": [
+      {
+        "name": "River Camp",
+        "label": "Day 1",
+        "description": "Drive to Londorossi Gate and begin the western approach through forest to River Camp at about 3,050 metres.",
+        "dayNumber": 1,
+        "coordinates": {
+          "lat": -3.081,
+          "lng": 37.277
+        }
+      },
+      {
+        "name": "Shira Camp",
+        "label": "Day 2",
+        "description": "Cross onto the Shira Plateau and continue to Shira Camp at about 3,875 metres.",
+        "dayNumber": 2,
+        "coordinates": {
+          "lat": -3.0952,
+          "lng": 37.3107
+        }
+      },
+      {
+        "name": "Barranco Camp",
+        "label": "Day 3",
+        "description": "Climb to Lava Tower for acclimatization before descending to Barranco Camp at about 3,984 metres.",
+        "dayNumber": 3,
+        "coordinates": {
+          "lat": -3.0966,
+          "lng": 37.3292
+        }
+      },
+      {
+        "name": "Karanga Camp",
+        "label": "Day 4",
+        "description": "Climb the Barranco Wall and traverse the alpine valley to Karanga Camp.",
+        "dayNumber": 4,
+        "coordinates": {
+          "lat": -3.1111,
+          "lng": 37.3502
+        }
+      },
+      {
+        "name": "Barafu Camp",
+        "label": "Day 5",
+        "description": "Continue to Barafu Camp at about 4,681 metres and prepare for the summit attempt.",
+        "dayNumber": 5,
+        "coordinates": {
+          "lat": -3.0991,
+          "lng": 37.3701
+        }
+      },
+      {
+        "name": "Millennium Camp",
+        "label": "Day 6",
+        "description": "Climb through the night to Uhuru Peak at 5,895 metres, then descend to Millennium Camp.",
+        "dayNumber": 6,
+        "coordinates": {
+          "lat": -3.1562,
+          "lng": 37.3553
+        }
+      },
+      {
+        "name": "Shira Gate",
+        "label": "Day 7",
+        "description": "Descend through the forest to Shira Gate for certificates and the return transfer.",
+        "dayNumber": 7,
+        "coordinates": {
+          "lat": -3.1227,
+          "lng": 37.2098
+        }
+      }
+    ],
+    "durationDays": 7,
+    "destinations": [
+      "Shira Route",
+      "Uhuru Peak",
+      "Mount Kilimanjaro"
+    ],
+    "currency": "USD",
+    "status": "published",
+    "days": [
+      {
+        "id": "7-days-shira-route-day-1",
+        "dayNumber": 1,
+        "title": "Arusha or Moshi to Londorossi Gate, then River Camp",
+        "summary": "Drive to Londorossi Gate and begin the western approach through forest to River Camp at about 3,050 metres.",
+        "narrative": "Drive to Londorossi Gate and begin the western approach through forest to River Camp at about 3,050 metres.",
+        "habitat": "Montane forest",
+        "driveTime": "About 4 hours walking",
+        "distance": "7 km",
+        "activityLevel": "Mountain trekking",
+        "meals": [
+          "Breakfast",
+          "Lunch",
+          "Dinner"
+        ],
+        "activities": [
+          {
+            "id": "7-days-shira-route-activity-1",
+            "title": "Guided mountain trek",
+            "description": "Drive to Londorossi Gate and begin the western approach through forest to River Camp at about 3,050 metres.",
+            "location": "River Camp"
+          }
+        ],
+        "accommodation": {
+          "name": "River Camp",
+          "category": "Other",
+          "location": "River",
+          "description": "Mountain camping with tents prepared by the crew. Final arrangements are confirmed with your climb booking."
+        },
+        "image": "/images/kilimanjaro-packages/kilimanjaro-high-camp-green-tents.jpg",
+        "imageAlt": "Arusha or Moshi to Londorossi Gate, then River Camp on the Shira Route"
+      },
+      {
+        "id": "7-days-shira-route-day-2",
+        "dayNumber": 2,
+        "title": "River Camp to Shira Camp",
+        "summary": "Cross onto the Shira Plateau and continue to Shira Camp at about 3,875 metres.",
+        "narrative": "Cross onto the Shira Plateau and continue to Shira Camp at about 3,875 metres.",
+        "habitat": "Montane forest",
+        "driveTime": "About 6-8 hours walking",
+        "distance": "12 km",
+        "activityLevel": "Mountain trekking",
+        "meals": [
+          "Breakfast",
+          "Lunch",
+          "Dinner"
+        ],
+        "activities": [
+          {
+            "id": "7-days-shira-route-activity-2",
+            "title": "Guided mountain trek",
+            "description": "Cross onto the Shira Plateau and continue to Shira Camp at about 3,875 metres.",
+            "location": "Shira Camp"
+          }
+        ],
+        "accommodation": {
+          "name": "Shira Camp",
+          "category": "Other",
+          "location": "Shira",
+          "description": "Mountain camping with tents prepared by the crew. Final arrangements are confirmed with your climb booking."
+        },
+        "image": "/images/kilimanjaro-packages/7-days-lemosho-route-kilimanjaro-shira-plateau.jpg",
+        "imageAlt": "River Camp to Shira Camp on the Shira Route"
+      },
+      {
+        "id": "7-days-shira-route-day-3",
+        "dayNumber": 3,
+        "title": "Shira Camp to Lava Tower, then Barranco Camp",
+        "summary": "Climb to Lava Tower for acclimatization before descending to Barranco Camp at about 3,984 metres.",
+        "narrative": "Climb to Lava Tower for acclimatization before descending to Barranco Camp at about 3,984 metres.",
+        "habitat": "Alpine desert and summit zone",
+        "driveTime": "About 8 hours walking",
+        "distance": "10.3 km",
+        "activityLevel": "Mountain trekking",
+        "meals": [
+          "Breakfast",
+          "Lunch",
+          "Dinner"
+        ],
+        "activities": [
+          {
+            "id": "7-days-shira-route-activity-3",
+            "title": "Guided mountain trek",
+            "description": "Climb to Lava Tower for acclimatization before descending to Barranco Camp at about 3,984 metres.",
+            "location": "Barranco Camp"
+          }
+        ],
+        "accommodation": {
+          "name": "Barranco Camp",
+          "category": "Other",
+          "location": "Barranco",
+          "description": "Mountain camping with tents prepared by the crew. Final arrangements are confirmed with your climb booking."
+        },
+        "image": "/images/kilimanjaro-packages/kilimanjaro-barranco-camp-yellow-tents.jpg",
+        "imageAlt": "Shira Camp to Lava Tower, then Barranco Camp on the Shira Route"
+      },
+      {
+        "id": "7-days-shira-route-day-4",
+        "dayNumber": 4,
+        "title": "Barranco Camp to Karanga Camp",
+        "summary": "Climb the Barranco Wall and traverse the alpine valley to Karanga Camp.",
+        "narrative": "Climb the Barranco Wall and traverse the alpine valley to Karanga Camp.",
+        "habitat": "Heath and moorland",
+        "driveTime": "About 6 hours walking",
+        "distance": "6 km",
+        "activityLevel": "Mountain trekking",
+        "meals": [
+          "Breakfast",
+          "Lunch",
+          "Dinner"
+        ],
+        "activities": [
+          {
+            "id": "7-days-shira-route-activity-4",
+            "title": "Guided mountain trek",
+            "description": "Climb the Barranco Wall and traverse the alpine valley to Karanga Camp.",
+            "location": "Karanga Camp"
+          }
+        ],
+        "accommodation": {
+          "name": "Karanga Camp",
+          "category": "Other",
+          "location": "Karanga",
+          "description": "Mountain camping with tents prepared by the crew. Final arrangements are confirmed with your climb booking."
+        },
+        "image": "/images/kilimanjaro-packages/kilimanjaro-high-camp-green-tents.jpg",
+        "imageAlt": "Barranco Camp to Karanga Camp on the Shira Route"
+      },
+      {
+        "id": "7-days-shira-route-day-5",
+        "dayNumber": 5,
+        "title": "Karanga Camp to Barafu Camp",
+        "summary": "Continue to Barafu Camp at about 4,681 metres and prepare for the summit attempt.",
+        "narrative": "Continue to Barafu Camp at about 4,681 metres and prepare for the summit attempt.",
+        "habitat": "Alpine desert and summit zone",
+        "driveTime": "About 4 hours walking",
+        "distance": "3.4 km",
+        "activityLevel": "Mountain trekking",
+        "meals": [
+          "Breakfast",
+          "Lunch",
+          "Dinner"
+        ],
+        "activities": [
+          {
+            "id": "7-days-shira-route-activity-5",
+            "title": "Guided mountain trek",
+            "description": "Continue to Barafu Camp at about 4,681 metres and prepare for the summit attempt.",
+            "location": "Barafu Camp"
+          }
+        ],
+        "accommodation": {
+          "name": "Barafu Camp",
+          "category": "Other",
+          "location": "Barafu",
+          "description": "Mountain camping with tents prepared by the crew. Final arrangements are confirmed with your climb booking."
+        },
+        "image": "/images/kilimanjaro-packages/kilimanjaro-high-camp-green-tents.jpg",
+        "imageAlt": "Karanga Camp to Barafu Camp on the Shira Route"
+      },
+      {
+        "id": "7-days-shira-route-day-6",
+        "dayNumber": 6,
+        "title": "Barafu Camp to Uhuru Peak, then Millennium Camp",
+        "summary": "Climb through the night to Uhuru Peak at 5,895 metres, then descend to Millennium Camp.",
+        "narrative": "Climb through the night to Uhuru Peak at 5,895 metres, then descend to Millennium Camp.",
+        "habitat": "Alpine desert and summit zone",
+        "driveTime": "About 13-15 hours walking",
+        "distance": "5 km ascent and 10.8 km descent",
+        "activityLevel": "Very challenging summit day",
+        "meals": [
+          "Breakfast",
+          "Lunch",
+          "Dinner"
+        ],
+        "activities": [
+          {
+            "id": "7-days-shira-route-activity-6",
+            "title": "Guided mountain trek",
+            "description": "Climb through the night to Uhuru Peak at 5,895 metres, then descend to Millennium Camp.",
+            "location": "Millennium Camp"
+          }
+        ],
+        "accommodation": {
+          "name": "Millennium Camp",
+          "category": "Other",
+          "location": "Millennium",
+          "description": "Mountain camping with tents prepared by the crew. Final arrangements are confirmed with your climb booking."
+        },
+        "image": "/images/kilimanjaro-packages/kilimanjaro-summit-sunrise-serengeti-wild-tours.jpg",
+        "imageAlt": "Barafu Camp to Uhuru Peak, then Millennium Camp on the Shira Route"
+      },
+      {
+        "id": "7-days-shira-route-day-7",
+        "dayNumber": 7,
+        "title": "Millennium Camp to Shira Gate",
+        "summary": "Descend through the forest to Shira Gate for certificates and the return transfer.",
+        "narrative": "Descend through the forest to Shira Gate for certificates and the return transfer.",
+        "habitat": "Montane forest",
+        "driveTime": "About 5 hours walking",
+        "distance": "20 km",
+        "activityLevel": "Mountain trekking",
+        "meals": [
+          "Breakfast",
+          "Lunch"
+        ],
+        "activities": [
+          {
+            "id": "7-days-shira-route-activity-7",
+            "title": "Mountain descent",
+            "description": "Descend through the forest to Shira Gate for certificates and the return transfer.",
+            "location": "Shira Gate"
+          }
+        ],
+        "image": "/images/kilimanjaro-packages/kilimanjaro-high-camp-green-tents.jpg",
+        "imageAlt": "Millennium Camp to Shira Gate on the Shira Route",
+        "dropOffNote": "Descend to Shira Gate, complete park checkout and return to Arusha or Moshi."
+      }
+    ],
+    "inclusions": [
+      "Licensed mountain guide team",
+      "Cook and porters",
+      "Mountain camping and meals",
+      "Park, camping and rescue fees",
+      "Drinking water on the mountain",
+      "Emergency first aid support"
+    ],
+    "exclusions": [
+      "International flights",
+      "Tanzania visa",
+      "Travel insurance",
+      "Personal trekking equipment",
+      "Tips for the mountain crew",
+      "Hotel nights unless confirmed"
+    ],
+    "onRequestItems": [
+      "Private climb dates",
+      "Airport transfers",
+      "Moshi or Arusha hotel nights",
+      "Sleeping bag and equipment rental",
+      "Safari extension"
+    ],
+    "priceIntroduction": "The source document does not publish a Shira Route package rate. Request a tailored quote for your date and group size.",
+    "priceTiers": [
+      {
+        "name": "Shira Route package",
+        "price": "On request",
+        "description": "A seven-day guided camping climb on the published route."
+      },
+      {
+        "name": "Private climb",
+        "price": "On request",
+        "description": "Choose your own dates for a dedicated group departure."
+      }
+    ],
+    "travelStyle": "Guided Kilimanjaro camping trek",
+    "practicalInformation": [
+      "Train for consecutive trekking days and follow the guide's acclimatization pace.",
+      "Travel insurance must cover trekking up to 6,000 metres, evacuation and repatriation.",
+      "A complete equipment list is reviewed before departure."
+    ],
+    "faqs": [
+      {
+        "question": "Where does the Shira Route begin?",
+        "answer": "The climb approaches from the west through Londorossi Gate and crosses the Shira Plateau."
+      },
+      {
+        "question": "Does this route use huts?",
+        "answer": "No. The Shira Route uses mountain camps and the crew prepares the tents and meals."
+      },
+      {
+        "question": "Is the price published?",
+        "answer": "No package rate is shown in the source document. Golden Dream will prepare a quote for your dates and group."
+      }
+    ],
+    "relatedTripSlugs": [
+      "7-days-lemosho-route",
+      "7-days-machame-route",
+      "8-days-lemosho-route"
+    ],
+    "createdAt": "2026-11-19T12:30:00.000Z",
+    "updatedAt": "2026-11-19T12:30:00.000Z"
+  }
+]

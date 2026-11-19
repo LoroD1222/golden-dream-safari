@@ -12,7 +12,7 @@ function newDay(number: number): ItineraryDay {
 }
 
 function newItinerary(): ItineraryInput {
-  return {slug: "new-itinerary", title: "New itinerary", summary: "Add a short public summary.", overviewTitle: "About this safari", overviewParagraphs: [], highlights: [], galleryImages: [], routeStops: [], durationDays: 1, destinations: ["Arusha"], currency: "USD", status: "draft", days: [newDay(1)], inclusions: [], exclusions: [], onRequestItems: [], priceTiers: [], optionalExperiences: [], practicalInformation: [], packingNotes: [], bookingConditions: [], faqs: [], relatedTripSlugs: [], download: {...defaultItineraryDownloadConfig}};
+  return {slug: "new-itinerary", title: "New itinerary", summary: "Add a short public summary.", tripType: "Wildlife safari", overviewTitle: "About this safari", overviewParagraphs: [], highlights: [], galleryImages: [], routeStops: [], durationDays: 1, destinations: ["Arusha"], currency: "USD", status: "draft", days: [newDay(1)], inclusions: [], exclusions: [], onRequestItems: [], priceTiers: [], optionalExperiences: [], practicalInformation: [], packingNotes: [], bookingConditions: [], faqs: [], relatedTripSlugs: [], download: {...defaultItineraryDownloadConfig}};
 }
 
 function splitLines(value: string) { return value.split("\n").map(item => item.trim()).filter(Boolean); }
@@ -87,6 +87,8 @@ export function ItineraryAdmin({initialItems, initialAccommodations, storageLabe
         <label>Destinations (comma-separated)<input value={draft.destinations.join(", ")} onChange={e => setDraft({...draft, destinations: e.target.value.split(",").map(value => value.trim()).filter(Boolean)})}/></label>
         <label>Hero image path<input value={draft.heroImage || ""} onChange={e => setDraft({...draft, heroImage: e.target.value || undefined})}/></label>
         <label>Starting price<input type="number" min="0" value={draft.startingPrice ?? ""} onChange={e => setDraft({...draft, startingPrice: e.target.value ? Number(e.target.value) : undefined})}/></label>
+        <label>Trip type<select value={draft.tripType || ""} onChange={e => setDraft({...draft, tripType: e.target.value ? e.target.value as ItineraryInput["tripType"] : undefined})}><option value="">Choose a type</option><option>Wildlife safari</option><option>Kilimanjaro trek</option><option>Mount Meru trek</option><option>Zanzibar stay</option><option>Day trip</option></select></label>
+        <label>Route family<input value={draft.routeFamily || ""} onChange={e => setDraft({...draft, routeFamily: e.target.value || undefined})} placeholder="Lemosho Route"/></label>
         <label>Travel style<input value={draft.travelStyle || ""} onChange={e => setDraft({...draft, travelStyle: e.target.value || undefined})}/></label>
         <label>Status<select value={draft.status} onChange={e => setDraft({...draft, status: e.target.value as ItineraryInput["status"]})}><option value="draft">Draft</option><option value="published">Published</option></select></label>
       </div>

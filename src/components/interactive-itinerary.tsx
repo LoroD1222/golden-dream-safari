@@ -18,13 +18,17 @@ export function InteractiveItinerary({
   staysByDay,
   quoteHref,
   whatsappHref,
+  tripType = "Wildlife safari",
 }: {
   days: ItineraryDay[];
   routeStops?: ItineraryRouteStop[];
   staysByDay?: Record<number, StayOption[]>;
   quoteHref: string;
   whatsappHref: string;
+  tripType?: string;
 }) {
+  const isMountainTrek = tripType === "Kilimanjaro trek" || tripType === "Mount Meru trek";
+  const isDayTrip = tripType === "Day trip";
   const routeStops = providedRouteStops?.length ? providedRouteStops : northernCircuitRouteStops;
   const [selectedStop, setSelectedStop] = useState(routeStops.length > 1 ? 1 : 0);
   const [openDays, setOpenDays] = useState<Set<number>>(() => new Set([0]));
@@ -47,7 +51,7 @@ export function InteractiveItinerary({
   }
 
   return <section className="trip-ref-itinerary section-shell" id="itinerary">
-    <aside aria-label="Interactive safari route">
+    <aside aria-label={`Interactive ${isMountainTrek ? "mountain" : isDayTrip ? "day trip" : "safari"} route`}>
       <div className="trip-ref-itinerary-sticky">
         <div className="trip-route-map-card">
           <div className="trip-route-map-canvas">
@@ -77,8 +81,8 @@ export function InteractiveItinerary({
 
         <div className="trip-ref-quote">
           <div className="trip-ref-quote-heading"><TripPlanIcon className="trip-ref-quote-icon"/><span>Plan Trip</span></div>
-          <h3>Experience this northern Tanzania safari for yourself.</h3>
-          <p>Speak with a local planner for a thoughtful first proposal built around your dates and priorities.</p>
+          <h3>{isMountainTrek ? "Climb with a local mountain team." : isDayTrip ? "Plan a private day around your Tanzania stay." : "Experience this northern Tanzania safari for yourself."}</h3>
+          <p>{isMountainTrek ? "Tell Victor your preferred route and dates. We’ll confirm the climb, equipment guidance and support around your plans." : isDayTrip ? "Tell Victor your date, hotel and group size. We’ll confirm the timing, pickup and final price." : "Speak with a local planner for a thoughtful first proposal built around your dates and priorities."}</p>
           <div className="trip-ref-quote-actions">
             <a className="trip-ref-quote-button" href={quoteHref}>Request a quote <span><FigmaIcon name="detail-arrow" width={20}/></span></a>
             <a className="trip-ref-quote-question" href={whatsappHref}>Ask a question</a>

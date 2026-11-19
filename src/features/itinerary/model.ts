@@ -85,6 +85,11 @@ export type ItineraryDownloadConfig = {
 
 export type Itinerary = {
   id: string;
+  sourceId?: string;
+  sourcePath?: string;
+  sourceUrl?: string;
+  tripType?: "Wildlife safari" | "Kilimanjaro trek" | "Mount Meru trek" | "Zanzibar stay" | "Day trip";
+  routeFamily?: string;
   slug: string;
   title: string;
   summary: string;

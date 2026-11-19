@@ -16,6 +16,12 @@ const nextConfig: NextConfig = {
       },
     ],
   },
+  async redirects() {
+    return [
+      {source: "/kilimanjaro-packages", destination: "/kilimanjaro", permanent: true},
+      {source: "/kilimanjaro-packages/:slug", destination: "/trips/:slug", permanent: true},
+    ];
+  },
 };
 
 export default nextConfig;

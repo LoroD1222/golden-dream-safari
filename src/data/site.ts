@@ -27,7 +27,7 @@ export const wildlifeTrips: TripCardData[] = [
     category: "Wildlife safari",
     locations: "Serengeti · Ngorongoro",
     duration: "3 days · 2 nights",
-    price: "from $200/pp/day",
+    price: "Price on request",
     image: "/images/figma/0c4e4185-aa73-4852-8df9-372bce86de7b.png",
   },
   {
@@ -36,7 +36,7 @@ export const wildlifeTrips: TripCardData[] = [
     category: "Wildlife safari",
     locations: "Tarangire · Serengeti · Ngorongoro",
     duration: "4 days · 3 nights",
-    price: "from $200/pp/day",
+    price: "Price on request",
     image: "/images/figma/1a5404c8-be64-44f5-a5b7-387aa4da50b3.png",
   },
   {
@@ -45,7 +45,7 @@ export const wildlifeTrips: TripCardData[] = [
     category: "Wildlife safari",
     locations: "Manyara · Serengeti · Ngorongoro",
     duration: "4 days · 3 nights",
-    price: "from $200/pp/day",
+    price: "Price on request",
     image: "/images/figma/279a986b-f6f3-4660-96c5-716505530be6.png",
   },
   {
@@ -54,7 +54,7 @@ export const wildlifeTrips: TripCardData[] = [
     category: "Wildlife safari",
     locations: "Manyara · Tarangire · Serengeti · Ngorongoro",
     duration: "5 days · 4 nights",
-    price: "from $200/pp/day",
+    price: "Price on request",
     image: "/images/figma/fcb78e89-1d4d-4e01-9c6c-fdaec6e228d9.png",
   },
   {
@@ -63,7 +63,7 @@ export const wildlifeTrips: TripCardData[] = [
     category: "Wildlife safari",
     locations: "Manyara · Tarangire · Ngorongoro",
     duration: "3 days · 2 nights",
-    price: "from $200/pp/day",
+    price: "Price on request",
     image: "/images/figma/6223da51-8c90-4102-b46a-6f351f3eddd5.png",
   },
   {
@@ -81,7 +81,7 @@ export const wildlifeTrips: TripCardData[] = [
     category: "Wildlife safari",
     locations: "Tarangire · Serengeti · Ngorongoro · Manyara · Arusha NP",
     duration: "6 days · 5 nights",
-    price: "from $200/pp/day",
+    price: "Price on request",
     image: "/images/figma/973a96ad-e265-46ee-a318-89006e4d92f7.png",
   },
   {
@@ -128,7 +128,7 @@ export const otherTrips: TripCardData[] = [
 export const commonFaqs = [
   {
     question: "How much does a safari cost?",
-    answer: "From $200 per person per day (camping, joining a group) to $550 per person per day (private safari, lodge accommodation). Park fees, accommodation, meals, transport and drinking water are included. Your price depends on group size, private or joining, accommodation, parks, season and trip length.",
+    answer: "Each published itinerary shows its confirmed starting price when one is available. Routes without a published rate are marked as price on request. Your exact quote depends on group size, private or joining, accommodation, parks, season and trip length.",
   },
   {question: "What's included?", answer: "Accommodation, meals on safari, transport, drinking water and park activities listed in your proposal are included."},
   {question: "Can I change the itinerary?", answer: "Yes. Every trip can be changed until it fits your dates, interests and preferred comfort level."},

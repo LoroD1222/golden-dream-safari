@@ -121,6 +121,6 @@ export function SafariRouteMap({
     ref={canvas}
     className="route-map-canvas"
     role="application"
-    aria-label="Interactive map of the northern Tanzania safari route"
+    aria-label="Interactive trip route map"
   />;
 }

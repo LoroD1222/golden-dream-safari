@@ -1,0 +1,85 @@
+{
+  "sourceDirectory": "elementor-pages",
+  "routeCount": 12,
+  "uniqueSlugCount": 12,
+  "routeCoverage": [
+    {
+      "sourceId": "elementor:5-days-marangu-route-kilimanjaro.html",
+      "slug": "5-days-marangu-route",
+      "days": 5,
+      "image": "/images/kilimanjaro-packages/5-days-marangu-route-kilimanjaro-budget-package.jpg"
+    },
+    {
+      "sourceId": "elementor:6-days-machame-route-kilimanjaro.html",
+      "slug": "6-days-machame-route",
+      "days": 6,
+      "image": "/images/kilimanjaro-packages/6-days-machame-route-kilimanjaro-private-climb.jpg"
+    },
+    {
+      "sourceId": "elementor:6-days-marangu-route-kilimanjaro.html",
+      "slug": "6-days-marangu-route",
+      "days": 6,
+      "image": "/images/kilimanjaro-packages/6-days-marangu-route-kilimanjaro-hut-climb.jpg"
+    },
+    {
+      "sourceId": "elementor:6-days-rongai-route-kilimanjaro.html",
+      "slug": "6-days-rongai-route",
+      "days": 6,
+      "image": "/images/kilimanjaro-packages/6-days-rongai-route-kilimanjaro-private-trek.jpg"
+    },
+    {
+      "sourceId": "elementor:6-days-umbwe-route-kilimanjaro.html",
+      "slug": "6-days-umbwe-route",
+      "days": 6,
+      "image": "/images/kilimanjaro-packages/6-days-umbwe-route-kilimanjaro-steep-trail.jpg"
+    },
+    {
+      "sourceId": "elementor:7-days-lemosho-route-kilimanjaro.html",
+      "slug": "7-days-lemosho-route",
+      "days": 7,
+      "image": "/images/kilimanjaro-packages/7-days-lemosho-route-kilimanjaro-shira-plateau.jpg"
+    },
+    {
+      "sourceId": "elementor:7-days-machame-route-kilimanjaro.html",
+      "slug": "7-days-machame-route",
+      "days": 7,
+      "image": "/images/kilimanjaro-packages/7-days-machame-route-kilimanjaro-climbing-package.jpg"
+    },
+    {
+      "sourceId": "elementor:7-days-rongai-route-kilimanjaro.html",
+      "slug": "7-days-rongai-route",
+      "days": 7,
+      "image": "/images/kilimanjaro-packages/7-days-rongai-route-kilimanjaro-northern-approach.jpg"
+    },
+    {
+      "sourceId": "elementor:7-days-umbwe-route-kilimanjaro.html",
+      "slug": "7-days-umbwe-route",
+      "days": 7,
+      "image": "/images/kilimanjaro-packages/7-days-umbwe-route-kilimanjaro-challenging-climb.jpg"
+    },
+    {
+      "sourceId": "elementor:8-days-lemosho-route-kilimanjaro.html",
+      "slug": "8-days-lemosho-route",
+      "days": 8,
+      "image": "/images/kilimanjaro-packages/8-days-lemosho-route-kilimanjaro-scenic-climb.jpg"
+    },
+    {
+      "sourceId": "elementor:8-days-northern-circuit-route-kilimanjaro.html",
+      "slug": "8-days-northern-circuit-route",
+      "days": 8,
+      "image": "/images/kilimanjaro-packages/8-days-northern-circuit-route-kilimanjaro-trek.jpg"
+    },
+    {
+      "sourceId": "elementor:9-days-northern-circuit-route-kilimanjaro.html",
+      "slug": "9-days-northern-circuit-route",
+      "days": 9,
+      "image": "/images/kilimanjaro-packages/9-days-northern-circuit-route-kilimanjaro-quiet-trail.jpg"
+    }
+  ],
+  "validation": {
+    "routeCountMatchesExport": true,
+    "slugsUnique": true,
+    "dayCountsMatch": true,
+    "oneItineraryPerSource": true
+  }
+}

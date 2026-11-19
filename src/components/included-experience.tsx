@@ -31,7 +31,7 @@ const offers = [
   },
   {
     title: "Camping or lodges",
-    description: "From $200 per person per day (camping, joining a group) to $550 (private safari, lodge accommodation).",
+    description: "Choose camping, a tented lodge or a safari lodge. Each itinerary shows its confirmed starting rate, or clearly says when a tailored quote is required.",
     icon: "/icons/figma/included-asset-4.svg",
     primaryImage: "/images/accommodations/nimali-tarangire.webp",
     primaryAlt: "Safari lodge surrounded by the Tanzanian bush",

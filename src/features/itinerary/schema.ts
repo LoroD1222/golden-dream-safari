@@ -87,6 +87,11 @@ const daySchema = z.object({
 });
 
 export const itineraryInputSchema = z.object({
+  sourceId: z.string().trim().min(1).max(240).optional(),
+  sourcePath: z.string().trim().min(1).max(500).optional(),
+  sourceUrl: z.url().max(1000).optional(),
+  tripType: z.enum(["Wildlife safari", "Kilimanjaro trek", "Mount Meru trek", "Zanzibar stay", "Day trip"]).optional(),
+  routeFamily: z.string().trim().min(1).max(160).optional(),
   slug: z.string().trim().regex(/^[a-z0-9]+(?:-[a-z0-9]+)*$/).max(120),
   title: z.string().trim().min(2).max(180),
   summary: text,

@@ -173,6 +173,11 @@
 .trip-ref-meal img {flex: none; width: 20px; height: 20px}
 .trip-ref-meal>svg {display: block; flex: none; width: 21px; height: 21px; color: #a4520f}
 .trip-ref-meal-note {max-width: 500px; margin: -13px 0 22px; color: var(--rit-muted); font-size: 13px; font-weight: 400; line-height: 1.65}
+.trip-ref-accommodation-text {display: grid; grid-template-columns: auto 1fr; gap: 18px; margin: -4px 0 35px; padding: 22px 24px; border: 1px solid var(--rit-line); border-left: 4px solid var(--rit-accent); border-radius: 16px; background: var(--rit-cream)}
+.trip-ref-accommodation-text>span {align-self: start; padding: 7px 10px; border-radius: 999px; background: var(--rit-accent); color: var(--rit-ink); font-size: 11px; font-weight: 800; letter-spacing: .06em; text-transform: uppercase}
+.trip-ref-accommodation-text h4 {margin: 0 0 7px; color: var(--rit-ink); font-size: 20px}
+.trip-ref-accommodation-text p {margin: 0; color: var(--rit-copy); font-size: 14px; line-height: 1.65}
+.trip-ref-accommodation-text small {display: block; margin-top: 9px; color: var(--rit-muted); font-size: 12px}
 
 .trip-ref-lodge {display: grid; grid-template-columns: minmax(0,351px) minmax(0,1fr); gap: 11px; align-items: start; margin-bottom: 35px}
 .trip-ref-lodge-options {min-width: 0}
@@ -241,6 +246,8 @@
   .trip-ref-accommodation-label,.trip-ref-meal {font-size: 16px; line-height: 1.4}
   .trip-ref-lodge-tier {font-size: 16px}
   .trip-ref-lodge-photo {--trip-ref-lodge-photo-height:260px}
+  .trip-ref-accommodation-text {grid-template-columns: 1fr; padding: 18px}
+  .trip-ref-accommodation-text>span {justify-self: start}
 }
 
 @media(max-width:480px) {

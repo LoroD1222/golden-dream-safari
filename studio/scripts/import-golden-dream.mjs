@@ -1,4 +1,4 @@
-import {randomUUID} from 'node:crypto'
+import {createHash} from 'node:crypto'
 import {readFileSync} from 'node:fs'
 import path from 'node:path'
 import {getCliClient} from 'sanity/cli'
@@ -13,12 +13,16 @@ const settings = readJson('data/site-settings.json')
 const trips = readJson('data/seed-itineraries.json')
 const assetCache = new Map()
 
-function keyed(_type, value) {
-  return {_type, _key: randomUUID(), ...value}
+function stableKey(prefix, identity) {
+  return `${prefix}-${createHash('sha1').update(String(identity)).digest('hex').slice(0, 20)}`
+}
+
+function keyed(_type, value, identity = JSON.stringify(value)) {
+  return {_type, _key: stableKey(_type, identity), ...value}
 }
 
 function references(ids) {
-  return ids.filter(Boolean).map((_ref) => ({_type: 'reference', _key: randomUUID(), _ref}))
+  return ids.filter(Boolean).map((_ref) => ({_type: 'reference', _key: stableKey('ref', _ref), _ref}))
 }
 
 async function uploadImage(source) {
@@ -26,10 +30,12 @@ async function uploadImage(source) {
   if (assetCache.has(source)) return assetCache.get(source)
   if (!source.startsWith('/')) throw new Error(`Only local image paths can be imported: ${source}`)
   const filename = path.basename(source)
-  const asset = await client.assets.upload('image', readFileSync(path.join(projectRoot, 'public', source)), {filename})
-  assetCache.set(source, asset._id)
-  process.stdout.write(`Uploaded ${source}\n`)
-  return asset._id
+  const upload = client.assets.upload('image', readFileSync(path.join(projectRoot, 'public', source)), {filename}).then((asset) => {
+    process.stdout.write(`Uploaded ${source}\n`)
+    return asset._id
+  })
+  assetCache.set(source, upload)
+  return upload
 }
 
 async function imageValue(source, alt, caption) {
@@ -44,7 +50,7 @@ async function imageValue(source, alt, caption) {
 }
 
 async function imageArray(images = []) {
-  return Promise.all(images.map(async (item) => ({...(await imageValue(item.src, item.alt, item.caption)), _key: randomUUID()})))
+  return Promise.all(images.map(async (item) => ({...(await imageValue(item.src, item.alt, item.caption)), _key: stableKey('image', item.src)})))
 }
 
 async function upsertByLegacyId(_type, legacyId, value) {
@@ -54,6 +60,20 @@ async function upsertByLegacyId(_type, legacyId, value) {
     return existing._id
   }
   const created = await client.create({_type, legacyId, ...value})
+  return created._id
+}
+
+async function upsertItinerary(trip, value) {
+  const sourceId = trip.sourceId || trip.id
+  const existing = await client.fetch(
+    '*[_type == "goldenDreamItinerary" && (sourceId == $sourceId || legacyId == $legacyId || slug.current == $slug)][0]{_id}',
+    {sourceId, legacyId: trip.id, slug: trip.slug},
+  )
+  if (existing?._id) {
+    await client.patch(existing._id).set({legacyId: trip.id, sourceId, ...value}).commit()
+    return existing._id
+  }
+  const created = await client.create({_type: 'goldenDreamItinerary', legacyId: trip.id, sourceId, ...value})
   return created._id
 }
 
@@ -103,12 +123,28 @@ for (const trip of trips) {
       description: activity.description,
       time: activity.time,
       location: activity.location,
-    })),
+    }, activity.id || `${day.id}-${activity.title}`)),
     accommodations: references((day.accommodationIds || []).map((legacyId) => accommodationIds.get(legacyId))),
+    accommodation: day.accommodation ? {
+      _type: 'itineraryAccommodation',
+      name: day.accommodation.name,
+      category: day.accommodation.category,
+      location: day.accommodation.location,
+      description: day.accommodation.description,
+      ...(day.accommodation.image ? {image: {
+        _type: 'image',
+        asset: {_type: 'reference', _ref: await uploadImage(day.accommodation.image)},
+        alt: day.accommodation.name,
+      }} : {}),
+    } : undefined,
     image: await imageValue(day.image, day.imageAlt || `${trip.title}, day ${day.dayNumber}`),
     dropOffNote: day.dropOffNote,
-  })))
-  const id = await upsertByLegacyId('goldenDreamItinerary', trip.id, {
+  }, day.id || `${trip.slug}-day-${day.dayNumber}`)))
+  const id = await upsertItinerary(trip, {
+    sourcePath: trip.sourcePath,
+    sourceUrl: trip.sourceUrl,
+    tripType: trip.tripType,
+    routeFamily: trip.routeFamily,
     title: trip.title,
     slug: {_type: 'slug', current: trip.slug},
     summary: trip.summary,
@@ -123,7 +159,7 @@ for (const trip of trips) {
       description: stop.description,
       dayNumber: stop.dayNumber,
       coordinates: {_type: 'geopoint', lat: stop.coordinates.lat, lng: stop.coordinates.lng},
-    })),
+    }, `${trip.slug}-${stop.dayNumber}-${stop.name}`)),
     durationDays: trip.durationDays,
     destinations: trip.destinations,
     travelStyle: trip.travelStyle,
@@ -134,12 +170,12 @@ for (const trip of trips) {
     exclusions: trip.exclusions,
     onRequestItems: trip.onRequestItems,
     priceIntroduction: trip.priceIntroduction,
-    priceTiers: (trip.priceTiers || []).map((tier) => keyed('itineraryPriceTier', tier)),
-    optionalExperiences: (trip.optionalExperiences || []).map((experience) => keyed('optionalExperience', experience)),
+    priceTiers: (trip.priceTiers || []).map((tier) => keyed('itineraryPriceTier', tier, `${trip.slug}-${tier.name}`)),
+    optionalExperiences: (trip.optionalExperiences || []).map((experience) => keyed('optionalExperience', experience, `${trip.slug}-${experience.name}`)),
     practicalInformation: trip.practicalInformation,
     packingNotes: trip.packingNotes,
     bookingConditions: trip.bookingConditions,
-    faqs: (trip.faqs || []).map((faq) => keyed('itineraryFaq', faq)),
+    faqs: (trip.faqs || []).map((faq) => keyed('itineraryFaq', faq, `${trip.slug}-${faq.question}`)),
     status: trip.status,
   })
   tripIds.set(trip.slug, id)

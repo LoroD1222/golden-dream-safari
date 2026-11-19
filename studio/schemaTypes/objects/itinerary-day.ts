@@ -70,6 +70,12 @@ export const itineraryDay = defineType({
       of: [defineArrayMember({type: 'reference', to: [{type: 'goldenDreamAccommodation'}]})],
       validation: (rule) => rule.max(12).unique(),
     }),
+    defineField({
+      name: 'accommodation',
+      title: 'Text-only accommodation',
+      description: 'Use this when the route has a hut or camp description but no verified property photos.',
+      type: 'itineraryAccommodation',
+    }),
     defineField({name: 'image', title: 'Day image', type: 'goldenDreamImage'}),
     defineField({name: 'dropOffNote', title: 'Drop-off note', type: 'text', rows: 3, validation: (rule) => rule.max(1000)}),
   ],

@@ -16,8 +16,8 @@ export const defaultSiteSettings: SiteSettings = {
     startEnd: "Your hotel in Arusha",
     groupStyle: "Join a group or private",
     bestFor: "A first safari",
-    priceNote: "Group camping. Private lodge safaris up to $550/pp/day.",
-    maximumPriceLabel: "up to $550/pp/day",
+    priceNote: "The displayed amount is this itinerary's published starting price. Your exact quote depends on dates, group size and accommodation.",
+    maximumPriceLabel: "Route-specific quote",
   },
   reviews: {
     pageTitle: "What our guests say",
