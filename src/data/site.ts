@@ -6,9 +6,12 @@ export const contactDetails = {
   location: "Arusha, Tanzania",
 };
 
-// The supplied design does not include a confirmed Tripadvisor profile URL.
-// A branded search is more honest than sending visitors to the generic homepage.
-export const tripadvisorUrl = "https://www.tripadvisor.com/Search?q=Golden%20Dream%20Safaris%20Tanzania";
+export const socialLinks = {
+  tripadvisor: "https://www.tripadvisor.com/Attraction_Review-g297913-d15771176-Reviews-Golden_Dream_Safaris-Arusha_Arusha_Region.html",
+  instagram: "https://www.instagram.com/goldendreamsafaris/",
+  facebook: "https://www.facebook.com/pg/GoldendreamsafarisTZ/reviews/?ref=page_internal",
+  whatsapp: contactDetails.whatsapp,
+} as const;
 
 export type TripCardData = {
   slug: string;

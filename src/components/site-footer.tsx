@@ -1,12 +1,19 @@
 import Image from "next/image";
 import Link from "next/link";
-import {contactDetails, tripadvisorUrl} from "@/data/site";
+import {contactDetails, socialLinks} from "@/data/site";
 import {FigmaIcon} from "@/components/figma-icon";
 
 const columns = [
   {title: "Trips", links: [["Wildlife safaris", "/trips"], ["Kilimanjaro trekking", "/kilimanjaro"], ["Mount Meru trekking", "/trips#treks-zanzibar"], ["Zanzibar", "/trips#treks-zanzibar"], ["Day trips", "/trips#day-trips"], ["Custom trips", "/contact#quote"]]},
   {title: "Plan", links: [["What to expect", "/#included"], ["The parks", "/trips"], ["Weather & seasons", "/contact#faq"], ["FAQ", "/contact#faq"], ["Gallery", "/reviews"]]},
   {title: "Company", links: [["About us", "/about"], ["Reviews", "/reviews"], ["Contact", "/contact"], ["Get a free quote", "/contact#quote"]]},
+];
+
+const footerSocials = [
+  {label: "Golden Dream Safaris on Tripadvisor", href: socialLinks.tripadvisor, icon: "footer-tripadvisor" as const},
+  {label: "Golden Dream Safaris on Instagram", href: socialLinks.instagram, icon: "footer-instagram" as const},
+  {label: "Golden Dream Safaris on Facebook", href: socialLinks.facebook, icon: "footer-facebook" as const},
+  {label: "Chat with Golden Dream Safaris on WhatsApp", href: socialLinks.whatsapp, icon: "footer-whatsapp" as const},
 ];
 
 export function SiteFooter() {
@@ -20,7 +27,7 @@ export function SiteFooter() {
           <a href={`mailto:${contactDetails.email}`}><FigmaIcon name="footer-mail" width={20} className="footer-contact-icon"/>{contactDetails.email}</a>
           <span><FigmaIcon name="footer-pin" width={20} className="footer-contact-icon"/>{contactDetails.location}</span>
         </address>
-        <div className="social-links" aria-label="Contact and social links"><a href={tripadvisorUrl} aria-label="Find Golden Dream Safaris on Tripadvisor"><FigmaIcon name="footer-tripadvisor" width={22}/></a><span aria-label="Instagram"><FigmaIcon name="footer-instagram" width={22}/></span><span aria-label="Facebook"><FigmaIcon name="footer-facebook" width={22}/></span><a href={contactDetails.whatsapp} aria-label="WhatsApp Golden Dream Safaris"><FigmaIcon name="footer-whatsapp" width={22}/></a></div>
+        <nav className="social-links" aria-label="Golden Dream Safaris social links">{footerSocials.map(({label,href,icon}) => <a href={href} aria-label={label} title={label} target="_blank" rel="noopener noreferrer" key={label}><FigmaIcon name={icon} width={22}/></a>)}</nav>
       </div>
       <div className="footer-columns">{columns.map(column => <div className="footer-column" key={column.title}><h2>{column.title}</h2>{column.links.map(([label, href]) => <Link href={href} key={label}>{label}</Link>)}</div>)}</div>
     </div>
