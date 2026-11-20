@@ -5,8 +5,11 @@ import {z} from "zod";
 import {createItineraryAccessToken, itineraryAccessCookieName, itineraryAccessCookieOptions} from "@/features/itinerary/access";
 import {getItineraryDownloadConfig} from "@/features/itinerary/download-config";
 import {getPublicItineraryRepository} from "@/features/itinerary/storage";
+import {travelStyleValues} from "@/features/quote/model";
 
 export const runtime = "nodejs";
+
+const RESEND_DELIVERY_EMAIL = "info@golden-dream-safaris.com";
 
 const quoteSchema = z.object({
   trips: z.array(z.enum(["Wildlife safari", "Kilimanjaro", "Mount Meru", "Zanzibar", "Day trip", "Not sure yet"])).min(1).max(6),
@@ -15,7 +18,7 @@ const quoteSchema = z.object({
   days: z.enum(["1 day", "2–3 days", "4–5 days", "6–7 days", "8+ days"]),
   adults: z.number().int().min(1).max(40),
   children: z.number().int().min(0).max(40),
-  travelStyle: z.enum(["Group camping", "Mid-range lodge", "Private luxury"]),
+  travelStyle: z.enum(travelStyleValues),
   groupType: z.enum(["Private", "Join a group", "No preference"]),
   interests: z.array(z.enum(["The Big Five", "Great Migration", "Photography", "Honeymoon", "Travelling with kids", "Vegetarian or special diet"])).max(10),
   name: z.string().trim().min(2).max(120),
@@ -96,9 +99,9 @@ export async function POST(request: NextRequest) {
   if (duplicateAt && now - duplicateAt < DUPLICATE_WINDOW) return NextResponse.json({message: "This request was already sent recently."}, {status: 409});
 
   const apiKey = process.env.RESEND_API_KEY;
-  const from = process.env.RESEND_FROM_EMAIL;
-  const to = process.env.RESEND_TO_EMAIL;
-  if (!apiKey || !from || !to) return NextResponse.json({message: "Email delivery is not configured yet. Please use WhatsApp or email us directly."}, {status: 503});
+  const from = process.env.RESEND_FROM_EMAIL?.trim() || `Golden Dream Safaris <${RESEND_DELIVERY_EMAIL}>`;
+  const to = process.env.RESEND_TO_EMAIL?.trim() || RESEND_DELIVERY_EMAIL;
+  if (!apiKey) return NextResponse.json({message: "Email delivery is not configured yet. Please use WhatsApp or email us directly."}, {status: 503});
 
   const resend = new Resend(apiKey);
   const html = `<div style="font-family:Arial,sans-serif;max-width:680px;margin:auto;color:#141210"><div style="background:#0b0907;color:white;padding:24px 28px;border-radius:18px 18px 0 0"><p style="color:#ef8a33;margin:0 0 8px">Golden Dream Safaris</p><h1 style="margin:0;font-size:28px">New quote request</h1></div><table style="width:100%;border-collapse:collapse;background:#faf9f7">${row("Name", data.name)}${row("Email", data.email)}${row("WhatsApp", data.whatsapp)}${row("Country", data.country)}${row("Trip", data.trips.join(" + "))}${row("Dates", data.arrival && data.departure ? `${data.arrival} to ${data.departure}` : "Flexible")}${row("Length", data.days)}${row("Travellers", `${data.adults} adults, ${data.children} children`)}${row("Travel style", data.travelStyle)}${row("Group type", data.groupType)}${row("Interests", data.interests.join(", "))}${row("Preferred reply", data.preferredContact)}${row("Message", data.message)}</table><p style="padding:18px 24px;color:#6f675d">Submitted from the Golden Dream website quote form.</p></div>`;

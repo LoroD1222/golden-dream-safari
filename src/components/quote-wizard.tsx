@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import {FormEvent, useEffect, useId, useMemo, useRef, useState} from "react";
 import {FigmaIcon} from "@/components/figma-icon";
+import type {TravelStyle} from "@/features/quote/model";
 
 const tripChoices = [
   ["Wildlife safari", "/images/figma/f5a929d4-49ea-4274-b15a-0a88026f1d3a.png"],
@@ -14,6 +15,12 @@ const tripChoices = [
   ["Not sure yet", ""],
 ] as const;
 
+const stayOptions = [
+  {value: "Group camping", label: "Camping", copy: "Tented campsites inside or near the parks, with your own chef.", price: "$"},
+  {value: "Mid-range lodge", label: "Mid-range lodge", copy: "Comfortable lodges and permanent tented camps.", price: "$$"},
+  {value: "Private luxury", label: "Luxury lodge", copy: "The best-located safari lodges, with extra comfort.", price: "$$$"},
+] as const;
+
 type QuoteData = {
   trips: string[];
   arrival: string;
@@ -21,7 +28,7 @@ type QuoteData = {
   days: string;
   adults: number;
   children: number;
-  travelStyle: string;
+  travelStyle: TravelStyle;
   groupType: string;
   interests: string[];
   name: string;
@@ -36,7 +43,7 @@ type QuoteData = {
 
 const initialData: QuoteData = {
   trips: ["Wildlife safari", "Zanzibar"], arrival: "", departure: "", days: "4–5 days", adults: 2, children: 0,
-  travelStyle: "Mid-range lodge", groupType: "Private", interests: ["The Big Five"], name: "", email: "",
+  travelStyle: "Mid-range lodge", groupType: "Private", interests: [], name: "", email: "",
   whatsapp: "", country: "", preferredContact: "WhatsApp", message: "", consent: false, website: "",
 };
 
@@ -91,7 +98,7 @@ export function QuoteWizard({initialTrip, initialArrival, initialDeparture, init
   const toggleArray = (key: "trips" | "interests", value: string) => setData(current => {
     const exists = current[key].includes(value);
     const next = exists ? current[key].filter(item => item !== value) : [...current[key], value];
-    return {...current, [key]: next.length ? next : [value]};
+    return {...current, [key]: key === "trips" && !next.length ? [value] : next};
   });
 
   async function submit(event: FormEvent<HTMLFormElement>) {
@@ -135,7 +142,7 @@ export function QuoteWizard({initialTrip, initialArrival, initialDeparture, init
     {step === 3 && <div className="quote-step">
       <h3>How would you like to travel?</h3><p>These two choices affect the final quote. Published itinerary prices are starting rates; Victor confirms the exact price for your dates, group size and accommodation.</p>
       <fieldset><legend>1. How do you want to travel?</legend><div className="choice-row">{["Private", "Join a group", "No preference"].map(value => <Choice key={value} selected={data.groupType === value} onClick={() => setData({...data, groupType: value})}>{value}</Choice>)}</div></fieldset>
-      <fieldset className="quote-stay-options"><legend>2. Where would you like to stay?</legend><div className="tier-list">{[["Camping", "Tented campsites inside or near the parks, with your own chef.", "$"], ["Mid-range lodge", "Comfortable lodges and permanent tented camps.", "$$"], ["Luxury lodge", "The best-located safari lodges, with extra comfort.", "$$$"]].map(([label, copy, price]) => <button type="button" key={label} className={data.travelStyle === label ? "is-selected" : ""} onClick={() => setData({...data, travelStyle: label})}><FigmaIcon name={data.travelStyle === label ? "tier-radio-selected" : "tier-radio"} width={22}/><span><strong>{label}</strong><small>{copy}</small></span><b>{price}</b></button>)}</div></fieldset>
+      <fieldset className="quote-stay-options"><legend>2. Where would you like to stay?</legend><div className="tier-list">{stayOptions.map(({value, label, copy, price}) => <button type="button" key={value} className={data.travelStyle === value ? "is-selected" : ""} onClick={() => setData({...data, travelStyle: value})}><FigmaIcon name={data.travelStyle === value ? "tier-radio-selected" : "tier-radio"} width={22}/><span><strong>{label}</strong><small>{copy}</small></span><b>{price}</b></button>)}</div></fieldset>
       <fieldset><legend>Anything special? (optional)</legend><div className="choice-row">{["The Big Five", "Great Migration", "Photography", "Honeymoon", "Travelling with kids", "Vegetarian or special diet"].map(value => <Choice key={value} selected={data.interests.includes(value)} onClick={() => toggleArray("interests", value)}>{value}</Choice>)}</div></fieldset>
       <QuoteNav back={() => setStep(2)} next={() => setStep(4)} nextLabel="Next: your details"/>
     </div>}

@@ -1,7 +1,7 @@
 export const contactDetails = {
   phoneDisplay: "+255 763 571 646",
   phoneHref: "tel:+255763571646",
-  email: "goldendreamsafaris@gmail.com",
+  email: "info@golden-dream-safaris.com",
   whatsapp: "https://wa.me/255763571646",
   location: "Arusha, Tanzania",
 };

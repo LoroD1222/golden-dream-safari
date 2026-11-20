@@ -6,7 +6,7 @@ export const defaultSiteSettings: SiteSettings = {
     name: "Golden Dream Safaris",
     description: "A local safari company in Arusha, Tanzania, planning thoughtful wildlife journeys with the guides who lead them.",
     logo: "/images/figma/brand-mark.png",
-    email: "goldendreamsafaris@gmail.com",
+    email: "info@golden-dream-safaris.com",
     phone: "+255 763 571 646",
     whatsapp: "https://wa.me/255763571646",
     website: "https://www.golden-dream-safaris.com/",

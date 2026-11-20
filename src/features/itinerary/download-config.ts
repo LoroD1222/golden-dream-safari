@@ -11,7 +11,7 @@ export const defaultItineraryDownloadConfig: ItineraryDownloadConfig = {
   companyName: "Golden Dream Safaris",
   companyDescription: "A local safari company in Arusha, Tanzania, planning thoughtful wildlife journeys with the guides who lead them.",
   companyLogo: "/images/figma/brand-mark.png",
-  contactEmail: "goldendreamsafaris@gmail.com",
+  contactEmail: "info@golden-dream-safaris.com",
   contactPhone: "+255 763 571 646",
   contactLocation: "Arusha, Tanzania",
   contactWebsite: "www.golden-dream-safaris.com",

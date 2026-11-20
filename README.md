@@ -61,8 +61,8 @@ Copy `.env.example` to `.env.local` and set only the values needed for the selec
 | --- | --- |
 | `NEXT_PUBLIC_SITE_URL` | Production origin used by canonical URLs, sitemap and JSON-LD. |
 | `RESEND_API_KEY` | Server-only Resend API key for quote delivery. |
-| `RESEND_FROM_EMAIL` | Verified Resend sender. |
-| `RESEND_TO_EMAIL` | Inbox that receives quote requests. |
+| `RESEND_FROM_EMAIL` | Optional verified sender override. Defaults to `Golden Dream Safaris <info@golden-dream-safaris.com>`. |
+| `RESEND_TO_EMAIL` | Optional recipient override. Defaults to `info@golden-dream-safaris.com`. |
 | `ITINERARY_ADMIN_USER` | HTTP Basic Auth username for the editor and itinerary APIs. |
 | `ITINERARY_ADMIN_PASSWORD` | HTTP Basic Auth password for the editor and itinerary APIs. |
 
@@ -70,7 +70,7 @@ Do not expose `RESEND_API_KEY` or admin credentials through `NEXT_PUBLIC_` varia
 
 ## Quote delivery
 
-`POST /api/quote` validates every payload on the server. Without all three Resend variables, the API intentionally returns `503` with a clear email/WhatsApp fallback; it never pretends that a request was sent. In production, configure a verified sender domain in Resend before setting `RESEND_FROM_EMAIL`.
+`POST /api/quote` validates every payload on the server. `RESEND_API_KEY` is the only required email variable; sender and recipient default to the verified `info@golden-dream-safaris.com` address. Without an API key, the API intentionally returns `503` with a clear email/WhatsApp fallback and never pretends that a request was sent. Set sender or recipient overrides only when the replacement sender domain is verified in Resend.
 
 ## Itinerary storage and editor
 
