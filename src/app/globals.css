@@ -909,7 +909,7 @@ body .property-card>strong {padding: 14px 18px}
 .about-values>.section-pill {background: var(--cream); color: var(--ink)}
 .about-values>h2 {margin: 16px 0 40px; font-size: 56px}
 .about-values>div {gap: 16px}
-.about-values article {min-height: 250px; padding: 32px 28px; border: 0; border-radius: 24px; background: var(--cream)}
+.about-values article {min-height: 250px; padding: 40px 28px 32px; border: 0; border-radius: 24px; background: var(--cream)}
 .about-values h3 {margin: 0; font-size: 22px}
 .about-values p {color: var(--muted)}
 .about-team {padding-top: 120px; text-align: left}
@@ -920,7 +920,7 @@ body .property-card>strong {padding: 14px 18px}
 .about-team article>.about-team__photo {position: relative; overflow: hidden; background: #ddd8cf}
 .about-team__photo img {object-fit: cover; transition: transform .45s ease}
 .about-team article:hover .about-team__photo img {transform: scale(1.025)}
-.about-team article h3 {margin: 14px 6px 2px; font-size: 20px}
+.about-team article h3 {margin: 18px 6px 2px; font-size: 20px}
 .about-team article p {margin: 0 6px}
 .about-numbers {width: calc(100% - 48px); max-width: none; padding: 56px; border-radius: 32px; background: var(--black); color: white}
 .about-numbers>div {min-height: 0; padding: 0; border: 0}

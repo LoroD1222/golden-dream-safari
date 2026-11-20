@@ -18,7 +18,7 @@
 .home-trips .section-heading h2 {font-size: 60px; line-height: 1.02; letter-spacing: -1.5px}
 
 .home-about {margin-top: 50px; padding: 0 24px; background: #fff}
-.home-about>.section-shell {width: 100%; max-width: none; padding: 72px 64px; border: 1px solid #e6e2da; border-radius: 32px; background: var(--cream)}
+.home-about>.section-shell {width: 100%; max-width: none; padding: 72px 64px 24px; border: 1px solid #e6e2da; border-radius: 32px; background: var(--cream)}
 .home-about__statement {width: 100%; max-width: none}
 .home-about__statement h2 {max-width: 1000px; margin: 28px auto 0; font-size: 44px; font-weight: 650; line-height: 1.2; letter-spacing: -.66px}
 .home-about__statement>p {margin: 18px 0 0; color: #a4520f; font-size: 18px; font-weight: 650; letter-spacing: .06em; line-height: 1.3; text-transform: uppercase}
@@ -67,9 +67,11 @@
 .booking-grid>div:first-child>p {max-width: 560px; font-size: 18px; line-height: 1.55}
 .booking-grid figure {height: 363px; min-height: 363px; margin-top: 24px; border-radius: 28px}
 .booking-grid figure img {object-position: center 66%}
+.booking-timeline {position: relative}
+.booking-timeline::before {position: absolute; top: 62px; bottom: 0; left: 31px; width: 2px; content: ""; background: var(--orange); opacity: .45}
 .booking-step {grid-template-columns: 64px 1fr; gap: 0; padding-bottom: 20px}
 .booking-step>span {width: 64px; height: 64px; border-width: 2px; background: var(--orange); font-size: 22px; font-weight: 800}
-.booking-step:not(:last-of-type)::before {top: 62px; left: 31px; height: calc(100% - 42px); opacity: .45}
+.booking-step:not(:last-of-type)::before {content: none}
 .booking-step>div {margin-left: 24px; padding: 24px 28px; border-radius: 24px}
 .booking-step h3 {margin-bottom: 10px; font-size: 24px; letter-spacing: -.24px}
 .booking-step p {margin-bottom: 10px; font-size: 17px; line-height: 1.55}
@@ -96,7 +98,7 @@
   .home-top .home-hero__copy h1 {font-size: 43px}
   .home-top .home-hero__copy>p {width: 100%; font-size: 15px}
   .home-about {padding-inline: 12px}
-  .home-about>.section-shell {width: 100%; padding: 52px 16px}
+  .home-about>.section-shell {width: 100%; padding: 52px 16px 24px}
   .home-about__statement h2 {font-size: 34px}
   .home-about__statement>p {font-size: 14px; line-height: 1.45}
   .home-about__reasons {grid-template-columns: 1fr}
@@ -112,7 +114,8 @@
   .booking-grid figure {height: 300px; min-height: 300px}
   .booking-step {grid-template-columns: 48px 1fr}
   .booking-step>span {width: 48px; height: 48px; font-size: 16px}
-  .booking-step:not(:last-of-type)::before {top: 48px; left: 23px}
+  .booking-timeline::before {content: none}
+  .booking-step:not(:last-of-type)::before {top: 48px; left: 23px; content: ""}
   .booking-step>div {margin-left: 12px; padding: 20px 18px}
   .booking-actions {margin-left: 60px}
   .included {min-height: 0; margin-top: 48px}
@@ -157,7 +160,7 @@ main,section,article,aside,nav,header,footer,div {min-width: 0}
   .trip-mix>div {padding: 22px}
   .trip-mix h3 {font-size: 25px}
   .home-about {margin-top: 48px}
-  .home-about>.section-shell {padding: 40px 16px}
+  .home-about>.section-shell {padding: 40px 16px 20px}
   .home-about__statement h2 {margin-top: 0; font-size: 32px; line-height: 1.15}
   .home-about__photos figure {height: auto; min-height: 0; aspect-ratio: 401 / 320}
   .popular-safaris {padding-top: 56px}
@@ -506,6 +509,7 @@ main,section,article,aside,nav,header,footer,div {min-width: 0}
 }
 .home-trips .trip-tile,
 .home-trips .trip-mix {border-radius: 32px}
+.home-trips .trip-mix {display: flex; align-items: center}
 .home-trips .trip-tile::after {
   position: absolute;
   z-index: 1;
@@ -545,7 +549,7 @@ main,section,article,aside,nav,header,footer,div {min-width: 0}
 .home-trips .trip-tile h3 {font-size: 28px; line-height: 1.08}
 .home-trips .trip-tile p {max-width: 620px; margin-top: 6px; color: rgba(255,255,255,.86); font-size: 17px}
 .home-trips .trip-mix::after {background: linear-gradient(90deg,rgba(7,4,3,.92),rgba(7,4,3,.3))}
-.home-trips .trip-mix>div {max-width: 660px; padding: 28px}
+.home-trips .trip-mix>div {width: 100%; max-width: 660px; padding: 28px}
 .home-trips .trip-mix h3 {font-size: 28px}
 .home-trips .trip-mix p {font-size: 17px}
 

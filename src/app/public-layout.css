@@ -50,6 +50,7 @@
   body .about-hero {
     grid-template-columns: minmax(0, 1fr) clamp(380px, 42%, 520px);
     gap: clamp(32px, 4vw, 64px);
+    align-items: center;
     padding: 40px;
   }
 
@@ -62,6 +63,11 @@
     width: 100%;
     min-width: 0;
     margin-right: 0;
+  }
+
+  body .about-hero h1 {
+    font-size: clamp(56px, 4.7vw, 68px);
+    text-wrap: balance;
   }
 }
 
@@ -406,5 +412,79 @@ body .footer-wordmark {
     width: auto;
     margin: 0 20px;
     padding: 22px;
+  }
+}
+
+/* Keep the About introduction aligned at every responsive step. The former
+   tablet layout retained the desktop columns, which squeezed the heading into
+   a narrow strip while the portrait stayed full size. */
+@media (min-width: 901px) and (max-width: 1100px) {
+  body .about-hero {
+    grid-template-columns: minmax(0, 1fr) minmax(340px, 44%);
+    gap: 32px;
+    align-items: center;
+    min-height: 0;
+    padding: 36px;
+  }
+
+  body .about-hero > div {
+    min-width: 0;
+    padding: 0;
+  }
+
+  body .about-hero > figure {
+    width: 100%;
+    min-width: 0;
+    height: 394px;
+    min-height: 394px;
+    margin: 0;
+  }
+
+  body .about-hero h1 {
+    font-size: clamp(46px, 5vw, 56px);
+    text-wrap: balance;
+  }
+}
+
+@media (max-width: 900px) {
+  body .about-hero {
+    grid-template-columns: 1fr;
+    gap: 0;
+    min-height: 0;
+    padding: 0;
+  }
+
+  body .about-hero > div {
+    width: 100%;
+    padding: 44px 32px 28px;
+  }
+
+  body .about-hero > figure {
+    width: auto;
+    height: 420px;
+    min-height: 420px;
+    margin: 0 24px 24px;
+    align-self: stretch;
+  }
+
+  body .about-hero h1 {
+    font-size: clamp(46px, 7vw, 54px);
+    text-wrap: balance;
+  }
+}
+
+@media (max-width: 700px) {
+  body .about-hero > div {
+    padding: 40px 24px 26px;
+  }
+
+  body .about-hero > figure {
+    height: 350px;
+    min-height: 350px;
+    margin: 0 16px 16px;
+  }
+
+  body .about-hero h1 {
+    font-size: clamp(40px, 12vw, 50px);
   }
 }
