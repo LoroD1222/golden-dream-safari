@@ -1,4 +1,5 @@
 import type {NextConfig} from "next";
+import {legacyRedirects} from "./src/data/legacy-redirects";
 
 const nextConfig: NextConfig = {
   poweredByHeader: false,
@@ -17,10 +18,7 @@ const nextConfig: NextConfig = {
     ],
   },
   async redirects() {
-    return [
-      {source: "/kilimanjaro-packages", destination: "/kilimanjaro", permanent: true},
-      {source: "/kilimanjaro-packages/:slug", destination: "/trips/:slug", permanent: true},
-    ];
+    return legacyRedirects;
   },
 };
 

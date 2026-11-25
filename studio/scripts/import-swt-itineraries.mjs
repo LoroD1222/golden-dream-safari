@@ -5,13 +5,13 @@ import {getCliClient} from 'sanity/cli'
 
 const client = getCliClient({apiVersion: '2026-11-17'})
 const projectRoot = path.resolve(process.cwd(), '..')
-const allTrips = JSON.parse(readFileSync(path.join(projectRoot, 'data/seed-itineraries.json'), 'utf8'))
-  .filter((trip) => trip.sourceId?.startsWith('swt:'))
+const seedTrips = JSON.parse(readFileSync(path.join(projectRoot, 'data/seed-itineraries.json'), 'utf8'))
+const allTrips = seedTrips.filter((trip) => trip.sourceId?.startsWith('swt:'))
 const startIndex = Number.parseInt(process.env.SWT_START_INDEX || '0', 10)
 const trips = allTrips.slice(Number.isNaN(startIndex) ? 0 : startIndex)
 const assetCache = new Map()
 
-if (allTrips.length !== 14) throw new Error(`Expected 14 SWT itineraries; found ${allTrips.length}.`)
+if (allTrips.length !== 20) throw new Error(`Expected 20 SWT itineraries; found ${allTrips.length}.`)
 
 function stableKey(prefix, identity) {
   return `${prefix}-${createHash('sha1').update(String(identity)).digest('hex').slice(0, 20)}`
@@ -141,4 +141,53 @@ for (const trip of trips) {
   }
 }
 
-process.stdout.write(`Imported ${trips.length} SWT itineraries starting at index ${startIndex || 0}. No reviews, settings, accommodations or other trips were changed.\n`)
+const lemosho = seedTrips.find((trip) => trip.slug === '8-days-lemosho-route')
+const lemoshoDocument = await client.fetch(
+  `*[_type == "goldenDreamItinerary" && slug.current == $slug][0]{
+    _id,
+    days[]{_key, _type, dayNumber, title, summary, narrative, habitat, driveTime, distance, activityLevel, meals,
+      activities[]{_key, _type, title, description, time, location}, accommodation, accommodations, image, dropOffNote},
+    routeStops[]{_key, _type, name, label, description, dayNumber, coordinates}
+  }`,
+  {slug: lemosho.slug},
+)
+
+if (!lemoshoDocument?._id) throw new Error('The connected Sanity dataset is missing the 8 Days Lemosho itinerary.')
+
+const lemoshoDays = lemoshoDocument.days.map((day) => {
+  const sourceDay = lemosho.days.find((item) => item.dayNumber === day.dayNumber)
+  if (!sourceDay) throw new Error(`Missing verified Lemosho day ${day.dayNumber}.`)
+  return {
+    ...day,
+    title: sourceDay.title,
+    summary: sourceDay.summary,
+    narrative: sourceDay.narrative,
+    activities: (day.activities || []).map((activity, index) => ({
+      ...activity,
+      description: sourceDay.activities[index]?.description || sourceDay.narrative,
+    })),
+  }
+})
+
+const lemoshoStops = (lemoshoDocument.routeStops || []).map((stop) => ({
+  ...stop,
+  description: lemosho.days.find((day) => day.dayNumber === stop.dayNumber)?.summary || stop.description,
+}))
+
+await client.patch(lemoshoDocument._id).set({
+  sourcePath: lemosho.sourcePath,
+  sourceUrl: lemosho.sourceUrl,
+  title: lemosho.title,
+  summary: lemosho.summary,
+  overviewTitle: lemosho.overviewTitle,
+  overviewParagraphs: lemosho.overviewParagraphs,
+  durationDays: lemosho.durationDays,
+  startingPrice: lemosho.startingPrice,
+  priceIntroduction: lemosho.priceIntroduction,
+  priceTiers: lemosho.priceTiers.map((tier) => keyed('itineraryPriceTier', tier, `${lemosho.slug}-${tier.name}`)),
+  days: lemoshoDays,
+  routeStops: lemoshoStops,
+}).commit()
+process.stdout.write(`Updated ${lemosho.slug} from the current published SWT route without replacing its Sanity images.\n`)
+
+process.stdout.write(`Imported ${trips.length} SWT itineraries starting at index ${startIndex || 0}. No reviews, settings, accommodations or unrelated trips were changed.\n`)

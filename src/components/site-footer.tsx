@@ -4,7 +4,7 @@ import {contactDetails, socialLinks} from "@/data/site";
 import {FigmaIcon} from "@/components/figma-icon";
 
 const columns = [
-  {title: "Trips", links: [["Wildlife safaris", "/trips"], ["Kilimanjaro trekking", "/kilimanjaro"], ["Mount Meru trekking", "/trips#mount-meru"], ["Zanzibar", "/trips#treks-zanzibar"], ["Day trips", "/trips#day-trips"], ["Custom trips", "/contact#quote"]]},
+  {title: "Trips", links: [["Wildlife safaris", "/trips"], ["Kilimanjaro trekking", "/kilimanjaro"], ["Mount Meru trekking", "/trips?category=mount-meru"], ["Zanzibar", "/trips?category=zanzibar"], ["Day trips", "/trips?category=day-trips"], ["Custom trips", "/contact#quote"]]},
   {title: "Plan", links: [["What to expect", "/#included"], ["The parks", "/trips"], ["Weather & seasons", "/contact#faq"], ["FAQ", "/contact#faq"], ["Gallery", "/reviews"]]},
   {title: "Company", links: [["About us", "/about"], ["Reviews", "/reviews"], ["Contact", "/contact"], ["Get a free quote", "/contact#quote"]]},
 ];

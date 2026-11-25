@@ -3,13 +3,13 @@
 import Image from "next/image";
 import Link from "next/link";
 import {Fragment, type ReactNode, useMemo, useState} from "react";
-import {otherTrips, wildlifeTrips, type TripCardData} from "@/data/site";
+import {wildlifeTrips, type TripCardData} from "@/data/site";
 import {FigmaIcon} from "@/components/figma-icon";
 
 const tabs = ["All trips", "Wildlife safaris", "Joining Safari", "Great Migration North", "Ndutu Calving Safari", "Private Safari", "Kilimanjaro", "Mount Meru", "Zanzibar", "Day trips"];
 
-export function TripsDirectory({kilimanjaroTrips = [], mountMeruTrips = [], safariItineraryTrips = [], itinerarySlugs = []}: {kilimanjaroTrips?: TripCardData[]; mountMeruTrips?: TripCardData[]; safariItineraryTrips?: TripCardData[]; itinerarySlugs?: string[]}) {
-  const [active, setActive] = useState("All trips");
+export function TripsDirectory({initialCategory = "All trips", kilimanjaroTrips = [], mountMeruTrips = [], zanzibarTrips = [], safariItineraryTrips = [], itinerarySlugs = []}: {initialCategory?: string; kilimanjaroTrips?: TripCardData[]; mountMeruTrips?: TripCardData[]; zanzibarTrips?: TripCardData[]; safariItineraryTrips?: TripCardData[]; itinerarySlugs?: string[]}) {
+  const [active, setActive] = useState(initialCategory);
   const [sort, setSort] = useState("shortest");
   const allWildlife = useMemo(() => {
     return safariItineraryTrips.length ? safariItineraryTrips : wildlifeTrips;
@@ -27,19 +27,19 @@ export function TripsDirectory({kilimanjaroTrips = [], mountMeruTrips = [], safa
       : active === "Mount Meru"
         ? mountMeruTrips
       : active === "All trips"
-        ? [...kilimanjaroTrips, ...mountMeruTrips, ...otherTrips.filter(trip => !["kilimanjaro-trek", "mount-meru-trek"].includes(trip.slug))]
+        ? [...kilimanjaroTrips, ...mountMeruTrips, ...zanzibarTrips]
         : active === "Zanzibar"
-          ? otherTrips.filter(trip => trip.title.toLowerCase().includes("zanzibar"))
+          ? zanzibarTrips
           : [];
     return [...matching].sort((a, b) => sort === "title" ? a.title.localeCompare(b.title) : (parseInt(a.duration) || 999) - (parseInt(b.duration) || 999));
-  }, [active, kilimanjaroTrips, mountMeruTrips, sort]);
+  }, [active, kilimanjaroTrips, mountMeruTrips, sort, zanzibarTrips]);
   const sorted = [...visibleWildlife].sort((a, b) => sort === "title"
     ? a.title.localeCompare(b.title)
     : (a.category === "Day trip" ? 1 : parseInt(a.duration) || 999) - (b.category === "Day trip" ? 1 : parseInt(b.duration) || 999));
 
   return <section className="trips-directory section-shell"><div className="trips-filters"><div>{tabs.map(tab => <button className={active === tab ? "is-active" : ""} type="button" aria-pressed={active === tab} key={tab} onClick={() => setActive(tab)}>{tab}</button>)}</div><label>Sort:<select value={sort} onChange={event => setSort(event.target.value)}><option value="shortest">Shortest first</option><option value="title">A–Z</option></select></label></div>
     {sorted.length > 0 && <TripGroup title={active === "All trips" ? "Safaris & day trips" : active} count={sorted.length} trips={sorted} itinerarySlugs={itinerarySlugs} accessory={active === "All trips" ? <div className="mix-card trips-mix-card"><Image src="/images/figma/de18e2f3-87a7-428d-b5b9-b36080db459b.png" alt="Zebra on the plains" fill sizes="33vw"/><div><span>Mix & match</span><h2>Duration of your choice</h2><p>Choose the length of your safari and the parks you want to visit. We&apos;ll make a proposal that fits, with no strings attached.</p><Link className="button button--orange" href="/contact#quote">Get a free quote<span className="button__arrow"><FigmaIcon name="arrow-header" width={20}/></span></Link></div></div> : undefined}/>}
-    {visibleOther.length > 0 && <TripGroup title={active === "Kilimanjaro" ? "Kilimanjaro routes" : active === "Mount Meru" ? "Mount Meru climbs" : "Treks & Zanzibar"} count={visibleOther.length} trips={visibleOther} id={active === "Mount Meru" ? "mount-meru" : "treks-zanzibar"} itinerarySlugs={itinerarySlugs}/>}
+    {visibleOther.length > 0 && <TripGroup title={active === "Kilimanjaro" ? "Kilimanjaro routes" : active === "Mount Meru" ? "Mount Meru climbs" : active === "Zanzibar" ? "Zanzibar holidays" : "Treks & Zanzibar"} count={visibleOther.length} trips={visibleOther} id={active === "Mount Meru" ? "mount-meru" : active === "Zanzibar" ? "zanzibar" : "treks-zanzibar"} itinerarySlugs={itinerarySlugs}/>}
     {sorted.length === 0 && visibleOther.length === 0 && <p className="trips-empty">No trips match this category yet. Ask us to build one for you.</p>}
   </section>;
 }

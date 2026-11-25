@@ -4018,19 +4018,18 @@
   {
     "id": "kilimanjaro-8-days-lemosho-route",
     "sourceId": "elementor:8-days-lemosho-route-kilimanjaro.html",
-    "sourcePath": "8-days-lemosho-route-kilimanjaro.html",
-    "sourceUrl": "https://serengetiwildtours.com/kilimanjaro-packages/8-days-lemosho-route/",
+    "sourcePath": "8-days-lemosho-route-kilimanjaro/",
+    "sourceUrl": "https://www.serengetiwildtours.com/8-days-lemosho-route-kilimanjaro/",
     "tripType": "Kilimanjaro trek",
     "routeFamily": "Lemosho Route",
     "slug": "8-days-lemosho-route",
-    "title": "8 Day Lemosho Route Kilimanjaro Climb",
-    "summary": "Book the 8 Day Lemosho Route from USD 2,120 with a licensed local Tanzania team. Hotel, transfers, park fees, meals and safety support included.",
+    "title": "8 Days Lemosho Route Kilimanjaro",
+    "summary": "A beautifully paced western approach with rainforest, the Shira Plateau, Lava Tower and the Southern Circuit before summit night.",
     "heroImage": "/images/kilimanjaro-packages/8-days-lemosho-route-kilimanjaro-scenic-climb.jpg",
-    "overviewTitle": "Why choose the 8 Day Lemosho Route?",
+    "overviewTitle": "Why choose 8 Days Lemosho Route Kilimanjaro",
     "overviewParagraphs": [
-      "The 8 Day Lemosho Route is a beautiful choice for climbers who want more time to adjust to altitude. It begins on the quieter western side of Kilimanjaro, crosses the wide Shira Plateau and joins the southern trail towards Barranco, Karanga and Barafu.",
-      "The extra day creates a steadier walking rhythm before the summit attempt. For many first time climbers, couples and solo travelers, this is the route we recommend when time and budget allow.",
-      "Your climb is led by a local Tanzanian mountain team with daily health checks, warm meals, emergency oxygen and support from your airport arrival until you return to Moshi."
+      "A beautifully paced western approach with rainforest, the Shira Plateau, Lava Tower and the Southern Circuit before summit night.",
+      "The extra time lets the route build altitude gradually while still covering Kilimanjaro’s most varied landscapes."
     ],
     "highlights": [
       "8 mountain days with a licensed local guide team",
@@ -4068,7 +4067,7 @@
       {
         "name": "Mti Mkubwa Camp",
         "label": "Day 1",
-        "description": "Drive to Lemosho Gate for registration, then begin through montane forest to Mti Mkubwa Camp at about 2,650 metres.",
+        "description": "Drive to Lemosho Gate for registration and begin your trek through the montane forest.",
         "dayNumber": 1,
         "coordinates": {
           "lat": -3.0869,
@@ -4078,7 +4077,7 @@
       {
         "name": "Shira 1 Camp",
         "label": "Day 2",
-        "description": "The forest opens into heath and moorland as you climb towards the Shira Plateau.",
+        "description": "The forest gradually opens into heather and moorland as you climb towards the Shira Plateau.",
         "dayNumber": 2,
         "coordinates": {
           "lat": -3.0738,
@@ -4088,7 +4087,7 @@
       {
         "name": "Shira 2 Camp",
         "label": "Day 3",
-        "description": "Cross the open plateau at a steady pace with wide views of Kibo and Mount Meru when the weather is clear.",
+        "description": "This shorter day across the plateau is one of the reasons the 8-day itinerary feels better paced than 7 Days Lemosho.",
         "dayNumber": 3,
         "coordinates": {
           "lat": -3.0909,
@@ -4098,7 +4097,7 @@
       {
         "name": "Lava Tower",
         "label": "Day 4",
-        "description": "Climb towards Lava Tower at about 4,600 metres, then descend to Barranco Camp.",
+        "description": "Climb towards Lava Tower, around 4,600m, then descend to Barranco Camp.",
         "dayNumber": 4,
         "coordinates": {
           "lat": -3.0678,
@@ -4108,7 +4107,7 @@
       {
         "name": "Karanga Camp",
         "label": "Day 5",
-        "description": "Climb the Barranco Wall with guidance from your mountain team, then cross a series of ridges and valleys to Karanga Camp.",
+        "description": "After breakfast, climb the Barranco Wall with steady guidance from your mountain team.",
         "dayNumber": 5,
         "coordinates": {
           "lat": -3.1111,
@@ -4118,7 +4117,7 @@
       {
         "name": "Barafu Camp",
         "label": "Day 6",
-        "description": "Continue into the alpine desert and reach Barafu Camp.",
+        "description": "Walk gradually into the alpine desert towards Barafu Camp.",
         "dayNumber": 6,
         "coordinates": {
           "lat": -3.0991,
@@ -4128,7 +4127,7 @@
       {
         "name": "Mweka Camp",
         "label": "Day 7",
-        "description": "Begin around midnight and climb slowly towards Stella Point and Uhuru Peak at 5,895 metres.",
+        "description": "Begin the summit attempt around midnight.",
         "dayNumber": 7,
         "coordinates": {
           "lat": -3.1641,
@@ -4138,7 +4137,7 @@
       {
         "name": "Moshi",
         "label": "Day 8",
-        "description": "Descend through rainforest to Mweka Gate.",
+        "description": "Complete your final descent through rainforest to Mweka Gate.",
         "dayNumber": 8,
         "coordinates": {
           "lat": -3.3349,
@@ -4159,9 +4158,9 @@
       {
         "id": "8-days-lemosho-route-day-1",
         "dayNumber": 1,
-        "title": "Moshi to Lemosho Gate, then Mti Mkubwa Camp",
-        "summary": "Drive to Lemosho Gate for registration, then begin through montane forest to Mti Mkubwa Camp at about 2,650 metres.",
-        "narrative": "Drive to Lemosho Gate for registration, then begin through montane forest to Mti Mkubwa Camp at about 2,650 metres. Walking time is about 3 to 4 hours.",
+        "title": "Moshi to Lemosho Gate, trek to Mti Mkubwa Camp",
+        "summary": "Drive to Lemosho Gate for registration and begin your trek through the montane forest.",
+        "narrative": "Drive to Lemosho Gate for registration and begin your trek through the montane forest. This first day is a gentle introduction to the mountain and a good time to settle into the climbing rhythm. Overnight at Mti Mkubwa Camp, around 2,650m. Approx. 3 to 4 hours.",
         "habitat": "Montane rainforest",
         "driveTime": "3 to 4 hours walking",
         "activityLevel": "Mountain trekking",
@@ -4174,7 +4173,7 @@
           {
             "id": "8-days-lemosho-route-activity-1",
             "title": "Guided mountain trek",
-            "description": "Drive to Lemosho Gate for registration, then begin through montane forest to Mti Mkubwa Camp at about 2,650 metres. Walking time is about 3 to 4 hours.",
+            "description": "Drive to Lemosho Gate for registration and begin your trek through the montane forest. This first day is a gentle introduction to the mountain and a good time to settle into the climbing rhythm. Overnight at Mti Mkubwa Camp, around 2,650m. Approx. 3 to 4 hours.",
             "location": "Mti Mkubwa Camp"
           }
         ],
@@ -4191,8 +4190,8 @@
         "id": "8-days-lemosho-route-day-2",
         "dayNumber": 2,
         "title": "Mti Mkubwa Camp to Shira 1 Camp",
-        "summary": "The forest opens into heath and moorland as you climb towards the Shira Plateau.",
-        "narrative": "The forest opens into heath and moorland as you climb towards the Shira Plateau. Overnight at Shira 1 Camp at about 3,610 metres. Walking time is about 5 to 6 hours.",
+        "summary": "The forest gradually opens into heather and moorland as you climb towards the Shira Plateau.",
+        "narrative": "The forest gradually opens into heather and moorland as you climb towards the Shira Plateau. The views become wider and the mountain begins to feel bigger. Overnight at Shira 1 Camp, around 3,610m. Approx. 5 to 6 hours.",
         "habitat": "Montane rainforest",
         "driveTime": "5 to 6 hours walking",
         "activityLevel": "Mountain trekking",
@@ -4205,7 +4204,7 @@
           {
             "id": "8-days-lemosho-route-activity-2",
             "title": "Guided mountain trek",
-            "description": "The forest opens into heath and moorland as you climb towards the Shira Plateau. Overnight at Shira 1 Camp at about 3,610 metres. Walking time is about 5 to 6 hours.",
+            "description": "The forest gradually opens into heather and moorland as you climb towards the Shira Plateau. The views become wider and the mountain begins to feel bigger. Overnight at Shira 1 Camp, around 3,610m. Approx. 5 to 6 hours.",
             "location": "Shira 1 Camp"
           }
         ],
@@ -4222,8 +4221,8 @@
         "id": "8-days-lemosho-route-day-3",
         "dayNumber": 3,
         "title": "Shira 1 Camp to Shira 2 Camp",
-        "summary": "Cross the open plateau at a steady pace with wide views of Kibo and Mount Meru when the weather is clear.",
-        "narrative": "Cross the open plateau at a steady pace with wide views of Kibo and Mount Meru when the weather is clear. Overnight at Shira 2 Camp at about 3,850 metres. Walking time is about 3 to 5 hours.",
+        "summary": "This shorter day across the plateau is one of the reasons the 8-day itinerary feels better paced than 7 Days Lemosho.",
+        "narrative": "This shorter day across the plateau is one of the reasons the 8-day itinerary feels better paced than 7 Days Lemosho. You walk across open alpine scenery and have more time to adjust before the higher days ahead. Overnight at Shira 2 Camp, around 3,850m. Approx. 3 to 5 hours.",
         "habitat": "Heath and moorland",
         "driveTime": "3 to 5 hours walking",
         "activityLevel": "Mountain trekking",
@@ -4236,7 +4235,7 @@
           {
             "id": "8-days-lemosho-route-activity-3",
             "title": "Guided mountain trek",
-            "description": "Cross the open plateau at a steady pace with wide views of Kibo and Mount Meru when the weather is clear. Overnight at Shira 2 Camp at about 3,850 metres. Walking time is about 3 to 5 hours.",
+            "description": "This shorter day across the plateau is one of the reasons the 8-day itinerary feels better paced than 7 Days Lemosho. You walk across open alpine scenery and have more time to adjust before the higher days ahead. Overnight at Shira 2 Camp, around 3,850m. Approx. 3 to 5 hours.",
             "location": "Shira 2 Camp"
           }
         ],
@@ -4252,9 +4251,9 @@
       {
         "id": "8-days-lemosho-route-day-4",
         "dayNumber": 4,
-        "title": "Shira 2 Camp to Barranco Camp through Lava Tower",
-        "summary": "Climb towards Lava Tower at about 4,600 metres, then descend to Barranco Camp.",
-        "narrative": "Climb towards Lava Tower at about 4,600 metres, then descend to Barranco Camp. Going high and sleeping lower supports acclimatization. Walking time is about 6 to 7 hours.",
+        "title": "Shira 2 Camp to Barranco Camp via Lava Tower",
+        "summary": "Climb towards Lava Tower, around 4,600m, then descend to Barranco Camp.",
+        "narrative": "Climb towards Lava Tower, around 4,600m, then descend to Barranco Camp. This is an important acclimatization day because you climb high and sleep lower. The scenery is dramatic, with views of the southern side of Kilimanjaro. Approx. 6 to 7 hours.",
         "habitat": "Heath and moorland",
         "driveTime": "6 to 7 hours walking",
         "activityLevel": "Mountain trekking",
@@ -4267,7 +4266,7 @@
           {
             "id": "8-days-lemosho-route-activity-4",
             "title": "Guided mountain trek",
-            "description": "Climb towards Lava Tower at about 4,600 metres, then descend to Barranco Camp. Going high and sleeping lower supports acclimatization. Walking time is about 6 to 7 hours.",
+            "description": "Climb towards Lava Tower, around 4,600m, then descend to Barranco Camp. This is an important acclimatization day because you climb high and sleep lower. The scenery is dramatic, with views of the southern side of Kilimanjaro. Approx. 6 to 7 hours.",
             "location": "Lava Tower"
           }
         ],
@@ -4284,8 +4283,8 @@
         "id": "8-days-lemosho-route-day-5",
         "dayNumber": 5,
         "title": "Barranco Camp to Karanga Camp",
-        "summary": "Climb the Barranco Wall with guidance from your mountain team, then cross a series of ridges and valleys to Karanga Camp.",
-        "narrative": "Climb the Barranco Wall with guidance from your mountain team, then cross a series of ridges and valleys to Karanga Camp. Walking time is about 3 to 5 hours.",
+        "summary": "After breakfast, climb the Barranco Wall with steady guidance from your mountain team.",
+        "narrative": "After breakfast, climb the Barranco Wall with steady guidance from your mountain team. The trail then crosses ridges and valleys towards Karanga Camp. This is a useful acclimatization day before moving to Barafu. Approx. 3 to 5 hours.",
         "habitat": "Alpine desert",
         "driveTime": "3 to 5 hours walking",
         "activityLevel": "Mountain trekking",
@@ -4298,7 +4297,7 @@
           {
             "id": "8-days-lemosho-route-activity-5",
             "title": "Guided mountain trek",
-            "description": "Climb the Barranco Wall with guidance from your mountain team, then cross a series of ridges and valleys to Karanga Camp. Walking time is about 3 to 5 hours.",
+            "description": "After breakfast, climb the Barranco Wall with steady guidance from your mountain team. The trail then crosses ridges and valleys towards Karanga Camp. This is a useful acclimatization day before moving to Barafu. Approx. 3 to 5 hours.",
             "location": "Karanga Camp"
           }
         ],
@@ -4315,8 +4314,8 @@
         "id": "8-days-lemosho-route-day-6",
         "dayNumber": 6,
         "title": "Karanga Camp to Barafu Camp",
-        "summary": "Continue into the alpine desert and reach Barafu Camp.",
-        "narrative": "Continue into the alpine desert and reach Barafu Camp. Eat, prepare your summit clothing and rest early before the midnight start. Walking time is about 3 to 4 hours.",
+        "summary": "Walk gradually into the alpine desert towards Barafu Camp.",
+        "narrative": "Walk gradually into the alpine desert towards Barafu Camp. You will arrive, eat, rest and prepare your summit layers before sleeping early. The pace stays slow because the altitude is serious. Approx. 3 to 4 hours.",
         "habitat": "Arctic summit zone",
         "driveTime": "3 to 4 hours walking",
         "activityLevel": "Mountain trekking",
@@ -4329,7 +4328,7 @@
           {
             "id": "8-days-lemosho-route-activity-6",
             "title": "Guided mountain trek",
-            "description": "Continue into the alpine desert and reach Barafu Camp. Eat, prepare your summit clothing and rest early before the midnight start. Walking time is about 3 to 4 hours.",
+            "description": "Walk gradually into the alpine desert towards Barafu Camp. You will arrive, eat, rest and prepare your summit layers before sleeping early. The pace stays slow because the altitude is serious. Approx. 3 to 4 hours.",
             "location": "Barafu Camp"
           }
         ],
@@ -4345,9 +4344,9 @@
       {
         "id": "8-days-lemosho-route-day-7",
         "dayNumber": 7,
-        "title": "Barafu Camp to Uhuru Peak, then Mweka Camp",
-        "summary": "Begin around midnight and climb slowly towards Stella Point and Uhuru Peak at 5,895 metres.",
-        "narrative": "Begin around midnight and climb slowly towards Stella Point and Uhuru Peak at 5,895 metres. After the summit, descend to Barafu for a short rest and continue to Mweka Camp. The full day takes about 11 to 14 hours.",
+        "title": "Barafu Camp to Uhuru Peak, descend to Mweka Camp",
+        "summary": "Begin the summit attempt around midnight.",
+        "narrative": "Begin the summit attempt around midnight. Your guide will set a slow, steady pace to Stella Point and then Uhuru Peak at 5,895m. After the summit, descend to Barafu for a short rest and continue to Mweka Camp. Approx. 11 to 14 hours total.",
         "habitat": "Arctic summit zone",
         "activityLevel": "Very challenging summit day",
         "meals": [
@@ -4359,7 +4358,7 @@
           {
             "id": "8-days-lemosho-route-activity-7",
             "title": "Guided mountain trek",
-            "description": "Begin around midnight and climb slowly towards Stella Point and Uhuru Peak at 5,895 metres. After the summit, descend to Barafu for a short rest and continue to Mweka Camp. The full day takes about 11 to 14 hours.",
+            "description": "Begin the summit attempt around midnight. Your guide will set a slow, steady pace to Stella Point and then Uhuru Peak at 5,895m. After the summit, descend to Barafu for a short rest and continue to Mweka Camp. Approx. 11 to 14 hours total.",
             "location": "Mweka Camp"
           }
         ],
@@ -4375,9 +4374,9 @@
       {
         "id": "8-days-lemosho-route-day-8",
         "dayNumber": 8,
-        "title": "Mweka Camp to Mweka Gate and Moshi",
-        "summary": "Descend through rainforest to Mweka Gate.",
-        "narrative": "Descend through rainforest to Mweka Gate. After park checkout and certificates, drive back to Moshi for a shower, dinner and rest.",
+        "title": "Mweka Camp to Mweka Gate, return to Moshi",
+        "summary": "Complete your final descent through rainforest to Mweka Gate.",
+        "narrative": "Complete your final descent through rainforest to Mweka Gate. After signing out and receiving your certificate, drive back to Moshi for a hot shower, dinner and celebration.",
         "habitat": "Montane rainforest",
         "activityLevel": "Mountain trekking",
         "meals": [
@@ -4388,7 +4387,7 @@
           {
             "id": "8-days-lemosho-route-activity-8",
             "title": "Mountain descent",
-            "description": "Descend through rainforest to Mweka Gate. After park checkout and certificates, drive back to Moshi for a shower, dinner and rest.",
+            "description": "Complete your final descent through rainforest to Mweka Gate. After signing out and receiving your certificate, drive back to Moshi for a hot shower, dinner and celebration.",
             "location": "Moshi"
           }
         ],
@@ -4424,22 +4423,25 @@
       "Portable private toilet on camping routes",
       "Safari or Zanzibar extension"
     ],
-    "priceIntroduction": "Starting price per person. Final price depends on group size and confirmed travel arrangements.",
+    "priceIntroduction": "Prices are shown per person. Request a personalised quotation for your private climb or group.",
     "priceTiers": [
       {
-        "name": "Route package",
-        "price": "From USD 2,120",
-        "description": "Per person starting price for the published route and services."
+        "name": "1 climber",
+        "price": "USD 2,120",
+        "suffix": "/pp",
+        "description": "Published private climb rate per person."
       },
       {
-        "name": "Private climb",
-        "price": "On request",
-        "description": "Your own departure date and a climb planned around your group."
+        "name": "4 climbers",
+        "price": "USD 1,848",
+        "suffix": "/pp",
+        "description": "Published private climb rate per person for four climbers."
       },
       {
-        "name": "Safari extension",
-        "price": "Tailored quote",
-        "description": "Add a northern Tanzania safari or Zanzibar after the mountain."
+        "name": "6 climbers",
+        "price": "USD 1,835",
+        "suffix": "/pp",
+        "description": "Published private climb rate per person for six climbers."
       }
     ],
     "optionalExperiences": [
@@ -4528,7 +4530,7 @@
       "7-days-machame-route"
     ],
     "createdAt": "2026-11-19T00:00:00.000Z",
-    "updatedAt": "2026-11-19T00:00:00.000Z"
+    "updatedAt": "2026-11-25T00:00:00.000Z"
   },
   {
     "id": "kilimanjaro-8-days-northern-circuit-route",

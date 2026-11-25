@@ -15,7 +15,19 @@ export const metadata: Metadata = {
   openGraph: {title: "Safaris, treks and Zanzibar", url: "/trips", images: [{url: "/images/figma/trips-hero-figma.png", alt: "Zebras crossing the Tanzanian plains"}]},
 };
 
-export default async function TripsPage() {
+const categoryLabels: Record<string, string> = {
+  "joining-safari": "Joining Safari",
+  "great-migration-north": "Great Migration North",
+  "ndutu-calving-safari": "Ndutu Calving Safari",
+  "private-safari": "Private Safari",
+  kilimanjaro: "Kilimanjaro",
+  "mount-meru": "Mount Meru",
+  zanzibar: "Zanzibar",
+  "day-trips": "Day trips",
+};
+
+export default async function TripsPage({searchParams}: {searchParams: Promise<{category?: string}>}) {
+  const query = await searchParams;
   const itineraries = (await getPublicItineraryRepository().list()).filter(item => item.status === "published");
   const kilimanjaroTrips = itineraries
     .filter(item => item.status === "published" && item.tripType === "Kilimanjaro trek")
@@ -26,5 +38,9 @@ export default async function TripsPage() {
   const mountMeruTrips = itineraries
     .filter(item => item.tripType === "Mount Meru trek")
     .map(item => ({slug: item.slug, title: item.title.replace(" in Tanzania", ""), category: "Trek" as const, locations: "Mount Meru · Arusha National Park", duration: formatItineraryDuration(item), price: formatItineraryPrice(item, {prefix: "from", unavailable: "Price on request"}), image: item.heroImage || "/images/figma/6a496e48-5dd1-4dc8-8023-5c6bc0d6dfb4.png", routeFamily: item.routeFamily}));
-  return <MarketingShell><StructuredData data={{"@context": "https://schema.org", "@type": "CollectionPage", name: "Safaris, treks and Zanzibar", url: `${siteOrigin}/trips`}}/><section className="trips-intro section-shell"><Image src="/images/figma/trips-hero-figma.png" alt="Zebras crossing the Tanzanian plains" fill loading="eager" quality={90} sizes="100vw"/><div><p>Home&nbsp; / &nbsp;Our trips</p><SectionEyebrow>Our trips</SectionEyebrow><h1>Safaris, treks and Zanzibar</h1><p>All our safaris start and end at your accommodation in Arusha. Accommodation, meals, transport and drinking water are included. These are our most popular trips, and every one can be customised.</p><div><span>Route-specific prices</span><span>Join a group or go private</span><span>Park fees included</span></div></div></section><TripsDirectory kilimanjaroTrips={kilimanjaroTrips} mountMeruTrips={mountMeruTrips} safariItineraryTrips={safariItineraryTrips} itinerarySlugs={itineraries.map(item => item.slug)}/></MarketingShell>;
+  const zanzibarTrips = itineraries
+    .filter(item => item.tripType === "Zanzibar stay")
+    .map(item => ({slug: item.slug, title: item.title, category: "Island" as const, locations: item.destinations.join(" · "), duration: formatItineraryDuration(item), price: formatItineraryPrice(item, {prefix: "from", unavailable: "Price on request"}), image: item.heroImage || "/images/figma/37543361-a611-4b4f-9167-4a63269c4632.png", routeFamily: item.routeFamily}));
+  const initialCategory = query.category ? categoryLabels[query.category] || "All trips" : "All trips";
+  return <MarketingShell><StructuredData data={{"@context": "https://schema.org", "@type": "CollectionPage", name: "Safaris, treks and Zanzibar", url: `${siteOrigin}/trips`}}/><section className="trips-intro section-shell"><Image src="/images/figma/trips-hero-figma.png" alt="Zebras crossing the Tanzanian plains" fill loading="eager" quality={90} sizes="100vw"/><div><p>Home&nbsp; / &nbsp;Our trips</p><SectionEyebrow>Our trips</SectionEyebrow><h1>Safaris, treks and Zanzibar</h1><p>All our safaris start and end at your accommodation in Arusha. Accommodation, meals, transport and drinking water are included. These are our most popular trips, and every one can be customised.</p><div><span>Route-specific prices</span><span>Join a group or go private</span><span>Park fees included</span></div></div></section><TripsDirectory key={initialCategory} initialCategory={initialCategory} kilimanjaroTrips={kilimanjaroTrips} mountMeruTrips={mountMeruTrips} zanzibarTrips={zanzibarTrips} safariItineraryTrips={safariItineraryTrips} itinerarySlugs={itineraries.map(item => item.slug)}/></MarketingShell>;
 }

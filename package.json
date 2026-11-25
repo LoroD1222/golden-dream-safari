@@ -9,7 +9,8 @@
     "lint": "eslint .",
     "typecheck": "tsc --noEmit",
     "test": "tsc -p tsconfig.tests.json && node --test .test-dist/tests/*.test.js && npm run typecheck",
-    "content:swt": "node scripts/build-swt-itineraries.mjs --download-images"
+    "content:swt": "node scripts/build-swt-itineraries.mjs --download-images",
+    "content:zanzibar": "node scripts/build-zanzibar-itineraries.mjs"
   },
   "dependencies": {
     "@fontsource-variable/urbanist": "^5.2.8",
