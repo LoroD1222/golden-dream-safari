@@ -502,6 +502,20 @@ main,section,article,aside,nav,header,footer,div {min-width: 0}
   .trip-price__actions .button {justify-content: space-between}
 }
 
+.included-collage__controls {position: absolute; z-index: 4; top: 18px; right: -24px; display: flex; align-items: center; gap: 8px; padding: 6px; border-radius: 999px; background: rgba(255,255,255,.94); box-shadow: 0 10px 28px rgba(20,18,16,.18); backdrop-filter: blur(8px)}
+.included-collage__controls button {display: grid; width: 36px; height: 36px; padding: 0; place-items: center; border: 0; border-radius: 50%; background: var(--cream); color: var(--ink); font-size: 18px; cursor: pointer; transition: background-color .2s ease,transform .2s ease}
+.included-collage__controls button:hover,.included-collage__controls button:focus-visible {background: var(--orange); transform: scale(1.05)}
+.included-collage__controls span {min-width: 38px; color: var(--ink); font-size: 12px; font-weight: 700; text-align: center}
+
+@media (max-width: 1000px) {
+  .included-collage__controls {right: 12px}
+}
+
+@media (max-width: 600px) {
+  .included-collage__controls {top: 12px; right: 10px; gap: 5px; padding: 5px}
+  .included-collage__controls button {width: 32px; height: 32px}
+}
+
 /* Homepage annotation pass — Figma is the source of truth. */
 .home-about__photos img,
 .popular-card__photo>img,
