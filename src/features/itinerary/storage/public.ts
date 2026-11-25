@@ -9,8 +9,8 @@ async function list(): Promise<Itinerary[]> {
   try {
     const sanityItems = await listSanityItineraries();
     if (sanityItems.length > 0) {
-      const bySlug = new Map(localItems.map(item => [item.slug, item]));
-      sanityItems.forEach(item => bySlug.set(item.slug, item));
+      const bySlug = new Map<string, Itinerary>(sanityItems.map(item => [item.slug, item]));
+      localItems.forEach(item => bySlug.set(item.slug, item));
       return [...bySlug.values()].sort((a, b) => b.updatedAt.localeCompare(a.updatedAt));
     }
   } catch (error) {

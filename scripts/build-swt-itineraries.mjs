@@ -9,6 +9,12 @@ const publicImageRoot = "/images/itineraries/swt";
 const generatedAt = "2026-11-25T00:00:00.000Z";
 const shouldDownload = process.argv.includes("--download-images");
 
+const goldenDreamMountMeruImages = [
+  {src: "/images/figma/6a496e48-5dd1-4dc8-8023-5c6bc0d6dfb4.png", alt: "Mount Meru rising above Arusha"},
+  {src: "/images/team/chaina-driver-guide.webp", alt: "Golden Dream Safaris driver-guide and guests beside a company vehicle"},
+  {src: "/images/team/safari-crew.jpg", alt: "Golden Dream Safaris guests and team with a company vehicle"},
+];
+
 const joiningRoot = "03-Serengeti-Wild-Tours-Joining-Group-Safaris-SAFE-RESTORE (3)/03-Joining-Group-Safaris-MOTHER-CARDS-STRUCTURED-DATA-FINAL/Individual-Package-ZIPs";
 const privateRoot = "Serengeti_Wild_Tours_Private_and_Joining_Safaris_CORRECTED_Designer_Upload (3)/Serengeti_Wild_Tours_Private_and_Joining_Safaris_Corrected";
 const migrationRoot = "04-Great-Migration-Safaris-FLAT-PACKAGE-URL-NO-MOTHER-FORM-FINAL/04-Great-Migration-Safaris-MOTHER-CARDS-STRUCTURED-DATA-FINAL/Individual-Package-ZIPs";
@@ -198,7 +204,7 @@ function makeItinerary(source) {
     summary: trip.description,
     heroImage: images[0]?.src,
     overviewTitle: isMeru ? `Why choose the ${trip.name.replace(" in Tanzania", "")}?` : `About this ${source.routeFamily.toLowerCase()}`,
-    overviewParagraphs: [trip.description, isMeru ? "Mount Meru is a quieter hut-based climb through Arusha National Park, finishing at Socialist Peak at 4,566 metres." : `This SWT route is published as a ${source.routeFamily.toLowerCase()} and can be confirmed around your dates and preferred accommodation.`],
+    overviewParagraphs: [trip.description, isMeru ? "Mount Meru is a quieter hut-based climb through Arusha National Park, finishing at Socialist Peak at 4,566 metres." : `This ${source.routeFamily.toLowerCase()} itinerary can be confirmed around your dates and preferred accommodation.`],
     highlights: isMeru ? ["Licensed guide and armed park ranger", "Hut accommodation on Mount Meru", "Socialist Peak at 4,566 metres", "Transfers from Arusha or Moshi"] : [destinations.slice(0, 2).join(" and "), source.routeFamily === "Joining Safari" ? "Shared safari departure with a published per-person price" : "Private 4x4 and professional driver-guide", "Park fees, meals and accommodation included", "Arusha pick-up and drop-off"],
     galleryImages: images,
     routeStops,
@@ -222,6 +228,20 @@ function makeItinerary(source) {
     relatedTripSlugs: [],
     createdAt: generatedAt,
     updatedAt: generatedAt,
+  };
+}
+
+function useGoldenDreamMountMeruImages(itinerary) {
+  if (itinerary.tripType !== "Mount Meru trek") return itinerary;
+
+  return {
+    ...itinerary,
+    heroImage: goldenDreamMountMeruImages[0].src,
+    galleryImages: goldenDreamMountMeruImages,
+    days: itinerary.days.map((day, index) => {
+      const image = goldenDreamMountMeruImages[index % goldenDreamMountMeruImages.length];
+      return {...day, image: image.src, imageAlt: image.alt};
+    }),
   };
 }
 
@@ -252,7 +272,7 @@ async function downloadImages(itineraries) {
   console.log(`Prepared ${referenced.size} local SWT image references.`);
 }
 
-const generated = sources.map(makeItinerary);
+const generated = sources.map(makeItinerary).map(useGoldenDreamMountMeruImages);
 for (const category of ["Joining Safari", "Great Migration North", "Ndutu Calving Safari", "Private Safari"]) {
   const count = generated.filter(item => item.routeFamily === category).length;
   if (count !== 3) throw new Error(`${category} must contain exactly three generated itineraries; found ${count}.`);
