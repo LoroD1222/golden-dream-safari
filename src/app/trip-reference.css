@@ -154,16 +154,23 @@
 .trip-ref-itinerary details[open] .trip-ref-day-chevron {transform: rotate(0deg)}
 .trip-ref-day-content {padding-bottom: 35px}
 .trip-ref-day-summary {margin: 20px 0 28px; color: var(--rit-ink); font-size: 18px; font-weight: 500; line-height: 1.6}
-.trip-ref-day-facts {display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 12px; margin: 0 0 24px}
+.trip-ref-day-facts {display: grid; grid-template-columns: repeat(auto-fit,minmax(135px,1fr)); gap: 12px; margin: 0 0 24px}
 .trip-ref-day-facts>div {padding: 14px 16px; border-radius: 12px; background: var(--rit-cream)}
 .trip-ref-day-facts dt {color: var(--rit-muted); font-size: 10px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase}
 .trip-ref-day-facts dd {margin: 5px 0 0; color: var(--rit-ink); font-size: 13px; font-weight: 600; line-height: 1.45}
 
 .trip-ref-day-experience {margin: 0 0 30px; overflow: hidden; border: 1px solid var(--rit-line); border-radius: 16px; background: #fff; box-shadow: 0 12px 30px rgba(42,31,20,.08)}
-.trip-ref-day-experience.has-both {display: grid; grid-template-columns: minmax(0,1.08fr) minmax(260px,.92fr)}
-.trip-ref-day-experience figure {position: relative; min-width: 0; min-height: 280px; margin: 0; overflow: hidden; background: #e9e5de}
-.trip-ref-day-experience figure img {object-fit: cover; object-position: center}
-.trip-ref-day-narrative {align-self: center; margin: 0; padding: 28px; color: var(--rit-copy); font-size: 15px; font-weight: 400; line-height: 1.75}
+.trip-ref-day-experience.has-both {display: grid; grid-template-columns: minmax(0,1.02fr) minmax(300px,.98fr); align-items: stretch}
+.trip-ref-day-experience figure {position: relative; min-width: 0; min-height: 300px; margin: 0; overflow: hidden; background: #e9e5de; isolation: isolate}
+.trip-ref-day-experience figure img {width: 100%; height: 100%; object-fit: cover; object-position: center; transition: transform .35s ease}
+.trip-ref-day-experience:hover figure img {transform: scale(1.025)}
+.trip-ref-day-copy {display: flex; min-width: 0; justify-content: center; flex-direction: column; padding: 28px}
+.trip-ref-day-copy>span {margin-bottom: 10px; color: var(--rit-accent-ink); font-size: 10px; font-weight: 800; letter-spacing: .1em; text-transform: uppercase}
+.trip-ref-day-narrative {margin: 0; color: var(--rit-copy); font-size: 15px; font-weight: 400; line-height: 1.75}
+.trip-ref-day-copy ul {display: grid; gap: 11px; margin: 18px 0 0; padding: 18px 0 0; border-top: 1px solid var(--rit-line); list-style: none}
+.trip-ref-day-copy li {display: grid; gap: 3px; color: var(--rit-copy); font-size: 13px; line-height: 1.55}
+.trip-ref-day-copy li strong {color: var(--rit-ink); font-size: 14px}
+.trip-ref-day-copy>small {display: block; margin-top: 18px; color: var(--rit-muted); font-size: 12px; font-weight: 650; line-height: 1.45}
 
 .trip-ref-day-meta {display: flex; align-items: center; justify-content: space-between; gap: 20px; padding: 20px 0 28px; border-top: 1px solid var(--rit-line)}
 .trip-ref-accommodation-label {display: inline-flex; align-items: center; gap: 15px; color: var(--rit-ink); font-size: 20px; font-weight: 500; line-height: 28px}
@@ -224,7 +231,7 @@
   .trip-route-map-stops ol {display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 0 18px}
   .trip-ref-quote {max-width: 446px}
   .trip-ref-day-experience.has-both {grid-template-columns: 1fr}
-  .trip-ref-day-experience figure {min-height: 300px}
+  .trip-ref-day-experience figure {min-height: 0; aspect-ratio: 16/10}
 }
 
 @media(max-width:700px) {
@@ -238,11 +245,12 @@
   .trip-ref-itinerary summary {min-height: 72px; gap: 8px; padding: 14px 8px; font-size: 16px; line-height: 1.35}
   .trip-ref-day-chevron {width: 42px; height: 42px}
   .trip-ref-day-summary {font-size: 16px}
-  .trip-ref-day-facts {grid-template-columns: 1fr; gap: 8px}
+  .trip-ref-day-facts {grid-template-columns: repeat(2,minmax(0,1fr)); gap: 8px}
   .trip-ref-day-meta {flex-wrap: wrap; gap: 8px 18px}
   .trip-ref-day-experience {border-radius: 13px}
-  .trip-ref-day-experience figure {min-height: 225px}
-  .trip-ref-day-narrative {padding: 20px; font-size: 14px; line-height: 1.7}
+  .trip-ref-day-experience figure {min-height: 0; aspect-ratio: 16/10}
+  .trip-ref-day-copy {padding: 20px}
+  .trip-ref-day-narrative {font-size: 14px; line-height: 1.7}
   .trip-ref-accommodation-label,.trip-ref-meal {font-size: 16px; line-height: 1.4}
   .trip-ref-lodge-tier {font-size: 16px}
   .trip-ref-lodge-photo {--trip-ref-lodge-photo-height:260px}
@@ -253,6 +261,7 @@
 @media(max-width:480px) {
   .trip-ref-itinerary-title {display: block}
   .trip-ref-itinerary-toggle {width: 100%; margin-top: 15px}
+  .trip-ref-day-facts {grid-template-columns: 1fr}
 }
 
 @media(prefers-reduced-motion:reduce) {

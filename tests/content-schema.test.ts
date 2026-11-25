@@ -36,14 +36,41 @@ test("every published itinerary has one canonical, auditable price record", () =
   }
 
   const safari = items.find(item => item.slug === "tarangire-serengeti-ngorongoro");
-  assert.equal(safari?.startingPrice, 720);
-  assert.equal((safari?.priceTiers as Array<{price: string}> | undefined)?.[0]?.price, "$180");
+  assert.equal(safari?.startingPrice, 1795);
+  assert.deepEqual((safari?.priceTiers as Array<{price: string}> | undefined)?.map(tier => tier.price), ["$1,795", "$1,460", "$1,350"]);
 
   for (const slug of ["tarangire-serengeti-ngorongoro", "tarangire-national-park-day-safari", "ngorongoro-crater-day-trip"]) {
     const featured = items.find(item => item.slug === slug);
     assert.equal(featured?.status, "published", `${slug} must remain published for the homepage`);
     assert.equal(typeof featured?.startingPrice, "number", `${slug} must have a confirmed homepage price`);
   }
+});
+
+test("every published itinerary has traceable source provenance", () => {
+  const items = JSON.parse(readFileSync("data/seed-itineraries.json", "utf8")) as Array<Record<string, unknown>>;
+  const allowedSourcePrefixes = /^(swt|elementor|download-pdf|download-html):/;
+
+  for (const item of items) {
+    if (item.status !== "published") continue;
+    const slug = String(item.slug);
+    const sourceId = String(item.sourceId || "");
+    const sourceUrl = item.sourceUrl ? String(item.sourceUrl) : undefined;
+    const sourcePath = item.sourcePath ? String(item.sourcePath) : undefined;
+
+    assert.match(sourceId, allowedSourcePrefixes, `${slug} needs an approved source identifier`);
+    assert.ok(sourceUrl || sourcePath, `${slug} needs a source URL or supplied source file`);
+
+    if (sourceUrl) {
+      const url = new URL(sourceUrl);
+      assert.equal(url.protocol, "https:", `${slug} source URL must use HTTPS`);
+      assert.match(url.hostname, /^(www\.)?serengetiwildtours\.com$/, `${slug} source URL must point to SWT`);
+      assert.doesNotMatch(url.pathname, /^\/(kilimanjaro-packages|private-tanzania-safaris)\//, `${slug} uses an obsolete SWT source URL`);
+    }
+  }
+
+  const featured = items.find(item => item.slug === "tarangire-serengeti-ngorongoro");
+  assert.equal(featured?.sourceUrl, "https://www.serengetiwildtours.com/4-days-tarangire-serengeti-ngorongoro-private-safari/");
+  assert.equal(featured?.startingPrice, 1795);
 });
 
 test("a review can belong to an expanding set of categories", () => {
@@ -140,6 +167,41 @@ test("Mount Meru and Zanzibar are complete public itinerary collections", () => 
     assert.equal(parsed.data.days.length, parsed.data.durationDays);
     assert.ok(parsed.data.heroImage && existsSync(`public${parsed.data.heroImage}`));
   }
+});
+
+test("every published day has useful copy and a valid local image", () => {
+  const items = JSON.parse(readFileSync("data/seed-itineraries.json", "utf8")) as Array<Record<string, unknown>>;
+  let auditedDays = 0;
+
+  for (const item of items) {
+    if (item.status !== "published") continue;
+    const slug = String(item.slug);
+    const days = item.days as Array<{
+      dayNumber: number;
+      summary: string;
+      narrative?: string;
+      habitat?: string;
+      activityLevel?: string;
+      meals: string[];
+      image?: string;
+      imageAlt?: string;
+    }>;
+
+    assert.equal(days.length, item.durationDays, `${slug} must contain one record for every day`);
+    for (const day of days) {
+      auditedDays += 1;
+      assert.ok(day.summary.trim().length >= 18, `${slug} day ${day.dayNumber} needs a useful summary`);
+      assert.ok((day.narrative || "").trim().length >= 60, `${slug} day ${day.dayNumber} needs a useful narrative`);
+      assert.ok(day.habitat, `${slug} day ${day.dayNumber} needs habitat or setting context`);
+      assert.ok(day.activityLevel, `${slug} day ${day.dayNumber} needs an activity level`);
+      assert.ok(day.meals.length > 0, `${slug} day ${day.dayNumber} needs meal information`);
+      assert.ok(day.image?.startsWith("/images/"), `${slug} day ${day.dayNumber} needs a local image`);
+      assert.ok(day.imageAlt?.trim(), `${slug} day ${day.dayNumber} needs descriptive image alt text`);
+      assert.ok(existsSync(`public${day.image}`), `${slug} day ${day.dayNumber} image is missing: ${day.image}`);
+    }
+  }
+
+  assert.equal(auditedDays, 218);
 });
 
 test("the 8 Days Lemosho route matches the current published SWT itinerary", () => {

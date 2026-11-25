@@ -12,6 +12,20 @@ import type {StayOption} from "@/features/itinerary/trip-supplements";
 
 const fallbackDayImages = ["/images/figma/98118ae1-bb7c-432c-b7b1-433d27c59b13.png", "/images/figma/8a34ea1e-253b-41f7-8c0c-cac8586c40b4.png", "/images/figma/27222719-4ba9-4724-a440-0fcb7923b931.png", "/images/figma/66d4cce3-2303-4bdf-a3b9-8d8f56ab67de.png"];
 
+function normaliseCopy(value?: string) {
+  return value?.toLowerCase().replace(/[^a-z0-9]+/g, " ").trim() || "";
+}
+
+function dayFacts(day: ItineraryDay) {
+  return [
+    ["Habitat", day.habitat],
+    ["Journey", day.driveTime],
+    ["Distance", day.distance],
+    ["Pace", day.activityLevel],
+    ["Meals", day.meals.length ? day.meals.join(" · ") : undefined],
+  ].filter((fact): fact is [string, string] => Boolean(fact[1]));
+}
+
 export function InteractiveItinerary({
   days,
   routeStops: providedRouteStops,
@@ -102,29 +116,59 @@ export function InteractiveItinerary({
         >{allDaysOpen ? "Collapse All Days" : "Show All Days"}</button>
       </div>
 
-      {days.map((day, index) => <details
-        id={`day-${day.dayNumber}`}
-        data-itinerary-day={day.dayNumber}
-        open={openDays.has(index)}
-        key={day.id}
-      >
-        <summary onClick={event => {event.preventDefault(); toggleDay(index);}}>
-          <span className="trip-ref-day-number">Day {day.dayNumber}</span>
-          <span className="trip-ref-day-dot" aria-hidden="true"/>
-          <span className="trip-ref-day-name">{day.title}</span>
-          <Image className="trip-ref-day-chevron" src="/itinerary-assets/itinerary-chevron.svg" alt="" width={50} height={50}/>
-        </summary>
-        <div className="trip-ref-day-content">
-          <p className="trip-ref-day-summary">{day.summary}</p>
-          {day.habitat && <dl className="trip-ref-day-facts"><div><dt>Habitat</dt><dd>{day.habitat}</dd></div></dl>}
-          <div className="trip-ref-day-experience has-both">
-            <figure><Image src={day.image || fallbackDayImages[index] || fallbackDayImages[0]} alt={day.imageAlt || `${day.title} safari experience`} fill sizes="(max-width: 900px) 100vw, 50vw"/></figure>
-            <p className="trip-ref-day-narrative">{day.narrative || day.activities[0]?.description}</p>
+      {days.map((day, index) => {
+        const narrative = day.narrative || day.activities[0]?.description || day.summary;
+        const activityDetails = day.activities.filter(activity => {
+          const description = normaliseCopy(activity.description);
+          return description && description !== normaliseCopy(narrative) && description !== normaliseCopy(day.summary);
+        });
+        const facts = dayFacts(day);
+        const summaryAddsContext = normaliseCopy(day.summary) !== normaliseCopy(narrative);
+
+        return <details
+          id={`day-${day.dayNumber}`}
+          data-itinerary-day={day.dayNumber}
+          open={openDays.has(index)}
+          key={day.id}
+        >
+          <summary onClick={event => {event.preventDefault(); toggleDay(index);}}>
+            <span className="trip-ref-day-number">Day {day.dayNumber}</span>
+            <span className="trip-ref-day-dot" aria-hidden="true"/>
+            <span className="trip-ref-day-name">{day.title}</span>
+            <Image className="trip-ref-day-chevron" src="/itinerary-assets/itinerary-chevron.svg" alt="" width={50} height={50}/>
+          </summary>
+          <div className="trip-ref-day-content">
+            {summaryAddsContext && <p className="trip-ref-day-summary">{day.summary}</p>}
+            <dl className="trip-ref-day-facts">
+              {facts.map(([label, value]) => <div key={label}><dt>{label}</dt><dd>{value}</dd></div>)}
+            </dl>
+            <div className="trip-ref-day-experience has-both">
+              <figure>
+                <Image
+                  src={day.image || fallbackDayImages[index] || fallbackDayImages[0]}
+                  alt={day.imageAlt || `${day.title} safari experience`}
+                  fill
+                  quality={85}
+                  sizes="(max-width: 700px) calc(100vw - 32px), (max-width: 900px) calc(100vw - 68px), 430px"
+                />
+              </figure>
+              <div className="trip-ref-day-copy">
+                <span>What to expect</span>
+                <p className="trip-ref-day-narrative">{narrative}</p>
+                {activityDetails.length > 0 && <ul>
+                  {activityDetails.map(activity => <li key={activity.id}>
+                    <strong>{activity.title}</strong>
+                    <span>{activity.description}</span>
+                  </li>)}
+                </ul>}
+                {day.activities[0]?.location && <small>Day focus: {day.activities[0].location}</small>}
+              </div>
+            </div>
+            <ItineraryAccommodation day={day} options={staysByDay?.[day.dayNumber] || []} isFinalDay={day.dayNumber === days.length}/>
+            {day.dayNumber === days.length && <p className="trip-ref-dropoff-note">{day.dropOffNote || "No overnight today. This afternoon we drive back to Arusha and drop you at your accommodation."}</p>}
           </div>
-          <ItineraryAccommodation day={day} options={staysByDay?.[day.dayNumber] || []} isFinalDay={day.dayNumber === days.length}/>
-          {day.dayNumber === days.length && <p className="trip-ref-dropoff-note">{day.dropOffNote || "No overnight today. This afternoon we drive back to Arusha and drop you at your accommodation."}</p>}
-        </div>
-      </details>)}
+        </details>;
+      })}
     </div>
   </section>;
 }

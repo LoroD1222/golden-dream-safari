@@ -1,15 +1,19 @@
 [
   {
     "id": "golden-dream-tarangire-serengeti-ngorongoro",
+    "sourceId": "swt:4-days-tarangire-serengeti-ngorongoro-private-safari",
+    "sourcePath": "Serengeti_Wild_Tours_Private_and_Joining_Safaris_CORRECTED_Designer_Upload (3)/Serengeti_Wild_Tours_Private_and_Joining_Safaris_Corrected/4-day-tarangire-serengeti-ngorongoro-private-safari.html",
+    "sourceUrl": "https://www.serengetiwildtours.com/4-days-tarangire-serengeti-ngorongoro-private-safari/",
+    "routeFamily": "Private Safari",
     "tripType": "Wildlife safari",
     "slug": "tarangire-serengeti-ngorongoro",
-    "title": "Tarangire, Serengeti & Ngorongoro Crater",
-    "summary": "Tarangire's baobab trees, the Serengeti plains and a morning in the Ngorongoro Crater.",
+    "title": "4 Day Tarangire, Serengeti & Ngorongoro Private Safari",
+    "summary": "Four private safari days connect Tarangire's baobab and elephant country, Central Serengeti and the Ngorongoro Crater floor.",
     "heroImage": "/images/figma/9ee0aacc-baa1-43b0-90d6-54526abb5973.png",
     "overviewTitle": "About this safari",
     "overviewParagraphs": [
-      "Africa's famous baobab trees combined with Tanzania's best-known parks. Day 1 is in Tarangire, days 2 and 3 in the Serengeti, and day 4 in the Ngorongoro Crater.",
-      "You can join a group to keep the cost down, or book a private tour. The itinerary can be changed: add a park, an extra night or a few days on Zanzibar."
+      "This active four-day route moves from Tarangire elephant country into Central Serengeti and finishes with a descent into Ngorongoro Crater.",
+      "The private vehicle and guide keep the pace focused around your group. The route can be customized before booking, subject to accommodation availability."
     ],
     "highlights": [
       "Baobab trees and elephant herds in Tarangire",
@@ -120,7 +124,7 @@
       "Serengeti National Park",
       "Ngorongoro Crater"
     ],
-    "startingPrice": 720,
+    "startingPrice": 1795,
     "currency": "USD",
     "status": "published",
     "days": [
@@ -147,16 +151,11 @@
           }
         ],
         "accommodation": {
-          "name": "Campsite or lodge",
-          "category": "Group camping",
-          "location": "Mto wa Mbu",
-          "description": "Final property depends on the selected package."
+          "name": "Farm of Dreams Lodge or Fig Tree Campsite",
+          "category": "Other",
+          "location": "Karatu or Mto wa Mbu",
+          "description": "The published SWT route lists Farm of Dreams Lodge for the mid-range option and Fig Tree Campsite for camping."
         },
-        "accommodationIds": [
-          "accommodation-karibu-river-camp",
-          "accommodation-nimali-tarangire",
-          "accommodation-nimali-tarangire-private"
-        ],
         "image": "/images/figma/98118ae1-bb7c-432c-b7b1-433d27c59b13.png",
         "imageAlt": "Arusha to Tarangire National Park safari experience"
       },
@@ -184,16 +183,11 @@
           }
         ],
         "accommodation": {
-          "name": "Campsite or lodge",
-          "category": "Group camping",
-          "location": "Serengeti",
-          "description": "Final property depends on the selected package."
+          "name": "Tukaone Camp, Robin Tented Camp or Nyani Campsite",
+          "category": "Other",
+          "location": "Central Serengeti",
+          "description": "The published SWT route names Tukaone or Robin for mid-range stays and Nyani Campsite for camping."
         },
-        "accommodationIds": [
-          "accommodation-karibu-river-camp",
-          "accommodation-lake-masek",
-          "accommodation-melia-serengeti"
-        ],
         "image": "/images/figma/8a34ea1e-253b-41f7-8c0c-cac8586c40b4.png",
         "imageAlt": "Mto wa Mbu to Serengeti National Park safari experience"
       },
@@ -221,16 +215,11 @@
           }
         ],
         "accommodation": {
-          "name": "Campsite or lodge",
-          "category": "Group camping",
-          "location": "Ngorongoro",
-          "description": "Final property depends on the selected package."
+          "name": "Ngorongoro Wild Camp or Simba Campsite",
+          "category": "Other",
+          "location": "Ngorongoro Conservation Area",
+          "description": "The published SWT route lists Ngorongoro Wild Camp for the mid-range option and Simba Campsite for camping."
         },
-        "accommodationIds": [
-          "accommodation-karibu-river-camp",
-          "accommodation-neptune-ngorongoro",
-          "accommodation-lemala-kuria-hills"
-        ],
         "image": "/images/figma/27222719-4ba9-4724-a440-0fcb7923b931.png",
         "imageAlt": "Serengeti to Ngorongoro Conservation Area safari experience"
       },
@@ -282,24 +271,25 @@
       "Special diets: tell us when you book",
       "Extra days in Tarangire, Lake Manyara or Arusha NP"
     ],
-    "priceIntroduction": "This four-day group-camping safari starts from $720 per person, calculated from the published $180 per-person daily rate. Your exact price depends on the number of people, accommodation, season and whether the safari is private or shared.",
+    "priceIntroduction": "The published mid-range rate is USD 1,795 per person for two travellers. The official SWT route lists USD 1,460 per person for four travellers and USD 1,350 per person for six travellers. Final accommodation and availability are confirmed before booking.",
     "priceTiers": [
       {
-        "name": "Group camping",
-        "price": "$180",
-        "suffix": "/pp/day",
-        "description": "Join a group and stay at campsites. A chef travels with you."
+        "name": "2 travellers",
+        "price": "$1,795",
+        "suffix": "/pp",
+        "description": "Published mid-range price per person for two travellers."
       },
       {
-        "name": "Mid-range lodge",
-        "price": "On request",
-        "description": "Lodges and tented camps, private or with a small group."
+        "name": "4 travellers",
+        "price": "$1,460",
+        "suffix": "/pp",
+        "description": "Published mid-range price per person for four travellers."
       },
       {
-        "name": "Private luxury",
-        "price": "up to $550",
-        "suffix": "/pp/day",
-        "description": "Your own vehicle and guide, staying in safari lodges."
+        "name": "6 travellers",
+        "price": "$1,350",
+        "suffix": "/pp",
+        "description": "Published mid-range price per person for six travellers."
       }
     ],
     "optionalExperiences": [
@@ -345,7 +335,7 @@
     "faqs": [
       {
         "question": "How much does a safari cost?",
-        "answer": "This four-day itinerary starts from $720 per person for group camping, calculated from $180 per person per day. Private lodge arrangements can be up to $550 per person per day. Park fees, accommodation, meals, transport and drinking water are included."
+        "answer": "The official SWT mid-range rate is USD 1,795 per person for two travellers, USD 1,460 per person for four travellers and USD 1,350 per person for six travellers. Final accommodation and availability are confirmed before booking."
       },
       {
         "question": "What's included?",
@@ -388,7 +378,7 @@
     "id": "kilimanjaro-5-days-marangu-route",
     "sourceId": "elementor:5-days-marangu-route-kilimanjaro.html",
     "sourcePath": "5-days-marangu-route-kilimanjaro.html",
-    "sourceUrl": "https://serengetiwildtours.com/kilimanjaro-packages/5-days-marangu-route/",
+    "sourceUrl": "https://www.serengetiwildtours.com/5-days-marangu-route-kilimanjaro/",
     "tripType": "Kilimanjaro trek",
     "routeFamily": "Marangu Route",
     "slug": "5-days-marangu-route",
@@ -780,7 +770,7 @@
     "id": "kilimanjaro-6-days-machame-route",
     "sourceId": "elementor:6-days-machame-route-kilimanjaro.html",
     "sourcePath": "6-days-machame-route-kilimanjaro.html",
-    "sourceUrl": "https://serengetiwildtours.com/kilimanjaro-packages/6-days-machame-route/",
+    "sourceUrl": "https://www.serengetiwildtours.com/6-days-machame-route-kilimanjaro/",
     "tripType": "Kilimanjaro trek",
     "routeFamily": "Machame Route",
     "slug": "6-days-machame-route",
@@ -1212,7 +1202,7 @@
     "id": "kilimanjaro-6-days-marangu-route",
     "sourceId": "elementor:6-days-marangu-route-kilimanjaro.html",
     "sourcePath": "6-days-marangu-route-kilimanjaro.html",
-    "sourceUrl": "https://serengetiwildtours.com/kilimanjaro-packages/6-days-marangu-route/",
+    "sourceUrl": "https://www.serengetiwildtours.com/6-days-marangu-route-kilimanjaro/",
     "tripType": "Kilimanjaro trek",
     "routeFamily": "Marangu Route",
     "slug": "6-days-marangu-route",
@@ -1645,12 +1635,12 @@
     "id": "kilimanjaro-6-days-rongai-route",
     "sourceId": "elementor:6-days-rongai-route-kilimanjaro.html",
     "sourcePath": "6-days-rongai-route-kilimanjaro.html",
-    "sourceUrl": "https://serengetiwildtours.com/kilimanjaro-packages/6-days-rongai-route/",
+    "sourceUrl": "https://www.serengetiwildtours.com/6-days-rongai-route-kilimanjaro/",
     "tripType": "Kilimanjaro trek",
     "routeFamily": "Rongai Route",
     "slug": "6-days-rongai-route",
     "title": "6 Day Rongai Route Kilimanjaro Climb",
-    "summary": "Book the 6 Day Rongai Route from USD 1,630. Includes Moshi hotel, transfers, park fees, meals, camping equipment and professional local guides.",
+    "summary": "Book the 6 Day Rongai Route from USD 1,626. Includes Moshi hotel, transfers, park fees, meals, camping equipment and professional local guides.",
     "heroImage": "/images/kilimanjaro-packages/6-days-rongai-route-kilimanjaro-private-trek.jpg",
     "overviewTitle": "Why choose the 6 Day Rongai Route?",
     "overviewParagraphs": [
@@ -1758,7 +1748,7 @@
       "Uhuru Peak",
       "Mount Kilimanjaro"
     ],
-    "startingPrice": 1630,
+    "startingPrice": 1626,
     "currency": "USD",
     "status": "published",
     "days": [
@@ -1971,7 +1961,7 @@
     "priceTiers": [
       {
         "name": "Route package",
-        "price": "From USD 1,630",
+        "price": "From USD 1,626",
         "description": "Per person starting price for the published route and services."
       },
       {
@@ -2077,7 +2067,7 @@
     "id": "kilimanjaro-6-days-umbwe-route",
     "sourceId": "elementor:6-days-umbwe-route-kilimanjaro.html",
     "sourcePath": "6-days-umbwe-route-kilimanjaro.html",
-    "sourceUrl": "https://serengetiwildtours.com/kilimanjaro-packages/6-days-umbwe-route/",
+    "sourceUrl": "https://www.serengetiwildtours.com/6-days-umbwe-route-kilimanjaro/",
     "tripType": "Kilimanjaro trek",
     "routeFamily": "Umbwe Route",
     "slug": "6-days-umbwe-route",
@@ -2510,7 +2500,7 @@
     "id": "kilimanjaro-7-days-lemosho-route",
     "sourceId": "elementor:7-days-lemosho-route-kilimanjaro.html",
     "sourcePath": "7-days-lemosho-route-kilimanjaro.html",
-    "sourceUrl": "https://serengetiwildtours.com/kilimanjaro-packages/7-days-lemosho-route/",
+    "sourceUrl": "https://www.serengetiwildtours.com/7-days-lemosho-route-kilimanjaro/",
     "tripType": "Kilimanjaro trek",
     "routeFamily": "Lemosho Route",
     "slug": "7-days-lemosho-route",
@@ -2983,7 +2973,7 @@
     "id": "kilimanjaro-7-days-machame-route",
     "sourceId": "elementor:7-days-machame-route-kilimanjaro.html",
     "sourcePath": "7-days-machame-route-kilimanjaro.html",
-    "sourceUrl": "https://serengetiwildtours.com/kilimanjaro-packages/7-days-machame-route/",
+    "sourceUrl": "https://www.serengetiwildtours.com/7-days-machame-route-kilimanjaro/",
     "tripType": "Kilimanjaro trek",
     "routeFamily": "Machame Route",
     "slug": "7-days-machame-route",
@@ -3457,7 +3447,7 @@
     "id": "kilimanjaro-7-days-rongai-route",
     "sourceId": "elementor:7-days-rongai-route-kilimanjaro.html",
     "sourcePath": "7-days-rongai-route-kilimanjaro.html",
-    "sourceUrl": "https://serengetiwildtours.com/kilimanjaro-packages/7-days-rongai-route/",
+    "sourceUrl": "https://www.serengetiwildtours.com/7-days-rongai-route-kilimanjaro/",
     "tripType": "Kilimanjaro trek",
     "routeFamily": "Rongai Route",
     "slug": "7-days-rongai-route",
@@ -3931,7 +3921,7 @@
     "id": "kilimanjaro-7-days-umbwe-route",
     "sourceId": "elementor:7-days-umbwe-route-kilimanjaro.html",
     "sourcePath": "7-days-umbwe-route-kilimanjaro.html",
-    "sourceUrl": "https://serengetiwildtours.com/kilimanjaro-packages/7-days-umbwe-route/",
+    "sourceUrl": "https://www.serengetiwildtours.com/7-days-umbwe-route-kilimanjaro/",
     "tripType": "Kilimanjaro trek",
     "routeFamily": "Umbwe Route",
     "slug": "7-days-umbwe-route",
@@ -4921,7 +4911,7 @@
     "id": "kilimanjaro-8-days-northern-circuit-route",
     "sourceId": "elementor:8-days-northern-circuit-route-kilimanjaro.html",
     "sourcePath": "8-days-northern-circuit-route-kilimanjaro.html",
-    "sourceUrl": "https://serengetiwildtours.com/kilimanjaro-packages/8-days-northern-circuit-route/",
+    "sourceUrl": "https://www.serengetiwildtours.com/8-days-northern-circuit-route-kilimanjaro/",
     "tripType": "Kilimanjaro trek",
     "routeFamily": "Northern Circuit Route",
     "slug": "8-days-northern-circuit-route",
@@ -5435,7 +5425,7 @@
     "id": "kilimanjaro-9-days-northern-circuit-route",
     "sourceId": "elementor:9-days-northern-circuit-route-kilimanjaro.html",
     "sourcePath": "9-days-northern-circuit-route-kilimanjaro.html",
-    "sourceUrl": "https://serengetiwildtours.com/kilimanjaro-packages/9-days-northern-circuit-route/",
+    "sourceUrl": "https://www.serengetiwildtours.com/9-days-northern-circuit-route-kilimanjaro/",
     "tripType": "Kilimanjaro trek",
     "routeFamily": "Northern Circuit Route",
     "slug": "9-days-northern-circuit-route",
@@ -11463,7 +11453,7 @@
     "id": "swt-3-day-serengeti-ngorongoro-safari",
     "sourceId": "swt:3-day-serengeti-ngorongoro-safari",
     "sourcePath": "Serengeti_Wild_Tours_Private_and_Joining_Safaris_CORRECTED_Designer_Upload (3)/Serengeti_Wild_Tours_Private_and_Joining_Safaris_Corrected/3-day-serengeti-ngorongoro-private-safari.html",
-    "sourceUrl": "https://serengetiwildtours.com/private-tanzania-safaris/3-day-serengeti-ngorongoro-safari/",
+    "sourceUrl": "https://www.serengetiwildtours.com/3-days-serengeti-ngorongoro-private-safari/",
     "tripType": "Wildlife safari",
     "routeFamily": "Private Safari",
     "slug": "3-day-serengeti-ngorongoro-safari",
@@ -11719,7 +11709,7 @@
     "id": "swt-5-day-tarangire-serengeti-ngorongoro-safari",
     "sourceId": "swt:5-day-tarangire-serengeti-ngorongoro-safari",
     "sourcePath": "Serengeti_Wild_Tours_Private_and_Joining_Safaris_CORRECTED_Designer_Upload (3)/Serengeti_Wild_Tours_Private_and_Joining_Safaris_Corrected/5-day-tarangire-serengeti-ngorongoro-private-safari.html",
-    "sourceUrl": "https://serengetiwildtours.com/private-tanzania-safaris/5-day-tarangire-serengeti-ngorongoro-safari/",
+    "sourceUrl": "https://www.serengetiwildtours.com/5-days-tarangire-serengeti-ngorongoro-private-safari/",
     "tripType": "Wildlife safari",
     "routeFamily": "Private Safari",
     "slug": "5-day-tarangire-serengeti-ngorongoro-safari",
@@ -12056,7 +12046,7 @@
     "id": "swt-7-day-northern-tanzania-private-safari",
     "sourceId": "swt:7-day-northern-tanzania-private-safari",
     "sourcePath": "Serengeti_Wild_Tours_Private_and_Joining_Safaris_CORRECTED_Designer_Upload (3)/Serengeti_Wild_Tours_Private_and_Joining_Safaris_Corrected/7-day-northern-tanzania-private-safari.html",
-    "sourceUrl": "https://serengetiwildtours.com/private-tanzania-safaris/7-day-northern-tanzania-private-safari/",
+    "sourceUrl": "https://www.serengetiwildtours.com/7-days-northern-tanzania-private-safari/",
     "tripType": "Wildlife safari",
     "routeFamily": "Private Safari",
     "slug": "7-day-northern-tanzania-private-safari",
