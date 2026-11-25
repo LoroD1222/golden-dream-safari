@@ -25,10 +25,10 @@ h1, h2, h3, h4 {line-height: 1.05; letter-spacing: -.035em}
 .section-shell {width: min(calc(100% - 68px), var(--shell)); margin-inline: auto}
 .section-pad {padding-block: 112px}
 
-.button {display: inline-flex; align-items: center; justify-content: center; gap: 13px; min-height: 50px; padding: 7px 5px 7px 20px; border: 1px solid transparent; border-radius: 999px; font-weight: 700; line-height: 1.15; transition: transform .2s, background .2s, color .2s}
+.button {display: inline-flex; flex: 0 0 auto; align-items: center; justify-content: center; gap: 13px; width: fit-content; min-height: 50px; padding: 7px 5px 7px 20px; border: 1px solid transparent; border-radius: 999px; font-weight: 700; line-height: 1.15; white-space: nowrap; transition: transform .2s, background .2s, color .2s}
 .button:hover {transform: translateY(-2px)}
 .button:focus-visible,a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,select:focus-visible,summary:focus-visible {outline: 3px solid color-mix(in srgb,var(--orange) 72%,white); outline-offset: 3px}
-.button__arrow {display: grid; width: 40px; height: 40px; place-items: center; border-radius: 50%; background: #fff; color: var(--orange); font-size: 24px; line-height: 1}
+.button__arrow {display: grid; flex: 0 0 auto; width: 40px; height: 40px; place-items: center; border-radius: 50%; background: #fff; color: var(--orange); font-size: 24px; line-height: 1}
 .button--orange {background: var(--orange); color: var(--ink)}
 .button--dark {background: var(--black); color: white; padding-right: 20px}
 .button--dark .button__arrow {background: var(--orange); color: var(--ink)}
