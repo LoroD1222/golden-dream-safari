@@ -131,16 +131,20 @@ export const otherTrips: TripCardData[] = [
 
 export const commonFaqs = [
   {
-    question: "How much does a safari cost?",
-    answer: "Each published itinerary shows its confirmed starting price when one is available. Routes without a published rate are marked as price on request. Your exact quote depends on group size, private or joining, accommodation, parks, season and trip length.",
+    question: "When is the best time to visit Tanzania?",
+    answer: "Tanzania is a year-round destination. June to October is excellent for wildlife viewing, while January to March is ideal for the wildebeest calving season in Ndutu. For Kilimanjaro, January to March and June to October are popular climbing periods.",
   },
-  {question: "What's included?", answer: "Accommodation, meals on safari, transport, drinking water and park activities listed in your proposal are included."},
-  {question: "Can I change the itinerary?", answer: "Yes. Every trip can be changed until it fits your dates, interests and preferred comfort level."},
-  {question: "Private tour or join a group?", answer: "Both are possible. Tell us your preference and we will explain the options for your dates."},
-  {question: "When is the best time to go?", answer: "Tanzania is a year-round destination. The best time depends on the parks, wildlife and activities you want to experience."},
-  {question: "Can you arrange airport transfers and a hotel in Arusha?", answer: "Yes. Airport transfers and an Arusha hotel before or after your trip can be added on request."},
-  {question: "I have dietary requirements. Is that OK?", answer: "Yes. Tell us about dietary requirements when you request your quote so the team can plan ahead."},
-  {question: "How do I book?", answer: "Send your dates and group details. We will prepare an itinerary and price, then explain the next steps."},
+  {question: "How much does a Tanzania safari cost?", answer: "Safari prices depend on the duration, travel season, accommodation and number of travellers. We offer affordable group joining safaris, private mid-range safaris and luxury experiences to suit different budgets."},
+  {question: "What is the difference between a private and group joining safari?", answer: "A private safari gives you exclusive use of your vehicle and guide, with greater flexibility. A group joining safari allows you to share the experience and cost with other travellers."},
+  {question: "Where and when can I see the Great Migration?", answer: "The Great Migration moves throughout the Serengeti ecosystem. From the calving season in Ndutu to the Mara River crossings in Northern Serengeti, we recommend the best locations based on your travel dates and seasonal wildlife movements."},
+  {question: "Can beginners climb Mount Kilimanjaro?", answer: "Yes. Many of our climbers have no previous mountaineering experience. With proper physical preparation, sufficient acclimatization and experienced mountain guides, Kilimanjaro is achievable for many first-time trekkers."},
+  {question: "Which Kilimanjaro route is best?", answer: "We particularly recommend the 8-day Lemosho Route for its spectacular scenery and gradual acclimatization. The Machame, Marangu, Rongai and Northern Circuit routes also offer different advantages depending on your preferences and available time."},
+  {question: "How do you ensure safety during Kilimanjaro climbs?", answer: "Our mountain safety procedures include trained guides, daily health monitoring, pulse oximeters, emergency oxygen and evacuation arrangements. Your wellbeing always takes priority over reaching the summit."},
+  {question: "Can I combine Kilimanjaro, a wildlife safari and Zanzibar?", answer: "Absolutely. We specialize in tailor-made Tanzania holidays combining mountain expeditions, wildlife safaris and Zanzibar beach escapes in one seamlessly organized journey."},
+  {question: "Do you organize trips for solo travellers?", answer: "Yes. We welcome solo travellers on both private and group joining safaris and Kilimanjaro expeditions."},
+  {question: "Can you accommodate special dietary requirements?", answer: "Yes. Vegetarian, vegan, gluten-free and other dietary requirements can be accommodated with advance notice."},
+  {question: "How do I book with Golden Dream Safaris?", answer: "Simply share your travel dates, interests and budget with us. We will prepare a personalized itinerary and quotation, explain the booking process and guide you through every step."},
+  {question: "Is Golden Dream Safaris a local Tanzanian tour operator?", answer: "Yes. Golden Dream Safaris is a locally owned tour operator based in Arusha, Tanzania, founded by professionally trained wildlife guide Victor Costa."},
 ];
 
 export const siteOrigin = (process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000").replace(/\/+$/, "");

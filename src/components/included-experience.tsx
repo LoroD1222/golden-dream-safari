@@ -6,8 +6,8 @@ import {SectionEyebrow} from "@/components/button-link";
 
 const offers = [
   {
-    title: "Safaris & treks",
-    description: "Game drives in the Serengeti, Ngorongoro, Tarangire, Lake Manyara and Arusha National Park, plus Kilimanjaro and Mount Meru climbs and Zanzibar.",
+    title: "Safaris & Mountain Expeditions",
+    description: "Expertly planned wildlife safaris, Kilimanjaro climbs, Mount Meru treks and Zanzibar holidays.",
     icon: "/icons/figma/included-asset-5.svg",
     primaryImage: "/images/figma/included-safari-primary.png",
     primaryAlt: "Zebra and wildebeest beside flamingos on a Tanzanian lake",
@@ -18,8 +18,8 @@ const offers = [
     secondaryPosition: "center",
   },
   {
-    title: "Local guides",
-    description: "Victor and his team of local guides, drivers and chefs.",
+    title: "Professional Local Guides",
+    description: "Experienced wildlife and mountain specialists dedicated to your safety, comfort and adventure.",
     icon: "/icons/figma/included-asset-3.svg",
     primaryImage: "/images/figma/victor-host.png",
     primaryAlt: "Victor Costa guiding guests during a wildlife safari",
@@ -30,8 +30,8 @@ const offers = [
     secondaryPosition: "center",
   },
   {
-    title: "Camping or lodges",
-    description: "Choose camping, a tented lodge or a safari lodge. Each itinerary shows its confirmed starting rate, or clearly says when a tailored quote is required.",
+    title: "Comfort for Every Travel Style",
+    description: "From wilderness camping and luxury safari lodges to quality mountain equipment and freshly prepared meals.",
     icon: "/icons/figma/included-asset-4.svg",
     primaryImage: "/images/accommodations/nimali-tarangire.webp",
     primaryAlt: "Safari lodge surrounded by the Tanzanian bush",
@@ -51,8 +51,8 @@ export function IncludedExperience() {
     <section className="included section-shell section-pad" id="included">
       <div className="included-copy">
         <SectionEyebrow>What we offer</SectionEyebrow>
-        <h2>What&apos;s included in every safari</h2>
-        <p>Park entry fees, accommodation, all meals, transport in a safari vehicle and drinking water. Airport transfers and a hotel in Arusha can be added on request.</p>
+        <h2>Exceptional Adventures. Every Detail Considered.</h2>
+        <p>From Tanzania wildlife safaris to Kilimanjaro expeditions, we carefully plan every detail for your comfort, safety and enjoyment.</p>
         <ol className="included-list" aria-label="Safari inclusions">
           {offers.map((offer, index) => (
             <li key={offer.title}>
@@ -69,6 +69,7 @@ export function IncludedExperience() {
             </li>
           ))}
         </ol>
+        <p>Every itinerary includes transparent pricing and clearly defined inclusions, so you know exactly what to expect.</p>
       </div>
       <div className="included-collage" id="included-visual" aria-live="polite" aria-label={`Images for ${activeOffer.title}`}>
         <div className="included-collage__large" key={`${activeIndex}-large`}>
