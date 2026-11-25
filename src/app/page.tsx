@@ -7,6 +7,7 @@ import {MarketingShell} from "@/components/marketing-shell";
 import {StructuredData} from "@/components/structured-data";
 import {FigmaIcon, RatingStars} from "@/components/figma-icon";
 import {IncludedExperience} from "@/components/included-experience";
+import {WhatsAppIcon} from "@/components/whatsapp-icon";
 import {contactDetails, siteOrigin} from "@/data/site";
 import {getPublicReviewRepository, getPublicSiteSettingsRepository} from "@/features/content/storage";
 import {formatItineraryDuration, formatItineraryPrice} from "@/features/itinerary/presentation";
@@ -80,7 +81,7 @@ export default async function HomePage() {
           <h1><span>Tanzania Safaris &amp;</span><span>Kilimanjaro Adventures,</span><span><em>Personally Crafted.</em></span></h1>
           <p className="home-hero__lead">From the legendary Serengeti plains to the summit of Mount Kilimanjaro and the pristine beaches of Zanzibar, discover Tanzania with experienced local guides who call it home.</p>
           <p className="home-hero__support">Private and group adventures, exceptional value and genuine Tanzanian hospitality. Your dream. Our expertise. Your Tanzania.</p>
-          <div className="hero-actions"><ButtonLink href="/contact#quote" variant="light">Plan Your Tanzania Adventure</ButtonLink><ButtonLink href="/trips" variant="outline">Explore Our Tours</ButtonLink></div>
+          <div className="hero-actions"><ButtonLink href="/contact#quote" variant="light">Plan Your Tanzania Adventure</ButtonLink><a className="whatsapp-text-link whatsapp-text-link--light" href={settings.company.whatsapp}><WhatsAppIcon/>WhatsApp Victor</a></div>
         </div>
       </div>
       <div className="home-highlights"><a className="highlight highlight--dark" href={reviewSettings.sourceUrl}><Image src="/images/figma/tripadvisor-highlight.png" alt={reviewSettings.sourceName} width={64} height={64}/><div><RatingStars compact/><strong>{reviewSettings.aggregateRating} rated on {reviewSettings.sourceName}</strong><small>Based on {reviewSettings.aggregateCount} reviews</small></div></a><a className="highlight highlight--whatsapp" href={settings.company.whatsapp}><span className="highlight__whatsapp-icon"><FigmaIcon name="footer-whatsapp" width={26}/></span><div><small>Talk to Victor directly</small><strong>{settings.company.phone}</strong><span>Chat on WhatsApp →</span></div></a><Link className="highlight highlight--orange" href="/contact#quote"><div><strong>Fair, route-specific prices</strong><small>{priceSummary}. Open an itinerary for its confirmed starting rate and inclusions.</small></div><span><FigmaIcon name="arrow-highlight" width={28}/></span></Link></div>
