@@ -48,7 +48,7 @@ export function SiteHeader() {
 
   return <header className="site-header">
     <Link className="brand" href="/" aria-label="Golden Dream Safaris home" onClick={() => setOpen(false)}>
-      <Image src="/images/figma/brand-mark.png" alt="" width={35} height={35} priority />
+      <Image src="/images/figma/brand-mark.png" alt="" width={35} height={35} loading="eager" />
       <span>Golden Dream Safaris</span>
     </Link>
     <button className="menu-toggle" type="button" aria-label={open ? "Close navigation" : "Open navigation"} aria-expanded={open} aria-controls="site-navigation" onClick={() => setOpen(value => !value)}>

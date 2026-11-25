@@ -55,7 +55,7 @@ export default async function KilimanjaroPage() {
   return <MarketingShell>
     <StructuredData data={collection}/>
     <section className="kili-hero section-shell">
-      <Image src="/images/kilimanjaro-packages/kilimanjaro-climbing-packages-serengeti-wild-tours.jpg" alt="Kilimanjaro climbers with the mountain behind them" fill priority quality={90} sizes="100vw"/>
+      <Image src="/images/kilimanjaro-packages/kilimanjaro-climbing-packages-serengeti-wild-tours.jpg" alt="Kilimanjaro climbers with the mountain behind them" fill loading="eager" quality={90} sizes="100vw"/>
       <div className="kili-hero__shade"/>
       <div className="kili-hero__content">
         <p>Home&nbsp; / &nbsp;Kilimanjaro</p>

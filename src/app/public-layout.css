@@ -12,8 +12,8 @@
   }
 
   body .home-top {
-    padding-right: var(--public-frame-right);
-    padding-left: var(--public-frame-left);
+    padding-right: 40px;
+    padding-left: 34px;
   }
 
   /* Keep the Reviews introduction clear of the rating card. */
@@ -78,6 +78,11 @@
   body:has(.trip-detail-hero) .site-header {
     padding-right: var(--public-frame-right);
     padding-left: var(--public-frame-left);
+  }
+
+  body:has(.home-top) .site-header {
+    padding-right: 40px;
+    padding-left: 34px;
   }
 
   body .section-shell,
@@ -145,8 +150,8 @@
   }
 
   body:has(.trip-detail-hero) .trip-price {
-    padding-right: var(--public-frame-right);
-    padding-left: var(--public-frame-left);
+    padding-right: 24px;
+    padding-left: 24px;
   }
 
   body .site-footer {

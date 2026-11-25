@@ -312,10 +312,15 @@ export async function generateItineraryPdf(itinerary: Itinerary, profile?: Itine
     if (stays.length) {
       page.drawText("ACCOMMODATION OPTIONS", {x: 42, y: 202, size: 7.2, font: bold, color: orangeDeep});
       await drawAccommodationCards(page, pdf, stays, fonts, imageCache);
-    } else {
+    } else if (day.dayNumber === itinerary.days.length) {
       page.drawRectangle({x: 42, y: 88, width: 511, height: 112, color: pale, borderColor: line, borderWidth: .6});
       page.drawText("END OF SAFARI", {x: 60, y: 172, size: 7.2, font: bold, color: orangeDeep});
-      drawLines(page, "After the crater game drive and picnic lunch, return to your accommodation in Arusha. Airport transfer or an extra hotel night can be added on request.", {x: 60, y: 150, width: 470, size: 9.5, font: regular, color: ink, lineHeight: 14, maxLines: 4});
+      drawLines(page, day.dropOffNote || "After the final activity, return to your accommodation. Airport transfer or an extra hotel night can be added on request.", {x: 60, y: 150, width: 470, size: 9.5, font: regular, color: ink, lineHeight: 14, maxLines: 4});
+    } else {
+      page.drawRectangle({x: 42, y: 88, width: 511, height: 112, color: pale, borderColor: line, borderWidth: .6});
+      page.drawText("OVERNIGHT DETAILS", {x: 60, y: 172, size: 7.2, font: bold, color: orangeDeep});
+      drawLines(page, day.accommodation?.name || "Accommodation confirmed with your package", {x: 60, y: 150, width: 470, size: 10.5, font: bold, color: ink, lineHeight: 14, maxLines: 2});
+      drawLines(page, day.accommodation ? `${day.accommodation.location}. ${day.accommodation.description}` : "The confirmed property and room category are listed in your final quotation.", {x: 60, y: 119, width: 470, size: 8.5, font: regular, color: muted, lineHeight: 12, maxLines: 3});
     }
   }
 

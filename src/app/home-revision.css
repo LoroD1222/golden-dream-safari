@@ -4,12 +4,26 @@
   .site-nav__item {gap: 9px; font-size: 14px}
 }
 
-.home-top .home-hero__copy {width: 580px; flex-basis: 580px}
-.home-top .home-hero__copy .section-eyebrow {align-self: flex-start}
+.home-top .home-hero__copy {width: 760px; flex-basis: 760px}
+.home-top .home-hero__copy .section-eyebrow {
+  display: block;
+  padding: 0;
+  border-radius: 0;
+  background: transparent;
+  color: var(--orange);
+  font-size: 14px;
+  line-height: 1.2;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+}
+.home-top .home-hero__copy .section-eyebrow::before {
+  content: none;
+}
 .home-top .button--light .button__arrow {background: var(--orange)}
-.home-top .home-hero__copy h1 {display: block; width: 580px; max-width: 580px}
-.home-top .home-hero__copy>p {width: 480px; max-width: 100%; font-size: 16px}
-.home-top .home-hero__overlay {background: linear-gradient(90.7deg,rgba(0,0,0,.94) .26%,rgba(0,0,0,.5) 42%,rgba(0,0,0,0) 68%)}
+.home-top .home-hero__copy h1 {display: block; width: 760px; max-width: 100%; font-size: 56px; line-height: 1.05; letter-spacing: -1.4px}
+.home-top .home-hero__copy h1>span {display: block}
+.home-top .home-hero__copy>p {width: 520px; max-width: 100%; font-size: 16px}
+.home-top .home-hero__overlay {background: linear-gradient(90.8deg,#000 .26%,rgba(0,0,0,0) 55%)}
 .highlight--orange>div {max-width: 330px}
 .highlight--orange>div>strong {font-size: 22px; line-height: 1.2}
 .highlight--orange>div>small {margin-top: 5px; font-size: 14px; line-height: 1.35}
@@ -38,7 +52,7 @@
 .popular-safaris .center-heading {max-width: 1120px; margin-bottom: 46px}
 .popular-safaris .center-heading h2 {margin: 12px 0; font-size: 60px; line-height: 1.02}
 .popular-safaris .center-heading>p {font-size: 18px; line-height: 1.55}
-.popular-list--figma {display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 20px; margin-bottom: 36px}
+.popular-list--figma {display: grid; grid-template-columns: repeat(4,minmax(0,1fr)); gap: 20px; margin-bottom: 36px}
 .popular-card--figma {display: flex; height: auto; min-height: 675px; padding: 10px 10px 24px; flex-direction: column; gap: 0; overflow: hidden; border-radius: 28px; background: #fff}
 .popular-card--figma .popular-card__photo {position: relative; flex: 0 0 340px; width: 100%; overflow: hidden; border-radius: 20px; color: #fff}
 .popular-card__photo>img {object-fit: cover}
@@ -85,9 +99,8 @@
 .host-photo>img {object-position: 68% center}
 
 @media (max-width: 1100px) {
-  .home-top .home-hero__copy,.home-top .home-hero__copy h1 {width: min(580px,100%); flex-basis: auto}
+  .home-top .home-hero__copy,.home-top .home-hero__copy h1 {width: min(760px,100%); flex-basis: auto}
   .popular-list--figma {grid-template-columns: 1fr 1fr}
-  .popular-card--figma:last-child {grid-column: 1/-1; width: calc(50% - 10px); justify-self: center}
   .booking-grid {grid-template-columns: 1fr; padding: 52px; gap: 48px}
   .home-about__reasons {width: 100%; grid-template-columns: repeat(2,minmax(0,1fr))}
   .home-about__reasons article:last-child {grid-column: 1/-1}
@@ -105,7 +118,7 @@
   .home-about__reasons article,.home-about__reasons article:last-child {grid-column: auto; min-height: 0}
   .stat-card {height: auto; min-height: 190px}
   .popular-list--figma {grid-template-columns: 1fr}
-  .popular-card--figma,.popular-card--figma:last-child {grid-column: auto; width: 100%; height: auto; min-height: 650px}
+  .popular-card--figma {grid-column: auto; width: 100%; height: auto; min-height: 650px}
   .popular-card__actions {align-items: stretch; flex-direction: column}
   .popular-card__actions .button {justify-content: space-between}
   .booking-steps {padding: 48px 12px 0}
@@ -315,6 +328,29 @@ main,section,article,aside,nav,header,footer,div {min-width: 0}
   color: #fff;
 }
 
+.trip-price__heading .section-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  border-radius: 999px;
+  background: #1c1814;
+  color: #fff;
+  font-size: 14px;
+  line-height: 20px;
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+.trip-price__heading .section-eyebrow::before {
+  width: 6px;
+  height: 6px;
+  flex: 0 0 6px;
+  border-radius: 50%;
+  background: var(--orange);
+  content: "";
+}
+
 .trip-price__heading h2 {
   width: min(100%, 860px);
   margin: 0;
@@ -333,30 +369,29 @@ main,section,article,aside,nav,header,footer,div {min-width: 0}
 
 .trip-price__choice-heading {
   display: flex;
-  align-items: baseline;
-  justify-content: space-between;
-  gap: 24px;
+  align-items: flex-start;
+  flex-direction: column;
+  gap: 4px;
 }
 
 .trip-price__choice-heading h3 {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 8px;
   margin: 0;
   font-size: 22px;
   line-height: 1.25;
 }
 
 .trip-price__choice-heading h3 span {
-  display: grid;
-  width: 34px;
-  height: 34px;
-  flex: 0 0 34px;
-  place-items: center;
-  border-radius: 50%;
-  background: var(--orange);
-  color: var(--ink);
-  font-size: 16px;
+  display: inline;
+  width: auto;
+  height: auto;
+  flex: none;
+  border-radius: 0;
+  background: transparent;
+  color: inherit;
+  font-size: inherit;
 }
 
 .trip-price__choice-heading p {
@@ -364,7 +399,7 @@ main,section,article,aside,nav,header,footer,div {min-width: 0}
   color: #bdb6ab;
   font-size: 16px;
   line-height: 1.5;
-  text-align: right;
+  text-align: left;
 }
 
 .trip-price__travel-grid,
@@ -378,11 +413,16 @@ main,section,article,aside,nav,header,footer,div {min-width: 0}
 
 .trip-price__travel-grid article,
 .trip-price__tier-grid article {
+  display: flex;
   min-height: 0;
   padding: 28px;
+  flex-direction: column;
   border-radius: 22px;
   background: #1c1814;
 }
+
+.trip-price__travel-grid article {gap: 10px}
+.trip-price__tier-grid article {gap: 12px}
 
 .trip-price__travel-grid article > div {
   display: flex;
@@ -411,7 +451,7 @@ main,section,article,aside,nav,header,footer,div {min-width: 0}
 
 .trip-price__travel-grid p,
 .trip-price__tier-grid p {
-  margin: 14px 0 0;
+  margin: 0;
   color: #bdb6ab;
   font-size: 16px;
   line-height: 1.55;
@@ -419,7 +459,7 @@ main,section,article,aside,nav,header,footer,div {min-width: 0}
 
 .trip-price__tier-grid strong {
   display: block;
-  margin-top: 24px;
+  margin-top: 0;
   color: var(--orange);
   font-size: 40px;
   line-height: 1;
@@ -428,7 +468,7 @@ main,section,article,aside,nav,header,footer,div {min-width: 0}
 .trip-price__included-note {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 10px;
   margin: 0;
   color: #fff;
   font-size: 16px;
@@ -436,7 +476,7 @@ main,section,article,aside,nav,header,footer,div {min-width: 0}
 }
 
 .trip-price__included-note svg {flex: 0 0 auto}
-.trip-price__actions {margin-top: 0}
+.trip-price__actions {gap: 24px; margin-top: 0}
 .trip-price__actions .whatsapp-text-link {color: #fff}
 
 @media (max-width: 900px) {
@@ -597,7 +637,6 @@ main,section,article,aside,nav,header,footer,div {min-width: 0}
 
 @media (max-width: 1439px) {
   .popular-list--figma {grid-template-columns: repeat(2,minmax(0,1fr))}
-  .popular-card--figma:last-child {grid-column: 1/-1; width: min(100%,calc(50% - 10px)); justify-self: center}
 }
 
 @media (max-width: 1240px) {
@@ -612,8 +651,7 @@ main,section,article,aside,nav,header,footer,div {min-width: 0}
 
 @media (max-width: 900px) {
   .popular-list--figma {grid-template-columns: 1fr}
-  .popular-card--figma,
-  .popular-card--figma:last-child {grid-column: auto; width: 100%; justify-self: stretch}
+  .popular-card--figma {grid-column: auto; width: 100%; justify-self: stretch}
 }
 
 @media (max-width: 700px) {
@@ -770,6 +808,7 @@ main,section,article,aside,nav,header,footer,div {min-width: 0}
 .trip-download-mobile {display: none}
 
 @media(max-width:1100px) {
+  body:has(.trip-download-mobile) .whatsapp-widget__prompt {display: none}
   .trip-download-mobile {
     --download-floating-bottom: calc(max(15px,env(safe-area-inset-bottom)) + 70px);
     position: fixed;

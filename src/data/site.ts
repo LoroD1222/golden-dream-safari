@@ -21,6 +21,7 @@ export type TripCardData = {
   duration: string;
   price: string;
   image: string;
+  routeFamily?: string;
 };
 
 export const wildlifeTrips: TripCardData[] = [
