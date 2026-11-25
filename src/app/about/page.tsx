@@ -34,9 +34,9 @@ const team = [
   {
     title: "Victor Costa",
     role: "CEO & founder",
-    image: "/images/team/golden-dream-guide.jpg",
+    image: "/images/team/victor-costa-ceo.webp",
     alt: "Victor Costa, CEO and founder of Golden Dream Safaris, beside a branded safari vehicle",
-    position: "center 46%",
+    position: "center 62%",
   },
 ];
 const values: Array<[string, string, FigmaIconName]> = [
