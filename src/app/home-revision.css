@@ -84,7 +84,7 @@
 .popular-card__actions .button {min-height: 44px; padding-left: 16px; font-size: 14px; white-space: nowrap}
 .popular-card__actions .button__arrow {width: 34px; height: 34px}
 
-.booking-steps {padding: 0 24px; background: #fff}
+.booking-steps {padding: 24px 24px 0; background: #fff}
 .booking-grid {width: 100%; max-width: none; padding: 62px 72px; border-radius: 32px; background: var(--cream); grid-template-columns: 1fr 1fr; gap: 72px}
 .booking-grid h2 {max-width: 540px; margin: 24px 0 16px; font-size: 56px; line-height: 1.04}
 .booking-grid>div:first-child>p {max-width: 560px; font-size: 18px; line-height: 1.55}
