@@ -91,7 +91,7 @@
 .booking-grid figure {height: 363px; min-height: 363px; margin-top: 24px; border-radius: 28px}
 .booking-grid figure img {object-position: center 66%}
 .booking-timeline {position: relative}
-.booking-timeline::before {position: absolute; top: 62px; bottom: 0; left: 31px; width: 2px; content: ""; background: var(--orange); opacity: .45}
+.booking-timeline::before {content: none}
 .booking-step {grid-template-columns: 64px 1fr; gap: 0; padding-bottom: 20px}
 .booking-step>span {width: 64px; height: 64px; border-width: 2px; background: var(--orange); font-size: 22px; font-weight: 800}
 .booking-step:not(:last-of-type)::before {content: none}
@@ -143,7 +143,6 @@
   .booking-grid figure {height: 300px; min-height: 300px}
   .booking-step {grid-template-columns: 48px 1fr}
   .booking-step>span {width: 48px; height: 48px; font-size: 16px}
-  .booking-timeline::before {content: none}
   .booking-step:not(:last-of-type)::before {top: 48px; left: 23px; content: ""}
   .booking-step>div {margin-left: 12px; padding: 20px 18px}
   .booking-actions {margin-left: 60px}
