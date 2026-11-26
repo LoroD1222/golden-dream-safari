@@ -4,6 +4,14 @@
   .site-nav__item {gap: 9px; font-size: 14px}
 }
 
+@media (min-width: 1101px) {
+  .home-top .home-hero {
+    height: 560px;
+    min-height: 560px;
+    padding-bottom: 76px;
+  }
+}
+
 .home-top .home-hero__copy {width: 760px; flex-basis: 760px}
 .home-top .home-hero__copy .section-eyebrow {
   display: block;
