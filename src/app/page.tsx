@@ -42,7 +42,6 @@ const popularDefinitions = [
   {slug: "5-days-northern-tanzania-joining-safari", title: "5-Day Tanzania Group Joining Safari", description: "Share the adventure, not just the cost. Explore Tanzania’s iconic wildlife destinations, meet like-minded travellers and enjoy an expertly guided safari with camping or lodge accommodation."},
   {slug: "8-days-lemosho-route", title: "8-Day Kilimanjaro Lemosho Route", description: "Climb Africa’s highest mountain through spectacular landscapes, with experienced mountain guides and a carefully planned acclimatization schedule."},
   {slug: "4-days-northern-tanzania-joining-safari", title: "4-Day Classic Tanzania Safari", description: "Discover Tarangire’s elephant herds, the legendary Serengeti and the wildlife-rich Ngorongoro Crater. An extraordinary introduction to Tanzania’s wilderness."},
-  {slug: "7-days-northern-serengeti-river-crossing-safari", title: "Great Migration Safaris", description: "Follow the spectacular wildebeest migration, from the newborn calves of Ndutu to the dramatic Mara River crossings in Northern Serengeti. Expertly planned around your travel dates."},
 ];
 
 export default async function HomePage() {
