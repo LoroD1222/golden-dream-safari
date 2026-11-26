@@ -112,12 +112,19 @@
   .home-top .home-hero__copy h1 {font-size: 43px}
   .home-top .home-hero__copy>p {width: 100%; font-size: 15px}
   .home-about {padding-inline: 12px}
-  .home-about>.section-shell {width: 100%; padding: 52px 16px 24px}
+  body .home-about.home-about>.section-shell {width: 100%; padding: 52px 16px 24px}
   .home-about__statement h2 {font-size: 34px}
   .home-about__statement>p {font-size: 14px; line-height: 1.45}
   .home-about__reasons {grid-template-columns: 1fr}
   .home-about__reasons article,.home-about__reasons article:last-child {grid-column: auto; min-height: 0}
-  .stat-card {height: auto; min-height: 190px}
+  .stat-grid {grid-template-columns: repeat(2,minmax(0,1fr)); gap: 12px}
+  .stat-card {height: auto; min-height: 188px; gap: 10px; padding: 18px 16px}
+  .stat-card__number {gap: 10px; margin-bottom: 2px}
+  .stat-card__number i {width: 40px; height: 40px; flex-basis: 40px; border-radius: 12px}
+  .stat-card__number i img {width: 21px; height: 21px}
+  .stat-card__number strong {font-size: 42px}
+  .stat-card h3 {margin-bottom: 2px; font-size: 17px; line-height: 1.2}
+  .stat-card p {margin: 0; font-size: 13px; line-height: 1.35}
   .popular-list--figma {grid-template-columns: 1fr}
   .popular-card--figma {grid-column: auto; width: 100%; height: auto; min-height: 650px}
   .popular-card__actions {align-items: stretch; flex-direction: column}
