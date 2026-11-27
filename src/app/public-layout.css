@@ -189,6 +189,31 @@ body .footer-cta > div {flex: 1 1 auto; min-width: 0}
 body .footer-cta > .button {flex: 0 0 auto}
 body .download-button {white-space: nowrap}
 
+/* Compact, accessible studio credit aligned with the footer's legal row. */
+body .footer-bottom {align-items: center; flex-wrap: wrap}
+body .footer-bottom__meta {display: flex; align-items: center; flex-wrap: wrap; gap: 10px 14px}
+body .footer-credit {display: inline-flex; align-items: center; gap: 7px; margin: -5px -8px; padding: 5px 8px; border-radius: 999px; color: inherit; line-height: 1; white-space: nowrap; transition: color .2s ease,background-color .2s ease,box-shadow .2s ease,transform .2s ease}
+body .footer-credit img {width: 25px; height: 20px; object-fit: contain; transition: filter .22s ease,transform .22s ease; transform-origin: center}
+body .footer-credit:hover {background: rgba(61,169,127,.13); color: #fff; transform: translateY(-2px)}
+body .footer-credit:hover img {filter: brightness(.76) saturate(1.12); transform: scale(1.08) rotate(-5deg)}
+body .footer-credit:active {background: rgba(61,169,127,.2); transform: translateY(0) scale(.97)}
+body .footer-credit:active img {transform: scale(.96) rotate(2deg)}
+body .footer-credit:focus-visible {outline: 2px solid #3da97f; outline-offset: 3px; background: rgba(61,169,127,.13); color: #fff}
+
+@media (max-width: 700px) {
+  body .footer-bottom {align-items: flex-start}
+  body .footer-bottom__meta {width: 100%}
+}
+
+@media (max-width: 480px) {
+  body .footer-bottom__meta {align-items: flex-start; flex-direction: column}
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body .footer-credit,body .footer-credit img {transition-duration: .01ms}
+  body .footer-credit:hover,body .footer-credit:hover img,body .footer-credit:active,body .footer-credit:active img {transform: none}
+}
+
 @media (max-width: 900px) {
   body .footer-cta {align-items: stretch; flex-direction: column}
   body .footer-cta > .button {align-self: flex-start}

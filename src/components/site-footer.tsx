@@ -34,6 +34,15 @@ export function SiteFooter() {
     </div>
     <div className="footer-cta"><div><h2>You&apos;ve Dreamed of Tanzania. Now Let&apos;s Make It Yours.</h2><p>Imagine your first sunrise in the Serengeti, standing above the clouds on Kilimanjaro or watching the sun disappear over Zanzibar&apos;s turquoise waters. Whatever brings you to Tanzania, our local experts are here to turn your dreams into a personally crafted adventure. Let us share our home with you. Your journey begins with a conversation.</p></div><Link className="button button--orange" href="/contact#quote">Plan My Tanzania Adventure<span className="button__arrow" aria-hidden><FigmaIcon name="arrow-footer" width={24}/></span></Link></div>
     <div className="footer-wordmark">GOLDEN DREAM</div>
-    <div className="footer-bottom"><span>© 2026 Golden Dream Safaris. All rights reserved.</span><span><Link href="/terms">Terms & conditions</Link> · <Link href="/privacy">Privacy policy</Link> · <Link href="/cookies">Cookie policy</Link> · <Link href="/disclaimer">Disclaimer</Link></span></div>
+    <div className="footer-bottom">
+      <div className="footer-bottom__meta">
+        <span>© 2026 Golden Dream Safaris. All rights reserved.</span>
+        <a className="footer-credit" href="https://www.safaridigital.co.tz/" target="_blank" rel="noopener noreferrer" aria-label="Website by Safari Digital">
+          <span aria-hidden="true">Website by</span>
+          <Image src="/icons/safari-digital-elephant.svg" alt="" width={25} height={20}/>
+        </a>
+      </div>
+      <span className="footer-bottom__legal"><Link href="/terms">Terms & conditions</Link> · <Link href="/privacy">Privacy policy</Link> · <Link href="/cookies">Cookie policy</Link> · <Link href="/disclaimer">Disclaimer</Link></span>
+    </div>
   </footer>;
 }
