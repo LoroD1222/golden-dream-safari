@@ -8764,7 +8764,7 @@
     "slug": "5-days-northern-tanzania-joining-safari",
     "title": "5 Day Tarangire, Serengeti, Ngorongoro and Lake Manyara Joining Safari",
     "summary": "Book a 5 day Tanzania joining safari to Tarangire, Serengeti, Ngorongoro and Lake Manyara. Camping is $975 and lodging is $1,650 per person.",
-    "heroImage": "/images/itineraries/swt/lions-5-Day-Serengeti-Wildlife-Safari-Experience.jpg",
+    "heroImage": "/images/golden-dream/field-encounters/lions-under-acacia.jpg",
     "overviewTitle": "About this joining safari",
     "overviewParagraphs": [
       "Book a 5 day Tanzania joining safari to Tarangire, Serengeti, Ngorongoro and Lake Manyara. Camping is $975 and lodging is $1,650 per person.",
@@ -8778,20 +8778,24 @@
     ],
     "galleryImages": [
       {
-        "src": "/images/itineraries/swt/lions-5-Day-Serengeti-Wildlife-Safari-Experience.jpg",
-        "alt": "5 Day Tarangire, Serengeti, Ngorongoro and Lake Manyara Joining Safari"
+        "src": "/images/golden-dream/field-encounters/lions-under-acacia.jpg",
+        "alt": "Lions resting beneath an acacia during a Golden Dream safari"
       },
       {
         "src": "/images/itineraries/swt/19-tarangire-elephants-waterhole-safari.jpg",
-        "alt": "Joining Safari experience 2"
+        "alt": "Elephants gathering at a Tarangire waterhole"
       },
       {
-        "src": "/images/itineraries/swt/lion-pride-resting-serengeti.jpg",
-        "alt": "Joining Safari experience 3"
+        "src": "/images/golden-dream/field-encounters/lion-cub-close-sighting.jpg",
+        "alt": "Close lion sighting during a Golden Dream safari"
       },
       {
         "src": "/images/itineraries/swt/Lake-Manyara-Tanzania2.jpg",
-        "alt": "Joining Safari experience 4"
+        "alt": "Lake Manyara safari landscape"
+      },
+      {
+        "src": "/images/golden-dream/field-encounters/victor-lion-sighting.jpg",
+        "alt": "Victor of Golden Dream Safaris during a lion sighting"
       }
     ],
     "routeStops": [
@@ -8885,8 +8889,8 @@
           "location": "Tarangire National Park",
           "description": "The confirmed property is listed in the final quotation and depends on availability."
         },
-        "image": "/images/itineraries/swt/lions-5-Day-Serengeti-Wildlife-Safari-Experience.jpg",
-        "imageAlt": "Arusha to Tarangire National Park on the Joining Safari itinerary"
+        "image": "/images/itineraries/swt/19-tarangire-elephants-waterhole-safari.jpg",
+        "imageAlt": "Elephants in Tarangire National Park"
       },
       {
         "id": "5-days-northern-tanzania-joining-safari-day-2",
@@ -8915,8 +8919,8 @@
           "location": "Central Serengeti",
           "description": "The confirmed property is listed in the final quotation and depends on availability."
         },
-        "image": "/images/itineraries/swt/19-tarangire-elephants-waterhole-safari.jpg",
-        "imageAlt": "Karatu to Central Serengeti on the Joining Safari itinerary"
+        "image": "/images/golden-dream/field-encounters/lions-under-acacia.jpg",
+        "imageAlt": "Lions resting beneath an acacia during a Golden Dream safari"
       },
       {
         "id": "5-days-northern-tanzania-joining-safari-day-3",
@@ -8945,8 +8949,8 @@
           "location": "Central Serengeti",
           "description": "The confirmed property is listed in the final quotation and depends on availability."
         },
-        "image": "/images/itineraries/swt/lion-pride-resting-serengeti.jpg",
-        "imageAlt": "Central Serengeti to the Ngorongoro highlands on the Joining Safari itinerary"
+        "image": "/images/golden-dream/field-encounters/lion-cub-close-sighting.jpg",
+        "imageAlt": "Close lion sighting during a Golden Dream safari"
       },
       {
         "id": "5-days-northern-tanzania-joining-safari-day-4",
@@ -8975,8 +8979,8 @@
           "location": "Ngorongoro Crater",
           "description": "The confirmed property is listed in the final quotation and depends on availability."
         },
-        "image": "/images/itineraries/swt/Lake-Manyara-Tanzania2.jpg",
-        "imageAlt": "Ngorongoro Crater and Karatu on the Joining Safari itinerary"
+        "image": "/images/itineraries/swt/ngorongoro-crater-rhino-family-safari.jpg",
+        "imageAlt": "Wildlife in Ngorongoro Crater"
       },
       {
         "id": "5-days-northern-tanzania-joining-safari-day-5",
@@ -8998,8 +9002,8 @@
             "location": "Lake Manyara National Park"
           }
         ],
-        "image": "/images/itineraries/swt/lions-5-Day-Serengeti-Wildlife-Safari-Experience.jpg",
-        "imageAlt": "Lake Manyara National Park and return to Arusha on the Joining Safari itinerary",
+        "image": "/images/itineraries/swt/Lake-Manyara-Tanzania2.jpg",
+        "imageAlt": "Lake Manyara National Park landscape",
         "dropOffNote": "Return to your accommodation in Arusha after the final activity."
       }
     ],
@@ -9082,7 +9086,7 @@
     ],
     "relatedTripSlugs": [],
     "createdAt": "2026-11-25T00:00:00.000Z",
-    "updatedAt": "2026-11-25T00:00:00.000Z"
+    "updatedAt": "2026-11-27T13:09:00.000Z"
   },
   {
     "id": "swt-5-days-northern-serengeti-river-crossing-safari",
